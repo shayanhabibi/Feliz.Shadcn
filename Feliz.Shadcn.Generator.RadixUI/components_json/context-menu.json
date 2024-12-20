@@ -1,0 +1,598 @@
+{
+    "Name": "Context Menu",
+    "Description": "Displays a menu located at the pointer, triggered by a right-click or a long-press.",
+    "ImportCommand": "@radix-ui/react-context-menu",
+    "SubComponentData": [
+        {
+            "Name": "Root",
+            "Description": "Contains all the parts of a context menu.",
+            "PropData": [
+                {
+                    "Name": "onOpenChange",
+                    "Required": false,
+                    "Description": "The reading direction of submenus when applicable. If omitted, inherits globally from DirectionProvider or assumes LTR (left-to-right) reading mode.",
+                    "PropType": "function",
+                    "PropTypeValue": "(open: boolean) => void"
+                },
+                {
+                    "Name": "modal",
+                    "Required": false,
+                    "Description": "Event handler called when the open state of the context menu changes.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": [
+                {
+                    "Name": "dir",
+                    "Required": false,
+                    "Description": "The reading direction of submenus when applicable. If omitted, inherits globally from DirectionProvider or assumes LTR (left-to-right) reading mode.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"ltr\" | \"rtl\""
+                }
+            ]
+        },
+        {
+            "Name": "Trigger",
+            "Description": "The area that opens the context menu. Wrap it around the target you want the context menu to open from when right-clicking (or using the relevant keyboard shortcuts).",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "disabled",
+                    "Required": false,
+                    "Description": "When true, the context menu won't open when right-clicking. Note that this will also restore the native context menu.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Portal",
+            "Description": "When used, portals the content part into the body.",
+            "PropData": [
+                {
+                    "Name": "forceMount",
+                    "Required": false,
+                    "Description": "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. If used on this part, it will be inherited by ContextMenu.Content and ContextMenu.SubContent respectively.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "container",
+                    "Required": false,
+                    "Description": "Specify a container element to portal the content into.",
+                    "PropType": "HTMLElement",
+                    "PropTypeValue": "HTMLElement"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Content",
+            "Description": "The component that pops out in an open context menu.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "loop",
+                    "Required": false,
+                    "Description": "When true, keyboard navigation will loop from last item to first, and vice versa.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "onCloseAutoFocus",
+                    "Required": false,
+                    "Description": "Event handler called when focus moves back after closing. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: Event) => void"
+                },
+                {
+                    "Name": "onEscapeKeyDown",
+                    "Required": false,
+                    "Description": "Event handler called when focus moves back after closing. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: KeyboardEvent) => void"
+                },
+                {
+                    "Name": "onPointerDownOutside",
+                    "Required": false,
+                    "Description": "Event handler called when the escape key is down. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: PointerDownOutsideEvent) => void"
+                },
+                {
+                    "Name": "onFocusOutside",
+                    "Required": false,
+                    "Description": "Event handler called when a pointer event occurs outside the bounds of the component. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: FocusOutsideEvent) => void"
+                },
+                {
+                    "Name": "onInteractOutside",
+                    "Required": false,
+                    "Description": "Event handler called when focus moves outside the bounds of the component. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: PointerDownOutsideEvent | FocusOutsideEvent) => void"
+                },
+                {
+                    "Name": "forceMount",
+                    "Required": false,
+                    "Description": "Event handler called when an interaction (pointer or focus event) happens outside the bounds of the component. It can be prevented by calling event.preventDefault.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "alignOffset",
+                    "Required": false,
+                    "Description": "The vertical distance in pixels from the anchor.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                },
+                {
+                    "Name": "avoidCollisions",
+                    "Required": false,
+                    "Description": "When true, overrides the side andalign preferences to prevent collisions with boundary edges.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "collisionBoundary",
+                    "Required": false,
+                    "Description": "The element used as the collision boundary. By default this is the viewport, though you can provide additional element(s) to be included in this check.",
+                    "PropType": "Boundary",
+                    "PropTypeValue": "Element | null | Array<Element | null>"
+                },
+                {
+                    "Name": "collisionPadding",
+                    "Required": false,
+                    "Description": "The element used as the collision boundary. By default this is the viewport, though you can provide additional element(s) to be included in this check.",
+                    "PropType": "number | Padding",
+                    "PropTypeValue": "number | Partial<Record<Side, number>>"
+                },
+                {
+                    "Name": "hideWhenDetached",
+                    "Required": false,
+                    "Description": "The sticky behavior on the align axis. \"partial\" will keep the content in the boundary as long as the trigger is at least partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": [
+                {
+                    "Name": "sticky",
+                    "Required": false,
+                    "Description": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for all sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"partial\" | \"always\""
+                }
+            ]
+        },
+        {
+            "Name": "Arrow",
+            "Description": "An optional arrow element to render alongside a submenu. This can be used to help visually link the trigger item with the ContextMenu.Content. Must be rendered inside ContextMenu.Content.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "width",
+                    "Required": false,
+                    "Description": "The width of the arrow in pixels.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                },
+                {
+                    "Name": "height",
+                    "Required": false,
+                    "Description": "The height of the arrow in pixels.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Item",
+            "Description": "The component that contains the context menu items.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "disabled",
+                    "Required": false,
+                    "Description": "When true, prevents the user from interacting with the item.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "onSelect",
+                    "Required": false,
+                    "Description": "Event handler called when the user selects an item (via mouse or keyboard). Calling event.preventDefault in this handler will prevent the context menu from closing when selecting that item.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: Event) => void"
+                },
+                {
+                    "Name": "textValue",
+                    "Required": false,
+                    "Description": "Event handler called when the user selects an item (via mouse or keyboard). Calling event.preventDefault in this handler will prevent the context menu from closing when selecting that item.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Group",
+            "Description": "Used to group multiple ContextMenu.Items.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Label",
+            "Description": "Used to render a label. It won't be focusable using arrow keys.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "CheckboxItem",
+            "Description": "An item that can be controlled and rendered like a checkbox.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "checked",
+                    "Required": false,
+                    "Description": "The controlled checked state of the item. Must be used in conjunction with onCheckedChange.",
+                    "PropType": "boolean | 'indeterminate'",
+                    "PropTypeValue": "boolean | 'indeterminate'"
+                },
+                {
+                    "Name": "onCheckedChange",
+                    "Required": false,
+                    "Description": "Event handler called when the checked state changes.",
+                    "PropType": "function",
+                    "PropTypeValue": "(checked: boolean) => void"
+                },
+                {
+                    "Name": "disabled",
+                    "Required": false,
+                    "Description": "Event handler called when the checked state changes.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "onSelect",
+                    "Required": false,
+                    "Description": "Event handler called when the user selects an item (via mouse or keyboard). Calling event.preventDefault in this handler will prevent the context menu from closing when selecting that item.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: Event) => void"
+                },
+                {
+                    "Name": "textValue",
+                    "Required": false,
+                    "Description": "Event handler called when the user selects an item (via mouse or keyboard). Calling event.preventDefault in this handler will prevent the context menu from closing when selecting that item.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "RadioGroup",
+            "Description": "Used to group multiple ContextMenu.RadioItems.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "value",
+                    "Required": false,
+                    "Description": "The value of the selected item in the group.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "onValueChange",
+                    "Required": false,
+                    "Description": "Event handler called when the value changes.",
+                    "PropType": "function",
+                    "PropTypeValue": "(value: string) => void"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "RadioItem",
+            "Description": "An item that can be controlled and rendered like a radio.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Event handler called when the value changes.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "value",
+                    "Required": true,
+                    "Description": "The unique value of the item.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "disabled",
+                    "Required": false,
+                    "Description": "When true, prevents the user from interacting with the item.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "onSelect",
+                    "Required": false,
+                    "Description": "Event handler called when the user selects an item (via mouse or keyboard). Calling event.preventDefault in this handler will prevent the context menu from closing when selecting that item.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: Event) => void"
+                },
+                {
+                    "Name": "textValue",
+                    "Required": false,
+                    "Description": "Event handler called when the user selects an item (via mouse or keyboard). Calling event.preventDefault in this handler will prevent the context menu from closing when selecting that item.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "ItemIndicator",
+            "Description": "Renders when the parent ContextMenu.CheckboxItem or ContextMenu.RadioItem is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "forceMount",
+                    "Required": false,
+                    "Description": "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Separator",
+            "Description": "Used to visually separate items in the context menu.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Sub",
+            "Description": "Contains all the parts of a submenu.",
+            "PropData": [
+                {
+                    "Name": "defaultOpen",
+                    "Required": false,
+                    "Description": "The open state of the submenu when it is initially rendered. Use when you do not need to control its open state.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "open",
+                    "Required": false,
+                    "Description": "The controlled open state of the submenu. Must be used in conjunction with onOpenChange.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "onOpenChange",
+                    "Required": false,
+                    "Description": "Event handler called when the open state of the submenu changes.",
+                    "PropType": "function",
+                    "PropTypeValue": "(open: boolean) => void"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "SubTrigger",
+            "Description": "An item that opens a submenu. Must be rendered inside ContextMenu.Sub.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Event handler called when the open state of the submenu changes.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "disabled",
+                    "Required": false,
+                    "Description": "When true, prevents the user from interacting with the item.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "textValue",
+                    "Required": false,
+                    "Description": "Optional text used for typeahead purposes. By default the typeahead behavior will use the .textContent of the item. Use this when the content is complex, or you have non-textual content inside.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "SubContent",
+            "Description": "The component that pops out when a submenu is open. Must be rendered inside ContextMenu.Sub.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "loop",
+                    "Required": false,
+                    "Description": "When true, keyboard navigation will loop from last item to first, and vice versa.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "onEscapeKeyDown",
+                    "Required": false,
+                    "Description": "Event handler called when the escape key is down. It can be prevented by calling event.preventDefault",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: KeyboardEvent) => void"
+                },
+                {
+                    "Name": "onPointerDownOutside",
+                    "Required": false,
+                    "Description": "Event handler called when the escape key is down. It can be prevented by calling event.preventDefault",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: PointerDownOutsideEvent) => void"
+                },
+                {
+                    "Name": "onFocusOutside",
+                    "Required": false,
+                    "Description": "Event handler called when a pointer event occurs outside the bounds of the component. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: FocusOutsideEvent) => void"
+                },
+                {
+                    "Name": "onInteractOutside",
+                    "Required": false,
+                    "Description": "Event handler called when focus moves outside the bounds of the component. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: PointerDownOutsideEvent | FocusOutsideEvent) => void"
+                },
+                {
+                    "Name": "forceMount",
+                    "Required": false,
+                    "Description": "Event handler called when an interaction (pointer or focus event) happens outside the bounds of the component. It can be prevented by calling event.preventDefault.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "sideOffset",
+                    "Required": false,
+                    "Description": "The distance in pixels from the trigger.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                },
+                {
+                    "Name": "alignOffset",
+                    "Required": false,
+                    "Description": "An offset in pixels from the \"start\" or \"end\" alignment options.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                },
+                {
+                    "Name": "avoidCollisions",
+                    "Required": false,
+                    "Description": "When true, overrides the side andalign preferences to prevent collisions with boundary edges.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "collisionBoundary",
+                    "Required": false,
+                    "Description": "The element used as the collision boundary. By default this is the viewport, though you can provide additional element(s) to be included in this check.",
+                    "PropType": "Boundary",
+                    "PropTypeValue": "Element | null | Array<Element | null>"
+                },
+                {
+                    "Name": "collisionPadding",
+                    "Required": false,
+                    "Description": "The element used as the collision boundary. By default this is the viewport, though you can provide additional element(s) to be included in this check.",
+                    "PropType": "number | Padding",
+                    "PropTypeValue": "number | Partial<Record<Side, number>>"
+                },
+                {
+                    "Name": "arrowPadding",
+                    "Required": false,
+                    "Description": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for all sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                },
+                {
+                    "Name": "hideWhenDetached",
+                    "Required": false,
+                    "Description": "The sticky behavior on the align axis. \"partial\" will keep the content in the boundary as long as the trigger is at least partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": [
+                {
+                    "Name": "sticky",
+                    "Required": false,
+                    "Description": "The sticky behavior on the align axis. \"partial\" will keep the content in the boundary as long as the trigger is at least partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"partial\" | \"always\""
+                }
+            ]
+        }
+    ]
+}

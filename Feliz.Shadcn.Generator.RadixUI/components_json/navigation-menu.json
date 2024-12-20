@@ -1,0 +1,275 @@
+{
+    "Name": "Navigation Menu",
+    "Description": "A collection of links for navigating websites.",
+    "ImportCommand": "@radix-ui/react-navigation-menu",
+    "SubComponentData": [
+        {
+            "Name": "Root",
+            "Description": "Contains all the parts of a navigation menu.",
+            "PropData": [
+                {
+                    "Name": "defaultValue",
+                    "Required": false,
+                    "Description": "The value of the menu item that should be active when initially rendered. Use when you do not need to control the value state.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "value",
+                    "Required": false,
+                    "Description": "The controlled value of the menu item to activate. Should be used in conjunction with onValueChange.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "onValueChange",
+                    "Required": false,
+                    "Description": "Event handler called when the value changes.",
+                    "PropType": "function",
+                    "PropTypeValue": "(value: string) => void"
+                },
+                {
+                    "Name": "delayDuration",
+                    "Required": false,
+                    "Description": "Event handler called when the value changes.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                },
+                {
+                    "Name": "skipDelayDuration",
+                    "Required": false,
+                    "Description": "How much time a user has to enter another trigger without incurring a delay again.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                }
+            ],
+            "EnumData": [
+                {
+                    "Name": "dir",
+                    "Required": false,
+                    "Description": "The reading direction of the menu when applicable. If omitted, inherits globally from DirectionProvider or assumes LTR (left-to-right) reading mode.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"ltr\" | \"rtl\""
+                },
+                {
+                    "Name": "orientation",
+                    "Required": false,
+                    "Description": "The reading direction of the menu when applicable. If omitted, inherits globally from DirectionProvider or assumes LTR (left-to-right) reading mode.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"horizontal\" | \"vertical\""
+                }
+            ]
+        },
+        {
+            "Name": "Sub",
+            "Description": "Signifies a submenu. Use it in place of the root part when nested to create a submenu.",
+            "PropData": [
+                {
+                    "Name": "defaultValue",
+                    "Required": false,
+                    "Description": "The orientation of the menu.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "value",
+                    "Required": false,
+                    "Description": "The controlled value of the sub menu item to activate. Should be used in conjunction with onValueChange.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "onValueChange",
+                    "Required": false,
+                    "Description": "Event handler called when the value changes.",
+                    "PropType": "function",
+                    "PropTypeValue": "(value: string) => void"
+                }
+            ],
+            "EnumData": [
+                {
+                    "Name": "orientation",
+                    "Required": false,
+                    "Description": "Event handler called when the value changes.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"horizontal\" | \"vertical\""
+                }
+            ]
+        },
+        {
+            "Name": "List",
+            "Description": "Contains the top level menu items.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "The orientation of the menu.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Item",
+            "Description": "A top level menu item, contains a link or trigger with content combination.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "value",
+                    "Required": false,
+                    "Description": "A unique value that associates the item with an active value when the navigation menu is controlled. This prop is managed automatically when uncontrolled.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Trigger",
+            "Description": "The button that toggles the content.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Content",
+            "Description": "Contains the content associated with each trigger.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "disableOutsidePointerEvents",
+                    "Required": false,
+                    "Description": "When true, hover/focus/click interactions will be disabled on elements outside the bounds of the component. Users will need to click twice on outside elements to interact with them: Once to close the navigation menu, and again to activate the element.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "onEscapeKeyDown",
+                    "Required": false,
+                    "Description": "Event handler called when the escape key is down. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: KeyboardEvent) => void"
+                },
+                {
+                    "Name": "onPointerDownOutside",
+                    "Required": false,
+                    "Description": "Event handler called when the escape key is down. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: PointerDownOutsideEvent) => void"
+                },
+                {
+                    "Name": "onFocusOutside",
+                    "Required": false,
+                    "Description": "Event handler called when a pointer event occurs outside the bounds of the component. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: FocusOutsideEvent) => void"
+                },
+                {
+                    "Name": "onInteractOutside",
+                    "Required": false,
+                    "Description": "Event handler called when focus moves outside the bounds of the component. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: React.FocusEvent | MouseEvent | TouchEvent) => void"
+                },
+                {
+                    "Name": "forceMount",
+                    "Required": false,
+                    "Description": "Event handler called when an interaction (pointer or focus event) happens outside the bounds of the component. It can be prevented by calling event.preventDefault.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Link",
+            "Description": "A navigational link.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "active",
+                    "Required": false,
+                    "Description": "Used to identify the link as the currently active page.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "onSelect",
+                    "Required": false,
+                    "Description": "Event handler called when the user selects a link (via mouse or keyboard). Calling event.preventDefault in this handler will prevent the navigation menu from closing when selecting that link.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: Event) => void"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Indicator",
+            "Description": "An optional indicator element that renders below the list, is used to highlight the currently active trigger.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Event handler called when the user selects a link (via mouse or keyboard). Calling event.preventDefault in this handler will prevent the navigation menu from closing when selecting that link.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "forceMount",
+                    "Required": false,
+                    "Description": "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Viewport",
+            "Description": "An optional viewport element that is used to render active content outside of the list.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "forceMount",
+                    "Required": false,
+                    "Description": "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        }
+    ]
+}

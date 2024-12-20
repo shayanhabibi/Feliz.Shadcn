@@ -1,0 +1,176 @@
+{
+    "Name": "Accordion",
+    "Description": "A vertically stacked set of interactive headings that each reveal an associated section of content.",
+    "ImportCommand": "@radix-ui/react-accordion",
+    "SubComponentData": [
+        {
+            "Name": "Root",
+            "Description": "Contains all the parts of an accordion.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "value",
+                    "Required": false,
+                    "Description": "Determines whether one or multiple items can be opened at the same time.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "defaultValue",
+                    "Required": false,
+                    "Description": "The value of the item to expand when initially rendered and type is \"single\". Use when you do not need to control the state of the items.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "onValueChange",
+                    "Required": false,
+                    "Description": "Event handler called when the expanded state of an item changes and type is \"single\".",
+                    "PropType": "function",
+                    "PropTypeValue": "(value: string) => void"
+                },
+                {
+                    "Name": "value",
+                    "Required": false,
+                    "Description": "Event handler called when the expanded state of an item changes and type is \"single\".",
+                    "PropType": "string[]",
+                    "PropTypeValue": "string[]"
+                },
+                {
+                    "Name": "defaultValue",
+                    "Required": false,
+                    "Description": "The value of the item to expand when initially rendered when type is \"multiple\". Use when you do not need to control the state of the items.",
+                    "PropType": "string[]",
+                    "PropTypeValue": "string[]"
+                },
+                {
+                    "Name": "onValueChange",
+                    "Required": false,
+                    "Description": "Event handler called when the expanded state of an item changes and type is \"multiple\".",
+                    "PropType": "function",
+                    "PropTypeValue": "(value: string[]) => void"
+                },
+                {
+                    "Name": "collapsible",
+                    "Required": false,
+                    "Description": "Event handler called when the expanded state of an item changes and type is \"multiple\".",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "disabled",
+                    "Required": false,
+                    "Description": "When true, prevents the user from interacting with the accordion and all its items.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": [
+                {
+                    "Name": "type",
+                    "Required": true,
+                    "Description": "Determines whether one or multiple items can be opened at the same time.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"single\" | \"multiple\""
+                },
+                {
+                    "Name": "dir",
+                    "Required": false,
+                    "Description": "The reading direction of the accordion when applicable. If omitted, assumes LTR (left-to-right) reading mode.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"ltr\" | \"rtl\""
+                },
+                {
+                    "Name": "orientation",
+                    "Required": false,
+                    "Description": "The reading direction of the accordion when applicable. If omitted, assumes LTR (left-to-right) reading mode.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"horizontal\" | \"vertical\""
+                }
+            ]
+        },
+        {
+            "Name": "Item",
+            "Description": "Contains all the parts of a collapsible section.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "The orientation of the accordion.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "disabled",
+                    "Required": false,
+                    "Description": "When true, prevents the user from interacting with the item.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "value",
+                    "Required": true,
+                    "Description": "A unique value for the item.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Header",
+            "Description": "Wraps an Accordion.Trigger. Use the asChild prop to update it to the appropriate heading level for your page.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Trigger",
+            "Description": "Toggles the collapsed state of its associated item. It should be nested inside of an Accordion.Header.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Content",
+            "Description": "Contains the collapsible content for an item.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "forceMount",
+                    "Required": false,
+                    "Description": "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        }
+    ]
+}

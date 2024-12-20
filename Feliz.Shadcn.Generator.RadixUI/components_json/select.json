@@ -1,0 +1,436 @@
+{
+    "Name": "Select",
+    "Description": "Displays a list of options for the user to pick from—triggered by a button.",
+    "ImportCommand": "@radix-ui/react-select",
+    "SubComponentData": [
+        {
+            "Name": "Root",
+            "Description": "Contains all the parts of a select.",
+            "PropData": [
+                {
+                    "Name": "defaultValue",
+                    "Required": false,
+                    "Description": "The value of the select when initially rendered. Use when you do not need to control the state of the select.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "value",
+                    "Required": false,
+                    "Description": "The controlled value of the select. Should be used in conjunction with onValueChange.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "onValueChange",
+                    "Required": false,
+                    "Description": "Event handler called when the value changes.",
+                    "PropType": "function",
+                    "PropTypeValue": "(value: string) => void"
+                },
+                {
+                    "Name": "defaultOpen",
+                    "Required": false,
+                    "Description": "Event handler called when the value changes.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "open",
+                    "Required": false,
+                    "Description": "The controlled open state of the select. Must be used in conjunction with onOpenChange.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "onOpenChange",
+                    "Required": false,
+                    "Description": "Event handler called when the open state of the select changes.",
+                    "PropType": "function",
+                    "PropTypeValue": "(open: boolean) => void"
+                },
+                {
+                    "Name": "name",
+                    "Required": false,
+                    "Description": "The reading direction of the select when applicable. If omitted, inherits globally from DirectionProvider or assumes LTR (left-to-right) reading mode.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "disabled",
+                    "Required": false,
+                    "Description": "When true, prevents the user from interacting with select.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "required",
+                    "Required": false,
+                    "Description": "When true, indicates that the user must select a value before the owning form can be submitted.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": [
+                {
+                    "Name": "dir",
+                    "Required": false,
+                    "Description": "Event handler called when the open state of the select changes.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"ltr\" | \"rtl\""
+                }
+            ]
+        },
+        {
+            "Name": "Trigger",
+            "Description": "The button that toggles the select. The Select.Content will position itself by aligning over the trigger.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Value",
+            "Description": "The part that reflects the selected value. By default the selected item's text will be rendered. if you require more control, you can instead control the select and pass your own children. It should not be styled to ensure correct positioning. An optional placeholder prop is also available for when the select has no value.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "placeholder",
+                    "Required": false,
+                    "Description": "The content that will be rendered inside the Select.Value when no value or defaultValue is set.",
+                    "PropType": "ReactNode",
+                    "PropTypeValue": "ReactNode"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Icon",
+            "Description": "A small icon often displayed next to the value as a visual affordance for the fact it can be open. By default renders ▼ but you can use your own icon via asChild or use children.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Portal",
+            "Description": "When used, portals the content part into the body.",
+            "PropData": [
+                {
+                    "Name": "container",
+                    "Required": false,
+                    "Description": "Specify a container element to portal the content into.",
+                    "PropType": "HTMLElement",
+                    "PropTypeValue": "HTMLElement"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Content",
+            "Description": "The component that pops out when the select is open.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "onCloseAutoFocus",
+                    "Required": false,
+                    "Description": "Event handler called when focus moves to the trigger after closing. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: Event) => void"
+                },
+                {
+                    "Name": "onEscapeKeyDown",
+                    "Required": false,
+                    "Description": "Event handler called when focus moves to the trigger after closing. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: KeyboardEvent) => void"
+                },
+                {
+                    "Name": "onPointerDownOutside",
+                    "Required": false,
+                    "Description": "Event handler called when the escape key is down. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: PointerDownOutsideEvent) => void"
+                },
+                {
+                    "Name": "sideOffset",
+                    "Required": false,
+                    "Description": "The preferred side of the anchor to render against when open. Will be reversed when collisions occur and avoidCollisions is enabled. Only available when position is set to popper.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                },
+                {
+                    "Name": "alignOffset",
+                    "Required": false,
+                    "Description": "The preferred alignment against the anchor. May change when collisions occur. Only available when position is set to popper.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                },
+                {
+                    "Name": "avoidCollisions",
+                    "Required": false,
+                    "Description": "When true, overrides the side andalign preferences to prevent collisions with boundary edges. Only available when position is set to popper.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "collisionBoundary",
+                    "Required": false,
+                    "Description": "The element used as the collision boundary. By default this is the viewport, though you can provide additional element(s) to be included in this check. Only available when position is set to popper.",
+                    "PropType": "Boundary",
+                    "PropTypeValue": "Element | null | Array<Element | null>"
+                },
+                {
+                    "Name": "collisionPadding",
+                    "Required": false,
+                    "Description": "The element used as the collision boundary. By default this is the viewport, though you can provide additional element(s) to be included in this check. Only available when position is set to popper.",
+                    "PropType": "number | Padding",
+                    "PropTypeValue": "number | Partial<Record<Side, number>>"
+                },
+                {
+                    "Name": "arrowPadding",
+                    "Required": false,
+                    "Description": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for all sides), or a partial padding object, for example: { top: 20, left: 20 }. Only available when position is set to popper.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                },
+                {
+                    "Name": "hideWhenDetached",
+                    "Required": false,
+                    "Description": "The sticky behavior on the align axis. \"partial\" will keep the content in the boundary as long as the trigger is at least partially in the boundary whilst \"always\" will keep the content in the boundary regardless. Only available when position is set to popper.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": [
+                {
+                    "Name": "position",
+                    "Required": false,
+                    "Description": "Event handler called when a pointer event occurs outside the bounds of the component. It can be prevented by calling event.preventDefault.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"item-aligned\" | \"popper\""
+                },
+                {
+                    "Name": "side",
+                    "Required": false,
+                    "Description": "The positioning mode to use, item-aligned is the default and behaves similarly to a native MacOS menu by positioning content relative to the active item. popper positions content in the same way as our other primitives, for example Popover or DropdownMenu.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"top\" | \"right\" | \"bottom\" | \"left\""
+                },
+                {
+                    "Name": "align",
+                    "Required": false,
+                    "Description": "The preferred alignment against the anchor. May change when collisions occur. Only available when position is set to popper.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"start\" | \"center\" | \"end\""
+                },
+                {
+                    "Name": "sticky",
+                    "Required": false,
+                    "Description": "The sticky behavior on the align axis. \"partial\" will keep the content in the boundary as long as the trigger is at least partially in the boundary whilst \"always\" will keep the content in the boundary regardless. Only available when position is set to popper.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"partial\" | \"always\""
+                }
+            ]
+        },
+        {
+            "Name": "Viewport",
+            "Description": "The scrolling viewport that contains all of the items.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Item",
+            "Description": "The component that contains the select items.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "value",
+                    "Required": true,
+                    "Description": "The value given as data when submitted with a name.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "disabled",
+                    "Required": false,
+                    "Description": "When true, prevents the user from interacting with the item.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "textValue",
+                    "Required": false,
+                    "Description": "Optional text used for typeahead purposes. By default the typeahead behavior will use the .textContent of the Select.ItemText part. Use this when the content is complex, or you have non-textual content inside.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "ItemText",
+            "Description": "The textual part of the item. It should only contain the text you want to see in the trigger when that item is selected. It should not be styled to ensure correct positioning.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "ItemIndicator",
+            "Description": "Renders when the item is selected. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "ScrollUpButton",
+            "Description": "An optional button used as an affordance to show the viewport overflow as well as functionaly enable scrolling upwards.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "ScrollDownButton",
+            "Description": "An optional button used as an affordance to show the viewport overflow as well as functionaly enable scrolling downwards.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Group",
+            "Description": "Used to group multiple items. use in conjunction with Select.Label to ensure good accessibility via automatic labelling.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Label",
+            "Description": "Used to render the label of a group. It won't be focusable using arrow keys.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Separator",
+            "Description": "Used to visually separate items in the select.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Arrow",
+            "Description": "An optional arrow element to render alongside the content. This can be used to help visually link the trigger with the Select.Content. Must be rendered inside Select.Content. Only available when position is set to popper.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "width",
+                    "Required": false,
+                    "Description": "The width of the arrow in pixels.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                },
+                {
+                    "Name": "height",
+                    "Required": false,
+                    "Description": "The height of the arrow in pixels.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                }
+            ],
+            "EnumData": []
+        }
+    ]
+}

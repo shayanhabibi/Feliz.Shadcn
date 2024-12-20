@@ -1,0 +1,56 @@
+{
+    "Name": "Progress",
+    "Description": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+    "ImportCommand": "@radix-ui/react-progress",
+    "SubComponentData": [
+        {
+            "Name": "Root",
+            "Description": "Contains all of the progress parts.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "value",
+                    "Required": false,
+                    "Description": "The progress value.",
+                    "PropType": "number | null",
+                    "PropTypeValue": "number | null"
+                },
+                {
+                    "Name": "max",
+                    "Required": false,
+                    "Description": "The maximum progress value.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                },
+                {
+                    "Name": "getValueLabel",
+                    "Required": false,
+                    "Description": "A function to get the accessible label text representing the current value in a human-readable format. If not provided, the value label will be read as the numeric value as a percentage of the max value.",
+                    "PropType": "function",
+                    "PropTypeValue": "(value: number, max: number) => string"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Indicator",
+            "Description": "Used to show the progress visually. It also makes progress accessible to assistive technologies.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "A function to get the accessible label text representing the current value in a human-readable format. If not provided, the value label will be read as the numeric value as a percentage of the max value.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        }
+    ]
+}

@@ -1,0 +1,267 @@
+{
+    "Name": "Popover",
+    "Description": "Displays rich content in a portal, triggered by a button.",
+    "ImportCommand": "@radix-ui/react-popover",
+    "SubComponentData": [
+        {
+            "Name": "Root",
+            "Description": "Contains all the parts of a popover.",
+            "PropData": [
+                {
+                    "Name": "defaultOpen",
+                    "Required": false,
+                    "Description": "The open state of the popover when it is initially rendered. Use when you do not need to control its open state.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "open",
+                    "Required": false,
+                    "Description": "The controlled open state of the popover. Must be used in conjunction with onOpenChange.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "onOpenChange",
+                    "Required": false,
+                    "Description": "Event handler called when the open state of the popover changes.",
+                    "PropType": "function",
+                    "PropTypeValue": "(open: boolean) => void"
+                },
+                {
+                    "Name": "modal",
+                    "Required": false,
+                    "Description": "Event handler called when the open state of the popover changes.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Trigger",
+            "Description": "The button that toggles the popover. By default, the Popover.Content will position itself against the trigger.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Anchor",
+            "Description": "An optional element to position the Popover.Content against. If this part is not used, the content will position alongside the Popover.Trigger.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Portal",
+            "Description": "When used, portals the content part into the body.",
+            "PropData": [
+                {
+                    "Name": "forceMount",
+                    "Required": false,
+                    "Description": "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. If used on this part, it will be inherited by Popover.Content.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "container",
+                    "Required": false,
+                    "Description": "Specify a container element to portal the content into.",
+                    "PropType": "HTMLElement",
+                    "PropTypeValue": "HTMLElement"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Content",
+            "Description": "The component that pops out when the popover is open.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "onOpenAutoFocus",
+                    "Required": false,
+                    "Description": "Event handler called when focus moves into the component after opening. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: Event) => void"
+                },
+                {
+                    "Name": "onCloseAutoFocus",
+                    "Required": false,
+                    "Description": "Event handler called when focus moves into the component after opening. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: Event) => void"
+                },
+                {
+                    "Name": "onEscapeKeyDown",
+                    "Required": false,
+                    "Description": "Event handler called when focus moves to the trigger after closing. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: KeyboardEvent) => void"
+                },
+                {
+                    "Name": "onPointerDownOutside",
+                    "Required": false,
+                    "Description": "Event handler called when the escape key is down. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: PointerDownOutsideEvent) => void"
+                },
+                {
+                    "Name": "onFocusOutside",
+                    "Required": false,
+                    "Description": "Event handler called when a pointer event occurs outside the bounds of the component. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: FocusOutsideEvent) => void"
+                },
+                {
+                    "Name": "onInteractOutside",
+                    "Required": false,
+                    "Description": "Event handler called when focus moves outside the bounds of the component. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: PointerDownOutsideEvent | FocusOutsideEvent) => void"
+                },
+                {
+                    "Name": "forceMount",
+                    "Required": false,
+                    "Description": "Event handler called when an interaction (pointer or focus event) happens outside the bounds of the component. It can be prevented by calling event.preventDefault.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "sideOffset",
+                    "Required": false,
+                    "Description": "The preferred side of the anchor to render against when open. Will be reversed when collisions occur and avoidCollisions is enabled.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                },
+                {
+                    "Name": "alignOffset",
+                    "Required": false,
+                    "Description": "The preferred alignment against the anchor. May change when collisions occur.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                },
+                {
+                    "Name": "avoidCollisions",
+                    "Required": false,
+                    "Description": "When true, overrides the side andalign preferences to prevent collisions with boundary edges.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "collisionBoundary",
+                    "Required": false,
+                    "Description": "The element used as the collision boundary. By default this is the viewport, though you can provide additional element(s) to be included in this check.",
+                    "PropType": "Boundary",
+                    "PropTypeValue": "Element | null | Array<Element | null>"
+                },
+                {
+                    "Name": "collisionPadding",
+                    "Required": false,
+                    "Description": "The element used as the collision boundary. By default this is the viewport, though you can provide additional element(s) to be included in this check.",
+                    "PropType": "number | Padding",
+                    "PropTypeValue": "number | Partial<Record<Side, number>>"
+                },
+                {
+                    "Name": "arrowPadding",
+                    "Required": false,
+                    "Description": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for all sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                },
+                {
+                    "Name": "hideWhenDetached",
+                    "Required": false,
+                    "Description": "The sticky behavior on the align axis. \"partial\" will keep the content in the boundary as long as the trigger is at least partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": [
+                {
+                    "Name": "side",
+                    "Required": false,
+                    "Description": "The preferred side of the anchor to render against when open. Will be reversed when collisions occur and avoidCollisions is enabled.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"top\" | \"right\" | \"bottom\" | \"left\""
+                },
+                {
+                    "Name": "align",
+                    "Required": false,
+                    "Description": "The preferred alignment against the anchor. May change when collisions occur.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"start\" | \"center\" | \"end\""
+                },
+                {
+                    "Name": "sticky",
+                    "Required": false,
+                    "Description": "The sticky behavior on the align axis. \"partial\" will keep the content in the boundary as long as the trigger is at least partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"partial\" | \"always\""
+                }
+            ]
+        },
+        {
+            "Name": "Arrow",
+            "Description": "An optional arrow element to render alongside the popover. This can be used to help visually link the anchor with the Popover.Content. Must be rendered inside Popover.Content.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "width",
+                    "Required": false,
+                    "Description": "The width of the arrow in pixels.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                },
+                {
+                    "Name": "height",
+                    "Required": false,
+                    "Description": "The height of the arrow in pixels.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Close",
+            "Description": "The button that closes an open popover.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        }
+    ]
+}

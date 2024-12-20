@@ -1,0 +1,212 @@
+{
+    "Name": "Toast",
+    "Description": "A succinct message that is displayed temporarily.",
+    "ImportCommand": "@radix-ui/react-toast",
+    "SubComponentData": [
+        {
+            "Name": "Provider",
+            "Description": "The provider that wraps your toasts and toast viewport. It usually wraps the application.",
+            "PropData": [
+                {
+                    "Name": "duration",
+                    "Required": false,
+                    "Description": "The time in milliseconds that should elapse before automatically closing each toast.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                },
+                {
+                    "Name": "label",
+                    "Required": true,
+                    "Description": "An author-localized label for each toast. Used to help screen reader users associate the interruption with a toast.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "swipeThreshold",
+                    "Required": false,
+                    "Description": "The direction of the pointer swipe that should close the toast.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                }
+            ],
+            "EnumData": [
+                {
+                    "Name": "swipeDirection",
+                    "Required": false,
+                    "Description": "The direction of the pointer swipe that should close the toast.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"right\" | \"left\" | \"up\" | \"down\""
+                }
+            ]
+        },
+        {
+            "Name": "Viewport",
+            "Description": "The fixed area where toasts appear. Users can jump to the viewport by pressing a hotkey. It is up to you to ensure the discoverability of the hotkey for keyboard users.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "hotkey",
+                    "Required": false,
+                    "Description": "The keys to use as the keyboard shortcut that will move focus to the toast viewport. Use event.code value for each key from keycode.info. For meta keys, use ctrlKey, shiftKey, altKey and/or metaKey.",
+                    "PropType": "string[]",
+                    "PropTypeValue": "string[]"
+                },
+                {
+                    "Name": "label",
+                    "Required": false,
+                    "Description": "An author-localized label for the toast region to provide context for screen reader users when navigating page landmarks. The available `{hotkey}` placeholder will be replaced for you.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Root",
+            "Description": "The toast that automatically closes. It should not be held open to acquire a user response.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "duration",
+                    "Required": false,
+                    "Description": "Control the sensitivity of the toast for accessibility purposes. For toasts that are the result of a user action, choose foreground. Toasts generated from background tasks should use background.",
+                    "PropType": "number",
+                    "PropTypeValue": "number"
+                },
+                {
+                    "Name": "defaultOpen",
+                    "Required": false,
+                    "Description": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "open",
+                    "Required": false,
+                    "Description": "The controlled open state of the dialog. Must be used in conjunction with onOpenChange.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "onOpenChange",
+                    "Required": false,
+                    "Description": "Event handler called when the open state of the dialog changes.",
+                    "PropType": "function",
+                    "PropTypeValue": "(open: boolean) => void"
+                },
+                {
+                    "Name": "onEscapeKeyDown",
+                    "Required": false,
+                    "Description": "Event handler called when the open state of the dialog changes.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: KeyboardEvent) => void"
+                },
+                {
+                    "Name": "onPause",
+                    "Required": false,
+                    "Description": "Event handler called when the escape key is down. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "() => void"
+                },
+                {
+                    "Name": "onResume",
+                    "Required": false,
+                    "Description": "Event handler called when the dismiss timer is paused. This occurs when the pointer is moved over the viewport, the viewport is focused or when the window is blurred.",
+                    "PropType": "function",
+                    "PropTypeValue": "() => void"
+                },
+                {
+                    "Name": "onSwipeStart",
+                    "Required": false,
+                    "Description": "Event handler called when the dismiss timer is resumed. This occurs when the pointer is moved away from the viewport, the viewport is blurred or when the window is focused.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: SwipeEvent) => void"
+                },
+                {
+                    "Name": "onSwipeMove",
+                    "Required": false,
+                    "Description": "Event handler called when starting a swipe interaction. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: SwipeEvent) => void"
+                },
+                {
+                    "Name": "onSwipeEnd",
+                    "Required": false,
+                    "Description": "Event handler called during a swipe interaction. It can be prevented by calling event.preventDefault.",
+                    "PropType": "function",
+                    "PropTypeValue": "(event: SwipeEvent) => void"
+                },
+                {
+                    "Name": "forceMount",
+                    "Required": false,
+                    "Description": "Event handler called at the end of a swipe interaction. It can be prevented by calling event.preventDefault.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": [
+                {
+                    "Name": "type",
+                    "Required": false,
+                    "Description": "Control the sensitivity of the toast for accessibility purposes. For toasts that are the result of a user action, choose foreground. Toasts generated from background tasks should use background.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"foreground\" | \"background\""
+                }
+            ]
+        },
+        {
+            "Name": "Title",
+            "Description": "An optional title for the toast.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Description",
+            "Description": "The toast message.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Close",
+            "Description": "A button that allows users to dismiss the toast before its duration has elapsed.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        }
+    ]
+}

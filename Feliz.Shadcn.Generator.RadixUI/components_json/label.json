@@ -1,0 +1,28 @@
+{
+    "Name": "Label",
+    "Description": "Renders an accessible label associated with controls.",
+    "ImportCommand": "@radix-ui/react-label",
+    "SubComponentData": [
+        {
+            "Name": "Root",
+            "Description": "Contains the content for the label.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "htmlFor",
+                    "Required": false,
+                    "Description": "The id of the element the label is associated with.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                }
+            ],
+            "EnumData": []
+        }
+    ]
+}

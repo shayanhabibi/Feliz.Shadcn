@@ -1,0 +1,101 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+<!--        <OutputType>Exe</OutputType>-->
+        <TargetFramework>net9.0</TargetFramework>
+        <DefineConstants>FABLE_COMPILER</DefineConstants>
+    </PropertyGroup>
+    <ItemGroup>
+      <TypeScriptCompile Include="lib\utils.ts" />
+    </ItemGroup>
+    <ItemGroup>
+      <TypeScriptCompile Include="components\ui\tooltip.tsx" />
+      <TypeScriptCompile Include="components\ui\toggle.tsx" />
+      <TypeScriptCompile Include="components\ui\toggle-group.tsx" />
+      <TypeScriptCompile Include="components\ui\toaster.tsx" />
+      <TypeScriptCompile Include="components\ui\toast.tsx" />
+      <TypeScriptCompile Include="components\ui\textarea.tsx" />
+      <TypeScriptCompile Include="components\ui\tabs.tsx" />
+      <TypeScriptCompile Include="components\ui\table.tsx" />
+      <TypeScriptCompile Include="components\ui\switch.tsx" />
+      <TypeScriptCompile Include="components\ui\sonner.tsx" />
+      <TypeScriptCompile Include="components\ui\slider.tsx" />
+      <TypeScriptCompile Include="components\ui\skeleton.tsx" />
+      <TypeScriptCompile Include="components\ui\sidebar.tsx" />
+      <TypeScriptCompile Include="components\ui\sheet.tsx" />
+      <TypeScriptCompile Include="components\ui\separator.tsx" />
+      <TypeScriptCompile Include="components\ui\select.tsx" />
+      <TypeScriptCompile Include="components\ui\scroll-area.tsx" />
+      <TypeScriptCompile Include="components\ui\resizable.tsx" />
+      <TypeScriptCompile Include="components\ui\radio-group.tsx" />
+      <TypeScriptCompile Include="components\ui\progress.tsx" />
+      <TypeScriptCompile Include="components\ui\popover.tsx" />
+      <TypeScriptCompile Include="components\ui\pagination.tsx" />
+      <TypeScriptCompile Include="components\ui\navigation-menu.tsx" />
+      <TypeScriptCompile Include="components\ui\menubar.tsx" />
+      <TypeScriptCompile Include="components\ui\label.tsx" />
+      <TypeScriptCompile Include="components\ui\input.tsx" />
+      <TypeScriptCompile Include="components\ui\input-otp.tsx" />
+      <TypeScriptCompile Include="components\ui\hover-card.tsx" />
+      <TypeScriptCompile Include="components\ui\form.tsx" />
+      <TypeScriptCompile Include="components\ui\dropdown-menu.tsx" />
+      <TypeScriptCompile Include="components\ui\drawer.tsx" />
+      <TypeScriptCompile Include="components\ui\dialog.tsx" />
+      <TypeScriptCompile Include="components\ui\context-menu.tsx" />
+      <TypeScriptCompile Include="components\ui\command.tsx" />
+      <TypeScriptCompile Include="components\ui\collapsible.tsx" />
+      <TypeScriptCompile Include="components\ui\checkbox.tsx" />
+      <TypeScriptCompile Include="components\ui\chart.tsx" />
+      <TypeScriptCompile Include="components\ui\carousel.tsx" />
+      <TypeScriptCompile Include="components\ui\card.tsx" />
+      <TypeScriptCompile Include="components\ui\calendar.tsx" />
+      <TypeScriptCompile Include="components\ui\button.tsx" />
+      <TypeScriptCompile Include="components\ui\breadcrumb.tsx" />
+      <TypeScriptCompile Include="components\ui\badge.tsx" />
+      <TypeScriptCompile Include="components\ui\avatar.tsx" />
+      <TypeScriptCompile Include="components\ui\aspect-ratio.tsx" />
+      <TypeScriptCompile Include="components\ui\alert.tsx" />
+      <TypeScriptCompile Include="components\ui\alert-dialog.tsx" />
+      <TypeScriptCompile Include="components\ui\accordion.tsx" />
+      <Folder Include="components\ui\default\" />
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Include="Shadcn.fs" />
+      <Compile Include="Utilities.fs" />
+      <Compile Include="Form.fs" />
+      <Compile Include="Tabs.fs" />
+      <Compile Include="Label.fs" />
+      <Compile Include="Toast.fs" />
+      <Compile Include="Avatar.fs" />
+      <Compile Include="Dialog.fs" />
+      <Compile Include="Select.fs" />
+      <Compile Include="Slider.fs" />
+      <Compile Include="Switch.fs" />
+      <Compile Include="Toggle.fs" />
+      <Compile Include="MenuBar.fs" />
+      <Compile Include="Popover.fs" />
+      <Compile Include="Toolbar.fs" />
+      <Compile Include="Tooltip.fs" />
+      <Compile Include="Checkbox.fs" />
+      <Compile Include="Progress.fs" />
+      <Compile Include="Accordion.fs" />
+      <Compile Include="HoverCard.fs" />
+      <Compile Include="Separator.fs" />
+      <Compile Include="RadioGroup.fs" />
+      <Compile Include="ScrollArea.fs" />
+      <Compile Include="AlertDialog.fs" />
+      <Compile Include="AspectRatio.fs" />
+      <Compile Include="Collapsible.fs" />
+      <Compile Include="ContextMenu.fs" />
+      <Compile Include="ToggleGroup.fs" />
+      <Compile Include="DropdownMenu.fs" />
+      <Compile Include="NavigationMenu.fs" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <PackageReference Include="Fable.Core" Version="4.3.0" />
+      <PackageReference Include="Feliz" Version="2.9.0" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,84 @@
+{
+    "Name": "Switch",
+    "Description": "A control that allows the user to toggle between checked and not checked.",
+    "ImportCommand": "@radix-ui/react-switch",
+    "SubComponentData": [
+        {
+            "Name": "Root",
+            "Description": "Contains all the parts of a switch. An input will also render when used within a form to ensure events propagate correctly.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "defaultChecked",
+                    "Required": false,
+                    "Description": "The state of the switch when it is initially rendered. Use when you do not need to control its state.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "checked",
+                    "Required": false,
+                    "Description": "The controlled state of the switch. Must be used in conjunction with onCheckedChange.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "onCheckedChange",
+                    "Required": false,
+                    "Description": "Event handler called when the state of the switch changes.",
+                    "PropType": "function",
+                    "PropTypeValue": "(checked: boolean) => void"
+                },
+                {
+                    "Name": "disabled",
+                    "Required": false,
+                    "Description": "Event handler called when the state of the switch changes.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "required",
+                    "Required": false,
+                    "Description": "When true, indicates that the user must check the switch before the owning form can be submitted.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "name",
+                    "Required": false,
+                    "Description": "The name of the switch. Submitted with its owning form as part of a name/value pair.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "value",
+                    "Required": false,
+                    "Description": "The value given as data when submitted with a name.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Thumb",
+            "Description": "The thumb that is used to visually indicate whether the switch is on or off.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        }
+    ]
+}

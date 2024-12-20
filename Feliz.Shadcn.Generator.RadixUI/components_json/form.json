@@ -1,0 +1,119 @@
+{
+    "Name": "Form",
+    "Description": "Collect information from your users using validation rules.",
+    "ImportCommand": "@radix-ui/react-form",
+    "SubComponentData": [
+        {
+            "Name": "Root",
+            "Description": "Contains all the parts of a form.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "onClearServerErrors",
+                    "Required": false,
+                    "Description": "Event handler called when the form is submitted or reset and the server errors need to be cleared.",
+                    "PropType": "function",
+                    "PropTypeValue": "() => void"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Field",
+            "Description": "The wrapper for a field. It handles id/name and label accessibility automatically.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Event handler called when the form is submitted or reset and the server errors need to be cleared.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "name",
+                    "Required": true,
+                    "Description": "The name of the field that will be passed down to the control and used to match with validation messages.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "serverInvalid",
+                    "Required": false,
+                    "Description": "Use this prop to mark the field as invalid on the server.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Label",
+            "Description": "A label element which is automatically wired when nested inside a Field part.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Control",
+            "Description": "A control element (by default an input) which is automatically wired when nested inside a Field part.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "ValidityState",
+            "Description": "Use this render-prop component to access a given field’s validity state in render (see ValidityState on MDN). A field's validity is available automatically when nested inside a Field part, otherwise you must pass a name prop to associate it.",
+            "PropData": [
+                {
+                    "Name": "children",
+                    "Required": false,
+                    "Description": "A render function that receives the validity state of the field.",
+                    "PropType": "function",
+                    "PropTypeValue": "(validity: ValidityState | undefined) => React.ReactNode"
+                },
+                {
+                    "Name": "name",
+                    "Required": false,
+                    "Description": "A render function that receives the validity state of the field.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Submit",
+            "Description": "The submit button.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        }
+    ]
+}

@@ -1,0 +1,141 @@
+{
+    "Name": "Radio Group",
+    "Description": "A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.",
+    "ImportCommand": "@radix-ui/react-radio-group",
+    "SubComponentData": [
+        {
+            "Name": "Root",
+            "Description": "Contains all the parts of a radio group.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "defaultValue",
+                    "Required": false,
+                    "Description": "The value of the radio item that should be checked when initially rendered. Use when you do not need to control the state of the radio items.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "value",
+                    "Required": false,
+                    "Description": "The controlled value of the radio item to check. Should be used in conjunction with onValueChange.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "onValueChange",
+                    "Required": false,
+                    "Description": "Event handler called when the value changes.",
+                    "PropType": "function",
+                    "PropTypeValue": "(value: string) => void"
+                },
+                {
+                    "Name": "disabled",
+                    "Required": false,
+                    "Description": "Event handler called when the value changes.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "name",
+                    "Required": false,
+                    "Description": "The name of the group. Submitted with its owning form as part of a name/value pair.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "required",
+                    "Required": false,
+                    "Description": "When true, indicates that the user must check a radio item before the owning form can be submitted.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "loop",
+                    "Required": false,
+                    "Description": "The reading direction of the radio group. If omitted, inherits globally from DirectionProvider or assumes LTR (left-to-right) reading mode.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": [
+                {
+                    "Name": "orientation",
+                    "Required": false,
+                    "Description": "The orientation of the component.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"horizontal\" | \"vertical\" | undefined"
+                },
+                {
+                    "Name": "dir",
+                    "Required": false,
+                    "Description": "The orientation of the component.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"ltr\" | \"rtl\""
+                }
+            ]
+        },
+        {
+            "Name": "Item",
+            "Description": "An item in the group that can be checked. An input will also render when used within a form to ensure events propagate correctly.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "value",
+                    "Required": false,
+                    "Description": "The value given as data when submitted with a name.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "disabled",
+                    "Required": false,
+                    "Description": "When true, prevents the user from interacting with the radio item.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "required",
+                    "Required": false,
+                    "Description": "When true, indicates that the user must check the radio item before the owning form can be submitted.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Indicator",
+            "Description": "Renders when the radio item is in a checked state. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "forceMount",
+                    "Required": false,
+                    "Description": "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        }
+    ]
+}

@@ -1,0 +1,49 @@
+{
+    "Name": "Toggle",
+    "Description": "A two-state button that can be either on or off.",
+    "ImportCommand": "@radix-ui/react-toggle",
+    "SubComponentData": [
+        {
+            "Name": "Root",
+            "Description": "The toggle.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "defaultPressed",
+                    "Required": false,
+                    "Description": "The pressed state of the toggle when it is initially rendered. Use when you do not need to control its pressed state.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "pressed",
+                    "Required": false,
+                    "Description": "The controlled pressed state of the toggle. Must be used in conjunction with onPressedChange.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "onPressedChange",
+                    "Required": false,
+                    "Description": "Event handler called when the pressed state of the toggle changes.",
+                    "PropType": "function",
+                    "PropTypeValue": "(pressed: boolean) => void"
+                },
+                {
+                    "Name": "disabled",
+                    "Required": false,
+                    "Description": "Event handler called when the pressed state of the toggle changes.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        }
+    ]
+}

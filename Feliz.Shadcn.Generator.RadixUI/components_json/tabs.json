@@ -1,0 +1,141 @@
+{
+    "Name": "Tabs",
+    "Description": "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+    "ImportCommand": "@radix-ui/react-tabs",
+    "SubComponentData": [
+        {
+            "Name": "Root",
+            "Description": "Contains all the tabs component parts.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "defaultValue",
+                    "Required": false,
+                    "Description": "The value of the tab that should be active when initially rendered. Use when you do not need to control the state of the tabs.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "value",
+                    "Required": false,
+                    "Description": "The controlled value of the tab to activate. Should be used in conjunction with onValueChange.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "onValueChange",
+                    "Required": false,
+                    "Description": "Event handler called when the value changes.",
+                    "PropType": "function",
+                    "PropTypeValue": "(value: string) => void"
+                }
+            ],
+            "EnumData": [
+                {
+                    "Name": "orientation",
+                    "Required": false,
+                    "Description": "Event handler called when the value changes.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"horizontal\" | \"vertical\" | undefined"
+                },
+                {
+                    "Name": "dir",
+                    "Required": false,
+                    "Description": "The orientation of the component.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"ltr\" | \"rtl\""
+                },
+                {
+                    "Name": "activationMode",
+                    "Required": false,
+                    "Description": "The reading direction of the tabs. If omitted, inherits globally from DirectionProvider or assumes LTR (left-to-right) reading mode.",
+                    "PropType": "enum",
+                    "PropTypeValue": "\"automatic\" | \"manual\""
+                }
+            ]
+        },
+        {
+            "Name": "List",
+            "Description": "Contains the triggers that are aligned along the edge of the active content.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "When automatic, tabs are activated when receiving focus. When manual, tabs are activated when clicked.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "loop",
+                    "Required": false,
+                    "Description": "When true, keyboard navigation will loop from last tab to first, and vice versa.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Trigger",
+            "Description": "The button that activates its associated content.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "value",
+                    "Required": true,
+                    "Description": "A unique value that associates the trigger with a content.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "disabled",
+                    "Required": false,
+                    "Description": "When true, prevents the user from interacting with the tab.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        },
+        {
+            "Name": "Content",
+            "Description": "Contains the content associated with each trigger.",
+            "PropData": [
+                {
+                    "Name": "asChild",
+                    "Required": false,
+                    "Description": "Change the default rendered element for the one passed as a child, merging their props and behavior.  Read our Composition guide for more details.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                },
+                {
+                    "Name": "value",
+                    "Required": true,
+                    "Description": "A unique value that associates the content with a trigger.",
+                    "PropType": "string",
+                    "PropTypeValue": "string"
+                },
+                {
+                    "Name": "forceMount",
+                    "Required": false,
+                    "Description": "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+                    "PropType": "boolean",
+                    "PropTypeValue": "boolean"
+                }
+            ],
+            "EnumData": []
+        }
+    ]
+}
