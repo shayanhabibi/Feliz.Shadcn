@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="components_json\accordion.json" />
+        <Content Include="components_json\alert-dialog.json" />
+        <Content Include="components_json\aspect-ratio.json" />
+        <Content Include="components_json\avatar.json" />
+        <Content Include="components_json\checkbox.json" />
+        <Content Include="components_json\collapsible.json" />
+        <Content Include="components_json\context-menu.json" />
+        <Content Include="components_json\dialog.json" />
+        <Content Include="components_json\dropdown-menu.json" />
+        <Content Include="components_json\form.json" />
+        <Content Include="components_json\hover-card.json" />
+        <Content Include="components_json\label.json" />
+        <Content Include="components_json\menubar.json" />
+        <Content Include="components_json\navigation-menu.json" />
+        <Content Include="components_json\popover.json" />
+        <Content Include="components_json\progress.json" />
+        <Content Include="components_json\radio-group.json" />
+        <Content Include="components_json\scroll-area.json" />
+        <Content Include="components_json\select.json" />
+        <Content Include="components_json\separator.json" />
+        <Content Include="components_json\slider.json" />
+        <Content Include="components_json\switch.json" />
+        <Content Include="components_json\tabs.json" />
+        <Content Include="components_json\toast.json" />
+        <Content Include="components_json\toggle.json" />
+        <Content Include="components_json\toggle-group.json" />
+        <Content Include="components_json\toolbar.json" />
+        <Content Include="components_json\tooltip.json" />
+        <Compile Include="Program.fs" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Fable.Core" Version="4.0.0" />
+        <PackageReference Include="Feliz" Version="2.6.0" />
+        <PackageReference Include="AngleSharp" Version="1.0.4" />
+        <PackageReference Include="Selenium.WebDriver" Version="4.11.0" />
+    </ItemGroup>
+    
+</Project>
