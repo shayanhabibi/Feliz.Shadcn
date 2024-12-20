@@ -15,7 +15,6 @@
         <Content Include="index.css" />
         <Content Include="index.html" />
         <Compile Include="Program.fs" />
-        <Compile Include="TestingGrounds.fs" />
     </ItemGroup>
 
     <ItemGroup>
