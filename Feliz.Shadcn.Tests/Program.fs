@@ -15,8 +15,8 @@ let TestView () =
     Html.div [
         prop.className "flex-col p-10 space-y-10"
         prop.children [
-            Lucide.icons.AArrowDown []
-            Lucide.icons.Ambulance [icons.size 48]
+            Lucide.bundleIcons.AArrowDown []
+            Lucide.bundleIcons.Ambulance [icons.size 48]
             
         ]
     ]

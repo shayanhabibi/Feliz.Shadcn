@@ -14,7 +14,7 @@ module ShadcnHelpers =
     
 [<RequireQualifiedAccess>]
 module Lucide =
-    type [<Erase>] icons =
+    type [<Erase>] bundleIcons =
         static member inline AArrowDown ( props : IIconProp list ) = createElement ( import "AArrowDown" LucideIcons ) props  
         static member inline AArrowUp ( props : IIconProp list ) = createElement ( import "AArrowUp" LucideIcons ) props  
         static member inline ALargeSmall ( props : IIconProp list ) = createElement ( import "ALargeSmall" LucideIcons ) props  
