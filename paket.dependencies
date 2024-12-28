@@ -1,0 +1,11 @@
+source https://api.nuget.org/v3/index.json
+
+storage: none
+nuget AngleSharp 1.0.4
+nuget Fable.Core 4.3.0
+nuget Fable.Node
+nuget Feliz 2.9.0
+nuget Feliz.RadixUI 1.0.0
+nuget Feliz.UseElmish 2.5.0
+nuget FSharp.Core content: none
+nuget Selenium.WebDriver 4.11.0
