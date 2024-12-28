@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <!--        <OutputType>Exe</OutputType>-->
+    <TargetFramework>net9.0</TargetFramework>
+    <DefineConstants>FABLE_COMPILER</DefineConstants>
+  </PropertyGroup>
+  <Import Project="..\.paket\Paket.Restore.targets" />
+  <PropertyGroup>
+    <NpmDependencies>
+      <NpmPackaghe Name="shadcn-react" Version="gte 0.0.22" ResolutionStrategy="Max"/>
+    </NpmDependencies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Spec.fs" />
+    <Compile Include="FelizProps.fs" />
+    <Compile Include="LucideProps.fs" />
+    <Compile Include="Lucide.fs" />
+  </ItemGroup>
+</Project>

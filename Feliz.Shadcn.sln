@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{35694344-D53F-4CB9-A97E-A6D8CEFBBCB1}"
+	ProjectSection(SolutionItems) = preProject
+		paket.dependencies = paket.dependencies
+	EndProjectSection
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Feliz.Shadcn", "Feliz.Shadcn\Feliz.Shadcn.fsproj", "{53E4F6B1-6281-45EF-A739-ABE104BAAA74}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Feliz.Shadcn.Tests", "Feliz.Shadcn.Tests\Feliz.Shadcn.Tests.fsproj", "{7ED581C7-A430-431E-9ABA-9A8110C7B067}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53E4F6B1-6281-45EF-A739-ABE104BAAA74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53E4F6B1-6281-45EF-A739-ABE104BAAA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53E4F6B1-6281-45EF-A739-ABE104BAAA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53E4F6B1-6281-45EF-A739-ABE104BAAA74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ED581C7-A430-431E-9ABA-9A8110C7B067}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ED581C7-A430-431E-9ABA-9A8110C7B067}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ED581C7-A430-431E-9ABA-9A8110C7B067}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ED581C7-A430-431E-9ABA-9A8110C7B067}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
