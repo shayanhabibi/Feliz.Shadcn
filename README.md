@@ -4,7 +4,7 @@
 > The Lucide icon bindings are published to nuget.
 > `dotnet add package Feliz.Lucide`
 > or `dotnet paket add Feliz.Lucide`
-> See the readme in Feliz.Lucide for usage.
+> See the [readme](https://github.com/shayanhabibi/Feliz.Shadcn/blob/main/Feliz.Lucide/README.md) in Feliz.Lucide for usage.
 
 # Feliz.Shadcn
 
@@ -20,26 +20,3 @@ In development personal bindings to Shadcn components in Feliz style.
 The next iteration will be a wrapper for the jsx version of shadcn which is far less obfuscated than the tsx.
 
 In saying this, the Lucide icons work fine as intended. We will remove the dependency for shadcn-react though.
-
-## Installation
-
-WIP, currently ensure you follow the installation instructions for npm module `shadcn-react`. There is no publication of this library yet, but you can use the source code in your own projects so long as you have the modules and dependencies.
-
-# Feliz.Lucide
-
-The icons for Lucide are available via
-
-```fs
-open Feliz.Lucide
-open Feliz
-
-let AmbulanceIcon = Lucide.bundleIcons.Ambulance
-[<ReactComponent>]
-let TestView () =
-    Html.div [
-        prop.children [
-            AmbulanceIcon [ icons.size 48 ]
-            
-        ]
-    ]
-```
