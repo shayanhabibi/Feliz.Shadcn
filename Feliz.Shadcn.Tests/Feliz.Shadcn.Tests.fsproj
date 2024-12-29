@@ -6,6 +6,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Feliz.Shadcn\Feliz.Shadcn.fsproj" />
+    <ProjectReference Include="..\Feliz.Lucide\Feliz.Lucide.fsproj" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="vite.config.mts" />

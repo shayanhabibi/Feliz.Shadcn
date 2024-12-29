@@ -5,6 +5,8 @@ open Browser.Dom
 open Fable.Core.JsInterop
 open Feliz.UseElmish
 open Feliz.Lucide
+open Feliz.Lucide.Lab
+open Feliz.Shadcn
 
 importSideEffects "./index.css"
 importSideEffects "shadcn-react/style.css"
@@ -15,9 +17,19 @@ let TestView () =
     Html.div [
         prop.className "flex-col p-10 space-y-10"
         prop.children [
-            Lucide.bundleIcons.AArrowDown []
-            Lucide.bundleIcons.Ambulance [icons.size 48]
-            
+            Icon.AArrowDown []
+            Icon.Ambulance [icon.size 48]
+            Icon.icon [ icon.iconNode "burger" ]
+            Shadcn.accordion [
+                accordion.collapsible true
+                accordion.children [
+                    Shadcn.accordionItem [
+                        accordionItem.trigger "Test"
+                        accordionItem.value "val1"
+                        accordionItem.text "This is inside"
+                    ]
+                ]
+            ]
         ]
     ]
     

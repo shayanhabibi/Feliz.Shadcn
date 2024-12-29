@@ -5,16 +5,23 @@
     <TargetFramework>net9.0</TargetFramework>
     <DefineConstants>FABLE_COMPILER</DefineConstants>
   </PropertyGroup>
-  <Import Project="..\.paket\Paket.Restore.targets" />
+
+  <ItemGroup>
+    <ProjectReference Include="..\Feliz.Interop.Extend\Feliz.Interop.Extend.fsproj" />
+  </ItemGroup>
+  
   <PropertyGroup>
     <NpmDependencies>
-      <NpmPackaghe Name="shadcn-react" Version="gte 0.0.22" ResolutionStrategy="Max"/>
+      <NpmPackage Name="lucide-react" Version="gte 0.469.0" ResolutionStrategy="Max" />
     </NpmDependencies>
   </PropertyGroup>
+  
   <ItemGroup>
     <Compile Include="Spec.fs" />
-    <Compile Include="FelizProps.fs" />
-    <Compile Include="LucideProps.fs" />
-    <Compile Include="Lucide.fs" />
+    <Compile Include="ShadcnProps.fs" />
+    <Compile Include="Shadcn.fs" />
   </ItemGroup>
+  
+  <Import Project="..\.paket\Paket.Restore.targets" />
+  
 </Project>

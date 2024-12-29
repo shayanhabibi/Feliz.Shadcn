@@ -110,17 +110,42 @@ type [<Erase>] IResizablePanelGroupProp = interface end
 type [<Erase>] IResizablePanelProp = interface end
 type [<Erase>] IResizableHandleProp = interface end
 
-type [<Erase>] IIconProp = interface end
+type [<Erase>] IScrollAreaProp = interface end
+
+type [<Erase>] ISelectProp = interface end
+type [<Erase>] ISelectGroupProp = interface end
+type [<Erase>] ISelectItemProp = interface end
+
+type [<Erase>] ISeparatorProp = interface end
+
+type [<Erase>] ISheetProp = interface end
+
+type [<Erase>] ISidebarProp = interface end
+
+type [<Erase>] ISkeletonProp = interface end
+
+type [<Erase>] ISliderProp = interface end
+
+type [<Erase>] ISpinProp = interface end
+
+type [<Erase>] ISwitchProp = interface end
+
+type [<Erase>] ITableProp = interface end
+
+type [<Erase>] ITabsProp = interface end
+
+type [<Erase>] ITextareaProp = interface end
+
+type [<Erase>] IToasterProp = interface end
+
+type [<Erase>] IToggleProp = interface end
+
+type [<Erase>] ITooltipProp = interface end
     
 [<AutoOpen; System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)>]
 module Spec =
     let inline reactElement ( el : ReactElementType ) ( props : 'a ) : ReactElement = import "create" "react"
     let inline createElement ( el : ReactElementType ) ( props : 'ControlProperty list ) : ReactElement = reactElement el ( !!props |> createObj )
     
-    let [<Literal>] LucideIcons = "shadcn-react/icons"
     let [<Literal>] ShadcnReact = "shadcn-react"
     let [<Literal>] ShadcnUI = "shadcn-react/ui"
-
-[<RequireQualifiedAccess>]
-type Interop =
-    static member inline mkProperty<'ControlProperty> (key:string) (value:obj) : 'ControlProperty = unbox (key, value)
