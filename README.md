@@ -1,3 +1,11 @@
+# Feliz.Lucide
+
+> [!NOTICE]
+> The Lucide icon bindings are published to nuget.
+> `dotnet add package Feliz.Lucide`
+> or `dotnet paket add Feliz.Lucide`
+> See the readme in Feliz.Lucide for usage.
+
 # Feliz.Shadcn
 
 In development personal bindings to Shadcn components in Feliz style.
