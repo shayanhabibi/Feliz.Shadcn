@@ -19,7 +19,8 @@ let TestView () =
         prop.children [
             Icon.AArrowDown []
             Icon.Ambulance [icon.size 48]
-            Icon.icon [ icon.iconNode "burger" ]
+            Icon.burger []
+            Icon.russianRubleSquare []
             Shadcn.accordion [
                 accordion.collapsible true
                 accordion.children [

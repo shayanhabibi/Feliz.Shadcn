@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <DefineConstants>FABLE_COMPILER</DefineConstants>
+    <PackageId>Feliz.Lucide</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>
+            Shayan Habibi
+        </Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>fable;fable-binding;fable-javascript;lucide;lucide-lab;lucide-icons;icons;feliz;feliz-style;shadcn</PackageTags>
+    <NpmDependencies>
+      <NpmPackage Name="lucide-react" Version="gte 0.469.0" ResolutionStrategy="Max" />
+    </NpmDependencies>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Feliz.Interop.Extend\Feliz.Interop.Extend.fsproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Spec.fs" />
+    <Content Include="paket.references" />
+    <Compile Include="LucideProps.fs" />
+    <Compile Include="Lucide.fs" />
+    <Compile Include="LucideLab.fs" />
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <None Include="Feliz.Lucide.fsproj.paket.template" />
+  </ItemGroup>
+  <Import Project="..\.paket\Paket.Restore.targets" />
+</Project>
