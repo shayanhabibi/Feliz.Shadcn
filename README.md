@@ -1,6 +1,6 @@
 # Feliz.Lucide
 
-> [!NOTICE]
+> [!NOTE]
 > The Lucide icon bindings are published to nuget.
 > `dotnet add package Feliz.Lucide`
 > or `dotnet paket add Feliz.Lucide`
