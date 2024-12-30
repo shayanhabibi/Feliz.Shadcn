@@ -21,7 +21,6 @@ module Lab =
     type icon with static member inline iconNode ( value : string ) = Interop.mkProperty<ILucideIconProp> "iconNode" ( import value LucideIconsLab )
     type Icon with
         static member inline icon (props : ILucideIconProp list) = createElement ( import "Icon" LucideIcons ) props
-            
         static member inline ampersandSquare ( props : ILucideIconProp list ) = import "ampersandSquare" LucideIconsLab |> Interop.mkProperty<ILucideIconProp> "iconNode" |> fun iconProp -> createElement ( import "Icon" LucideIcons ) (iconProp::props)
         static member inline appleCore ( props : ILucideIconProp list ) = import "appleCore" LucideIconsLab |> Interop.mkProperty<ILucideIconProp> "iconNode" |> fun iconProp -> createElement ( import "Icon" LucideIcons ) (iconProp::props)
         static member inline arrowsUpDownSquare ( props : ILucideIconProp list ) = import "arrowsUpDownSquare" LucideIconsLab |> Interop.mkProperty<ILucideIconProp> "iconNode" |> fun iconProp -> createElement ( import "Icon" LucideIcons ) (iconProp::props)

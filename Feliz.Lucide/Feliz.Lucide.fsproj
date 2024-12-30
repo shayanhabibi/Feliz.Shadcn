@@ -4,7 +4,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <DefineConstants>FABLE_COMPILER</DefineConstants>
     <PackageId>Feliz.Lucide</PackageId>
-    <Version>0.1.0</Version>
+    <Version>0.2.0</Version>
     <Authors>
             Shayan Habibi
         </Authors>
