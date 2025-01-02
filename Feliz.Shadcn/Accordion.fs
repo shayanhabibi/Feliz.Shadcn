@@ -1,28 +1,4 @@
-# Feliz.Lucide
-
-> [!NOTE]
-> The Lucide icon bindings are published to nuget.
-> `dotnet add package Feliz.Lucide`
-> or `dotnet paket add Feliz.Lucide`
-> See the [readme](https://github.com/shayanhabibi/Feliz.Shadcn/blob/main/Feliz.Lucide/README.md) in Feliz.Lucide for usage.
-
-# Feliz.Shadcn
-
-In development personal bindings to Shadcn components in Feliz style.
-
-> [!WARNING]
-> Not usable as it stands.
-
-The library is not necessarily intended to be package managed, but rather follows a similar logic as shadcn by providing the elements premade with nice defaults for you to change as needed. There are some dependencies which will be managed by a package, you are then free to download and use the components in whatever manner you wish.
-
-There is a cost to this, and that is you will have to pass a flag to Fable to compile into tsx/jsx. `-e .jsx`.
-
-You can see an example of how the 'bindings' will be implemented with the Accordion component.
-
-If you have ideas for what the API should be like to provide a better experience for consumers, feel free to let me know.
-
-```fsharp
-namespace Feliz.Shadcn
+﻿namespace Feliz.Shadcn
 
 open Feliz.Interop.Extend
 open Fable.Core
@@ -118,4 +94,3 @@ module [<Erase>] Accordion =
         </AccordionPrimitive.Content>
         """
     let RAccordionContent = AccordionContent >> JSX.toReact
-```

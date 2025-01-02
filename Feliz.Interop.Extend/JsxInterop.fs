@@ -21,3 +21,13 @@ type [<Erase>] JSX =
     static member inline isKeyIn (key : string) (o : obj): bool = jsNative
     [<Emit("delete $1[$0]")>]
     static member inline deleteKeyFrom (key: string) (o: obj): unit = jsNative
+    // Requires dependencies clsx and twmerge
+    [<Import("clsx", "clsx")>]
+    static member inline clsx ([<ParamList>] inputs : string []) : string = jsNative
+    [<Import("twMerge","tailwind-merge")>]
+    static member inline twMerge ( classes : string ) : string = jsNative
+    static member inline cn ([<ParamList>] inputs : string []) : string =
+        JSX.clsx inputs |> JSX.twMerge
+        
+        
+        

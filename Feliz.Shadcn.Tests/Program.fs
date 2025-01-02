@@ -12,13 +12,7 @@ open Feliz.Interop.Extend
 
 importSideEffects "./index.css"
 
-[<JSX.Component>]
-let noop =
-    JSX.jsx $"""
-    import {{Header, Trigger, Root, Item}} from "@radix-ui/react-accordion"
-    <></>
-"""
-    
+emitJsStatement () $""" import {{Header, Trigger, Root, Item}} from "@radix-ui/react-accordion" """
 
 [<ReactComponent>]
 let TestView () =
@@ -42,31 +36,6 @@ let TestView () =
         ]
     ]
 
-    
-[<JSX.Component>]
-let AccordionTrigger () =
-    let ref = React.useRef()
-    JSX.jsx $"""
-    <Header className="flex">
-        <Trigger ref={ref}
-                className="flex flex-1 items-center justify-between py-4 text-sm font-medium transition-all hover:underline text-left [&[data-state=open]>svg]:rotate-180">
-        {Html.text "hello"}
-        {Icon.ChevronDown [icon.className "h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200"]}
-        </Trigger>
-    </Header>
-    """
-
-[<JSX.Component>]
-let Accordion () =
-    let ref = React.useRef()
-    JSX.jsx $"""
-    <Root ref={ref}>
-        <Item ref={ref} className={"border-b"}>
-            {AccordionTrigger ()}
-        </Item>
-    </Root>
-"""
-
 [<JSX.Component>]
 let Test (props : IReactProperty list ) =
     let properties = !!props |> createObj
@@ -74,8 +43,29 @@ let Test (props : IReactProperty list ) =
     JSX.jsx $"""
     <>
     {{children}}
-    <input {{...props}} placeholder={{placeholder}}/>
+    <input {{...props}} placeholder={{placeholder}} className={JSX.cn [| "border-b" ; "bg-blue" |]}/>
     </>
 """
+
+let view =
+    RAccordion [
+        prop.children [
+            RAccordionItem [
+                prop.value "item1"
+                prop.children [
+                    RAccordionTrigger [ prop.text "First item" ]
+                    RAccordionContent [ prop.text "hello world!" ]
+                ]
+            ]
+            RAccordionItem [
+                prop.value "item2"
+                prop.children [
+                    RAccordionTrigger [ prop.text "Second item" ]
+                    RAccordionContent [ prop.text "goodbye world!" ]
+                ]
+            ]
+        ]
+    ]
+
 let root = ReactDOM.createRoot (document.getElementById "elmish-app")
-root.render ( Test [prop.text "Hello World" ; prop.autoFocus true ; prop.placeholder "banana" ] |> JSX.toReact)
+root.render ( view )
