@@ -11,7 +11,8 @@ open System
 open Feliz
 
 [<RequireQualifiedAccess>]
-type Interop =
+type [<Erase>] Interop =
+    // Interop helpers for Component restricted properties
     static member inline mkProperty<'ControlProperty> (key:string) (value:obj) : 'ControlProperty = unbox (key, value)
 
 /// Represents the native Html properties.
