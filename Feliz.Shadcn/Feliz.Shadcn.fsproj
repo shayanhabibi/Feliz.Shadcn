@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Feliz.Interop.Extend\Feliz.Interop.Extend.fsproj" />
     <ProjectReference Include="..\Feliz.Lucide\Feliz.Lucide.fsproj" />
+    <ProjectReference Include="..\Feliz.RadixUI\Feliz.RadixUI.fsproj" />
   </ItemGroup>
   
   <PropertyGroup>
@@ -23,7 +24,26 @@
     <Compile Include="Shadcn.fs" />
     <TypeScriptCompile Include="lib\utils.ts" />
     <Content Include="lib\utils.js" />
+    <Compile Include="Button.fs" />
     <Compile Include="Accordion.fs" />
+    <Compile Include="Alert.fs" />
+    <Compile Include="AlertDialog.fs" />
+    <Content Include="README.md" />
+    <Compile Include="Avatar.fs" />
+    <Compile Include="Badge.fs" />
+    <Compile Include="AspectRatio.fs" />
+    <Compile Include="BreadCrumb.fs" />
+    <Compile Include="Calendar.fs" />
+    <Compile Include="Card.fs" />
+    <Compile Include="Carousel.fs" />
+    <Compile Include="Checkbox.fs" />
+    <Compile Include="Collapsible.fs" />
+    <Compile Include="ContextMenu.fs" />
+    <Compile Include="Dialog.fs" />
+    <Compile Include="Command.fs" />
+    <Compile Include="Drawer.fs" />
+    <Compile Include="Label.fs" />
+    <Compile Include="Form.fs" />
   </ItemGroup>
   
   <Import Project="..\.paket\Paket.Restore.targets" />

@@ -1,5 +1,6 @@
 ﻿module Program
 
+open Fable.Core.JS
 open Feliz
 open Browser.Dom
 open Fable.Core.JsInterop
@@ -9,63 +10,67 @@ open Feliz.Lucide.Lab
 open Feliz.Shadcn
 open Fable.Core
 open Feliz.Interop.Extend
+open Fable.Core.JS
 
 importSideEffects "./index.css"
 
-emitJsStatement () $""" import {{Header, Trigger, Root, Item}} from "@radix-ui/react-accordion" """
+[<ReactComponent>]
+let CalendarView () =
+    let date, setDate = React.useState( Constructors.Date.Create() )
+    Calendar [
+        
+        calendar.mode.single
+        calendar.selected date
+        calendar.onDayClick ( fun e -> !!e |> setDate )
+        calendar.hideHead true
+    ]
 
 [<ReactComponent>]
-let TestView () =
+let Modal () =
+    AlertDialog [ alertDialog.defaultOpen true ; alertDialog.children [
+        AlertDialogTrigger [ alertDialogTrigger.text "Open" ]
+        AlertDialogContent [ alertDialogContent.children [
+            AlertDialogHeader [ alertDialogHeader.children [
+                AlertDialogTitle [ alertDialogTitle.text "Are you sure?" ]
+                AlertDialogDescription [ alertDialogDescription.text "This action cannot be undone" ]
+            ] ]
+            AlertDialogFooter [ alertDialogFooter.children [
+                AlertDialogCancel [ alertDialogCancel.text "Cancel" ]
+                AlertDialogAction [ alertDialogAction.text "Continue" ]
+            ] ]
+        ]]
+    ]]
+
+let view =
     Html.div [
-        prop.className "flex-col p-10 space-y-10"
-        prop.children [
-            Icon.AArrowDown []
-            Icon.Ambulance [icon.size 48]
-            Icon.burger []
-            Icon.russianRubleSquare []
-            Shadcn.accordion [
-                accordion.collapsible true
-                accordion.children [
-                    Shadcn.accordionItem [
-                        accordionItem.trigger "Test"
-                        accordionItem.value "val1"
-                        accordionItem.text "This is inside"
+        CalendarView ()
+        Modal ()
+        RAccordion [
+            accordion.children [
+                RAccordionItem [
+                    accordionItem.value "item1"
+                    accordionItem.children [
+                        RAccordionTrigger [ accordionTrigger.text "First item" ]
+                        RAccordionContent [ accordionContent.text "hello world!" ]
+                    ]
+                ]
+                RAccordionItem [
+                    accordionItem.value "item2"
+                    accordionItem.children [
+                        RAccordionTrigger [ accordionTrigger.text "Second item" ]
+                        RAccordionContent [ accordionContent.children [
+                            RAlert [
+                                alert.variant.destructive
+                                alert.children [
+                                    RAlertTitle [ alertTitle.text "hey" ]
+                                    RAlertDescription [ alertDescription.text "you ok bro?" ]
+                                ]
+                            ]
+                        ] ]
                     ]
                 ]
             ]
-        ]
-    ]
-
-[<JSX.Component>]
-let Test (props : IReactProperty list ) =
-    let properties = !!props |> createObj
-    emitJsStatement properties "const {children, placeholder=\"test\", ...props} = $0"
-    JSX.jsx $"""
-    <>
-    {{children}}
-    <input {{...props}} placeholder={{placeholder}} className={JSX.cn [| "border-b" ; "bg-blue" |]}/>
-    </>
-"""
-
-let view =
-    RAccordion [
-        prop.children [
-            RAccordionItem [
-                prop.value "item1"
-                prop.children [
-                    RAccordionTrigger [ prop.text "First item" ]
-                    RAccordionContent [ prop.text "hello world!" ]
-                ]
-            ]
-            RAccordionItem [
-                prop.value "item2"
-                prop.children [
-                    RAccordionTrigger [ prop.text "Second item" ]
-                    RAccordionContent [ prop.text "goodbye world!" ]
-                ]
-            ]
-        ]
-    ]
+    ]]
 
 let root = ReactDOM.createRoot (document.getElementById "elmish-app")
 root.render ( view )

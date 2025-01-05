@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Feliz.Interop.Extend\Feliz.Interop.Extend.fsproj" />
+
+    <Content Include="paket.references" />
+    <Content Include="README.md" />
+    <Compile Include="Avatar.fs" />
+    <Compile Include="Accordion.fs" />
+    <Compile Include="AlertDialog.fs" />
+    <Compile Include="AspectRatio.fs" />
+    <Compile Include="Form.fs" />
+    <Compile Include="Label.fs" />
+    <Compile Include="Dialog.fs" />
+    <Compile Include="MenuBar.fs" />
+    <Compile Include="Popover.fs" />
+    <Compile Include="Checkbox.fs" />
+    <Compile Include="HoverCard.fs" />
+    <Compile Include="Collapsible.fs" />
+    <Compile Include="ContextMenu.fs" />
+    <Compile Include="DropdownMenu.fs" />
+    <Compile Include="NavigationMenu.fs" />
+    <Compile Include="Tabs.fs" />
+    <Compile Include="Toast.fs" />
+    <Compile Include="Select.fs" />
+    <Compile Include="Slider.fs" />
+    <Compile Include="Switch.fs" />
+    <Compile Include="Toggle.fs" />
+    <Compile Include="Toolbar.fs" />
+    <Compile Include="Tooltip.fs" />
+    <Compile Include="Progress.fs" />
+    <Compile Include="Separator.fs" />
+    <Compile Include="RadioGroup.fs" />
+    <Compile Include="ScrollArea.fs" />
+    <Compile Include="ToggleGroup.fs" />
+  </ItemGroup>
+  <Import Project="..\.paket\Paket.Restore.targets" />
+</Project>

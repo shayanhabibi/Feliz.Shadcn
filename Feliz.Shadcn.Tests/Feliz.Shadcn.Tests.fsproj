@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Feliz.Shadcn\Feliz.Shadcn.fsproj" />
     <ProjectReference Include="..\Feliz.Lucide\Feliz.Lucide.fsproj" />
+    <ProjectReference Include="..\Feliz.RadixUI\Feliz.RadixUI.fsproj" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="vite.config.mts" />

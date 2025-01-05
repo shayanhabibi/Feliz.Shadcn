@@ -11,7 +11,7 @@ module ShadcnHelpers =
     let inline createElement (el: ReactElementType) (props: 'ControlProperty list) : ReactElement = reactElement el (!!props |> createObj)
     let [<Literal>] ShadcnReact = "shadcn-react"
 
-type [<Erase>] Shadcn =
-    static member inline accordion ( props : IAccordionProp list ) = createElement ( import "Accordion" ShadcnReact ) props
-    static member inline accordion ( children : ReactElement list ) = Interop.reactElementWithChildren ( import "Accordion" ShadcnReact ) children
-    static member inline accordionItem ( props : IAccordionItemProp list ) = createElement ( import "Accordion.Item" ShadcnReact ) props
+// type [<Erase>] Shadcn =
+//     static member inline accordion ( props : IAccordionProp list ) = createElement ( import "Accordion" ShadcnReact ) props
+//     static member inline accordion ( children : ReactElement list ) = Interop.reactElementWithChildren ( import "Accordion" ShadcnReact ) children
+//     static member inline accordionItem ( props : IAccordionItemProp list ) = createElement ( import "Accordion.Item" ShadcnReact ) props
