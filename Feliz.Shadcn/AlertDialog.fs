@@ -44,10 +44,6 @@ type [<Erase>] IAlertDialogProp = interface end
 type [<Erase>] alertDialog =
     inherit Dialog.root<IAlertDialogProp>
     static member private noop = ()
-    // static member inline open' ( value : bool ) : IAlertDialogProp = Interop.mkProperty "open" value
-    // static member inline defaultOpen ( value : bool ) : IAlertDialogProp = Interop.mkProperty "defaultOpen" value
-    // static member inline modal ( value : bool ) : IAlertDialogProp = Interop.mkProperty "modal" value
-    // static member inline onOpenChange ( handler : bool -> unit ) : IAlertDialogProp = Interop.mkProperty "onOpenChange" handler
 
 [<JSX.Component>]
 let AlertDialog ( props : IAlertDialogProp list ) : ReactElement =
@@ -77,8 +73,6 @@ type [<Erase>] IAlertDialogPortalProp = interface end
 type [<Erase>] alertDialogPortal =
     inherit Dialog.portal<IAlertDialogPortalProp>
     static member private noop = ()
-    // static member inline container ( value : 'a ) : IAlertDialogPortalProp = Interop.mkProperty "container" value
-    // static member inline forceMount ( value : bool ) : IAlertDialogPortalProp = Interop.mkProperty "forceMount" value
     
 [<JSX.Component>]
 let AlertDialogPortal ( props : IAlertDialogPortalProp list ) : ReactElement =
@@ -87,14 +81,13 @@ let AlertDialogPortal ( props : IAlertDialogPortalProp list ) : ReactElement =
     emitJsStatement properties "const {...sprops} = $0"
     JSX.jsx $"""
     <AlertDialogPrimitive.Portal {{...$props}} {{...sprops}}/>
-    """ |> unbox
+    """ |> unbox // TODO check if this was the element that wasn't working as intended when passed the ...attrs spread pattern
 
 // --------------- AlertDialogOverlay -------------- //
 type [<Erase>] IAlertDialogOverlayProp = interface end
 type [<Erase>] alertDialogOverlay =
     inherit Dialog.overlay<IAlertDialogOverlayProp>
     static member private noop = ()
-    // static member inline forceMount ( value : bool ) : IAlertDialogOverlayProp = Interop.mkProperty "forceMount" value
 
 [<JSX.Component>]
 let AlertDialogOverlay ( props : IAlertDialogOverlayProp list ) : ReactElement =
@@ -116,10 +109,6 @@ type [<Erase>] IAlertDialogContentProp = interface end
 type [<Erase>] alertDialogContent =
     inherit Dialog.content<IAlertDialogContentProp>
     static member private noop = ()
-    // static member inline forceMount ( value : bool ) : IAlertDialogContentProp = Interop.mkProperty "forceMount" value
-    // static member inline trapFocus ( value : bool ) : IAlertDialogContentProp = Interop.mkProperty "trapFocus" value
-    // static member inline onOpenAutoFocus ( handler : Browser.Types.Event -> unit ) : IAlertDialogContentProp = Interop.mkProperty "onOpenAutoFocus" handler
-    // static member inline onCloseAutoFocus ( handler : Browser.Types.Event -> unit ) : IAlertDialogContentProp = Interop.mkProperty "onCloseAutoFocus" handler
 
 [<JSX.Component>]
 let AlertDialogContent ( props : IAlertDialogContentProp list ) : ReactElement =
@@ -137,7 +126,7 @@ let AlertDialogContent ( props : IAlertDialogContentProp list ) : ReactElement =
             |] }
             {{...sprops}} />
     </AlertDialogPortal>
-    """ |> unbox
+    """ |> unbox // TODO check if this was the element that wasn't working as intended when passed the ...attrs spread pattern
 
 // --------------- AlertDialogHeader -------------- //
 type [<Erase>] IAlertDialogHeaderProp = interface end
@@ -149,6 +138,7 @@ type [<Erase>] alertDialogHeader =
 let AlertDialogHeader ( props : IAlertDialogHeaderProp list ) : ReactElement =
     let properties = props |> JSX.mkObject
     emitJsStatement properties "const {className, ...sprops} = $0"
+    // emitJsStatement () "const {props, ...attrs} = $props"
     JSX.jsx $"""
     <div className={ JSX.cn [| "flex flex-col space-y-2 text-center sm:text-left" ; properties?className |] }
         {{...sprops}}/>
@@ -171,7 +161,7 @@ let AlertDialogFooter ( props : IAlertDialogFooterProp list ) : ReactElement =
             properties?className
         |] }
         {{...sprops}} />
-    """ |> unbox
+    """ |> unbox // TODO check if this was the element that wasn't working as intended when passed the ...attrs spread pattern
 
 // --------------- AlertDialogTitle -------------- //
 type [<Erase>] IAlertDialogTitleProp = interface end

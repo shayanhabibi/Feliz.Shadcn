@@ -6,7 +6,21 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
 
-// Nil imports
+/// Class-Variance-Authority variations object for the Alert components.
+let alertVariants =
+    JSX.cva "bg-background text-foreground"
+        {| 
+            variants = {|
+                variant = {|
+                        ``default``="bg-background text-foreground"
+                        destructive="border-destructive/50 text-destructive dark:border-destructive [&>svg]:text destructive"
+                    |}
+            |}
+        
+         defaultVariants = {|
+                variant="default"
+            |}
+         |}
 
 // ------------- Alert -------------- //
 
@@ -18,22 +32,21 @@ type [<Erase>] alert =
 [<RequireQualifiedAccess>]
 module [<Erase>] alert =
     type [<Erase>] variant =
-        static member inline default' : IAlertProp = Interop.mkProperty "cvavariant" "bg-background text-foreground"
-        static member inline destructive : IAlertProp = Interop.mkProperty "cvavariant" "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive"
+        static member inline default' : IAlertProp = Interop.mkProperty "variant" "default"
+        static member inline destructive : IAlertProp = Interop.mkProperty "variant" "destructive"
 
+/// The Alert Root Component.
 [<JSX.Component>]
-let Alert ( props : IAlertProp list ) : JSX.Element =
+let Alert ( props : IAlertProp list ) : ReactElement =
     let ref = React.useRef()
-    let properties = !!props |> createObj
-    emitJsStatement properties $"""const {{className, cvavariant="bg-background text-foreground", ...props}} = $0"""
+    let properties = !!props |> JSX.mkObject
+    emitJsStatement properties $"""const {{className, variant="default", ...sprops}} = $0; {{props, ...attrs}} = $props"""
     JSX.jsx $"""
     <div ref={ref} role="alert" className={JSX.cn [|
-        "relative w-full rounded-lg border px-4 py-3 text-sm [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground [&>svg~*]:pl-7"
-        properties?cvavariant
+        (unbox alertVariants)({|variant=properties?variant|})
         properties?className
-    |]} {{...props}} />
-    """
-let RAlert = Alert >> JSX.toReact
+    |]} {{...sprops}} {{...attrs}} />
+    """ |> unbox
 
 // ------------ AlertTitle ----------- //
 type [<Erase>] IAlertTitleProp = interface end
@@ -41,17 +54,17 @@ type [<Erase>] alertTitle =
     inherit prop<IAlertTitleProp>
     static member inline private noop = ignore
 
+/// The Alert Title Component
 [<JSX.Component>]
-let AlertTitle ( props : IAlertTitleProp list ) : JSX.Element =
+let AlertTitle ( props : IAlertTitleProp list ) : ReactElement =
     let ref = React.useRef()
-    let properties = !!props |> createObj
-    emitJsStatement properties "const {className, ...props} = $0"
+    let properties = !!props |> JSX.mkObject
+    emitJsStatement properties "const {className, ...sprops} = $0; const {props, ...attrs} = $props"
     JSX.jsx $"""
     <h5 ref={ref}
         className={ JSX.cn [| "mb-1 font-medium leading-none tracking-tight" ; properties?className |] }
-        {{...props}} />
-    """
-let RAlertTitle = AlertTitle >> JSX.toReact
+        {{...sprops}} {{...attrs}} />
+    """ |> unbox
 
 // ------------- AlertDescription ------------- //
 type [<Erase>] IAlertDescriptionProp = interface end
@@ -59,14 +72,14 @@ type [<Erase>] alertDescription =
     inherit prop<IAlertDescriptionProp>
     static member inline private noop = ignore
 
+/// The Alert Description Component
 [<JSX.Component>]
-let AlertDescription ( props : IAlertDescriptionProp list ) : JSX.Element =
+let AlertDescription ( props : IAlertDescriptionProp list ) : ReactElement =
     let ref = React.useRef()
-    let properties = !!props |> createObj
-    emitJsStatement properties "const {className, ...props} = $0"
+    let properties = !!props |> JSX.mkObject
+    emitJsStatement properties "const {className, ...sprops} = $0; const {props, ...attrs} = $props"
     JSX.jsx $"""
     <div ref={ref}
         className={ JSX.cn [| "text-sm [&_p]:leading-relaxed" ; properties?className |] }
-        {{...props}} />
-    """
-let RAlertDescription = AlertDescription >> JSX.toReact
+        {{...sprops}} {{...attrs}} />
+    """ |> unbox
