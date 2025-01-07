@@ -1,0 +1,30 @@
+{
+    "name": "dotnet",
+    // Set the build context one level higher so we can grab metadata like global.json
+    "context": "..",
+    "dockerFile": "Dockerfile",
+    "forwardPorts": [
+        0
+    ],
+    "features": {
+        // https://github.com/devcontainers/features/blob/main/src/dotnet/README.md
+        "ghcr.io/devcontainers/features/dotnet:2": {
+        }
+    },
+
+    "customizations": {
+        "vscode": {
+            // Add the IDs of extensions you want installed when the container is created.
+            "extensions": [
+                "ms-dotnettools.csharp",
+                "Ionide.Ionide-fsharp",
+                "tintoy.msbuild-project-tools"
+            ],
+            "settings": {
+                // "terminal.integrated.defaultProfile.linux": "zsh",
+                "csharp.suppressDotnetInstallWarning": true
+            }
+        }
+    }
+
+}
