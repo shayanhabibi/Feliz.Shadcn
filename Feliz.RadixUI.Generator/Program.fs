@@ -477,10 +477,10 @@ module Render =
     let renderComponentInterface radixComponent =
         [
             for description in radixComponent.Description.Split([|'\n' ; '\r'|]) do $"/// {description}"
+            "[<RequireQualifiedAccess>]"
             $"module [<Erase>] {radixComponent.Name |> removeSpaces |> appendApostropheToReservedKeywords} ="
             for subComponent in radixComponent.SubComponents do
                 let importName = if subComponent.Name = "Root" then radixComponent.Name else radixComponent.Name+subComponent.Name
-                $"/// import \"{importName |> removeSpaces}\" \"{radixComponent.NpmPackage}\"" |> indent4
                 for description in subComponent.Description.Split([|'\n' ; '\r'|]) do
                     $"/// {description}" |> indent4
                 $"type [<Erase>] {subComponent.Name |> lowerFirst |> appendApostropheToReservedKeywords}<'Property> =" |> indent4
@@ -493,7 +493,10 @@ module Render =
                 ""
             for subComponent in radixComponent.SubComponents do
                 if subComponent.Enums.IsEmpty |> not then
-                    $"module [<Erase>] {radixComponent.Name |> removeSpaces |> lowerFirst}{subComponent.Name |> removeSpaces |> lowerFirst} ="
+                    for description in subComponent.Description.Split([| '\n' ; '\r' |]) do
+                        $"/// {description}" |>
+                    "[<RequireQualifiedAccess>]"
+                    $"module [<Erase>] {radixComponent.Name |> removeSpaces |> lowerFirst}{subComponent.Name |> removeSpaces} ="
                     for enum in subComponent.Enums do
                         $"type [<Erase>] {enum.Name |> removeSpaces |> lowerFirst |> appendApostropheToReservedKeywords}<'Property> =" |> indent4
                         for case in enum.Cases do
