@@ -7,9 +7,28 @@ open Feliz.Interop.Extend
 open Browser.Types
 
 
+/// Contains all the toolbar component parts.
+[<RequireQualifiedAccess>]
+module [<Erase>] toolbarRoot =
+    type [<Erase>] orientation<'Property> =
+        static member inline horizontal : 'Property = Interop.mkProperty "orientation" "horizontal"
+        static member inline vertical : 'Property = Interop.mkProperty "orientation" "vertical"
+        static member inline undefined : 'Property = Interop.mkProperty "orientation" "undefined"
+
+    type [<Erase>] dir<'Property> =
+        static member inline ltr : 'Property = Interop.mkProperty "dir" "ltr"
+        static member inline rtl : 'Property = Interop.mkProperty "dir" "rtl"
+
+/// A set of two-state buttons that can be toggled on or off.
+[<RequireQualifiedAccess>]
+module [<Erase>] toolbarToggleGroup =
+    type [<Erase>] type'<'Property> =
+        static member inline single : 'Property = Interop.mkProperty "type" "single"
+        static member inline multiple : 'Property = Interop.mkProperty "type" "multiple"
+
 /// A container for grouping a set of controls, such as buttons, toggle groups or dropdown menus.
+[<RequireQualifiedAccess>]
 module [<Erase>] Toolbar =
-    /// import "Toolbar" ""
     /// Contains all the toolbar component parts.
     type [<Erase>] root<'Property> =
         inherit prop<'Property>
@@ -20,7 +39,6 @@ module [<Erase>] Toolbar =
         /// The reading direction of the toolbar. If omitted, inherits globally from DirectionProvider or assumes LTR (left-to-right) reading mode.
         static member inline loop ( value : bool ) : 'Property = Interop.mkProperty "loop" value
 
-    /// import "ToolbarButton" ""
     /// A button item.
     type [<Erase>] button<'Property> =
         inherit prop<'Property>
@@ -29,7 +47,6 @@ module [<Erase>] Toolbar =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "ToolbarLink" ""
     /// A link item.
     type [<Erase>] link<'Property> =
         inherit prop<'Property>
@@ -38,7 +55,6 @@ module [<Erase>] Toolbar =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "ToolbarToggleGroup" ""
     /// A set of two-state buttons that can be toggled on or off.
     type [<Erase>] toggleGroup<'Property> =
         inherit prop<'Property>
@@ -61,7 +77,6 @@ module [<Erase>] Toolbar =
         /// Event handler called when the pressed state of an item changes and type is "multiple".
         static member inline disabled ( value : bool ) : 'Property = Interop.mkProperty "disabled" value
 
-    /// import "ToolbarToggleItem" ""
     /// An item in the group.
     type [<Erase>] toggleItem<'Property> =
         inherit prop<'Property>
@@ -74,7 +89,6 @@ module [<Erase>] Toolbar =
         /// When true, prevents the user from interacting with the item.
         static member inline disabled ( value : bool ) : 'Property = Interop.mkProperty "disabled" value
 
-    /// import "ToolbarSeparator" ""
     /// Used to visually separate items in the toolbar.
     type [<Erase>] separator<'Property> =
         inherit prop<'Property>
@@ -82,18 +96,3 @@ module [<Erase>] Toolbar =
         ///  
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
-
-module [<Erase>] toolbarroot =
-    type [<Erase>] orientation<'Property> =
-        static member inline horizontal : 'Property = Interop.mkProperty "orientation" "horizontal"
-        static member inline vertical : 'Property = Interop.mkProperty "orientation" "vertical"
-        static member inline undefined : 'Property = Interop.mkProperty "orientation" "undefined"
-
-    type [<Erase>] dir<'Property> =
-        static member inline ltr : 'Property = Interop.mkProperty "dir" "ltr"
-        static member inline rtl : 'Property = Interop.mkProperty "dir" "rtl"
-
-module [<Erase>] toolbartoggleGroup =
-    type [<Erase>] type'<'Property> =
-        static member inline single : 'Property = Interop.mkProperty "type" "single"
-        static member inline multiple : 'Property = Interop.mkProperty "type" "multiple"

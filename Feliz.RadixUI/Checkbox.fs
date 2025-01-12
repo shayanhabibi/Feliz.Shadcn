@@ -8,8 +8,8 @@ open Browser.Types
 
 
 /// A control that allows the user to toggle between checked and not checked.
+[<RequireQualifiedAccess>]
 module [<Erase>] Checkbox =
-    /// import "Checkbox" ""
     /// Contains all the parts of a checkbox. An input will also render when used within a form to ensure events propagate correctly.
     type [<Erase>] root<'Property> =
         inherit prop<'Property>
@@ -38,7 +38,6 @@ module [<Erase>] Checkbox =
         /// The value given as data when submitted with a name.
         static member inline value ( value : string ) : 'Property = Interop.mkProperty "value" value
 
-    /// import "CheckboxIndicator" ""
     /// Renders when the checkbox is in a checked or indeterminate state. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
     type [<Erase>] indicator<'Property> =
         inherit prop<'Property>

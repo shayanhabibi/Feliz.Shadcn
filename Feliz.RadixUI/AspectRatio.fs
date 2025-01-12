@@ -8,8 +8,8 @@ open Browser.Types
 
 
 /// Displays content within a desired ratio.
+[<RequireQualifiedAccess>]
 module [<Erase>] AspectRatio =
-    /// import "AspectRatio" ""
     /// Contains the content you want to constrain to a given ratio.
     type [<Erase>] root<'Property> =
         inherit prop<'Property>

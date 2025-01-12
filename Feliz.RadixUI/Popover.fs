@@ -7,9 +7,27 @@ open Feliz.Interop.Extend
 open Browser.Types
 
 
+/// The component that pops out when the popover is open.
+[<RequireQualifiedAccess>]
+module [<Erase>] popoverContent =
+    type [<Erase>] side<'Property> =
+        static member inline top : 'Property = Interop.mkProperty "side" "top"
+        static member inline right : 'Property = Interop.mkProperty "side" "right"
+        static member inline bottom : 'Property = Interop.mkProperty "side" "bottom"
+        static member inline left : 'Property = Interop.mkProperty "side" "left"
+
+    type [<Erase>] align<'Property> =
+        static member inline start : 'Property = Interop.mkProperty "align" "start"
+        static member inline center : 'Property = Interop.mkProperty "align" "center"
+        static member inline end' : 'Property = Interop.mkProperty "align" "end"
+
+    type [<Erase>] sticky<'Property> =
+        static member inline partial : 'Property = Interop.mkProperty "sticky" "partial"
+        static member inline always : 'Property = Interop.mkProperty "sticky" "always"
+
 /// Displays rich content in a portal, triggered by a button.
+[<RequireQualifiedAccess>]
 module [<Erase>] Popover =
-    /// import "Popover" ""
     /// Contains all the parts of a popover.
     type [<Erase>] root<'Property> =
         inherit prop<'Property>
@@ -22,7 +40,6 @@ module [<Erase>] Popover =
         /// Event handler called when the open state of the popover changes.
         static member inline modal ( value : bool ) : 'Property = Interop.mkProperty "modal" value
 
-    /// import "PopoverTrigger" ""
     /// The button that toggles the popover. By default, the Popover.Content will position itself against the trigger.
     type [<Erase>] trigger<'Property> =
         inherit prop<'Property>
@@ -31,7 +48,6 @@ module [<Erase>] Popover =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "PopoverAnchor" ""
     /// An optional element to position the Popover.Content against. If this part is not used, the content will position alongside the Popover.Trigger.
     type [<Erase>] anchor<'Property> =
         inherit prop<'Property>
@@ -40,7 +56,6 @@ module [<Erase>] Popover =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "PopoverPortal" ""
     /// When used, portals the content part into the body.
     type [<Erase>] portal<'Property> =
         inherit prop<'Property>
@@ -49,7 +64,6 @@ module [<Erase>] Popover =
         /// Specify a container element to portal the content into.
         static member inline container ( value : HTMLElement ) : 'Property = Interop.mkProperty "container" value
 
-    /// import "PopoverContent" ""
     /// The component that pops out when the popover is open.
     type [<Erase>] content<'Property> =
         inherit prop<'Property>
@@ -92,7 +106,6 @@ module [<Erase>] Popover =
         /// The sticky behavior on the align axis. "partial" will keep the content in the boundary as long as the trigger is at least partially in the boundary whilst "always" will keep the content in the boundary regardless.
         static member inline hideWhenDetached ( value : bool ) : 'Property = Interop.mkProperty "hideWhenDetached" value
 
-    /// import "PopoverArrow" ""
     /// An optional arrow element to render alongside the popover. This can be used to help visually link the anchor with the Popover.Content. Must be rendered inside Popover.Content.
     type [<Erase>] arrow<'Property> =
         inherit prop<'Property>
@@ -105,7 +118,6 @@ module [<Erase>] Popover =
         /// The height of the arrow in pixels.
         static member inline height ( value : int ) : 'Property = Interop.mkProperty "height" value
 
-    /// import "PopoverClose" ""
     /// The button that closes an open popover.
     type [<Erase>] close<'Property> =
         inherit prop<'Property>
@@ -113,19 +125,3 @@ module [<Erase>] Popover =
         ///  
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
-
-module [<Erase>] popovercontent =
-    type [<Erase>] side<'Property> =
-        static member inline top : 'Property = Interop.mkProperty "side" "top"
-        static member inline right : 'Property = Interop.mkProperty "side" "right"
-        static member inline bottom : 'Property = Interop.mkProperty "side" "bottom"
-        static member inline left : 'Property = Interop.mkProperty "side" "left"
-
-    type [<Erase>] align<'Property> =
-        static member inline start : 'Property = Interop.mkProperty "align" "start"
-        static member inline center : 'Property = Interop.mkProperty "align" "center"
-        static member inline end' : 'Property = Interop.mkProperty "align" "end"
-
-    type [<Erase>] sticky<'Property> =
-        static member inline partial : 'Property = Interop.mkProperty "sticky" "partial"
-        static member inline always : 'Property = Interop.mkProperty "sticky" "always"

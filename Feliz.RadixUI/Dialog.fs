@@ -8,8 +8,8 @@ open Browser.Types
 
 
 /// A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
-module Dialog =
-    /// import "Dialog" ""
+[<RequireQualifiedAccess>]
+module [<Erase>] Dialog =
     /// Contains all the parts of a dialog.
     type [<Erase>] root<'Property> =
         inherit prop<'Property>
@@ -22,7 +22,6 @@ module Dialog =
         /// Event handler called when the open state of the dialog changes.
         static member inline modal ( value : bool ) : 'Property = Interop.mkProperty "modal" value
 
-    /// import "DialogTrigger" ""
     /// The button that opens the dialog.
     type [<Erase>] trigger<'Property> =
         inherit prop<'Property>
@@ -31,7 +30,6 @@ module Dialog =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "DialogPortal" ""
     /// When used, portals your overlay and content parts into the body.
     type [<Erase>] portal<'Property> =
         inherit prop<'Property>
@@ -40,7 +38,6 @@ module Dialog =
         /// Specify a container element to portal the content into.
         static member inline container ( value : HTMLElement ) : 'Property = Interop.mkProperty "container" value
 
-    /// import "DialogOverlay" ""
     /// A layer that covers the inert portion of the view when the dialog is open.
     type [<Erase>] overlay<'Property> =
         inherit prop<'Property>
@@ -51,7 +48,6 @@ module Dialog =
         /// Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. It inherits from Dialog.Portal.
         static member inline forceMount ( value : bool ) : 'Property = Interop.mkProperty "forceMount" value
 
-    /// import "DialogContent" ""
     /// Contains content to be rendered in the open dialog.
     type [<Erase>] content<'Property> =
         inherit prop<'Property>
@@ -76,7 +72,6 @@ module Dialog =
         /// Event handler called when a pointer event occurs outside the bounds of the component. It can be prevented by calling event.preventDefault.
         static member inline onInteractOutside ( value : (Browser.Types.TouchEvent -> unit) ) : 'Property = Interop.mkProperty "onInteractOutside" value
 
-    /// import "DialogClose" ""
     /// The button that closes the dialog.
     type [<Erase>] close<'Property> =
         inherit prop<'Property>

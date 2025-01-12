@@ -45,25 +45,25 @@ let view =
     Html.div [
         CalendarView ()
         Modal ()
-        RAccordion [
+        Accordion [
             accordion.children [
-                RAccordionItem [
+                AccordionItem [
                     accordionItem.value "item1"
                     accordionItem.children [
-                        RAccordionTrigger [ accordionTrigger.text "First item" ]
-                        RAccordionContent [ accordionContent.text "hello world!" ]
+                        AccordionTrigger [ accordionTrigger.text "First item" ]
+                        AccordionContent [ accordionContent.text "hello world!" ]
                     ]
                 ]
-                RAccordionItem [
+                AccordionItem [
                     accordionItem.value "item2"
                     accordionItem.children [
-                        RAccordionTrigger [ accordionTrigger.text "Second item" ]
-                        RAccordionContent [ accordionContent.children [
-                            RAlert [
+                        AccordionTrigger [ accordionTrigger.text "Second item" ]
+                        AccordionContent [ accordionContent.children [
+                            Alert [
                                 alert.variant.destructive
                                 alert.children [
-                                    RAlertTitle [ alertTitle.text "hey" ]
-                                    RAlertDescription [ alertDescription.text "you ok bro?" ]
+                                    AlertTitle [ alertTitle.text "hey" ]
+                                    AlertDescription [ alertDescription.text "you ok bro?" ]
                                 ]
                             ]
                         ] ]

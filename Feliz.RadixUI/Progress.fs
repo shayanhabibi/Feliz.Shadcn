@@ -8,8 +8,8 @@ open Browser.Types
 
 
 /// Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+[<RequireQualifiedAccess>]
 module [<Erase>] Progress =
-    /// import "Progress" ""
     /// Contains all of the progress parts.
     type [<Erase>] root<'Property> =
         inherit prop<'Property>
@@ -24,7 +24,6 @@ module [<Erase>] Progress =
         /// A function to get the accessible label text representing the current value in a human-readable format. If not provided, the value label will be read as the numeric value as a percentage of the max value.
         static member inline getValueLabel ( value : (int -> int -> string) ) : 'Property = Interop.mkProperty "getValueLabel" value
 
-    /// import "ProgressIndicator" ""
     /// Used to show the progress visually. It also makes progress accessible to assistive technologies.
     type [<Erase>] indicator<'Property> =
         inherit prop<'Property>

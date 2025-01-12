@@ -7,9 +7,27 @@ open Feliz.Interop.Extend
 open Browser.Types
 
 
+/// The component that pops out when the hover card is open.
+[<RequireQualifiedAccess>]
+module [<Erase>] hoverCardContent =
+    type [<Erase>] side<'Property> =
+        static member inline top : 'Property = Interop.mkProperty "side" "top"
+        static member inline right : 'Property = Interop.mkProperty "side" "right"
+        static member inline bottom : 'Property = Interop.mkProperty "side" "bottom"
+        static member inline left : 'Property = Interop.mkProperty "side" "left"
+
+    type [<Erase>] align<'Property> =
+        static member inline start : 'Property = Interop.mkProperty "align" "start"
+        static member inline center : 'Property = Interop.mkProperty "align" "center"
+        static member inline end' : 'Property = Interop.mkProperty "align" "end"
+
+    type [<Erase>] sticky<'Property> =
+        static member inline partial : 'Property = Interop.mkProperty "sticky" "partial"
+        static member inline always : 'Property = Interop.mkProperty "sticky" "always"
+
 /// For sighted users to preview content available behind a link.
+[<RequireQualifiedAccess>]
 module [<Erase>] HoverCard =
-    /// import "HoverCard" ""
     /// Contains all the parts of a hover card.
     type [<Erase>] root<'Property> =
         inherit prop<'Property>
@@ -24,7 +42,6 @@ module [<Erase>] HoverCard =
         /// The duration from when the mouse leaves the trigger or content until the hover card closes.
         static member inline closeDelay ( value : int ) : 'Property = Interop.mkProperty "closeDelay" value
 
-    /// import "HoverCardTrigger" ""
     /// The link that opens the hover card when hovered.
     type [<Erase>] trigger<'Property> =
         inherit prop<'Property>
@@ -33,7 +50,6 @@ module [<Erase>] HoverCard =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "HoverCardPortal" ""
     /// When used, portals the content part into the body.
     type [<Erase>] portal<'Property> =
         inherit prop<'Property>
@@ -42,7 +58,6 @@ module [<Erase>] HoverCard =
         /// Specify a container element to portal the content into.
         static member inline container ( value : HTMLElement ) : 'Property = Interop.mkProperty "container" value
 
-    /// import "HoverCardContent" ""
     /// The component that pops out when the hover card is open.
     type [<Erase>] content<'Property> =
         inherit prop<'Property>
@@ -71,7 +86,6 @@ module [<Erase>] HoverCard =
         /// The sticky behavior on the align axis. "partial" will keep the content in the boundary as long as the trigger is at least partially in the boundary whilst "always" will keep the content in the boundary regardless.
         static member inline hideWhenDetached ( value : bool ) : 'Property = Interop.mkProperty "hideWhenDetached" value
 
-    /// import "HoverCardArrow" ""
     /// An optional arrow element to render alongside the hover card. This can be used to help visually link the trigger with the HoverCard.Content. Must be rendered inside HoverCard.Content.
     type [<Erase>] arrow<'Property> =
         inherit prop<'Property>
@@ -83,19 +97,3 @@ module [<Erase>] HoverCard =
         static member inline width ( value : int ) : 'Property = Interop.mkProperty "width" value
         /// The height of the arrow in pixels.
         static member inline height ( value : int ) : 'Property = Interop.mkProperty "height" value
-
-module [<Erase>] hoverCardcontent =
-    type [<Erase>] side<'Property> =
-        static member inline top : 'Property = Interop.mkProperty "side" "top"
-        static member inline right : 'Property = Interop.mkProperty "side" "right"
-        static member inline bottom : 'Property = Interop.mkProperty "side" "bottom"
-        static member inline left : 'Property = Interop.mkProperty "side" "left"
-
-    type [<Erase>] align<'Property> =
-        static member inline start : 'Property = Interop.mkProperty "align" "start"
-        static member inline center : 'Property = Interop.mkProperty "align" "center"
-        static member inline end' : 'Property = Interop.mkProperty "align" "end"
-
-    type [<Erase>] sticky<'Property> =
-        static member inline partial : 'Property = Interop.mkProperty "sticky" "partial"
-        static member inline always : 'Property = Interop.mkProperty "sticky" "always"

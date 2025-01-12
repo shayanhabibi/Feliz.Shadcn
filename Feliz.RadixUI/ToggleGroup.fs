@@ -7,9 +7,25 @@ open Feliz.Interop.Extend
 open Browser.Types
 
 
+/// Contains all the parts of a toggle group.
+[<RequireQualifiedAccess>]
+module [<Erase>] toggleGroupRoot =
+    type [<Erase>] type'<'Property> =
+        static member inline single : 'Property = Interop.mkProperty "type" "single"
+        static member inline multiple : 'Property = Interop.mkProperty "type" "multiple"
+
+    type [<Erase>] orientation<'Property> =
+        static member inline horizontal : 'Property = Interop.mkProperty "orientation" "horizontal"
+        static member inline vertical : 'Property = Interop.mkProperty "orientation" "vertical"
+        static member inline undefined : 'Property = Interop.mkProperty "orientation" "undefined"
+
+    type [<Erase>] dir<'Property> =
+        static member inline ltr : 'Property = Interop.mkProperty "dir" "ltr"
+        static member inline rtl : 'Property = Interop.mkProperty "dir" "rtl"
+
 /// A set of two-state buttons that can be toggled on or off.
+[<RequireQualifiedAccess>]
 module [<Erase>] ToggleGroup =
-    /// import "ToggleGroup" ""
     /// Contains all the parts of a toggle group.
     type [<Erase>] root<'Property> =
         inherit prop<'Property>
@@ -36,7 +52,6 @@ module [<Erase>] ToggleGroup =
         /// The reading direction of the toggle group. If omitted, inherits globally from DirectionProvider or assumes LTR (left-to-right) reading mode.
         static member inline loop ( value : bool ) : 'Property = Interop.mkProperty "loop" value
 
-    /// import "ToggleGroupItem" ""
     /// An item in the group.
     type [<Erase>] item<'Property> =
         inherit prop<'Property>
@@ -48,17 +63,3 @@ module [<Erase>] ToggleGroup =
         static member inline value ( value : string ) : 'Property = Interop.mkProperty "value" value
         /// When true, prevents the user from interacting with the item.
         static member inline disabled ( value : bool ) : 'Property = Interop.mkProperty "disabled" value
-
-module [<Erase>] toggleGrouproot =
-    type [<Erase>] type'<'Property> =
-        static member inline single : 'Property = Interop.mkProperty "type" "single"
-        static member inline multiple : 'Property = Interop.mkProperty "type" "multiple"
-
-    type [<Erase>] orientation<'Property> =
-        static member inline horizontal : 'Property = Interop.mkProperty "orientation" "horizontal"
-        static member inline vertical : 'Property = Interop.mkProperty "orientation" "vertical"
-        static member inline undefined : 'Property = Interop.mkProperty "orientation" "undefined"
-
-    type [<Erase>] dir<'Property> =
-        static member inline ltr : 'Property = Interop.mkProperty "dir" "ltr"
-        static member inline rtl : 'Property = Interop.mkProperty "dir" "rtl"

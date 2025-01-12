@@ -17,7 +17,7 @@ let alertVariants =
                     |}
             |}
         
-         defaultVariants = {|
+            defaultVariants = {|
                 variant="default"
             |}
          |}
@@ -40,7 +40,7 @@ module [<Erase>] alert =
 let Alert ( props : IAlertProp list ) : ReactElement =
     let ref = React.useRef()
     let properties = !!props |> JSX.mkObject
-    emitJsStatement properties $"""const {{className, variant="default", ...sprops}} = $0; {{props, ...attrs}} = $props"""
+    emitJsStatement properties $"""const {{className, variant="default", ...sprops}} = $0; const {{props, ...attrs}} = $props"""
     JSX.jsx $"""
     <div ref={ref} role="alert" className={JSX.cn [|
         (unbox alertVariants)({|variant=properties?variant|})

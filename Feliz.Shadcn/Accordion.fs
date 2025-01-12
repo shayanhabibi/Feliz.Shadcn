@@ -31,15 +31,15 @@ type [<Erase>] accordion =
 module [<Erase>] accordion =
     /// Enum for whether Accordion can have multiple or a singular `open` item
     type [<Erase>] type' =
-        inherit accordionroot.type'<IAccordionProp>
+        inherit accordionRoot.type'<IAccordionProp>
         static member private noop = () // todo add docs to inherited props
     /// Orientation of Shadcn Accordion
     type [<Erase>] orientation =
-        inherit accordionroot.orientation<IAccordionProp> // TODO add docs to inherited props
+        inherit accordionRoot.orientation<IAccordionProp> // TODO add docs to inherited props
         static member private noop = ()        
     /// Language direction for components of Shadcn Accordion
     type [<Erase>] dir =
-        inherit accordionroot.dir<IAccordionProp>
+        inherit accordionRoot.dir<IAccordionProp>
         static member private noop = ()
 
 /// Root Accordion Component which wraps the other elements for the Accordion.

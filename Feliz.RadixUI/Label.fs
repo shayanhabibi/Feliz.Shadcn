@@ -8,8 +8,8 @@ open Browser.Types
 
 
 /// Renders an accessible label associated with controls.
+[<RequireQualifiedAccess>]
 module [<Erase>] Label =
-    /// import "Label" ""
     /// Contains the content for the label.
     type [<Erase>] root<'Property> =
         inherit prop<'Property>

@@ -8,8 +8,8 @@ open Browser.Types
 
 
 /// An interactive component which expands/collapses a panel.
+[<RequireQualifiedAccess>]
 module [<Erase>] Collapsible =
-    /// import "Collapsible" ""
     /// Contains all the parts of a collapsible.
     type [<Erase>] root<'Property> =
         inherit prop<'Property>
@@ -26,7 +26,6 @@ module [<Erase>] Collapsible =
         /// Event handler called when the open state of the collapsible changes.
         static member inline disabled ( value : bool ) : 'Property = Interop.mkProperty "disabled" value
 
-    /// import "CollapsibleTrigger" ""
     /// The button that toggles the collapsible.
     type [<Erase>] trigger<'Property> =
         inherit prop<'Property>
@@ -35,7 +34,6 @@ module [<Erase>] Collapsible =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "CollapsibleContent" ""
     /// The component that contains the collapsible content.
     type [<Erase>] content<'Property> =
         inherit prop<'Property>

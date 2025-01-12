@@ -7,9 +7,25 @@ open Feliz.Interop.Extend
 open Browser.Types
 
 
+/// The provider that wraps your toasts and toast viewport. It usually wraps the application.
+[<RequireQualifiedAccess>]
+module [<Erase>] toastProvider =
+    type [<Erase>] swipeDirection<'Property> =
+        static member inline right : 'Property = Interop.mkProperty "swipeDirection" "right"
+        static member inline left : 'Property = Interop.mkProperty "swipeDirection" "left"
+        static member inline up : 'Property = Interop.mkProperty "swipeDirection" "up"
+        static member inline down : 'Property = Interop.mkProperty "swipeDirection" "down"
+
+/// The toast that automatically closes. It should not be held open to acquire a user response.
+[<RequireQualifiedAccess>]
+module [<Erase>] toastRoot =
+    type [<Erase>] type'<'Property> =
+        static member inline foreground : 'Property = Interop.mkProperty "type" "foreground"
+        static member inline background : 'Property = Interop.mkProperty "type" "background"
+
 /// A succinct message that is displayed temporarily.
+[<RequireQualifiedAccess>]
 module [<Erase>] Toast =
-    /// import "ToastProvider" ""
     /// The provider that wraps your toasts and toast viewport. It usually wraps the application.
     type [<Erase>] provider<'Property> =
         inherit prop<'Property>
@@ -20,7 +36,6 @@ module [<Erase>] Toast =
         /// The direction of the pointer swipe that should close the toast.
         static member inline swipeThreshold ( value : int ) : 'Property = Interop.mkProperty "swipeThreshold" value
 
-    /// import "ToastViewport" ""
     /// The fixed area where toasts appear. Users can jump to the viewport by pressing a hotkey. It is up to you to ensure the discoverability of the hotkey for keyboard users.
     type [<Erase>] viewport<'Property> =
         inherit prop<'Property>
@@ -33,7 +48,6 @@ module [<Erase>] Toast =
         /// An author-localized label for the toast region to provide context for screen reader users when navigating page landmarks. The available `{hotkey}` placeholder will be replaced for you.
         static member inline label ( value : string ) : 'Property = Interop.mkProperty "label" value
 
-    /// import "Toast" ""
     /// The toast that automatically closes. It should not be held open to acquire a user response.
     type [<Erase>] root<'Property> =
         inherit prop<'Property>
@@ -66,7 +80,6 @@ module [<Erase>] Toast =
         /// Event handler called when a swipe interaction is cancelled. It can be prevented by calling event.preventDefault.
         static member inline forceMount ( value : bool ) : 'Property = Interop.mkProperty "forceMount" value
 
-    /// import "ToastTitle" ""
     /// An optional title for the toast.
     type [<Erase>] title<'Property> =
         inherit prop<'Property>
@@ -75,7 +88,6 @@ module [<Erase>] Toast =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "ToastDescription" ""
     /// The toast message.
     type [<Erase>] description<'Property> =
         inherit prop<'Property>
@@ -84,7 +96,6 @@ module [<Erase>] Toast =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "ToastClose" ""
     /// A button that allows users to dismiss the toast before its duration has elapsed.
     type [<Erase>] close<'Property> =
         inherit prop<'Property>
@@ -92,15 +103,3 @@ module [<Erase>] Toast =
         ///  
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
-
-module [<Erase>] toastprovider =
-    type [<Erase>] swipeDirection<'Property> =
-        static member inline right : 'Property = Interop.mkProperty "swipeDirection" "right"
-        static member inline left : 'Property = Interop.mkProperty "swipeDirection" "left"
-        static member inline up : 'Property = Interop.mkProperty "swipeDirection" "up"
-        static member inline down : 'Property = Interop.mkProperty "swipeDirection" "down"
-
-module [<Erase>] toastroot =
-    type [<Erase>] type'<'Property> =
-        static member inline foreground : 'Property = Interop.mkProperty "type" "foreground"
-        static member inline background : 'Property = Interop.mkProperty "type" "background"

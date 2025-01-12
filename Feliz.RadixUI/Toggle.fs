@@ -8,8 +8,8 @@ open Browser.Types
 
 
 /// A two-state button that can be either on or off.
+[<RequireQualifiedAccess>]
 module [<Erase>] Toggle =
-    /// import "Toggle" ""
     /// The toggle.
     type [<Erase>] root<'Property> =
         inherit prop<'Property>

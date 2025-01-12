@@ -8,8 +8,8 @@ open Browser.Types
 
 
 /// A control that allows the user to toggle between checked and not checked.
+[<RequireQualifiedAccess>]
 module [<Erase>] Switch =
-    /// import "Switch" ""
     /// Contains all the parts of a switch. An input will also render when used within a form to ensure events propagate correctly.
     type [<Erase>] root<'Property> =
         inherit prop<'Property>
@@ -32,7 +32,6 @@ module [<Erase>] Switch =
         /// The value given as data when submitted with a name.
         static member inline value ( value : string ) : 'Property = Interop.mkProperty "value" value
 
-    /// import "SwitchThumb" ""
     /// The thumb that is used to visually indicate whether the switch is on or off.
     type [<Erase>] thumb<'Property> =
         inherit prop<'Property>

@@ -44,6 +44,13 @@
     <Compile Include="Drawer.fs" />
     <Compile Include="Label.fs" />
     <Compile Include="Form.fs" />
+    <Compile Include="Sheet.fs" />
+    <Compile Include="Skeleton.fs" />
+    <Compile Include="Input.fs" />
+    <Compile Include="Separator.fs" />
+    <Compile Include="Tooltip.fs" />
+    <Compile Include="Sidebar.fs" />
+    <Compile Include="Sidebar2.fs" />
   </ItemGroup>
   
   <Import Project="..\.paket\Paket.Restore.targets" />

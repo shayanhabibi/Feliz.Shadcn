@@ -1,6 +1,5 @@
 ﻿namespace Feliz.Interop.Extend
 
-open Fable.Core.PyInterop
 open Feliz
 open Fable.Core
 open Fable.Core.JsInterop

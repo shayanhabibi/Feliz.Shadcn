@@ -7,9 +7,41 @@ open Feliz.Interop.Extend
 open Browser.Types
 
 
+/// Contains all the parts of a dropdown menu.
+[<RequireQualifiedAccess>]
+module [<Erase>] dropdownMenuRoot =
+    type [<Erase>] dir<'Property> =
+        static member inline ltr : 'Property = Interop.mkProperty "dir" "ltr"
+        static member inline rtl : 'Property = Interop.mkProperty "dir" "rtl"
+
+/// The component that pops out when the dropdown menu is open.
+[<RequireQualifiedAccess>]
+module [<Erase>] dropdownMenuContent =
+    type [<Erase>] side<'Property> =
+        static member inline top : 'Property = Interop.mkProperty "side" "top"
+        static member inline right : 'Property = Interop.mkProperty "side" "right"
+        static member inline bottom : 'Property = Interop.mkProperty "side" "bottom"
+        static member inline left : 'Property = Interop.mkProperty "side" "left"
+
+    type [<Erase>] align<'Property> =
+        static member inline start : 'Property = Interop.mkProperty "align" "start"
+        static member inline center : 'Property = Interop.mkProperty "align" "center"
+        static member inline end' : 'Property = Interop.mkProperty "align" "end"
+
+    type [<Erase>] sticky<'Property> =
+        static member inline partial : 'Property = Interop.mkProperty "sticky" "partial"
+        static member inline always : 'Property = Interop.mkProperty "sticky" "always"
+
+/// The component that pops out when a submenu is open. Must be rendered inside DropdownMenu.Sub.
+[<RequireQualifiedAccess>]
+module [<Erase>] dropdownMenuSubContent =
+    type [<Erase>] sticky<'Property> =
+        static member inline partial : 'Property = Interop.mkProperty "sticky" "partial"
+        static member inline always : 'Property = Interop.mkProperty "sticky" "always"
+
 /// Displays a menu to the user—such as a set of actions or functions—triggered by a button.
+[<RequireQualifiedAccess>]
 module [<Erase>] DropdownMenu =
-    /// import "DropdownMenu" ""
     /// Contains all the parts of a dropdown menu.
     type [<Erase>] root<'Property> =
         inherit prop<'Property>
@@ -22,14 +54,12 @@ module [<Erase>] DropdownMenu =
         /// Event handler called when the open state of the dropdown menu changes.
         static member inline modal ( value : bool ) : 'Property = Interop.mkProperty "modal" value
 
-    /// import "DropdownMenuTrigger" ""
     /// The button that toggles the dropdown menu. By default, the DropdownMenu.Content will position itself against the trigger.
     type [<Erase>] trigger<'Property> =
         inherit prop<'Property>
         /// The reading direction of submenus when applicable. If omitted, inherits globally from DirectionProvider or assumes LTR (left-to-right) reading mode.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "DropdownMenuPortal" ""
     /// When used, portals the content part into the body.
     type [<Erase>] portal<'Property> =
         inherit prop<'Property>
@@ -38,7 +68,6 @@ module [<Erase>] DropdownMenu =
         /// Specify a container element to portal the content into.
         static member inline container ( value : HTMLElement ) : 'Property = Interop.mkProperty "container" value
 
-    /// import "DropdownMenuContent" ""
     /// The component that pops out when the dropdown menu is open.
     type [<Erase>] content<'Property> =
         inherit prop<'Property>
@@ -81,7 +110,6 @@ module [<Erase>] DropdownMenu =
         /// The sticky behavior on the align axis. "partial" will keep the content in the boundary as long as the trigger is at least partially in the boundary whilst "always" will keep the content in the boundary regardless.
         static member inline hideWhenDetached ( value : bool ) : 'Property = Interop.mkProperty "hideWhenDetached" value
 
-    /// import "DropdownMenuArrow" ""
     /// An optional arrow element to render alongside the dropdown menu. This can be used to help visually link the trigger with the DropdownMenu.Content. Must be rendered inside DropdownMenu.Content.
     type [<Erase>] arrow<'Property> =
         inherit prop<'Property>
@@ -94,7 +122,6 @@ module [<Erase>] DropdownMenu =
         /// The height of the arrow in pixels.
         static member inline height ( value : int ) : 'Property = Interop.mkProperty "height" value
 
-    /// import "DropdownMenuItem" ""
     /// The component that contains the dropdown menu items.
     type [<Erase>] item<'Property> =
         inherit prop<'Property>
@@ -109,7 +136,6 @@ module [<Erase>] DropdownMenu =
         /// Event handler called when the user selects an item (via mouse or keyboard). Calling event.preventDefault in this handler will prevent the dropdown menu from closing when selecting that item.
         static member inline textValue ( value : string ) : 'Property = Interop.mkProperty "textValue" value
 
-    /// import "DropdownMenuGroup" ""
     /// Used to group multiple DropdownMenu.Items.
     type [<Erase>] group<'Property> =
         inherit prop<'Property>
@@ -118,7 +144,6 @@ module [<Erase>] DropdownMenu =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "DropdownMenuLabel" ""
     /// Used to render a label. It won't be focusable using arrow keys.
     type [<Erase>] label<'Property> =
         inherit prop<'Property>
@@ -127,7 +152,6 @@ module [<Erase>] DropdownMenu =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "DropdownMenuCheckboxItem" ""
     /// An item that can be controlled and rendered like a checkbox.
     type [<Erase>] checkboxItem<'Property> =
         inherit prop<'Property>
@@ -148,7 +172,6 @@ module [<Erase>] DropdownMenu =
         /// Event handler called when the user selects an item (via mouse or keyboard). Calling event.preventDefault in this handler will prevent the dropdown menu from closing when selecting that item.
         static member inline textValue ( value : string ) : 'Property = Interop.mkProperty "textValue" value
 
-    /// import "DropdownMenuRadioGroup" ""
     /// Used to group multiple DropdownMenu.RadioItems.
     type [<Erase>] radioGroup<'Property> =
         inherit prop<'Property>
@@ -161,7 +184,6 @@ module [<Erase>] DropdownMenu =
         /// Event handler called when the value changes.
         static member inline onValueChange ( value : (string -> unit) ) : 'Property = Interop.mkProperty "onValueChange" value
 
-    /// import "DropdownMenuRadioItem" ""
     /// An item that can be controlled and rendered like a radio.
     type [<Erase>] radioItem<'Property> =
         inherit prop<'Property>
@@ -176,7 +198,6 @@ module [<Erase>] DropdownMenu =
         /// Event handler called when the user selects an item (via mouse or keyboard). Calling event.preventDefault in this handler will prevent the dropdown menu from closing when selecting that item.
         static member inline textValue ( value : string ) : 'Property = Interop.mkProperty "textValue" value
 
-    /// import "DropdownMenuItemIndicator" ""
     /// Renders when the parent DropdownMenu.CheckboxItem or DropdownMenu.RadioItem is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
     type [<Erase>] itemIndicator<'Property> =
         inherit prop<'Property>
@@ -187,7 +208,6 @@ module [<Erase>] DropdownMenu =
         /// Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.
         static member inline forceMount ( value : bool ) : 'Property = Interop.mkProperty "forceMount" value
 
-    /// import "DropdownMenuSeparator" ""
     /// Used to visually separate items in the dropdown menu.
     type [<Erase>] separator<'Property> =
         inherit prop<'Property>
@@ -196,7 +216,6 @@ module [<Erase>] DropdownMenu =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "DropdownMenuSub" ""
     /// Contains all the parts of a submenu.
     type [<Erase>] sub<'Property> =
         inherit prop<'Property>
@@ -207,7 +226,6 @@ module [<Erase>] DropdownMenu =
         /// Event handler called when the open state of the submenu changes.
         static member inline onOpenChange ( value : (bool -> unit) ) : 'Property = Interop.mkProperty "onOpenChange" value
 
-    /// import "DropdownMenuSubTrigger" ""
     /// An item that opens a submenu. Must be rendered inside DropdownMenu.Sub.
     type [<Erase>] subTrigger<'Property> =
         inherit prop<'Property>
@@ -218,7 +236,6 @@ module [<Erase>] DropdownMenu =
         /// Optional text used for typeahead purposes. By default the typeahead behavior will use the .textContent of the item. Use this when the content is complex, or you have non-textual content inside.
         static member inline textValue ( value : string ) : 'Property = Interop.mkProperty "textValue" value
 
-    /// import "DropdownMenuSubContent" ""
     /// The component that pops out when a submenu is open. Must be rendered inside DropdownMenu.Sub.
     type [<Erase>] subContent<'Property> =
         inherit prop<'Property>
@@ -258,29 +275,3 @@ module [<Erase>] DropdownMenu =
         static member inline arrowPadding ( value : int ) : 'Property = Interop.mkProperty "arrowPadding" value
         /// The sticky behavior on the align axis. "partial" will keep the content in the boundary as long as the trigger is at least partially in the boundary whilst "always" will keep the content in the boundary regardless.
         static member inline hideWhenDetached ( value : bool ) : 'Property = Interop.mkProperty "hideWhenDetached" value
-
-module [<Erase>] dropdownMenuroot =
-    type [<Erase>] dir<'Property> =
-        static member inline ltr : 'Property = Interop.mkProperty "dir" "ltr"
-        static member inline rtl : 'Property = Interop.mkProperty "dir" "rtl"
-
-module [<Erase>] dropdownMenucontent =
-    type [<Erase>] side<'Property> =
-        static member inline top : 'Property = Interop.mkProperty "side" "top"
-        static member inline right : 'Property = Interop.mkProperty "side" "right"
-        static member inline bottom : 'Property = Interop.mkProperty "side" "bottom"
-        static member inline left : 'Property = Interop.mkProperty "side" "left"
-
-    type [<Erase>] align<'Property> =
-        static member inline start : 'Property = Interop.mkProperty "align" "start"
-        static member inline center : 'Property = Interop.mkProperty "align" "center"
-        static member inline end' : 'Property = Interop.mkProperty "align" "end"
-
-    type [<Erase>] sticky<'Property> =
-        static member inline partial : 'Property = Interop.mkProperty "sticky" "partial"
-        static member inline always : 'Property = Interop.mkProperty "sticky" "always"
-
-module [<Erase>] dropdownMenusubContent =
-    type [<Erase>] sticky<'Property> =
-        static member inline partial : 'Property = Interop.mkProperty "sticky" "partial"
-        static member inline always : 'Property = Interop.mkProperty "sticky" "always"

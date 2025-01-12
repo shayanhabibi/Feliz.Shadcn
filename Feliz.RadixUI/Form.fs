@@ -8,8 +8,8 @@ open Browser.Types
 
 
 /// Collect information from your users using validation rules.
+[<RequireQualifiedAccess>]
 module [<Erase>] Form =
-    /// import "Form" ""
     /// Contains all the parts of a form.
     type [<Erase>] root<'Property> =
         inherit prop<'Property>
@@ -20,7 +20,6 @@ module [<Erase>] Form =
         /// Event handler called when the form is submitted or reset and the server errors need to be cleared.
         static member inline onClearServerErrors ( value : (unit -> unit) ) : 'Property = Interop.mkProperty "onClearServerErrors" value
 
-    /// import "FormField" ""
     /// The wrapper for a field. It handles id/name and label accessibility automatically.
     type [<Erase>] field<'Property> =
         inherit prop<'Property>
@@ -31,7 +30,6 @@ module [<Erase>] Form =
         /// Use this prop to mark the field as invalid on the server.
         static member inline serverInvalid ( value : bool ) : 'Property = Interop.mkProperty "serverInvalid" value
 
-    /// import "FormLabel" ""
     /// A label element which is automatically wired when nested inside a Field part.
     type [<Erase>] label<'Property> =
         inherit prop<'Property>
@@ -40,7 +38,6 @@ module [<Erase>] Form =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "FormControl" ""
     /// A control element (by default an input) which is automatically wired when nested inside a Field part.
     type [<Erase>] control<'Property> =
         inherit prop<'Property>
@@ -49,7 +46,6 @@ module [<Erase>] Form =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "FormValidityState" ""
     /// Use this render-prop component to access a given field’s validity state in render (see ValidityState on
     /// 
     /// MDN
@@ -62,7 +58,6 @@ module [<Erase>] Form =
         /// A render function that receives the validity state of the field.
         static member inline name ( value : string ) : 'Property = Interop.mkProperty "name" value
 
-    /// import "FormSubmit" ""
     /// The submit button.
     type [<Erase>] submit<'Property> =
         inherit prop<'Property>

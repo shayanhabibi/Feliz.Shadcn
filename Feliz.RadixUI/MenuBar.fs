@@ -7,9 +7,41 @@ open Feliz.Interop.Extend
 open Browser.Types
 
 
+/// Contains all the parts of a menubar.
+[<RequireQualifiedAccess>]
+module [<Erase>] menuBarRoot =
+    type [<Erase>] dir<'Property> =
+        static member inline ltr : 'Property = Interop.mkProperty "dir" "ltr"
+        static member inline rtl : 'Property = Interop.mkProperty "dir" "rtl"
+
+/// The component that pops out when a menu is open.
+[<RequireQualifiedAccess>]
+module [<Erase>] menuBarContent =
+    type [<Erase>] side<'Property> =
+        static member inline top : 'Property = Interop.mkProperty "side" "top"
+        static member inline right : 'Property = Interop.mkProperty "side" "right"
+        static member inline bottom : 'Property = Interop.mkProperty "side" "bottom"
+        static member inline left : 'Property = Interop.mkProperty "side" "left"
+
+    type [<Erase>] align<'Property> =
+        static member inline start : 'Property = Interop.mkProperty "align" "start"
+        static member inline center : 'Property = Interop.mkProperty "align" "center"
+        static member inline end' : 'Property = Interop.mkProperty "align" "end"
+
+    type [<Erase>] sticky<'Property> =
+        static member inline partial : 'Property = Interop.mkProperty "sticky" "partial"
+        static member inline always : 'Property = Interop.mkProperty "sticky" "always"
+
+/// The component that pops out when a submenu is open. Must be rendered inside Menubar.Sub.
+[<RequireQualifiedAccess>]
+module [<Erase>] menuBarSubContent =
+    type [<Erase>] sticky<'Property> =
+        static member inline partial : 'Property = Interop.mkProperty "sticky" "partial"
+        static member inline always : 'Property = Interop.mkProperty "sticky" "always"
+
 /// A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.
+[<RequireQualifiedAccess>]
 module [<Erase>] MenuBar =
-    /// import "MenuBar" ""
     /// Contains all the parts of a menubar.
     type [<Erase>] root<'Property> =
         inherit prop<'Property>
@@ -26,7 +58,6 @@ module [<Erase>] MenuBar =
         /// The reading direction. If omitted, inherits globally from DirectionProvider or assumes LTR (left-to-right) reading mode.
         static member inline loop ( value : bool ) : 'Property = Interop.mkProperty "loop" value
 
-    /// import "MenuBarMenu" ""
     /// A top level menu item, contains a trigger with content combination.
     type [<Erase>] menu<'Property> =
         inherit prop<'Property>
@@ -37,7 +68,6 @@ module [<Erase>] MenuBar =
         /// A unique value that associates the item with an active value when the navigation menu is controlled. This prop is managed automatically when uncontrolled.
         static member inline value ( value : string ) : 'Property = Interop.mkProperty "value" value
 
-    /// import "MenuBarTrigger" ""
     /// The button that toggles the content. By default, the Menubar.Content will position itself against the trigger.
     type [<Erase>] trigger<'Property> =
         inherit prop<'Property>
@@ -46,7 +76,6 @@ module [<Erase>] MenuBar =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "MenuBarPortal" ""
     /// When used, portals the content part into the body.
     type [<Erase>] portal<'Property> =
         inherit prop<'Property>
@@ -55,7 +84,6 @@ module [<Erase>] MenuBar =
         /// Specify a container element to portal the content into.
         static member inline container ( value : HTMLElement ) : 'Property = Interop.mkProperty "container" value
 
-    /// import "MenuBarContent" ""
     /// The component that pops out when a menu is open.
     type [<Erase>] content<'Property> =
         inherit prop<'Property>
@@ -98,7 +126,6 @@ module [<Erase>] MenuBar =
         /// The sticky behavior on the align axis. "partial" will keep the content in the boundary as long as the trigger is at least partially in the boundary whilst "always" will keep the content in the boundary regardless.
         static member inline hideWhenDetached ( value : bool ) : 'Property = Interop.mkProperty "hideWhenDetached" value
 
-    /// import "MenuBarArrow" ""
     /// An optional arrow element to render alongside a menubar menu. This can be used to help visually link the trigger with the Menubar.Content. Must be rendered inside Menubar.Content.
     type [<Erase>] arrow<'Property> =
         inherit prop<'Property>
@@ -111,7 +138,6 @@ module [<Erase>] MenuBar =
         /// The height of the arrow in pixels.
         static member inline height ( value : int ) : 'Property = Interop.mkProperty "height" value
 
-    /// import "MenuBarItem" ""
     /// The component that contains the menubar items.
     type [<Erase>] item<'Property> =
         inherit prop<'Property>
@@ -126,7 +152,6 @@ module [<Erase>] MenuBar =
         /// Event handler called when the user selects an item (via mouse or keyboard). Calling event.preventDefault in this handler will prevent the menubar from closing when selecting that item.
         static member inline textValue ( value : string ) : 'Property = Interop.mkProperty "textValue" value
 
-    /// import "MenuBarGroup" ""
     /// Used to group multiple Menubar.Items.
     type [<Erase>] group<'Property> =
         inherit prop<'Property>
@@ -135,7 +160,6 @@ module [<Erase>] MenuBar =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "MenuBarLabel" ""
     /// Used to render a label. It won't be focusable using arrow keys.
     type [<Erase>] label<'Property> =
         inherit prop<'Property>
@@ -144,7 +168,6 @@ module [<Erase>] MenuBar =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "MenuBarCheckboxItem" ""
     /// An item that can be controlled and rendered like a checkbox.
     type [<Erase>] checkboxItem<'Property> =
         inherit prop<'Property>
@@ -165,7 +188,6 @@ module [<Erase>] MenuBar =
         /// Event handler called when the user selects an item (via mouse or keyboard). Calling event.preventDefault in this handler will prevent the menubar from closing when selecting that item.
         static member inline textValue ( value : string ) : 'Property = Interop.mkProperty "textValue" value
 
-    /// import "MenuBarRadioGroup" ""
     /// Used to group multiple Menubar.RadioItems.
     type [<Erase>] radioGroup<'Property> =
         inherit prop<'Property>
@@ -178,7 +200,6 @@ module [<Erase>] MenuBar =
         /// Event handler called when the value changes.
         static member inline onValueChange ( value : (string -> unit) ) : 'Property = Interop.mkProperty "onValueChange" value
 
-    /// import "MenuBarRadioItem" ""
     /// An item that can be controlled and rendered like a radio.
     type [<Erase>] radioItem<'Property> =
         inherit prop<'Property>
@@ -193,7 +214,6 @@ module [<Erase>] MenuBar =
         /// Event handler called when the user selects an item (via mouse or keyboard). Calling event.preventDefault in this handler will prevent the menubar from closing when selecting that item.
         static member inline textValue ( value : string ) : 'Property = Interop.mkProperty "textValue" value
 
-    /// import "MenuBarItemIndicator" ""
     /// Renders when the parent Menubar.CheckboxItem or Menubar.RadioItem is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
     type [<Erase>] itemIndicator<'Property> =
         inherit prop<'Property>
@@ -204,7 +224,6 @@ module [<Erase>] MenuBar =
         /// Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.
         static member inline forceMount ( value : bool ) : 'Property = Interop.mkProperty "forceMount" value
 
-    /// import "MenuBarSeparator" ""
     /// Used to visually separate items in a menubar menu.
     type [<Erase>] separator<'Property> =
         inherit prop<'Property>
@@ -213,7 +232,6 @@ module [<Erase>] MenuBar =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "MenuBarSub" ""
     /// Contains all the parts of a submenu.
     type [<Erase>] sub<'Property> =
         inherit prop<'Property>
@@ -224,7 +242,6 @@ module [<Erase>] MenuBar =
         /// Event handler called when the open state of the submenu changes.
         static member inline onOpenChange ( value : (bool -> unit) ) : 'Property = Interop.mkProperty "onOpenChange" value
 
-    /// import "MenuBarSubTrigger" ""
     /// An item that opens a submenu. Must be rendered inside Menubar.Sub.
     type [<Erase>] subTrigger<'Property> =
         inherit prop<'Property>
@@ -235,7 +252,6 @@ module [<Erase>] MenuBar =
         /// Optional text used for typeahead purposes. By default the typeahead behavior will use the .textContent of the item. Use this when the content is complex, or you have non-textual content inside.
         static member inline textValue ( value : string ) : 'Property = Interop.mkProperty "textValue" value
 
-    /// import "MenuBarSubContent" ""
     /// The component that pops out when a submenu is open. Must be rendered inside Menubar.Sub.
     type [<Erase>] subContent<'Property> =
         inherit prop<'Property>
@@ -275,29 +291,3 @@ module [<Erase>] MenuBar =
         static member inline arrowPadding ( value : int ) : 'Property = Interop.mkProperty "arrowPadding" value
         /// The sticky behavior on the align axis. "partial" will keep the content in the boundary as long as the trigger is at least partially in the boundary whilst "always" will keep the content in the boundary regardless.
         static member inline hideWhenDetached ( value : bool ) : 'Property = Interop.mkProperty "hideWhenDetached" value
-
-module [<Erase>] menuBarroot =
-    type [<Erase>] dir<'Property> =
-        static member inline ltr : 'Property = Interop.mkProperty "dir" "ltr"
-        static member inline rtl : 'Property = Interop.mkProperty "dir" "rtl"
-
-module [<Erase>] menuBarcontent =
-    type [<Erase>] side<'Property> =
-        static member inline top : 'Property = Interop.mkProperty "side" "top"
-        static member inline right : 'Property = Interop.mkProperty "side" "right"
-        static member inline bottom : 'Property = Interop.mkProperty "side" "bottom"
-        static member inline left : 'Property = Interop.mkProperty "side" "left"
-
-    type [<Erase>] align<'Property> =
-        static member inline start : 'Property = Interop.mkProperty "align" "start"
-        static member inline center : 'Property = Interop.mkProperty "align" "center"
-        static member inline end' : 'Property = Interop.mkProperty "align" "end"
-
-    type [<Erase>] sticky<'Property> =
-        static member inline partial : 'Property = Interop.mkProperty "sticky" "partial"
-        static member inline always : 'Property = Interop.mkProperty "sticky" "always"
-
-module [<Erase>] menuBarsubContent =
-    type [<Erase>] sticky<'Property> =
-        static member inline partial : 'Property = Interop.mkProperty "sticky" "partial"
-        static member inline always : 'Property = Interop.mkProperty "sticky" "always"

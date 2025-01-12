@@ -7,9 +7,20 @@ open Feliz.Interop.Extend
 open Browser.Types
 
 
+/// Contains all the parts of a slider. It will render an input for each thumb when used within a form to ensure events propagate correctly.
+[<RequireQualifiedAccess>]
+module [<Erase>] sliderRoot =
+    type [<Erase>] orientation<'Property> =
+        static member inline horizontal : 'Property = Interop.mkProperty "orientation" "horizontal"
+        static member inline vertical : 'Property = Interop.mkProperty "orientation" "vertical"
+
+    type [<Erase>] dir<'Property> =
+        static member inline ltr : 'Property = Interop.mkProperty "dir" "ltr"
+        static member inline rtl : 'Property = Interop.mkProperty "dir" "rtl"
+
 /// An input where the user selects a value from within a given range.
+[<RequireQualifiedAccess>]
 module [<Erase>] Slider =
-    /// import "Slider" ""
     /// Contains all the parts of a slider. It will render an input for each thumb when used within a form to ensure events propagate correctly.
     type [<Erase>] root<'Property> =
         inherit prop<'Property>
@@ -42,7 +53,6 @@ module [<Erase>] Slider =
         /// The ID of the form that the slider belongs to. If omitted, the slider will be associated with a parent form if one exists.
         static member inline form ( value : string ) : 'Property = Interop.mkProperty "form" value
 
-    /// import "SliderTrack" ""
     /// The track that contains the Slider.Range.
     type [<Erase>] track<'Property> =
         inherit prop<'Property>
@@ -51,7 +61,6 @@ module [<Erase>] Slider =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "SliderRange" ""
     /// The range part. Must live inside Slider.Track.
     type [<Erase>] range<'Property> =
         inherit prop<'Property>
@@ -60,7 +69,6 @@ module [<Erase>] Slider =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "SliderThumb" ""
     /// A draggable thumb. You can render multiple thumbs.
     type [<Erase>] thumb<'Property> =
         inherit prop<'Property>
@@ -68,12 +76,3 @@ module [<Erase>] Slider =
         ///  
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
-
-module [<Erase>] sliderroot =
-    type [<Erase>] orientation<'Property> =
-        static member inline horizontal : 'Property = Interop.mkProperty "orientation" "horizontal"
-        static member inline vertical : 'Property = Interop.mkProperty "orientation" "vertical"
-
-    type [<Erase>] dir<'Property> =
-        static member inline ltr : 'Property = Interop.mkProperty "dir" "ltr"
-        static member inline rtl : 'Property = Interop.mkProperty "dir" "rtl"

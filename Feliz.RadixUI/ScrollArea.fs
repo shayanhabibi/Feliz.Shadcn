@@ -7,9 +7,29 @@ open Feliz.Interop.Extend
 open Browser.Types
 
 
+/// Contains all the parts of a scroll area.
+[<RequireQualifiedAccess>]
+module [<Erase>] scrollAreaRoot =
+    type [<Erase>] type'<'Property> =
+        static member inline auto : 'Property = Interop.mkProperty "type" "auto"
+        static member inline always : 'Property = Interop.mkProperty "type" "always"
+        static member inline scroll : 'Property = Interop.mkProperty "type" "scroll"
+        static member inline hover : 'Property = Interop.mkProperty "type" "hover"
+
+    type [<Erase>] dir<'Property> =
+        static member inline ltr : 'Property = Interop.mkProperty "dir" "ltr"
+        static member inline rtl : 'Property = Interop.mkProperty "dir" "rtl"
+
+/// The vertical scrollbar. Add a second Scrollbar with an orientation prop to enable horizontal scrolling.
+[<RequireQualifiedAccess>]
+module [<Erase>] scrollAreaScrollbar =
+    type [<Erase>] orientation<'Property> =
+        static member inline horizontal : 'Property = Interop.mkProperty "orientation" "horizontal"
+        static member inline vertical : 'Property = Interop.mkProperty "orientation" "vertical"
+
 /// Augments native scroll functionality for custom, cross-browser styling.
+[<RequireQualifiedAccess>]
 module [<Erase>] ScrollArea =
-    /// import "ScrollArea" ""
     /// Contains all the parts of a scroll area.
     type [<Erase>] root<'Property> =
         inherit prop<'Property>
@@ -27,7 +47,6 @@ module [<Erase>] ScrollArea =
         /// The reading direction of the scroll area. If omitted, inherits globally from DirectionProvider or assumes LTR (left-to-right) reading mode.
         static member inline nonce ( value : string ) : 'Property = Interop.mkProperty "nonce" value
 
-    /// import "ScrollAreaViewport" ""
     /// The viewport area of the scroll area.
     type [<Erase>] viewport<'Property> =
         inherit prop<'Property>
@@ -36,7 +55,6 @@ module [<Erase>] ScrollArea =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "ScrollAreaScrollbar" ""
     /// The vertical scrollbar. Add a second Scrollbar with an orientation prop to enable horizontal scrolling.
     type [<Erase>] scrollbar<'Property> =
         inherit prop<'Property>
@@ -47,14 +65,12 @@ module [<Erase>] ScrollArea =
         /// Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.
         static member inline forceMount ( value : bool ) : 'Property = Interop.mkProperty "forceMount" value
 
-    /// import "ScrollAreaThumb" ""
     /// The thumb to be used in ScrollArea.Scrollbar.
     type [<Erase>] thumb<'Property> =
         inherit prop<'Property>
         /// The orientation of the scrollbar
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "ScrollAreaCorner" ""
     /// The corner where both vertical and horizontal scrollbars meet.
     type [<Erase>] corner<'Property> =
         inherit prop<'Property>
@@ -62,19 +78,3 @@ module [<Erase>] ScrollArea =
         ///  
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
-
-module [<Erase>] scrollArearoot =
-    type [<Erase>] type'<'Property> =
-        static member inline auto : 'Property = Interop.mkProperty "type" "auto"
-        static member inline always : 'Property = Interop.mkProperty "type" "always"
-        static member inline scroll : 'Property = Interop.mkProperty "type" "scroll"
-        static member inline hover : 'Property = Interop.mkProperty "type" "hover"
-
-    type [<Erase>] dir<'Property> =
-        static member inline ltr : 'Property = Interop.mkProperty "dir" "ltr"
-        static member inline rtl : 'Property = Interop.mkProperty "dir" "rtl"
-
-module [<Erase>] scrollAreascrollbar =
-    type [<Erase>] orientation<'Property> =
-        static member inline horizontal : 'Property = Interop.mkProperty "orientation" "horizontal"
-        static member inline vertical : 'Property = Interop.mkProperty "orientation" "vertical"

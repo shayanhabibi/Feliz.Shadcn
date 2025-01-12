@@ -7,9 +7,21 @@ open Feliz.Interop.Extend
 open Browser.Types
 
 
+/// Contains all the parts of a radio group.
+[<RequireQualifiedAccess>]
+module [<Erase>] radioGroupRoot =
+    type [<Erase>] orientation<'Property> =
+        static member inline horizontal : 'Property = Interop.mkProperty "orientation" "horizontal"
+        static member inline vertical : 'Property = Interop.mkProperty "orientation" "vertical"
+        static member inline undefined : 'Property = Interop.mkProperty "orientation" "undefined"
+
+    type [<Erase>] dir<'Property> =
+        static member inline ltr : 'Property = Interop.mkProperty "dir" "ltr"
+        static member inline rtl : 'Property = Interop.mkProperty "dir" "rtl"
+
 /// A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.
+[<RequireQualifiedAccess>]
 module [<Erase>] RadioGroup =
-    /// import "RadioGroup" ""
     /// Contains all the parts of a radio group.
     type [<Erase>] root<'Property> =
         inherit prop<'Property>
@@ -32,7 +44,6 @@ module [<Erase>] RadioGroup =
         /// The reading direction of the radio group. If omitted, inherits globally from DirectionProvider or assumes LTR (left-to-right) reading mode.
         static member inline loop ( value : bool ) : 'Property = Interop.mkProperty "loop" value
 
-    /// import "RadioGroupItem" ""
     /// An item in the group that can be checked. An input will also render when used within a form to ensure events propagate correctly.
     type [<Erase>] item<'Property> =
         inherit prop<'Property>
@@ -47,7 +58,6 @@ module [<Erase>] RadioGroup =
         /// When true, indicates that the user must check the radio item before the owning form can be submitted.
         static member inline required ( value : bool ) : 'Property = Interop.mkProperty "required" value
 
-    /// import "RadioGroupIndicator" ""
     /// Renders when the radio item is in a checked state. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
     type [<Erase>] indicator<'Property> =
         inherit prop<'Property>
@@ -57,13 +67,3 @@ module [<Erase>] RadioGroup =
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
         /// Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.
         static member inline forceMount ( value : bool ) : 'Property = Interop.mkProperty "forceMount" value
-
-module [<Erase>] radioGrouproot =
-    type [<Erase>] orientation<'Property> =
-        static member inline horizontal : 'Property = Interop.mkProperty "orientation" "horizontal"
-        static member inline vertical : 'Property = Interop.mkProperty "orientation" "vertical"
-        static member inline undefined : 'Property = Interop.mkProperty "orientation" "undefined"
-
-    type [<Erase>] dir<'Property> =
-        static member inline ltr : 'Property = Interop.mkProperty "dir" "ltr"
-        static member inline rtl : 'Property = Interop.mkProperty "dir" "rtl"

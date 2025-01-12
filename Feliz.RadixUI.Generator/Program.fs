@@ -84,7 +84,7 @@ module Parser =
         | "(pressed: boolean) => void" -> Some [ "(bool -> unit)" ]
         | """(status: "idle" | "loading" | "loaded" | "error") => void""" -> Some [
             "(string -> unit)"
-            "(image.status -> unit)"
+            "(avatarImage.status<'Property> -> unit)"
             ]
         | "(validity: ValidityState | undefined) => React.ReactNode" -> Some [ "(ValidityState -> ReactElement)" ]
         | "(value: number, max: number) => string" -> Some [ "(int -> int -> string)" ]
@@ -476,6 +476,18 @@ module Render =
     
     let renderComponentInterface radixComponent =
         [
+            // First add Enums so that dependents can reference them
+            for subComponent in radixComponent.SubComponents do
+                if subComponent.Enums.IsEmpty |> not then
+                    for description in subComponent.Description.Split([| '\n' ; '\r' |]) do
+                        $"/// {description}"
+                    "[<RequireQualifiedAccess>]"
+                    $"module [<Erase>] {radixComponent.Name |> removeSpaces |> lowerFirst}{subComponent.Name |> removeSpaces} ="
+                    for enum in subComponent.Enums do
+                        $"type [<Erase>] {enum.Name |> removeSpaces |> lowerFirst |> appendApostropheToReservedKeywords}<'Property> =" |> indent4
+                        for case in enum.Cases do
+                            $"static member inline {case.Name |> fun s -> s.Trim('\"') |> kebabCaseToCamelCase |> removeSpaces |> lowerFirst |> appendApostropheToReservedKeywords} : 'Property = Interop.mkProperty \"{enum.Name}\" \"{(case.Value.Trim('\"'))}\"" |> indent4 |> indent4
+                        ""
             for description in radixComponent.Description.Split([|'\n' ; '\r'|]) do $"/// {description}"
             "[<RequireQualifiedAccess>]"
             $"module [<Erase>] {radixComponent.Name |> removeSpaces |> appendApostropheToReservedKeywords} ="
@@ -491,17 +503,6 @@ module Render =
                             $"/// {description}" |> indent4 |> indent4
                         $"static member inline {prop.Name |> kebabCaseToCamelCase |> appendApostropheToReservedKeywords} ( value : {overload} ) : 'Property = Interop.mkProperty \"{prop.Name}\" value" |> indent4 |> indent4
                 ""
-            for subComponent in radixComponent.SubComponents do
-                if subComponent.Enums.IsEmpty |> not then
-                    for description in subComponent.Description.Split([| '\n' ; '\r' |]) do
-                        $"/// {description}" |>
-                    "[<RequireQualifiedAccess>]"
-                    $"module [<Erase>] {radixComponent.Name |> removeSpaces |> lowerFirst}{subComponent.Name |> removeSpaces} ="
-                    for enum in subComponent.Enums do
-                        $"type [<Erase>] {enum.Name |> removeSpaces |> lowerFirst |> appendApostropheToReservedKeywords}<'Property> =" |> indent4
-                        for case in enum.Cases do
-                            $"static member inline {case.Name |> fun s -> s.Trim('\"') |> kebabCaseToCamelCase |> removeSpaces |> lowerFirst |> appendApostropheToReservedKeywords} : 'Property = Interop.mkProperty \"{enum.Name}\" \"{(case.Value.Trim('\"'))}\"" |> indent4 |> indent4
-                        ""
         ] |> String.concat newline
                         
 

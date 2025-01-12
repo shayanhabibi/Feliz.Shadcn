@@ -7,9 +7,16 @@ open Feliz.Interop.Extend
 open Browser.Types
 
 
+/// The separator.
+[<RequireQualifiedAccess>]
+module [<Erase>] separatorRoot =
+    type [<Erase>] orientation<'Property> =
+        static member inline horizontal : 'Property = Interop.mkProperty "orientation" "horizontal"
+        static member inline vertical : 'Property = Interop.mkProperty "orientation" "vertical"
+
 /// Visually or semantically separates content.
+[<RequireQualifiedAccess>]
 module [<Erase>] Separator =
-    /// import "Separator" ""
     /// The separator.
     type [<Erase>] root<'Property> =
         inherit prop<'Property>
@@ -19,8 +26,3 @@ module [<Erase>] Separator =
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
         /// The orientation of the separator.
         static member inline decorative ( value : bool ) : 'Property = Interop.mkProperty "decorative" value
-
-module [<Erase>] separatorroot =
-    type [<Erase>] orientation<'Property> =
-        static member inline horizontal : 'Property = Interop.mkProperty "orientation" "horizontal"
-        static member inline vertical : 'Property = Interop.mkProperty "orientation" "vertical"

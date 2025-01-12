@@ -7,9 +7,27 @@ open Feliz.Interop.Extend
 open Browser.Types
 
 
+/// The component that pops out when the tooltip is open.
+[<RequireQualifiedAccess>]
+module [<Erase>] tooltipContent =
+    type [<Erase>] side<'Property> =
+        static member inline top : 'Property = Interop.mkProperty "side" "top"
+        static member inline right : 'Property = Interop.mkProperty "side" "right"
+        static member inline bottom : 'Property = Interop.mkProperty "side" "bottom"
+        static member inline left : 'Property = Interop.mkProperty "side" "left"
+
+    type [<Erase>] align<'Property> =
+        static member inline start : 'Property = Interop.mkProperty "align" "start"
+        static member inline center : 'Property = Interop.mkProperty "align" "center"
+        static member inline end' : 'Property = Interop.mkProperty "align" "end"
+
+    type [<Erase>] sticky<'Property> =
+        static member inline partial : 'Property = Interop.mkProperty "sticky" "partial"
+        static member inline always : 'Property = Interop.mkProperty "sticky" "always"
+
 /// A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+[<RequireQualifiedAccess>]
 module [<Erase>] Tooltip =
-    /// import "TooltipProvider" ""
     /// Wraps your app to provide global functionality to your tooltips.
     type [<Erase>] provider<'Property> =
         inherit prop<'Property>
@@ -20,7 +38,6 @@ module [<Erase>] Tooltip =
         /// Prevents Tooltip.Content from remaining open when hovering. Disabling this has accessibility consequences.
         static member inline disableHoverableContent ( value : bool ) : 'Property = Interop.mkProperty "disableHoverableContent" value
 
-    /// import "Tooltip" ""
     /// Contains all the parts of a tooltip.
     type [<Erase>] root<'Property> =
         inherit prop<'Property>
@@ -35,7 +52,6 @@ module [<Erase>] Tooltip =
         /// Prevents Tooltip.Content from remaining open when hovering. Disabling this has accessibility consequences. Inherits from Tooltip.Provider.
         static member inline disableHoverableContent ( value : bool ) : 'Property = Interop.mkProperty "disableHoverableContent" value
 
-    /// import "TooltipTrigger" ""
     /// The button that toggles the tooltip. By default, the Tooltip.Content will position itself against the trigger.
     type [<Erase>] trigger<'Property> =
         inherit prop<'Property>
@@ -44,7 +60,6 @@ module [<Erase>] Tooltip =
         ///  Read our Composition guide for more details.
         static member inline asChild ( value : bool ) : 'Property = Interop.mkProperty "asChild" value
 
-    /// import "TooltipPortal" ""
     /// When used, portals the content part into the body.
     type [<Erase>] portal<'Property> =
         inherit prop<'Property>
@@ -53,7 +68,6 @@ module [<Erase>] Tooltip =
         /// Specify a container element to portal the content into.
         static member inline container ( value : HTMLElement ) : 'Property = Interop.mkProperty "container" value
 
-    /// import "TooltipContent" ""
     /// The component that pops out when the tooltip is open.
     type [<Erase>] content<'Property> =
         inherit prop<'Property>
@@ -88,7 +102,6 @@ module [<Erase>] Tooltip =
         /// The sticky behavior on the align axis. "partial" will keep the content in the boundary as long as the trigger is at least partially in the boundary whilst "always" will keep the content in the boundary regardless.
         static member inline hideWhenDetached ( value : bool ) : 'Property = Interop.mkProperty "hideWhenDetached" value
 
-    /// import "TooltipArrow" ""
     /// An optional arrow element to render alongside the tooltip. This can be used to help visually link the trigger with the Tooltip.Content. Must be rendered inside Tooltip.Content.
     type [<Erase>] arrow<'Property> =
         inherit prop<'Property>
@@ -100,19 +113,3 @@ module [<Erase>] Tooltip =
         static member inline width ( value : int ) : 'Property = Interop.mkProperty "width" value
         /// The height of the arrow in pixels.
         static member inline height ( value : int ) : 'Property = Interop.mkProperty "height" value
-
-module [<Erase>] tooltipcontent =
-    type [<Erase>] side<'Property> =
-        static member inline top : 'Property = Interop.mkProperty "side" "top"
-        static member inline right : 'Property = Interop.mkProperty "side" "right"
-        static member inline bottom : 'Property = Interop.mkProperty "side" "bottom"
-        static member inline left : 'Property = Interop.mkProperty "side" "left"
-
-    type [<Erase>] align<'Property> =
-        static member inline start : 'Property = Interop.mkProperty "align" "start"
-        static member inline center : 'Property = Interop.mkProperty "align" "center"
-        static member inline end' : 'Property = Interop.mkProperty "align" "end"
-
-    type [<Erase>] sticky<'Property> =
-        static member inline partial : 'Property = Interop.mkProperty "sticky" "partial"
-        static member inline always : 'Property = Interop.mkProperty "sticky" "always"
