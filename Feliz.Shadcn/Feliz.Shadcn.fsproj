@@ -51,6 +51,8 @@
     <Compile Include="Tooltip.fs" />
     <Compile Include="Sidebar.fs" />
     <Compile Include="Sidebar2.fs" />
+    <Compile Include="Chart.fs" />
+    <Compile Include="Hooks.fs" />
   </ItemGroup>
   
   <Import Project="..\.paket\Paket.Restore.targets" />

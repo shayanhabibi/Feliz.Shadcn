@@ -17,8 +17,7 @@ importSideEffects "./index.css"
 [<ReactComponent>]
 let CalendarView () =
     let date, setDate = React.useState( Constructors.Date.Create() )
-    Calendar [
-        
+    Shadcn.Calendar [
         calendar.mode.single
         calendar.selected date
         calendar.onDayClick ( fun e -> !!e |> setDate )
@@ -27,16 +26,16 @@ let CalendarView () =
 
 [<ReactComponent>]
 let Modal () =
-    AlertDialog [ alertDialog.defaultOpen true ; alertDialog.children [
-        AlertDialogTrigger [ alertDialogTrigger.text "Open" ]
-        AlertDialogContent [ alertDialogContent.children [
-            AlertDialogHeader [ alertDialogHeader.children [
-                AlertDialogTitle [ alertDialogTitle.text "Are you sure?" ]
-                AlertDialogDescription [ alertDialogDescription.text "This action cannot be undone" ]
+    Shadcn.AlertDialog [ alertDialog.defaultOpen true ; alertDialog.children [
+        Shadcn.AlertDialogTrigger [ alertDialogTrigger.text "Open" ]
+        Shadcn.AlertDialogContent [ alertDialogContent.children [
+            Shadcn.AlertDialogHeader [ alertDialogHeader.children [
+                Shadcn.AlertDialogTitle [ alertDialogTitle.text "Are you sure?" ]
+                Shadcn.AlertDialogDescription [ alertDialogDescription.text "This action cannot be undone" ]
             ] ]
-            AlertDialogFooter [ alertDialogFooter.children [
-                AlertDialogCancel [ alertDialogCancel.text "Cancel" ]
-                AlertDialogAction [ alertDialogAction.text "Continue" ]
+            Shadcn.AlertDialogFooter [ alertDialogFooter.children [
+                Shadcn.AlertDialogCancel [ alertDialogCancel.text "Cancel" ]
+                Shadcn.AlertDialogAction [ alertDialogAction.text "Continue" ]
             ] ]
         ]]
     ]]
@@ -45,25 +44,26 @@ let view =
     Html.div [
         CalendarView ()
         Modal ()
-        Accordion [
+        Html.div []
+        Shadcn.Accordion [
             accordion.children [
-                AccordionItem [
+                Shadcn.AccordionItem [
                     accordionItem.value "item1"
                     accordionItem.children [
-                        AccordionTrigger [ accordionTrigger.text "First item" ]
-                        AccordionContent [ accordionContent.text "hello world!" ]
+                        Shadcn.AccordionTrigger [ accordionTrigger.text "First item" ]
+                        Shadcn.AccordionContent [ accordionContent.text "hello world!" ]
                     ]
                 ]
-                AccordionItem [
+                Shadcn.AccordionItem [
                     accordionItem.value "item2"
                     accordionItem.children [
-                        AccordionTrigger [ accordionTrigger.text "Second item" ]
-                        AccordionContent [ accordionContent.children [
-                            Alert [
+                        Shadcn.AccordionTrigger [ accordionTrigger.text "Second item" ]
+                        Shadcn.AccordionContent [ accordionContent.children [
+                            Shadcn.Alert [
                                 alert.variant.destructive
                                 alert.children [
-                                    AlertTitle [ alertTitle.text "hey" ]
-                                    AlertDescription [ alertDescription.text "you ok bro?" ]
+                                    Shadcn.AlertTitle [ alertTitle.text "hey" ]
+                                    Shadcn.AlertDescription [ alertDescription.text "you ok bro?" ]
                                 ]
                             ]
                         ] ]

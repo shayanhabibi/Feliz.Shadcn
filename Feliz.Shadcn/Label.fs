@@ -8,10 +8,13 @@ open Feliz
 open Feliz.RadixUI
 
 emitJsStatement () "import * as LabelPrimitive from \"@radix-ui/react-label\""
-
-let labelVariants =
-    JSX.cva "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        {||}
+JSX.injectLib
+let labelVariants = JSX.jsx """
+import { cva } from "class-variance-authority";
+cva(
+  "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+)
+"""
 
 // --------------- Label -------------- //
 type [<Erase>] ILabelProp = interface end
@@ -19,16 +22,15 @@ type [<Erase>] label =
     inherit Label.root<ILabelProp>
     static member inline noop : unit = ()
 
-[<JSX.Component>]
-let Label ( props : ILabelProp list ) : ReactElement =
-    let ref = React.useRef()
-    let properties = props |> JSX.mkObject
-    emitJsStatement properties "const {className, ...sprops} = $0; const {props, ...attrs} = $props;"
-    JSX.jsx $"""
-    <LabelPrimitive.Root ref={ref}
-        className={ JSX.cn [|
-            (unbox labelVariants)()
-            properties?className
-        |] }
-        {{...attrs}} {{...sprops}} />
-    """ |> unbox
+let Label : JSX.ElementType = JSX.jsx """
+React.forwardRef(({ className, ...props }, ref) => (
+  <LabelPrimitive.Root ref={ref} className={cn(labelVariants(), className)} {...props} />
+))
+Label.displayName = LabelPrimitive.Root.displayName
+"""
+
+type [<Erase>] Shadcn =
+    static member inline Label ( props : ILabelProp list ) = JSX.createElement Label props
+    static member inline Label ( children : ReactElement list ) = JSX.createElementWithChildren Label children
+    
+  

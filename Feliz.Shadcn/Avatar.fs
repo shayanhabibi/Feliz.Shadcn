@@ -8,6 +8,7 @@ open Feliz
 open Feliz.RadixUI
 
 emitJsStatement () "import * as AvatarPrimitive from \"@radix-ui/react-avatar\""
+JSX.injectLib
 
 // --------------- Avatar -------------- //
 type [<Erase>] IAvatarProp = interface end
@@ -15,20 +16,15 @@ type [<Erase>] avatar =
     inherit Avatar.root<IAvatarProp>
     static member private noop : unit = ()
 
-[<JSX.Component>]
-let Avatar ( props : IAvatarProp list ) : ReactElement =
-    let ref = React.useRef()
-    let properties = props |> JSX.mkObject
-    emitJsStatement properties "const {className, ...sprops} = $0; const {props, ...attrs} = $props;"
-    JSX.jsx $"""
-    <AvatarPrimitive.Root
-        ref={ref}
-        className={ JSX.cn [|
-            "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
-            properties?className
-        |] }
-        {{...sprops}} {{...attrs}} />
-    """ |> unbox
+let Avatar : JSX.ElementType = JSX.jsx """
+React.forwardRef(({ className, ...props }, ref) => (
+  <AvatarPrimitive.Root
+    ref={ref}
+    className={cn("relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full", className)}
+    {...props} />
+))
+Avatar.displayName = AvatarPrimitive.Root.displayName
+"""
 
 // --------------- AvatarImage -------------- //
 type [<Erase>] IAvatarImageProp = interface end
@@ -44,39 +40,41 @@ type [<Erase>] avatarImage =
     inherit Avatar.image<IAvatarImageProp>
     static member inline onLoadingStatusChange ( handler : ImageLoadingStatus -> unit ) : IAvatarImageProp = Interop.mkProperty "onLoadingStatusChange" handler
     
-[<JSX.Component>]
-let AvatarImage ( props : IAvatarImageProp list ) : ReactElement =
-    let ref = React.useRef()
-    let properties = props |> JSX.mkObject
-    emitJsStatement properties "const {className, ...sprops} = $0; const {props, ...attrs} = $props;"
-    JSX.jsx $"""
-    <AvatarPrimitive.Image
-        ref={ref}
-        className={ JSX.cn [|
-            "aspect-square h-full w-full"
-            properties?className
-        |] }
-        {{...sprops}} {{...attrs}} />
-    """ |> unbox
+let AvatarImage : JSX.ElementType = JSX.jsx """
+React.forwardRef(({ className, ...props }, ref) => (
+  <AvatarPrimitive.Image
+    ref={ref}
+    className={cn("aspect-square h-full w-full", className)}
+    {...props} />
+))
+AvatarImage.displayName = AvatarPrimitive.Image.displayName
+"""
 
 // --------------- AvatarFallBack -------------- //
-type [<Erase>] IAvatarFallBackProp = interface end
-type [<Erase>] avatarFallBack =
-    inherit Avatar.fallback<IAvatarFallBackProp>
+type [<Erase>] IAvatarFallbackProp = interface end
+type [<Erase>] avatarFallback =
+    inherit Avatar.fallback<IAvatarFallbackProp>
     static member private noop = ()
     // static member inline delayMs ( value : int ) : IAvatarFallBackProp = Interop.mkProperty "delayMs" value
 
-[<JSX.Component>]
-let AvatarFallBack ( props : IAvatarFallBackProp list ) : ReactElement =
-    let ref = React.useRef()
-    let properties = props |> JSX.mkObject
-    emitJsStatement properties "const {className, ...sprops} = $0; const {props, ...attrs} = $props;"
-    JSX.jsx $"""
-    <AvatarPrimitive.Fallback
-        ref={ref}
-        className={ JSX.cn [|
-            "flex h-full w-full items-center justify-center rounded-full bg-muted"
-            properties?className
-        |] }
-        {{...sprops}} {{...attrs}} />
-    """ |> unbox
+let AvatarFallback : JSX.ElementType = JSX.jsx """
+React.forwardRef(({ className, ...props }, ref) => (
+  <AvatarPrimitive.Fallback
+    ref={ref}
+    className={cn(
+      "flex h-full w-full items-center justify-center rounded-full bg-muted",
+      className
+    )}
+    {...props} />
+))
+AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName
+"""
+
+type [<Erase>] Shadcn =
+    static member inline Avatar ( props : IAvatarProp list ) = JSX.createElement Avatar props
+    static member inline Avatar ( props : ReactElement list ) = JSX.createElementWithChildren Avatar props
+    static member inline AvatarImage ( props : IAvatarImageProp list ) = JSX.createElement AvatarImage props
+    static member inline AvatarImage ( props : ReactElement list ) = JSX.createElementWithChildren AvatarImage props
+    static member inline AvatarFallback ( props : IAvatarFallbackProp list ) = JSX.createElement AvatarFallback props
+    static member inline AvatarFallback ( props : ReactElement list ) = JSX.createElementWithChildren AvatarFallback props
+    

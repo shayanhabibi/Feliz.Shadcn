@@ -6,6 +6,9 @@ open Fable.Core.JsInterop
 
 [<RequireQualifiedAccess>]
 type [<Erase>] JSX =
+    static member inline reactElement (el: JSX.ElementType) (props: 'a) : ReactElement = import "createElement" "react"
+    static member inline createElement (el: JSX.ElementType) (props: 'ControlProperty list) : ReactElement = JSX.reactElement el (!!props |> createObj)
+    static member inline createElementWithChildren (el: JSX.ElementType) (children : ReactElement list) : ReactElement = Interop.reactElementWithChildren !!el children
     // Interop helpers for JSX & Feliz
     /// Converts a JSX.Element into a ReactElement
     static member inline toReact ( el : JSX.Element ) : ReactElement = unbox el
@@ -50,5 +53,14 @@ type [<Erase>] JSX =
         match unbox fields with
         | null -> createEmpty
         | _ -> !!fields |> createObj
-    
+    /// Injects helper functions
+    [<Emit("""
+    import * as React from "react";
+    import { clsx } from "clsx";
+    import { twMerge } from "tailwind-merge";
+    function cn(...inputs) {
+      return twMerge(clsx(inputs));
+    }
+    """)>]        
+    static member inline injectLib : unit = jsNative
     

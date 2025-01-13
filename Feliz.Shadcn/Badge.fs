@@ -5,22 +5,29 @@ open Feliz.Interop.Extend
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
+JSX.injectLib
 
-let badgeVariants =
-    JSX.cva "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-        {|
-            variants = {|
-                    variant = {|
-                            ``default`` = "border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80"
-                            secondary = "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                            destructive = "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80"
-                            outline = "text-foreground"
-                    |}         
-            |}
-            defaultVariants = {|
-                    variant = "default"
-            |}
-        |}
+let badgeVariants = JSX.jsx """
+import { cva } from "class-variance-authority";
+cva(
+  "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  {
+    variants: {
+      variant: {
+        default:
+          "border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80",
+        secondary:
+          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        destructive:
+          "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80",
+        outline: "text-foreground",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)"""
 
 // --------------- Badge -------------- //
 type [<Erase>] IBadgeProp = interface end
@@ -35,10 +42,17 @@ module [<Erase>] badge =
         static member inline outline : IBadgeProp = Interop.mkProperty "variant" "outline"
 
 [<JSX.Component>]
-let Badge ( props : IBadgeProp list ) : ReactElement =
-    let ref = React.useRef()
-    let properties = props |> JSX.mkObject
-    emitJsStatement properties "const {className, variant, ...sprops} = $0; const {props, ...attrs} = $props;"
-    JSX.jsx $"""
-    <div className={ JSX.cn [| (unbox badgeVariants)(properties?variant) ; properties?className |] } {{...sprops}} {{...attrs}} />
-    """ |> unbox
+let Badge : JSX.ElementType = JSX.jsx """
+({
+  className,
+  variant,
+  ...props
+}) => {
+  return (<div className={cn(badgeVariants({ variant }), className)} {...props} />);
+}
+"""
+
+type [<Erase>] Shadcn =
+    static member inline Badge ( props : IBadgeProp list ) = JSX.createElement Badge props
+    static member inline Badge ( children : ReactElement list ) = JSX.createElementWithChildren Badge children
+    

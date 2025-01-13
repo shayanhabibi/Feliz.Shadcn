@@ -6,21 +6,25 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
 
+JSX.injectLib
 /// Class-Variance-Authority variations object for the Alert components.
-let alertVariants =
-    JSX.cva "bg-background text-foreground"
-        {| 
-            variants = {|
-                variant = {|
-                        ``default``="bg-background text-foreground"
-                        destructive="border-destructive/50 text-destructive dark:border-destructive [&>svg]:text destructive"
-                    |}
-            |}
-        
-            defaultVariants = {|
-                variant="default"
-            |}
-         |}
+let alertVariants = JSX.jsx """
+import { cva } from "class-variance-authority"
+cva(
+  "relative w-full rounded-lg border px-4 py-3 text-sm [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground [&>svg~*]:pl-7",
+  {
+    variants: {
+      variant: {
+        default: "bg-background text-foreground",
+        destructive:
+          "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)"""
 
 // ------------- Alert -------------- //
 
@@ -36,17 +40,16 @@ module [<Erase>] alert =
         static member inline destructive : IAlertProp = Interop.mkProperty "variant" "destructive"
 
 /// The Alert Root Component.
-[<JSX.Component>]
-let Alert ( props : IAlertProp list ) : ReactElement =
-    let ref = React.useRef()
-    let properties = !!props |> JSX.mkObject
-    emitJsStatement properties $"""const {{className, variant="default", ...sprops}} = $0; const {{props, ...attrs}} = $props"""
-    JSX.jsx $"""
-    <div ref={ref} role="alert" className={JSX.cn [|
-        (unbox alertVariants)({|variant=properties?variant|})
-        properties?className
-    |]} {{...sprops}} {{...attrs}} />
-    """ |> unbox
+let Alert : JSX.ElementType = JSX.jsx """
+React.forwardRef(({ className, variant, ...props }, ref) => (
+  <div
+    ref={ref}
+    role="alert"
+    className={cn(alertVariants({ variant }), className)}
+    {...props} />
+))
+Alert.displayName = "Alert"
+"""
 
 // ------------ AlertTitle ----------- //
 type [<Erase>] IAlertTitleProp = interface end
@@ -55,16 +58,15 @@ type [<Erase>] alertTitle =
     static member inline private noop = ignore
 
 /// The Alert Title Component
-[<JSX.Component>]
-let AlertTitle ( props : IAlertTitleProp list ) : ReactElement =
-    let ref = React.useRef()
-    let properties = !!props |> JSX.mkObject
-    emitJsStatement properties "const {className, ...sprops} = $0; const {props, ...attrs} = $props"
-    JSX.jsx $"""
-    <h5 ref={ref}
-        className={ JSX.cn [| "mb-1 font-medium leading-none tracking-tight" ; properties?className |] }
-        {{...sprops}} {{...attrs}} />
-    """ |> unbox
+let AlertTitle : JSX.ElementType = JSX.jsx """
+React.forwardRef(({ className, ...props }, ref) => (
+  <h5
+    ref={ref}
+    className={cn("mb-1 font-medium leading-none tracking-tight", className)}
+    {...props} />
+))
+AlertTitle.displayName = "AlertTitle"
+"""
 
 // ------------- AlertDescription ------------- //
 type [<Erase>] IAlertDescriptionProp = interface end
@@ -73,13 +75,21 @@ type [<Erase>] alertDescription =
     static member inline private noop = ignore
 
 /// The Alert Description Component
-[<JSX.Component>]
-let AlertDescription ( props : IAlertDescriptionProp list ) : ReactElement =
-    let ref = React.useRef()
-    let properties = !!props |> JSX.mkObject
-    emitJsStatement properties "const {className, ...sprops} = $0; const {props, ...attrs} = $props"
-    JSX.jsx $"""
-    <div ref={ref}
-        className={ JSX.cn [| "text-sm [&_p]:leading-relaxed" ; properties?className |] }
-        {{...sprops}} {{...attrs}} />
-    """ |> unbox
+let AlertDescription : JSX.ElementType = JSX.jsx """
+React.forwardRef(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("text-sm [&_p]:leading-relaxed", className)}
+    {...props} />
+))
+AlertDescription.displayName = "AlertDescription"
+"""
+
+type [<Erase>] Shadcn =
+    static member inline Alert ( props : IAlertProp list ) = JSX.createElement Alert props
+    static member inline Alert ( props : ReactElement list ) = JSX.createElementWithChildren Alert props
+    
+    static member inline AlertTitle ( props : IAlertTitleProp list ) = JSX.createElement AlertTitle props
+    static member inline AlertTitle ( props : ReactElement list ) = JSX.createElementWithChildren AlertTitle props
+    static member inline AlertDescription ( props : IAlertDescriptionProp list ) = JSX.createElement AlertDescription props
+    static member inline AlertDescription ( props : ReactElement list ) = JSX.createElementWithChildren AlertDescription props

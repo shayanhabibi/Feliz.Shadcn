@@ -9,7 +9,13 @@ open Feliz
 open Feliz.Lucide
 open Browser.Types
 
-emitJsStatement () $"""import * as AccordionPrimitive from "@radix-ui/react-accordion" """
+emitJsStatement () """
+import * as React from "react"
+import * as AccordionPrimitive from "@radix-ui/react-accordion"
+import { ChevronDown } from "lucide-react"
+"""
+
+JSX.injectLib
 
 
 // ---------------- Accordion ------------------ //
@@ -26,8 +32,8 @@ type [<Erase>] accordion =
     static member inline onValueChange ( handler : string -> unit ) = Interop.mkProperty<IAccordionProp> "onValueChange" handler
     static member inline onValueChange ( handler : string list -> unit ) = Interop.mkProperty<IAccordionProp> "onValueChange" handler
 
-[<RequireQualifiedAccess>]
 /// Enum properties for Shadcn Accordion (root)
+[<RequireQualifiedAccess>]
 module [<Erase>] accordion =
     /// Enum for whether Accordion can have multiple or a singular `open` item
     type [<Erase>] type' =
@@ -44,14 +50,7 @@ module [<Erase>] accordion =
 
 /// Root Accordion Component which wraps the other elements for the Accordion.
 /// Accepts a list of properties.
-[<JSX.Component>]
-let Accordion ( props : IAccordionProp list ) : ReactElement =
-    let ref = React.useRef()
-    let properties = !!props |> JSX.mkObject
-    emitJsStatement properties "const {...sprops} = $0; const {props, ...attrs} = $props"
-    JSX.jsx $"""
-    <AccordionPrimitive.Root {{...props}} {{...attrs}} ref={ref}/>
-    """ |> unbox
+let Accordion : JSX.ElementType = JSX.jsx "AccordionPrimitive.Root"
 
 // ---------------- AccordionItem ------------------ //
 type [<Erase>] IAccordionItemProp = interface end
@@ -61,17 +60,12 @@ type [<Erase>] accordionItem =
     static member inline private noop = ignore
 
 /// The Accordion Item Component
-[<JSX.Component>]
-let AccordionItem ( props : IAccordionItemProp list ) : ReactElement =
-    let ref = React.useRef()    
-    let properties = !!props |> JSX.mkObject
-    emitJsStatement properties "const {className, ...sprops} = $0; const {props, ...attrs} = $props"
-    JSX.jsx $"""
-    <AccordionPrimitive.Item
-        ref={ref}
-        className={ JSX.cn [| "border-b" ; properties?className |] }
-        {{...props}} {{...attrs}} />
-    """ |> unbox
+let AccordionItem : JSX.ElementType = JSX.jsx """
+React.forwardRef(({ className, ...props }, ref) => (
+  <AccordionPrimitive.Item ref={ref} className={cn("border-b", className)} {...props} />
+))
+AccordionItem.displayName = "AccordionItem"
+"""
 
 // ---------------- AccordionTrigger ------------------ //
 type [<Erase>] IAccordionTriggerProp = interface end
@@ -81,26 +75,23 @@ type [<Erase>] accordionTrigger =
     static member inline private noop = ignore
 
 /// The Accordion Trigger Component
-// todo add more docs
-[<JSX.Component>]
-let AccordionTrigger ( props : IAccordionTriggerProp list ) : ReactElement =
-    let ref = React.useRef()
-    let properties = !!props |> JSX.mkObject
-    emitJsStatement properties "const {className, children, ...sprops} = $0; const {props, ...attrs} = $props"
-    JSX.jsx $"""
-    <AccordionPrimitive.Header className="flex">
-        <AccordionPrimitive.Trigger
-            ref={ref}
-            className={JSX.cn [|
-                "flex flex-1 items-center justify-between py-4 text-sm font-medium transition-all hover:underline text-left [&[data-state=open]>svg]:rotate-180"
-                properties?className
-                |]}
-            {{...props}} {{...attrs}}>
-            {{children}}
-            {Icon.ChevronDown [ icon.className "h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200" ]}
-        </AccordionPrimitive.Trigger>
-    </AccordionPrimitive.Header>
-    """ |> unbox
+let AccordionTrigger : JSX.ElementType = JSX.jsx """
+React.forwardRef(({ className, children, ...props }, ref) => (
+  <AccordionPrimitive.Header className="flex">
+    <AccordionPrimitive.Trigger
+      ref={ref}
+      className={cn(
+        "flex flex-1 items-center justify-between py-4 text-sm font-medium transition-all hover:underline text-left [&[data-state=open]>svg]:rotate-180",
+        className
+      )}
+      {...props}>
+      {children}
+      <ChevronDown
+        className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200" />
+    </AccordionPrimitive.Trigger>
+  </AccordionPrimitive.Header>
+))
+AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName"""
 
 // ---------------- AccordionContent ------------------ //
 type [<Erase>] IAccordionContentProp = interface end
@@ -110,16 +101,24 @@ type [<Erase>] accordionContent =
     static member inline private noop = ignore
 
 /// The Accordion Content Component
-[<JSX.Component>]
-let AccordionContent ( props : IAccordionContentProp list ) : ReactElement =
-    let ref = React.useRef()
-    let properties = !!props |> JSX.mkObject
-    emitJsStatement properties "const {className, children, ...sprops} = $0; const {props, ...attrs} = $props"
-    JSX.jsx $"""
-    <AccordionPrimitive.Content
-        ref={ref}
-        className="overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
-        {{...attrs}} {{...props}}>
-        <div className={JSX.cn [| "pb-4 pt-0" ; properties?className |] }> {{children}} </div>
-    </AccordionPrimitive.Content>
-    """ |> unbox
+let AccordionContent : JSX.ElementType = JSX.jsx """
+React.forwardRef(({ className, children, ...props }, ref) => (
+  <AccordionPrimitive.Content
+    ref={ref}
+    className="overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    {...props}>
+    <div className={cn("pb-4 pt-0", className)}>{children}</div>
+  </AccordionPrimitive.Content>
+))
+AccordionContent.displayName = AccordionPrimitive.Content.displayName
+"""
+
+type [<Erase>] Shadcn =
+    static member inline Accordion ( props : IAccordionProp list ) = JSX.createElement Accordion props
+    static member inline Accordion ( children : ReactElement list ) = JSX.createElementWithChildren Accordion children
+    static member inline AccordionItem ( props : IAccordionItemProp list ) = JSX.createElement AccordionItem props
+    static member inline AccordionItem ( children : ReactElement list ) = JSX.createElementWithChildren AccordionItem children
+    static member inline AccordionTrigger ( props : IAccordionTriggerProp list ) = JSX.createElement AccordionTrigger props
+    static member inline AccordionTrigger ( children : ReactElement list ) = JSX.createElementWithChildren AccordionTrigger children
+    static member inline AccordionContent ( props : IAccordionContentProp list ) = JSX.createElement AccordionContent props
+    static member inline AccordionContent ( children : ReactElement list ) = JSX.createElementWithChildren AccordionContent children
