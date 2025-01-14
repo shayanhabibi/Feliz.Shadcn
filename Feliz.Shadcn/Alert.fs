@@ -88,8 +88,9 @@ AlertDescription.displayName = "AlertDescription"
 type [<Erase>] Shadcn =
     static member inline Alert ( props : IAlertProp list ) = JSX.createElement Alert props
     static member inline Alert ( props : ReactElement list ) = JSX.createElementWithChildren Alert props
-    
     static member inline AlertTitle ( props : IAlertTitleProp list ) = JSX.createElement AlertTitle props
     static member inline AlertTitle ( props : ReactElement list ) = JSX.createElementWithChildren AlertTitle props
+    static member inline AlertTitle ( value : string ) = JSX.createElement AlertTitle [ prop.text value ]
     static member inline AlertDescription ( props : IAlertDescriptionProp list ) = JSX.createElement AlertDescription props
     static member inline AlertDescription ( props : ReactElement list ) = JSX.createElementWithChildren AlertDescription props
+    static member inline AlertDescription ( value : string ) = JSX.createElement AlertDescription [ prop.text value ]

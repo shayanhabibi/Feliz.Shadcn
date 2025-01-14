@@ -36,4 +36,5 @@ Checkbox.displayName = CheckboxPrimitive.Root.displayName
 type [<Erase>] Shadcn =
     static member inline Checkbox ( props : ICheckboxProp list ) = JSX.createElement Checkbox props
     static member inline Checkbox ( children : ReactElement list ) = JSX.createElementWithChildren Checkbox children
+    static member inline Checkbox ( value : string ) = JSX.createElement Checkbox [ prop.id value ]
   

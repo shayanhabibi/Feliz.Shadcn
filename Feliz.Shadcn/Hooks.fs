@@ -4,7 +4,7 @@ open Fable.Core
 
 let private MOBILE_BREAKPOINT = 768
 
-let useIsMobile () = JSX.jsx """
+let useIsMobile () = ignore <| JSX.jsx """
 import * as React from "react";
 
 {

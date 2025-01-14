@@ -32,5 +32,6 @@ Label.displayName = LabelPrimitive.Root.displayName
 type [<Erase>] Shadcn =
     static member inline Label ( props : ILabelProp list ) = JSX.createElement Label props
     static member inline Label ( children : ReactElement list ) = JSX.createElementWithChildren Label children
+    static member inline Label ( value : string ) = JSX.createElement Label [ prop.text value ]
     
   

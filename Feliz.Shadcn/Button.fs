@@ -81,3 +81,4 @@ Button.displayName = "Button"
 type [<Erase>] Shadcn =
   static member inline Button ( props : IButtonProp list ) = JSX.createElement Button props
   static member inline Button ( children : ReactElement list ) = JSX.createElementWithChildren Button children
+  static member inline Button ( value : string ) = JSX.createElement Button [ button.text value ]

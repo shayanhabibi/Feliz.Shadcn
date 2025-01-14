@@ -102,6 +102,13 @@ type [<Erase>] sheetContent =
     inherit Dialog.content<ISheetContentProp>
     static member inline noop : unit = ()
 
+module [<Erase>] sheetContent =
+    type [<Erase>] side =
+        static member inline left : ISheetContentProp = Interop.mkProperty "side" "left"
+        static member inline right : ISheetContentProp = Interop.mkProperty "side" "right"
+        static member inline top : ISheetContentProp = Interop.mkProperty "side" "top"
+        static member inline bottom : ISheetContentProp = Interop.mkProperty "side" "bottom"
+
 let SheetContent : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ side = "right", className, children, ...props }, ref) => (
   <SheetPortal>
@@ -196,6 +203,7 @@ type [<Erase>] Shadcn =
     static member inline SheetOverlay ( children : ReactElement list ) = JSX.createElementWithChildren SheetOverlay children
     static member inline SheetTrigger ( props : ISheetTriggerProp list ) = JSX.createElement SheetTrigger props
     static member inline SheetTrigger ( children : ReactElement list ) = JSX.createElementWithChildren SheetTrigger children
+    static member inline SheetTrigger ( value : string ) = JSX.createElement SheetTrigger [ prop.text value ]
     static member inline SheetClose ( props : ISheetCloseProp list ) = JSX.createElement SheetClose props
     static member inline SheetClose ( children : ReactElement list ) = JSX.createElementWithChildren SheetClose children
     static member inline SheetContent ( props : ISheetContentProp list ) = JSX.createElement SheetContent props
@@ -206,7 +214,9 @@ type [<Erase>] Shadcn =
     static member inline SheetFooter ( children : ReactElement list ) = JSX.createElementWithChildren SheetFooter children
     static member inline SheetTitle ( props : ISheetTitleProp list ) = JSX.createElement SheetTitle props
     static member inline SheetTitle ( children : ReactElement list ) = JSX.createElementWithChildren SheetTitle children
+    static member inline SheetTitle ( value : string ) = JSX.createElement SheetTitle [ prop.text value ]
     static member inline SheetDescription ( props : ISheetDescriptionProp list ) = JSX.createElement SheetDescription props
     static member inline SheetDescription ( children : ReactElement list ) = JSX.createElementWithChildren SheetDescription children
+    static member inline SheetDescription ( value : string ) = JSX.createElement SheetDescription [ prop.text value ]
                                     
   

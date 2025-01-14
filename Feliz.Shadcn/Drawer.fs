@@ -204,6 +204,7 @@ type [<Erase>] Shadcn =
     static member inline DrawerOverlay ( children : ReactElement list ) = JSX.createElementWithChildren DrawerOverlay children
     static member inline DrawerTrigger ( props : IDrawerTriggerProp list ) = JSX.createElement DrawerTrigger props
     static member inline DrawerTrigger ( children : ReactElement list ) = JSX.createElementWithChildren DrawerTrigger children
+    static member inline DrawerTrigger ( value : string ) = JSX.createElement DrawerTrigger [ prop.text value ]
     static member inline DrawerClose ( props : IDrawerCloseProp list ) = JSX.createElement DrawerClose props
     static member inline DrawerClose ( children : ReactElement list ) = JSX.createElementWithChildren DrawerClose children
     static member inline DrawerContent ( props : IDrawerContentProp list ) = JSX.createElement DrawerContent props
@@ -214,6 +215,8 @@ type [<Erase>] Shadcn =
     static member inline DrawerFooter ( children : ReactElement list ) = JSX.createElementWithChildren DrawerFooter children
     static member inline DrawerTitle ( props : IDrawerTitleProp list ) = JSX.createElement DrawerTitle props
     static member inline DrawerTitle ( children : ReactElement list ) = JSX.createElementWithChildren DrawerTitle children
+    static member inline DrawerTitle ( value : string ) = JSX.createElement DrawerTitle [ prop.text value ]
     static member inline DrawerDescription ( props : IDrawerDescriptionProp list ) = JSX.createElement DrawerDescription props
     static member inline DrawerDescription ( children : ReactElement list ) = JSX.createElementWithChildren DrawerDescription children
+    static member inline DrawerDescription ( value : string ) = JSX.createElement DrawerDescription [ prop.text value ]
                             

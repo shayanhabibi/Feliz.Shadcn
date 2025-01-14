@@ -42,5 +42,7 @@ type [<Erase>] Shadcn =
     static member inline Collapsible ( children : ReactElement list ) = JSX.createElementWithChildren Collapsible children
     static member inline CollapsibleTrigger ( props : ICollapsibleTriggerProp list ) = JSX.createElement CollapsibleTrigger props
     static member inline CollapsibleTrigger ( children : ReactElement list ) = JSX.createElementWithChildren CollapsibleTrigger children
+    static member inline CollapsibleTrigger ( value : string ) = JSX.createElement CollapsibleTrigger [ prop.text value ]
     static member inline CollapsibleContent ( props : ICollapsibleContentProp list ) = JSX.createElement CollapsibleContent props
     static member inline CollapsibleContent ( children : ReactElement list ) = JSX.createElementWithChildren CollapsibleContent children
+    static member inline CollapsibleContent ( value : string ) = JSX.createElement CollapsibleContent [ prop.text value ]

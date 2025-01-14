@@ -112,8 +112,11 @@ type [<Erase>] Shadcn =
     static member inline CardFooter ( props : ReactElement list ) = JSX.createElementWithChildren CardFooter props
     static member inline CardTitle ( props : ICardTitleProp list ) = JSX.createElement CardTitle props
     static member inline CardTitle ( props : ReactElement list ) = JSX.createElementWithChildren CardTitle props
+    static member inline CardTitle ( value : string ) = JSX.createElement CardTitle [ prop.text value ]
     static member inline CardDescription ( props : ICardDescriptionProp list ) = JSX.createElement CardDescription props
     static member inline CardDescription ( props : ReactElement list ) = JSX.createElementWithChildren CardDescription props
+    static member inline CardDescription ( value : string ) = JSX.createElement CardDescription [ prop.text value ]
     static member inline CardContent ( props : ICardContentProp list ) = JSX.createElement CardContent props
     static member inline CardContent ( props : ReactElement list ) = JSX.createElementWithChildren CardContent props
+    
     

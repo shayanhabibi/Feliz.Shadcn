@@ -14,7 +14,6 @@ type [<Erase>] skeleton =
     inherit prop<ISkeletonProp>
     static member inline noop : unit = ()
 
-[<JSX.Component>]
 let Skeleton : JSX.ElementType = JSX.jsx """
 ({
   className,
@@ -27,3 +26,10 @@ let Skeleton : JSX.ElementType = JSX.jsx """
   );
 }
 """
+
+type [<Erase>] Shadcn =
+    static member inline Skeleton ( props : ISkeletonProp list ) = JSX.createElement Skeleton props
+    static member inline Skeleton ( children : ReactElement list ) = JSX.createElementWithChildren Skeleton children
+    static member inline Skeleton ( className : string ) = JSX.createElement Skeleton [ prop.className className ]
+    static member inline Skeleton ( className : string list ) = JSX.createElement Skeleton [ prop.className className ]
+    

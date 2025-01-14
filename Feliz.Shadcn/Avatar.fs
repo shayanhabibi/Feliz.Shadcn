@@ -77,4 +77,5 @@ type [<Erase>] Shadcn =
     static member inline AvatarImage ( props : ReactElement list ) = JSX.createElementWithChildren AvatarImage props
     static member inline AvatarFallback ( props : IAvatarFallbackProp list ) = JSX.createElement AvatarFallback props
     static member inline AvatarFallback ( props : ReactElement list ) = JSX.createElementWithChildren AvatarFallback props
+    static member inline AvatarFallback ( value : string ) = JSX.createElement AvatarFallback [ prop.text value ]
     

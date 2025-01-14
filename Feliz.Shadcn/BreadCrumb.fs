@@ -3,7 +3,6 @@ module Feliz.Shadcn.BreadCrumb
 
 open Feliz.Interop.Extend
 open Fable.Core
-open Fable.Core.JsInterop
 open Feliz
 
 JSX.injectLib
@@ -144,7 +143,7 @@ import { MoreHorizontal } from "lucide-react";
     <span className="sr-only">More</span>
   </span>
 )
-BreadcrumbEllipsis.displayName = "BreadcrumbEllipsis
+BreadcrumbEllipsis.displayName = "BreadcrumbEllipsis"
 """
 
 type [<Erase>] Shadcn =
@@ -156,10 +155,14 @@ type [<Erase>] Shadcn =
     static member inline BreadcrumbItem ( props : ReactElement list ) = JSX.createElementWithChildren BreadcrumbItem props
     static member inline BreadcrumbLink ( props : IBreadcrumbLinkProp list ) = JSX.createElement BreadcrumbLink props
     static member inline BreadcrumbLink ( props : ReactElement list ) = JSX.createElementWithChildren BreadcrumbLink props
+    static member inline BreadcrumbLink ( value : string ) = JSX.createElement BreadcrumbLink [ prop.text value ]
+    static member inline BreadcrumbLink ( link : string, value : string ) = JSX.createElement BreadcrumbLink [ prop.href link ; prop.text value ]
     static member inline BreadcrumbPage ( props : IBreadcrumbPageProp list ) = JSX.createElement BreadcrumbPage props
     static member inline BreadcrumbPage ( props : ReactElement list ) = JSX.createElementWithChildren BreadcrumbPage props
+    static member inline BreadcrumbPage ( value : string ) = JSX.createElement BreadcrumbPage [ prop.text value ]
     static member inline BreadcrumbSeparator ( props : IBreadcrumbSeparatorProp list ) = JSX.createElement BreadcrumbSeparator props
     static member inline BreadcrumbSeparator ( props : ReactElement list ) = JSX.createElementWithChildren BreadcrumbSeparator props
+    static member inline BreadcrumbSeparator () = JSX.createElement BreadcrumbSeparator []
     static member inline BreadcrumbEllipsis ( props : IBreadcrumbEllipsisProp list ) = JSX.createElement BreadcrumbEllipsis props
     static member inline BreadcrumbEllipsis ( props : ReactElement list ) = JSX.createElementWithChildren BreadcrumbEllipsis props
-    
+    static member inline BreadcrumbEllipsis () = JSX.createElement BreadcrumbEllipsis []

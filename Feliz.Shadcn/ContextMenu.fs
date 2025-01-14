@@ -111,7 +111,7 @@ type [<Erase>] contextMenuContent =
 
 [<JSX.Component>]
 let ContextMenuContent : JSX.ElementType = JSX.jsx """
-const ContextMenuContent = React.forwardRef(({ className, ...props }, ref) => (
+React.forwardRef(({ className, ...props }, ref) => (
   <ContextMenuPrimitive.Portal>
     <ContextMenuPrimitive.Content
       ref={ref}
@@ -129,7 +129,7 @@ ContextMenuContent.displayName = ContextMenuPrimitive.Content.displayName
 type [<Erase>] IContextMenuItemProp = interface end
 type [<Erase>] contextMenuItem =
     inherit ContextMenu.item<IContextMenuItemProp>
-    static member inline noop : unit = ()
+    static member inline inset ( value : bool ) : IContextMenuItemProp = Interop.mkProperty "inset" value
 
 [<JSX.Component>]
 let ContextMenuItem : JSX.ElementType = JSX.jsx """
@@ -208,7 +208,7 @@ ContextMenuRadioItem.displayName = ContextMenuPrimitive.RadioItem.displayName
 type [<Erase>] IContextMenuLabelProp = interface end
 type [<Erase>] contextMenuLabel =
     inherit ContextMenu.label<IContextMenuLabelProp>
-    static member inline noop : unit = ()
+    static member inline inset ( value : bool ) : IContextMenuLabelProp = Interop.mkProperty "inset" value
 
 [<JSX.Component>]
 let ContextMenuLabel : JSX.ElementType = JSX.jsx """
@@ -268,22 +268,31 @@ type [<Erase>] Shadcn =
     static member inline ContextMenu ( children : ReactElement list ) = JSX.createElementWithChildren ContextMenu children
     static member inline ContextMenuTrigger ( props : IContextMenuTriggerProp list ) = JSX.createElement ContextMenuTrigger props
     static member inline ContextMenuTrigger ( children : ReactElement list ) = JSX.createElementWithChildren ContextMenuTrigger children
+    static member inline ContextMenuTrigger ( value : string ) = JSX.createElement ContextMenuTrigger [ prop.text value ]
     static member inline ContextMenuContent ( props : IContextMenuContentProp list ) = JSX.createElement ContextMenuContent props
     static member inline ContextMenuContent ( children : ReactElement list ) = JSX.createElementWithChildren ContextMenuContent children
     static member inline ContextMenuItem ( props : IContextMenuItemProp list ) = JSX.createElement ContextMenuItem props
     static member inline ContextMenuItem ( children : ReactElement list ) = JSX.createElementWithChildren ContextMenuItem children
+    static member inline ContextMenuItem ( value : string ) = JSX.createElement ContextMenuItem [ prop.text value ]
     static member inline ContextMenuCheckboxItem ( props : IContextMenuCheckboxItemProp list ) = JSX.createElement ContextMenuCheckboxItem props
     static member inline ContextMenuCheckboxItem ( children : ReactElement list ) = JSX.createElementWithChildren ContextMenuCheckboxItem children
+    static member inline ContextMenuCheckboxItem ( value : string ) = JSX.createElement ContextMenuCheckboxItem [ prop.text value ]
     static member inline ContextMenuRadioItem ( props : IContextMenuRadioItemProp list ) = JSX.createElement ContextMenuRadioItem props
     static member inline ContextMenuRadioItem ( children : ReactElement list ) = JSX.createElementWithChildren ContextMenuRadioItem children
+    static member inline ContextMenuRadioItem ( value : string ) = JSX.createElement ContextMenuRadioItem [ prop.text value ; prop.value value ]
+    static member inline ContextMenuRadioItem ( value : string, label : string ) = JSX.createElement ContextMenuRadioItem [ prop.text label ; prop.value value ]
     static member inline ContextMenuLabel ( props : IContextMenuLabelProp list ) = JSX.createElement ContextMenuLabel props
     static member inline ContextMenuLabel ( children : ReactElement list ) = JSX.createElementWithChildren ContextMenuLabel children
+    static member inline ContextMenuLabel ( value : string ) = JSX.createElement ContextMenuLabel [ prop.text value ]
     static member inline ContextMenuSeparator ( props : IContextMenuSeparatorProp list ) = JSX.createElement ContextMenuSeparator props
+    static member inline ContextMenuSeparator () = JSX.createElement ContextMenuSeparator []
     static member inline ContextMenuSeparator ( children : ReactElement list ) = JSX.createElementWithChildren ContextMenuSeparator children
     static member inline ContextMenuShortcut ( props : IContextMenuShortcutProp list ) = JSX.createElement ContextMenuShortcut props
     static member inline ContextMenuShortcut ( children : ReactElement list ) = JSX.createElementWithChildren ContextMenuShortcut children
+    static member inline ContextMenuShortcut ( value : string ) = JSX.createElement ContextMenuShortcut [ prop.text value ]
     static member inline ContextMenuGroup ( props : IContextMenuGroupProp list ) = JSX.createElement ContextMenuGroup props
     static member inline ContextMenuGroup ( children : ReactElement list ) = JSX.createElementWithChildren ContextMenuGroup children
+    static member inline ContextMenuGroup ( value : string ) = JSX.createElement ContextMenuGroup [ contextMenuGroup.text value ]
     static member inline ContextMenuPortal ( props : IContextMenuPortalProp list ) = JSX.createElement ContextMenuPortal props
     static member inline ContextMenuPortal ( children : ReactElement list ) = JSX.createElementWithChildren ContextMenuPortal children
     static member inline ContextMenuSub ( props : IContextMenuSubProp list ) = JSX.createElement ContextMenuSub props
@@ -292,5 +301,7 @@ type [<Erase>] Shadcn =
     static member inline ContextMenuSubContent ( children : ReactElement list ) = JSX.createElementWithChildren ContextMenuSubContent children
     static member inline ContextMenuSubTrigger ( props : IContextMenuSubTriggerProp list ) = JSX.createElement ContextMenuSubTrigger props
     static member inline ContextMenuSubTrigger ( children : ReactElement list ) = JSX.createElementWithChildren ContextMenuSubTrigger children
+    static member inline ContextMenuSubTrigger ( value : string ) = JSX.createElement ContextMenuSubTrigger [ prop.text value ]
     static member inline ContextMenuRadioGroup ( props : IContextMenuRadioGroupProp list ) = JSX.createElement ContextMenuRadioGroup props
     static member inline ContextMenuRadioGroup ( children : ReactElement list ) = JSX.createElementWithChildren ContextMenuRadioGroup children
+    static member inline ContextMenuRadioGroup ( value : string , children : ReactElement list ) = JSX.createElement ContextMenuRadioGroup [ prop.value value ; prop.children children ]

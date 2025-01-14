@@ -19,6 +19,7 @@
   </PropertyGroup>
   
   <ItemGroup>
+    <Compile Include="Hooks.fs" />
     <Compile Include="Spec.fs" />
     <Compile Include="ShadcnProps.fs" />
     <Compile Include="Shadcn.fs" />
@@ -50,9 +51,29 @@
     <Compile Include="Separator.fs" />
     <Compile Include="Tooltip.fs" />
     <Compile Include="Sidebar.fs" />
-    <Compile Include="Sidebar2.fs" />
     <Compile Include="Chart.fs" />
-    <Compile Include="Hooks.fs" />
+    <Compile Include="DropdownMenu.fs" />
+    <Compile Include="HoverCard.fs" />
+    <Compile Include="InputOTP.fs" />
+    <Compile Include="Menubar.fs" />
+    <Compile Include="NavigationMenu.fs" />
+    <Compile Include="Pagination.fs" />
+    <Compile Include="Popover.fs" />
+    <Compile Include="Progress.fs" />
+    <Compile Include="RadioGroup.fs" />
+    <Compile Include="Resizeable.fs" />
+    <Compile Include="ScrollArea.fs" />
+    <Compile Include="Select.fs" />
+    <Compile Include="Slider.fs" />
+    <Compile Include="Sonner.fs" />
+    <Compile Include="Switch.fs" />
+    <Compile Include="Table.fs" />
+    <Compile Include="Toast.fs" />
+    <Compile Include="Tabs.fs" />
+    <Compile Include="Textarea.fs" />
+    <Compile Include="Toaster.fs" />
+    <Compile Include="Toggle.fs" />
+    <Compile Include="ToggleGroup.fs" />
   </ItemGroup>
   
   <Import Project="..\.paket\Paket.Restore.targets" />

@@ -120,5 +120,7 @@ type [<Erase>] Shadcn =
     static member inline AccordionItem ( children : ReactElement list ) = JSX.createElementWithChildren AccordionItem children
     static member inline AccordionTrigger ( props : IAccordionTriggerProp list ) = JSX.createElement AccordionTrigger props
     static member inline AccordionTrigger ( children : ReactElement list ) = JSX.createElementWithChildren AccordionTrigger children
+    static member inline AccordionTrigger ( value : string ) = JSX.createElement AccordionTrigger [ prop.text value ]
     static member inline AccordionContent ( props : IAccordionContentProp list ) = JSX.createElement AccordionContent props
+    static member inline AccordionContent ( value : string ) = JSX.createElement AccordionContent [ prop.text value ]
     static member inline AccordionContent ( children : ReactElement list ) = JSX.createElementWithChildren AccordionContent children
