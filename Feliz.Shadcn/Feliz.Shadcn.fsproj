@@ -20,9 +20,6 @@
   
   <ItemGroup>
     <Compile Include="Hooks.fs" />
-    <Compile Include="Spec.fs" />
-    <Compile Include="ShadcnProps.fs" />
-    <Compile Include="Shadcn.fs" />
     <TypeScriptCompile Include="lib\utils.ts" />
     <Content Include="lib\utils.js" />
     <Compile Include="Button.fs" />
