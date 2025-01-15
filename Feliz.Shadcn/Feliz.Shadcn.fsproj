@@ -26,7 +26,6 @@
     <Compile Include="Accordion.fs" />
     <Compile Include="Alert.fs" />
     <Compile Include="AlertDialog.fs" />
-    <Content Include="README.md" />
     <Compile Include="Avatar.fs" />
     <Compile Include="Badge.fs" />
     <Compile Include="AspectRatio.fs" />
