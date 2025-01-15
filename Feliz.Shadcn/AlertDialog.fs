@@ -1,15 +1,15 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.AlertDialog
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 
 emitJsStatement () "import * as AlertDialogPrimitive from \"@radix-ui/react-alert-dialog\""
 
-JSX.injectLib
+JSX.injectShadcnLib
 let buttonVariants = Feliz.Shadcn.Button.buttonVariants
 
 // --------------- AlertDialog -------------- //

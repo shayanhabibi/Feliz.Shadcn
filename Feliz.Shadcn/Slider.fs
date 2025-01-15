@@ -1,15 +1,15 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Slider
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-JSX.injectLib
+JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import * as SliderPrimitive from "@radix-ui/react-slider"
 """
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 
 // --------------- Slider -------------- //
 type [<Erase>] ISliderProp = interface end

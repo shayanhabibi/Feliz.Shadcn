@@ -1,11 +1,11 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.BreadCrumb
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Feliz
 
-JSX.injectLib
+JSX.injectShadcnLib
 
 // --------------- Breadcrumb -------------- //
 type [<Erase>] IBreadcrumbProp = interface end

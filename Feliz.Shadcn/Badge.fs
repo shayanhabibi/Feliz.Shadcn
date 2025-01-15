@@ -1,11 +1,11 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Badge
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-JSX.injectLib
+JSX.injectShadcnLib
 
 let badgeVariants = JSX.jsx """
 import { cva } from "class-variance-authority";

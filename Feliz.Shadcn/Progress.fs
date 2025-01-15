@@ -1,16 +1,16 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Progress
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-JSX.injectLib
+JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import * as ProgressPrimitive from "@radix-ui/react-progress"
 """
 
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 
 // --------------- Progress -------------- //
 type [<Erase>] IProgressProp = interface end

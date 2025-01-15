@@ -10,20 +10,29 @@
 
 In development personal bindings to Shadcn components in Feliz style.
 
-> [!Note]
-> Base implementation for Shadcn components has been completed and the API is satisfactory for Feliz style
-
-> [!WARNING]
-> While the components are all usable, the dependencies have not been published. The Hooks file and helpers contained in Feliz.Interop.Extend and required (along with npm depencies for shadcn components).
-> 
-> Barring the above, everything should work as a copy paste
-
 The library is not necessarily intended to be package managed, but rather follows a similar logic as shadcn by providing the elements premade with nice defaults for you to change as needed. There are some dependencies which will be managed by a package, you are then free to download and use the components in whatever manner you wish.
 
 There is a cost to this, and that is you will have to pass a flag to Fable to compile into tsx/jsx. `-e .jsx`.
 
+# Install
 
-You can see the test file for some musings and play with different components and apis. The `Demo` functions show latest api usage (in terms of helpers).
+There is no install. Copy paste the contents to use them out the box. All you need to do is make sure you have the dependencies.
+
+This is handled with a helper package:
+
+```
+dotnet add package Feliz.Shadcn.Interop
+// or using paket
+paket add Feliz.Shadcn.Interop
+```
+
+For the best experience, use Femto to avoid having to download the npm packages yourself individually.
+
+```
+femto install Feliz.Shadcn.Interop
+```
+
+# Components
 
 The Button component documents the component patterns:
 

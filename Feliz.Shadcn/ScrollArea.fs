@@ -1,16 +1,16 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.ScrollArea
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-JSX.injectLib
+JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area"
 """
 
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 
 // --------------- ScrollArea -------------- //
 type [<Erase>] IScrollAreaProp = interface end

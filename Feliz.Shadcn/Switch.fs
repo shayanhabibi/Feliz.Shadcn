@@ -1,16 +1,16 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Switch
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-JSX.injectLib
+JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import * as SwitchPrimitives from "@radix-ui/react-switch"
 """
 
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 
 // --------------- Switch -------------- //
 type [<Erase>] ISwitchProp = interface end

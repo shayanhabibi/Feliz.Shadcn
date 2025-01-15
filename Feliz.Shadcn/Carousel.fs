@@ -2,13 +2,13 @@
 module Feliz.Shadcn.Carousel
 
 open Fable.Core.PyInterop
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
 open Microsoft.FSharp.Core
 
-JSX.injectLib
+JSX.injectShadcnLib
 let Button = Shadcn.Button.Button
 
 // --------------- Carousel -------------- //

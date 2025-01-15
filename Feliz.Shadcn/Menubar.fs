@@ -1,17 +1,17 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Menubar
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-JSX.injectLib
+JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import * as MenubarPrimitive from "@radix-ui/react-menubar"
 import { Check, ChevronRight, Circle } from "lucide-react"
 """
 
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 
 // --------------- MenubarMenu -------------- //
 type [<Erase>] IMenubarMenuProp = interface end

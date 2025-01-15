@@ -1,16 +1,16 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Tabs
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-JSX.injectLib
+JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import * as TabsPrimitive from "@radix-ui/react-tabs"
 """
 
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 
 // --------------- Tabs -------------- //
 type [<Erase>] ITabsProp = interface end

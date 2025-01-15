@@ -1,14 +1,14 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Sheet
 
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 open Feliz.Lucide
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
 
-JSX.injectLib
+JSX.injectShadcnLib
 
 
 let sheetVariants = JSX.jsx """

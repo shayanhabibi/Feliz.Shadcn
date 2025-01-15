@@ -1,14 +1,14 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.ContextMenu
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 
 emitJsStatement () "import * as ContextMenuPrimitive from \"@radix-ui/react-context-menu\""
-JSX.injectLib
+JSX.injectShadcnLib
 
 // --------------- ContextMenu -------------- //
 type [<Erase>] IContextMenuProp = interface end

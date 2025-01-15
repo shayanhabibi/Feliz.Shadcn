@@ -1,17 +1,17 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.RadioGroup
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-JSX.injectLib
+JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group"
 import { Circle } from "lucide-react"
 """
 
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 
 // --------------- RadioGroup -------------- //
 type [<Erase>] IRadioGroupProp = interface end

@@ -1,11 +1,11 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Input
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-JSX.injectLib
+JSX.injectShadcnLib
 
 // --------------- Input -------------- //
 type [<Erase>] IInputProp = interface end

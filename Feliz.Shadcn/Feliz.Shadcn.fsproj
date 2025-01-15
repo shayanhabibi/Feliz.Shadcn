@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Feliz.Interop.Extend\Feliz.Interop.Extend.fsproj" />
+    <ProjectReference Include="..\Feliz.Shadcn.Interop\Feliz.Shadcn.Interop.fsproj" />
     <ProjectReference Include="..\Feliz.Lucide\Feliz.Lucide.fsproj" />
-    <ProjectReference Include="..\Feliz.RadixUI\Feliz.RadixUI.fsproj" />
+    <ProjectReference Include="..\Feliz.RadixUI.Interface\Feliz.RadixUI.Interface.fsproj" />
   </ItemGroup>
   
   <PropertyGroup>
@@ -19,9 +19,6 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <Compile Include="Hooks.fs" />
-    <TypeScriptCompile Include="lib\utils.ts" />
-    <Content Include="lib\utils.js" />
     <Compile Include="Button.fs" />
     <Compile Include="Accordion.fs" />
     <Compile Include="Alert.fs" />

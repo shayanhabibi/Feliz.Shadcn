@@ -1,12 +1,12 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Tooltip
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI
-JSX.injectLib
+open Feliz.RadixUI.Interface
+JSX.injectShadcnLib
 emitJsStatement () "import * as TooltipPrimitive from \"@radix-ui/react-tooltip\""
 
 // --------------- TooltipProvider -------------- //

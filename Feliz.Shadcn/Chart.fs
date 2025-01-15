@@ -1,12 +1,12 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Chart
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
 
-JSX.injectLib
+JSX.injectShadcnLib
 
 let private THEMES = JSX.jsx """
   {

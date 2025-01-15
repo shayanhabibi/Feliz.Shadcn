@@ -1,12 +1,12 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Card
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
 
-JSX.injectLib
+JSX.injectShadcnLib
 
 // --------------- Card -------------- //
 type [<Erase>] ICardProp = interface end

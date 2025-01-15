@@ -3,7 +3,7 @@ module Feliz.Shadcn.Calendar
 
 open Browser.Types
 open Fable.Core.JS
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
@@ -12,7 +12,7 @@ emitJsStatement () """
 import { DayPicker } from "react-day-picker" 
 import { ChevronLeft, ChevronRight } from "lucide-react"
 """
-JSX.injectLib
+JSX.injectShadcnLib
 
 let buttonVariants = buttonVariants
 

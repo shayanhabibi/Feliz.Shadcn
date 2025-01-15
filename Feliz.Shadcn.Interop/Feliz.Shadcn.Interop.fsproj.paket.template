@@ -1,0 +1,19 @@
+﻿type project
+licenseUrl https://licenses.nuget.org/MIT
+licenseExpression MIT
+
+version 0.1.0
+
+authors Shayan Habibi
+
+description
+    Container for dependencies necessary to utilise Feliz.Shadcn components out of the box.
+files
+    ./README.md ==> docs
+readme docs/README.md
+
+dependencies
+    FSharp.Core
+    Feliz
+    Fable.Core
+    Feliz.RadixUI.Interface

@@ -1,17 +1,17 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Toggle
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-JSX.injectLib
+JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import * as TogglePrimitive from "@radix-ui/react-toggle"
 import { cva } from "class-variance-authority";
 """
 
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 
 let toggleVariants = JSX.jsx """
 cva(

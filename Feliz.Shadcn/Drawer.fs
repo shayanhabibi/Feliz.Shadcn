@@ -1,14 +1,14 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Drawer
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 
 emitJsStatement () "import { Drawer as DrawerPrimitive } from \"vaul\""
-JSX.injectLib
+JSX.injectShadcnLib
 
 // --------------- Drawer -------------- //
 type [<Erase>] IDrawerProp = interface end

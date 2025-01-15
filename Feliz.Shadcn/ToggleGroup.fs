@@ -1,17 +1,17 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.ToggleGroup
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-JSX.injectLib
+JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group"
 """
 let _ = toggleVariants
 
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 
 let private ToggleGroupContext = JSX.jsx """
 React.createContext({

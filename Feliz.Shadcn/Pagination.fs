@@ -1,11 +1,11 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Pagination
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-JSX.injectLib
+JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react"
 """

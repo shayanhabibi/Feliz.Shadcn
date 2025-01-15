@@ -1,11 +1,11 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Resizeable
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-JSX.injectLib
+JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import { GripVertical } from "lucide-react"
 import * as ResizablePrimitive from "react-resizable-panels"

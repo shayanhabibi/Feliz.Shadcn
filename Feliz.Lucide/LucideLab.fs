@@ -3,7 +3,7 @@ namespace Feliz.Lucide
 
 // THIS FILE IS AUTO-GENERATED
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Feliz.Lucide.Lucide
 open Fable.Core.JsInterop
 open Fable.React

@@ -1,13 +1,13 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Sonner
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 open Microsoft.FSharp.Core
-JSX.injectLib
+JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import { useTheme } from "next-themes"
 import { Toaster as Sonner } from "sonner"

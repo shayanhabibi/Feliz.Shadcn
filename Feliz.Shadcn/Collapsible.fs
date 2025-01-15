@@ -1,13 +1,13 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Collapsible
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 
-JSX.injectLib
+JSX.injectShadcnLib
 
 emitJsStatement () "import * as CollapsiblePrimitive from \"@radix-ui/react-collapsible\""
 

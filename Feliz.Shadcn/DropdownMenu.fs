@@ -1,12 +1,12 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.DropdownMenu
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI
-JSX.injectLib
+open Feliz.RadixUI.Interface
+JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { Check, ChevronRight, Circle } from "lucide-react";

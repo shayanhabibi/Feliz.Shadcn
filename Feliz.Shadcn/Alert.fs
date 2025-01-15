@@ -1,12 +1,12 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Alert
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
 
-JSX.injectLib
+JSX.injectShadcnLib
 /// Class-Variance-Authority variations object for the Alert components.
 let alertVariants = JSX.jsx """
 import { cva } from "class-variance-authority"

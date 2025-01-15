@@ -1,11 +1,11 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Button
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Feliz
 
-JSX.injectLib
+JSX.injectShadcnLib
 
 // --------------- Button -------------- //
 /// Shadcn Button prop interface type

@@ -1,14 +1,14 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Avatar
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 
 emitJsStatement () "import * as AvatarPrimitive from \"@radix-ui/react-avatar\""
-JSX.injectLib
+JSX.injectShadcnLib
 
 // --------------- Avatar -------------- //
 type [<Erase>] IAvatarProp = interface end

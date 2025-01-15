@@ -1,8 +1,8 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Accordion
 
-open Feliz.RadixUI
-open Feliz.Interop.Extend
+open Feliz.RadixUI.Interface
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
@@ -15,7 +15,7 @@ import * as AccordionPrimitive from "@radix-ui/react-accordion"
 import { ChevronDown } from "lucide-react"
 """
 
-JSX.injectLib
+JSX.injectShadcnLib
 
 
 // ---------------- Accordion ------------------ //

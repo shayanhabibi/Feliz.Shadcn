@@ -1,14 +1,14 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Checkbox
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 
 emitJsStatement () "import * as CheckboxPrimitive from \"@radix-ui/react-checkbox\""
-JSX.injectLib
+JSX.injectShadcnLib
 
 type [<Erase>] ICheckboxProp = interface end
 type [<Erase>] checkbox =

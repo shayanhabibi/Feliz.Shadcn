@@ -1,7 +1,7 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Command
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
@@ -12,7 +12,7 @@ ignore <| JSX.jsx """
 import { Command as CommandPrimitive } from "cmdk";
 import { Search } from "lucide-react";
 """
-JSX.injectLib
+JSX.injectShadcnLib
 let (_, _) = Shadcn.Dialog.Dialog, Shadcn.Dialog.DialogContent
 
 // --------------- Command -------------- //

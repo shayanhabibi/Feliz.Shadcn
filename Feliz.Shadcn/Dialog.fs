@@ -2,15 +2,15 @@
 module Feliz.Shadcn.Dialog
 
 open Browser.Types
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 
 emitJsStatement () "import * as DialogPrimitive from \"@radix-ui/react-dialog\""
 
-JSX.injectLib
+JSX.injectShadcnLib
 
 // --------------- Dialog -------------- //
 type [<Erase>] IDialogProp = interface end

@@ -1,14 +1,14 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Label
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 
 emitJsStatement () "import * as LabelPrimitive from \"@radix-ui/react-label\""
-JSX.injectLib
+JSX.injectShadcnLib
 let labelVariants = JSX.jsx """
 import { cva } from "class-variance-authority";
 cva(

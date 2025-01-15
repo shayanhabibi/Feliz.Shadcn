@@ -1,6 +1,6 @@
 ﻿namespace Feliz.Lucide
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Feliz.Lucide
 open Fable.Core
 

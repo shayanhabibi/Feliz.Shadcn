@@ -11,11 +11,11 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Feliz.Shadcn.Tests", "Feliz
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Feliz.Lucide", "Feliz.Lucide\Feliz.Lucide.fsproj", "{FD2C8D1D-8594-44E6-9C92-09E75AE406A3}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Feliz.Interop.Extend", "Feliz.Interop.Extend\Feliz.Interop.Extend.fsproj", "{93504AE4-8A6A-4DB9-BD0D-A7CBFFC44E64}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Feliz.Shadcn.Interop", "Feliz.Shadcn.Interop\Feliz.Shadcn.Interop.fsproj", "{93504AE4-8A6A-4DB9-BD0D-A7CBFFC44E64}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Feliz.Lucide.Generator", "Feliz.Lucide.Generator\Feliz.Lucide.Generator.fsproj", "{1E64F583-3891-40D2-A7E4-742673E66092}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Feliz.RadixUI", "Feliz.RadixUI\Feliz.RadixUI.fsproj", "{A9A95C88-3E7D-48D8-B570-D6DF905BA11B}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Feliz.RadixUI.Interface", "Feliz.RadixUI.Interface\Feliz.RadixUI.Interface.fsproj", "{A9A95C88-3E7D-48D8-B570-D6DF905BA11B}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Feliz.RadixUI.Generator", "Feliz.RadixUI.Generator\Feliz.RadixUI.Generator.fsproj", "{8A407855-6165-4132-AC05-76F03CBFC75C}"
 EndProject

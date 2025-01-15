@@ -1,11 +1,11 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Toast
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-JSX.injectLib
+JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import * as ToastPrimitives from "@radix-ui/react-toast"
 import { cva } from "class-variance-authority";
@@ -30,7 +30,7 @@ cva(
 )
 """
 
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 
 // --------------- ToastProvider -------------- //
 type [<Erase>] IToastProviderProp = interface end

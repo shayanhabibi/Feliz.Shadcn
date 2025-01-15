@@ -1,11 +1,11 @@
 ﻿module Feliz.Shadcn.Toaster
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
 open Feliz.Shadcn.Hooks
-JSX.injectLib
+JSX.injectShadcnLib
 let imports = (
     useToast,
     Toast,

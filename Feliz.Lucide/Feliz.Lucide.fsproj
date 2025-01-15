@@ -4,7 +4,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <DefineConstants>FABLE_COMPILER</DefineConstants>
     <PackageId>Feliz.Lucide</PackageId>
-    <Version>0.2.0</Version>
+    <Version>0.2.1</Version>
     <Authors>
             Shayan Habibi
         </Authors>
@@ -16,7 +16,7 @@
     </NpmDependencies>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Feliz.Interop.Extend\Feliz.Interop.Extend.fsproj" />
+    <ProjectReference Include="..\Feliz.Shadcn.Interop\Feliz.Shadcn.Interop.fsproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Spec.fs" />
@@ -28,4 +28,10 @@
     <None Include="Feliz.Lucide.fsproj.paket.template" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
+  
+  <PropertyGroup>
+    <PackageTags>fable-javascript</PackageTags>
+    <FablePackageType>binding</FablePackageType>
+  </PropertyGroup>
+
 </Project>

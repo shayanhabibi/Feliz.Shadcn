@@ -1,16 +1,16 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Popover
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-JSX.injectLib
+JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import * as PopoverPrimitive from "@radix-ui/react-popover"
 """
 
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 
 // --------------- Popover -------------- //
 type [<Erase>] IPopoverProp = interface end

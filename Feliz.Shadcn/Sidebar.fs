@@ -3,13 +3,13 @@ module Feliz.Shadcn.Sidebar
 
 open Browser
 open Fable.Core.JS
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
 open Feliz.Lucide
 open Feliz.Shadcn
-JSX.injectLib
+JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import { Slot } from "@radix-ui/react-slot";
 import { cva } from "class-variance-authority";

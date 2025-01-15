@@ -9,7 +9,7 @@ open Feliz.Lucide
 open Feliz.Lucide.Lab
 open Feliz.Shadcn
 open Fable.Core
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core.JS
 
 importSideEffects "./index.css"

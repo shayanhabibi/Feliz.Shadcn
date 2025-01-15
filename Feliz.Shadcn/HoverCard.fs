@@ -1,12 +1,12 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.HoverCard
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI
-JSX.injectLib
+open Feliz.RadixUI.Interface
+JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card"
 """

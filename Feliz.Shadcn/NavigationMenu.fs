@@ -1,11 +1,11 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.NavigationMenu
 
-open Feliz.Interop.Extend
+open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-JSX.injectLib
+JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
 import { cva } from "class-variance-authority"
@@ -18,7 +18,7 @@ cva(
 )
 """
 
-open Feliz.RadixUI
+open Feliz.RadixUI.Interface
 
 // --------------- NavigationMenu -------------- //
 type [<Erase>] INavigationMenuProp = interface end
