@@ -33,5 +33,6 @@ type [<Erase>] Shadcn =
     static member inline Label ( props : ILabelProp list ) = JSX.createElement Label props
     static member inline Label ( children : ReactElement list ) = JSX.createElementWithChildren Label children
     static member inline Label ( value : string ) = JSX.createElement Label [ prop.text value ]
+    static member inline Label ( el : ReactElement ) = JSX.createElement Label [ label.asChild true ; label.children el ]
     
   

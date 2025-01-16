@@ -100,4 +100,4 @@ type [<Erase>] Shadcn =
   static member inline Button ( props : IButtonProp list ) = JSX.createElement Button props
   static member inline Button ( children : ReactElement list ) = JSX.createElementWithChildren Button children
   static member inline Button ( value : string ) = JSX.createElement Button [ button.text value ]
-  static member inline Button ( el : ReactElement ) = JSX.createElement Button [ button.asChild true ; button.children [ el ] ]
+  static member inline Button ( el : ReactElement ) = JSX.createElement Button [ button.asChild true ; button.children el ]

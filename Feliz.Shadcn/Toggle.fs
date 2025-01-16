@@ -57,3 +57,4 @@ Toggle.displayName = TogglePrimitive.Root.displayName
 type [<Erase>] Shadcn =
     static member inline Toggle ( props : IToggleProp list ) = JSX.createElement Toggle props
     static member inline Toggle ( children : ReactElement list ) = JSX.createElementWithChildren Toggle children
+    static member inline Toggle ( el : ReactElement ) = JSX.createElement Toggle [ toggle.asChild true ; toggle.children el ]

@@ -9,7 +9,7 @@ open Feliz
 open Microsoft.FSharp.Core
 
 JSX.injectShadcnLib
-let Button = Shadcn.Button.Button
+let private imports = Shadcn.Button.Button
 
 // --------------- Carousel -------------- //
 type [<Erase>] ICarouselProp = interface end

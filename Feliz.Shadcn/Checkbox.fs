@@ -37,4 +37,5 @@ type [<Erase>] Shadcn =
     static member inline Checkbox ( props : ICheckboxProp list ) = JSX.createElement Checkbox props
     static member inline Checkbox ( children : ReactElement list ) = JSX.createElementWithChildren Checkbox children
     static member inline Checkbox ( value : string ) = JSX.createElement Checkbox [ prop.id value ]
+    static member inline Checkbox ( el : ReactElement ) = JSX.createElement Checkbox [ checkbox.asChild true ; checkbox.children el ]
   

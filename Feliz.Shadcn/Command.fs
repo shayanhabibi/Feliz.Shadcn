@@ -49,7 +49,7 @@ Command.displayName = CommandPrimitive.displayName
 // --------------- CommandDialog -------------- //
 type [<Erase>] ICommandDialogProp = interface end
 type [<Erase>] commandDialog =
-    inherit Feliz.RadixUI.Dialog.root<ICommandDialogProp>
+    inherit Feliz.RadixUI.Interface.Dialog.root<ICommandDialogProp>
     static member inline noop : unit = ()
 
 let CommandDialog : JSX.ElementType = JSX.jsx """

@@ -39,3 +39,4 @@ Switch.displayName = SwitchPrimitives.Root.displayName
 type [<Erase>] Shadcn =
     static member inline Switch ( props : ISwitchProp list ) = JSX.createElement Switch props
     static member inline Switch ( children : ReactElement list ) = JSX.createElementWithChildren Switch children
+    static member inline Switch ( el : ReactElement ) = JSX.createElement Switch [ switch.asChild true ; switch.children el ]
