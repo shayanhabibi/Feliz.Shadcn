@@ -77,6 +77,8 @@
     <Compile Include="Others\CultUI\PopoverForm.fs" />
     <Content Include="Others\Jakobhoeg\README.md" />
     <Compile Include="Others\Jakobhoeg\Button.fs" />
+    <Compile Include="Others\MotionPrimitives\Disclosure.fs" />
+    <Content Include="Others\MotionPrimitives\README.md" />
   </ItemGroup>
   
   <Import Project="..\.paket\Paket.Restore.targets" />
