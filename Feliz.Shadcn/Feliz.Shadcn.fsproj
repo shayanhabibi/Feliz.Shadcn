@@ -73,6 +73,10 @@
     <Compile Include="Others\RoadMapUI\Kanban.fs" />
     <Compile Include="Others\RoadMapUI\List.fs" />
     <Compile Include="Others\RoadMapUI\Table.fs" />
+    <Content Include="Others\CultUI\README.md" />
+    <Compile Include="Others\CultUI\PopoverForm.fs" />
+    <Content Include="Others\Jakobhoeg\README.md" />
+    <Compile Include="Others\Jakobhoeg\Button.fs" />
   </ItemGroup>
   
   <Import Project="..\.paket\Paket.Restore.targets" />
