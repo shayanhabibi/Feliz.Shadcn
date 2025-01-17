@@ -67,6 +67,12 @@
     <Compile Include="Toaster.fs" />
     <Compile Include="Toggle.fs" />
     <Compile Include="ToggleGroup.fs" />
+    <Content Include="Others\RoadMapUI\README.md" />
+    <Compile Include="Others\RoadMapUI\Calendar.fs" />
+    <Compile Include="Others\RoadMapUI\Gantt.fs" />
+    <Compile Include="Others\RoadMapUI\Kanban.fs" />
+    <Compile Include="Others\RoadMapUI\List.fs" />
+    <Compile Include="Others\RoadMapUI\Table.fs" />
   </ItemGroup>
   
   <Import Project="..\.paket\Paket.Restore.targets" />
