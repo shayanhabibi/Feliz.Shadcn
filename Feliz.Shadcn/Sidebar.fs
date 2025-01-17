@@ -887,6 +887,7 @@ type [<Erase>] Shadcn =
     static member inline SidebarProvider ( children : ReactElement list ) = JSX.createElementWithChildren SidebarProvider children
     static member inline SidebarRail ( props : ISidebarRailProp list ) = JSX.createElement SidebarRail props
     static member inline SidebarRail ( children : ReactElement list ) = JSX.createElementWithChildren SidebarRail children
+    static member inline SidebarRail () = JSX.createElement SidebarRail []
     static member inline SidebarSeparator ( props : ISidebarSeparatorProp list ) = JSX.createElement SidebarSeparator props
     static member inline SidebarSeparator ( children : ReactElement list ) = JSX.createElementWithChildren SidebarSeparator children
     static member inline SidebarTrigger ( props : ISidebarTriggerProp list ) = JSX.createElement SidebarTrigger props
