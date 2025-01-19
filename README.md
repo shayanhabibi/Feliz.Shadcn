@@ -1,48 +1,39 @@
-# Feliz.Lucide
+<div id="top"></div>
 
-> [!NOTE]
-> The Lucide icon bindings are published to nuget.
-> `dotnet add package Feliz.Lucide`
-> or `dotnet paket add Feliz.Lucide`
-> See the [readme](https://github.com/shayanhabibi/Feliz.Shadcn/blob/main/Feliz.Lucide/README.md) in Feliz.Lucide for usage.
+<br />
 
-# Feliz.Shadcn
+<div align="center">
+  <a href="https://github.com/shayanhabibi/Feliz.Shadcn">
+    <img src="https://avatars.githubusercontent.com/u/139895814?s=48&v=4" height="24px" style="border-radius:8px;"/>
+  </a>
+
+  <h3 align="center">Feliz.Shadcn</h3>
+  <p align="center">
+    <kbd>Shadcn Components ported for F# Fable Feliz Style</kbd>
+  </p>
+</div>
+
+---
 
 In development personal bindings to Shadcn components in Feliz style.
 
-The library is not necessarily intended to be package managed, but rather follows a similar logic as shadcn by providing the elements premade with nice defaults for you to change as needed. There are some dependencies which will be managed by a package, you are then free to download and use the components in whatever manner you wish.
+> The library is not necessarily intended to be package managed, but rather follows a similar logic as shadcn by providing the elements premade with nice defaults for you to change as needed. There are some dependencies which will be managed by a package, you are then free to download and use the components in whatever manner you wish.
 
-There is a cost to this, and that is you will have to pass a flag to Fable to compile into tsx/jsx. `-e .jsx`.
+## Setup
 
-# Install
+### Fable Config
 
-There is no install. Copy paste the contents to use them out the box. All you need to do is make sure you have the dependencies.
+Using the components requires transpilation to `.jsx` files instead of the standard `.js`.
 
-This is handled with a helper package:
+Pass `-e .fs.jsx` to Fable when transpiling, cleaning, or doing other actions that default to a particular file suffix [as per Fable docs](https://fable.io/docs/getting-started/cli.html)
 
-```
-dotnet add package Feliz.Shadcn.Interop
-// or using paket
-paket add Feliz.Shadcn.Interop
-```
+### Tailwind Config
 
-For the best experience, use Femto to avoid having to download the npm packages yourself individually.
-
-```
-femto install Feliz.Shadcn.Interop
-```
-
-# Tailwind Config
-
-> [!WARNING]
-> Shadcn takes advantage of tailwind config and variables
-> to allow a more coherent theme for your design.
-
-The variables associated with each component must be referenced
-from Shadcn docs.
-
-For reference, my current tailwind.config.js file looks like this:
-
+<details>
+  <summary>Check the Shadcn Docs for the config variables that are needed for different components. An example of the current tailwind config in use is here
+  </summary>
+  <p>
+      
 ```js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -130,7 +121,17 @@ module.exports = {
 }
 ```
 
-And my global css file like this:
+  </p>
+<p align="right">(<a href="#top">back to top</a>)</p>
+</details>
+
+### Global CSS
+
+<details>
+    <summary>
+        Similar to the Tailwind config, there are styles that will need to be added whenever directed by Shadcn docs. An example of a global css containing necessary editions is here
+    </summary>
+    <p>
 
 ```css
 @tailwind base;
@@ -217,10 +218,54 @@ And my global css file like this:
     }
 }
 ```
+<p align="right">(<a href="#top">back to top</a>)</p>        
+    </p>
+</details>
 
-# Components
 
+## Install
+
+There is no install. Copy paste the contents to use them out the box. All you need to do is make sure you have the dependencies.
+
+~This is handled with a helper package:~
+
+```
+// SEE WARNING BELOW
+dotnet add package Feliz.Shadcn.Interop
+// or using paket
+paket add Feliz.Shadcn.Interop
+```
+
+~For the best experience, use Femto to avoid having to download the npm packages yourself individually.~
+
+```
+// SEE WARNING BELOW
+femto install Feliz.Shadcn.Interop
+```
+
+> [!WARNING]
+> As I am inexperienced with dotnet packaging, there seems to be some issue with assembly references (at least when I've attempted to use it).
+>
+> The library would require you to embed the different dependency files in `Feliz.RadixUI.Interface`, `Feliz.Shadcn.Interop` and `Feliz.Lucide`.
+> Unless someone can help me package properly!
+
+# Feliz.Lucide
+
+> [!NOTE]
+> SEE ABOVE WARNING
+> 
+> ~The Lucide icon bindings are published to nuget.~
+> ~`dotnet add package Feliz.Lucide`~
+> ~or `dotnet paket add Feliz.Lucide`~
+> ~See the [readme](https://github.com/shayanhabibi/Feliz.Shadcn/blob/main/Feliz.Lucide/README.md) in Feliz.Lucide for usage.~
+
+## Components
+
+<details>
+<summary>
 The Button component documents the component patterns:
+</summary>
+    <p>
 
 ```fsharp
 [<AutoOpen>]
@@ -327,3 +372,7 @@ type [<Erase>] Shadcn =
   static member inline Button ( value : string ) = JSX.createElement Button [ button.text value ]
   static member inline Button ( el : ReactElement ) = JSX.createElement Button [ button.asChild true ; button.children [ el ] ]
 ```
+<p align="right">(<a href="#top">back to top</a>)</p>
+    </p>
+</details>
+
