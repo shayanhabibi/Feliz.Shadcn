@@ -3,7 +3,7 @@
 <br />
 
 <div align="center">
-  <a href="https://github.com/shayanhabibi/Feliz.Shadcn">
+  <a href="https://ui.shadcn.com/" target="_blank">
     <img src="https://avatars.githubusercontent.com/u/139895814?s=48&v=4" height="24px" style="border-radius:8px;"/>
   </a>
 
