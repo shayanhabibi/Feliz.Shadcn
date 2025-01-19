@@ -43,7 +43,7 @@ from Shadcn docs.
 
 For reference, my current tailwind.config.js file looks like this:
 
-```
+```js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     mode: "jit",
@@ -132,7 +132,7 @@ module.exports = {
 
 And my global css file like this:
 
-```
+```css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
