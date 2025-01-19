@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <DefineConstants>FABLE_COMPILER</DefineConstants>
     <PackageId>Feliz.Lucide</PackageId>
     <Version>0.2.1</Version>
@@ -27,11 +27,9 @@
     <None Include="README.md" Pack="true" PackagePath="\" />
     <None Include="Feliz.Lucide.fsproj.paket.template" />
   </ItemGroup>
-  <Import Project="..\.paket\Paket.Restore.targets" />
-  
   <PropertyGroup>
     <PackageTags>fable-javascript</PackageTags>
     <FablePackageType>binding</FablePackageType>
   </PropertyGroup>
-
+  <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
