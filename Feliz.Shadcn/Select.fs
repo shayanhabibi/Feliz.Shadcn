@@ -11,13 +11,11 @@ import * as SelectPrimitive from "@radix-ui/react-select"
 import { Check, ChevronDown, ChevronUp } from "lucide-react"
 """
 
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 // --------------- Select -------------- //
-type [<Erase>] ISelectProp = interface end
-type [<Erase>] select =
-    inherit Select.root<ISelectProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISelectProp = interface static member propsInterface : unit = () end
+type [<Erase>] select = Select.root<ISelectProp>
 
 let Select : JSX.ElementType = JSX.jsx """
 SelectPrimitive.Root

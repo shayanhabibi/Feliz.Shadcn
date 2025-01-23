@@ -8,10 +8,7 @@ open Feliz
 JSX.injectShadcnLib
 
 // --------------- Input -------------- //
-type [<Erase>] IInputProp = interface end
-type [<Erase>] input =
-    inherit prop<IInputProp>
-    static member inline noop : unit = ()
+type [<Erase>] IInputProp = interface static member propsInterface : unit = () end
 
 let Input : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, type, ...props }, ref) => {

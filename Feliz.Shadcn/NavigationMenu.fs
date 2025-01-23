@@ -18,13 +18,11 @@ cva(
 )
 """
 
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 // --------------- NavigationMenu -------------- //
-type [<Erase>] INavigationMenuProp = interface end
-type [<Erase>] navigationMenu =
-    inherit NavigationMenu.root<INavigationMenuProp>
-    static member inline private noop : unit = ()
+type [<Erase>] INavigationMenuProp = interface static member propsInterface : unit = () end
+type [<Erase>] navigationMenu = NavigationMenu.root<INavigationMenuProp>
 
 let NavigationMenu : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, children, ...props }, ref) => (
@@ -43,10 +41,8 @@ NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName
 """
 
 // --------------- NavigationMenuList -------------- //
-type [<Erase>] INavigationMenuListProp = interface end
-type [<Erase>] navigationMenuList =
-    inherit NavigationMenu.list'<INavigationMenuListProp>
-    static member inline private noop : unit = ()
+type [<Erase>] INavigationMenuListProp = interface static member propsInterface : unit = () end
+type [<Erase>] navigationMenuList = NavigationMenu.list'<INavigationMenuListProp>
 
 let NavigationMenuList : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -64,20 +60,16 @@ const NavigationMenuItem = NavigationMenuPrimitive.Item
 """
 
 // --------------- NavigationMenuItem -------------- //
-type [<Erase>] INavigationMenuItemProp = interface end
-type [<Erase>] navigationMenuItem =
-    inherit NavigationMenu.item<INavigationMenuItemProp>
-    static member inline private noop : unit = ()
+type [<Erase>] INavigationMenuItemProp = interface static member propsInterface : unit = () end
+type [<Erase>] navigationMenuItem = NavigationMenu.item<INavigationMenuItemProp>
 
 let NavigationMenuItem : JSX.ElementType = JSX.jsx """
 NavigationMenuPrimitive.Item
 """
 
 // --------------- NavigationMenuTrigger -------------- //
-type [<Erase>] INavigationMenuTriggerProp = interface end
-type [<Erase>] navigationMenuTrigger =
-    inherit NavigationMenu.trigger<INavigationMenuTriggerProp>
-    static member inline private noop : unit = ()
+type [<Erase>] INavigationMenuTriggerProp = interface static member propsInterface : unit = () end
+type [<Erase>] navigationMenuTrigger = NavigationMenu.trigger<INavigationMenuTriggerProp>
 
 let NavigationMenuTrigger : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, children, ...props }, ref) => (
@@ -95,10 +87,8 @@ NavigationMenuTrigger.displayName = NavigationMenuPrimitive.Trigger.displayName
 """
 
 // --------------- NavigationMenuContent -------------- //
-type [<Erase>] INavigationMenuContentProp = interface end
-type [<Erase>] navigationMenuContent =
-    inherit NavigationMenu.content<INavigationMenuContentProp>
-    static member inline private noop : unit = ()
+type [<Erase>] INavigationMenuContentProp = interface static member propsInterface : unit = () end
+type [<Erase>] navigationMenuContent = NavigationMenu.content<INavigationMenuContentProp>
 
 let NavigationMenuContent : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -114,20 +104,16 @@ NavigationMenuContent.displayName = NavigationMenuPrimitive.Content.displayName
 """
 
 // --------------- NavigationMenuLink -------------- //
-type [<Erase>] INavigationMenuLinkProp = interface end
-type [<Erase>] navigationMenuLink =
-    inherit NavigationMenu.link<INavigationMenuLinkProp>
-    static member inline private noop : unit = ()
+type [<Erase>] INavigationMenuLinkProp = interface static member propsInterface : unit = () end
+type [<Erase>] navigationMenuLink = NavigationMenu.link<INavigationMenuLinkProp>
 
 let NavigationMenuLink : JSX.ElementType = JSX.jsx """
 NavigationMenuPrimitive.Link
 """
 
 // --------------- NavigationMenuViewport -------------- //
-type [<Erase>] INavigationMenuViewportProp = interface end
-type [<Erase>] navigationMenuViewport =
-    inherit NavigationMenu.viewport<INavigationMenuViewportProp>
-    static member inline private noop : unit = ()
+type [<Erase>] INavigationMenuViewportProp = interface static member propsInterface : unit = () end
+type [<Erase>] navigationMenuViewport = NavigationMenu.viewport<INavigationMenuViewportProp>
 
 let NavigationMenuViewport : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -146,10 +132,8 @@ NavigationMenuViewport.displayName =
 """
 
 // --------------- NavigationMenuIndicator -------------- //
-type [<Erase>] INavigationMenuIndicatorProp = interface end
-type [<Erase>] navigationMenuIndicator =
-    inherit NavigationMenu.indicator<INavigationMenuIndicatorProp>
-    static member inline private noop : unit = ()
+type [<Erase>] INavigationMenuIndicatorProp = interface static member propsInterface : unit = () end
+type [<Erase>] navigationMenuIndicator = NavigationMenu.indicator<INavigationMenuIndicatorProp>
 
 let NavigationMenuIndicator : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (

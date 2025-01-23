@@ -5,15 +5,13 @@ open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 emitJsStatement () "import * as CheckboxPrimitive from \"@radix-ui/react-checkbox\""
 JSX.injectShadcnLib
 
-type [<Erase>] ICheckboxProp = interface end
-type [<Erase>] checkbox =
-    inherit Checkbox.root<ICheckboxProp>
-    static member private noop = ()
+type [<Erase>] ICheckboxProp = interface static member propsInterface : unit = () end
+type [<Erase>] checkbox = Checkbox.root<ICheckboxProp>
 
 let Checkbox : JSX.ElementType = JSX.jsx """
 import { Check } from "lucide-react";

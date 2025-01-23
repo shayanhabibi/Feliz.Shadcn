@@ -10,24 +10,19 @@ ignore <| JSX.jsx """
 import * as TabsPrimitive from "@radix-ui/react-tabs"
 """
 
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 // --------------- Tabs -------------- //
-type [<Erase>] ITabsProp = interface end
-type [<Erase>] tabs =
-    inherit Tabs.root<ITabsProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ITabsProp = interface static member propsInterface : unit = () end
+type [<Erase>] tabs = Tabs.root<ITabsProp>
 
 let Tabs : JSX.ElementType = JSX.jsx """
 TabsPrimitive.Root
 """
 
 // --------------- TabsList -------------- //
-type [<Erase>] ITabsListProp = interface end
-type [<Erase>] tabsList =
-    inherit Tabs.list'<ITabsListProp>
-    static member inline private noop : unit = ()
-
+type [<Erase>] ITabsListProp = interface static member propsInterface : unit = () end
+type [<Erase>] tabsList = Tabs.list'<ITabsListProp>
 let TabsList : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
   <TabsPrimitive.List
@@ -42,10 +37,8 @@ TabsList.displayName = TabsPrimitive.List.displayName
 """
 
 // --------------- TabsTrigger -------------- //
-type [<Erase>] ITabsTriggerProp = interface end
-type [<Erase>] tabsTrigger =
-    inherit Tabs.trigger<ITabsTriggerProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ITabsTriggerProp = interface static member propsInterface : unit = () end
+type [<Erase>] tabsTrigger = Tabs.trigger<ITabsTriggerProp>
 
 let TabsTrigger : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -61,10 +54,8 @@ TabsTrigger.displayName = TabsPrimitive.Trigger.displayName
 """
 
 // --------------- TabsContent -------------- //
-type [<Erase>] ITabsContentProp = interface end
-type [<Erase>] tabsContent =
-    inherit Tabs.content<ITabsContentProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ITabsContentProp = interface static member propsInterface : unit = () end
+type [<Erase>] tabsContent = Tabs.content<ITabsContentProp>
 
 let TabsContent : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (

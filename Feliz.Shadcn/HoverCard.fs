@@ -5,37 +5,31 @@ open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card"
 """
 
 // --------------- HoverCard -------------- //
-type [<Erase>] IHoverCardProp = interface end
-type [<Erase>] hoverCard =
-    inherit HoverCard.root<IHoverCardProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IHoverCardProp = interface static member propsInterface : unit = () end
+type [<Erase>] hoverCard = HoverCard.root<IHoverCardProp>
 
 let HoverCard : JSX.ElementType = JSX.jsx """
 HoverCardPrimitive.Root
 """
 
 // --------------- HoverCardTrigger -------------- //
-type [<Erase>] IHoverCardTriggerProp = interface end
-type [<Erase>] hoverCardTrigger =
-    inherit HoverCard.trigger<IHoverCardTriggerProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IHoverCardTriggerProp = interface static member propsInterface : unit = () end
+type [<Erase>] hoverCardTrigger = HoverCard.trigger<IHoverCardTriggerProp>
 
 let HoverCardTrigger : JSX.ElementType = JSX.jsx """
 HoverCardPrimitive.Trigger
 """
 
 // --------------- HoverCardContent -------------- //
-type [<Erase>] IHoverCardContentProp = interface end
-type [<Erase>] hoverCardContent =
-    inherit HoverCard.content<IHoverCardContentProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IHoverCardContentProp = interface static member propsInterface : unit = () end
+type [<Erase>] hoverCardContent = HoverCard.content<IHoverCardContentProp>
 
 let HoverCardContent : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, align = "center", sideOffset = 4, ...props }, ref) => (

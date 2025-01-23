@@ -11,13 +11,11 @@ import * as RadioGroupPrimitive from "@radix-ui/react-radio-group"
 import { Circle } from "lucide-react"
 """
 
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 // --------------- RadioGroup -------------- //
-type [<Erase>] IRadioGroupProp = interface end
-type [<Erase>] radioGroup =
-    inherit RadioGroup.root<IRadioGroupProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IRadioGroupProp = interface static member propsInterface : unit = () end
+type [<Erase>] radioGroup = RadioGroup.root<IRadioGroupProp>
 
 let RadioGroup : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => {
@@ -27,11 +25,8 @@ RadioGroup.displayName = RadioGroupPrimitive.Root.displayName
 """
 
 // --------------- RadioGroupItem -------------- //
-type [<Erase>] IRadioGroupItemProp = interface end
-type [<Erase>] radioGroupItem =
-    inherit RadioGroup.item<IRadioGroupItemProp>
-    static member inline private noop : unit = ()
-
+type [<Erase>] IRadioGroupItemProp = interface static member propsInterface : unit = () end
+type [<Erase>] radioGroupItem = RadioGroup.item<IRadioGroupItemProp>
 let RadioGroupItem : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => {
   return (

@@ -1,76 +1,73 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
-        <RootNamespace>Feliz.Shadcn.Interop</RootNamespace>
-    </PropertyGroup>
-    
-<!--  NPM and other external dependencies for Shadcn components  -->
-    <PropertyGroup>
-        <NpmDependencies>
-            <NpmPackage Name="lucide-react" Version="gte 0.469.0" ResolutionStrategy="Max" />
-            <NpmPackage Name="@lucide/lab" Version="gte 0.1.2" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-accordion" Version="gte 1.2.2" ResolutionStrategy="Max"/>
-            <NpmPackage Name="@radix-ui/react-alert-dialog" Version= "gte 1.1.4" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-aspect-ratio" Version= "gte 1.1.1" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-avatar" Version= "gte 1.1.2" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-checkbox" Version= "gte 1.1.3" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-collapsible" Version= "gte 1.1.2" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-context-menu" Version= "gte 1.0.0" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-dialog" Version= "gte 1.1.4" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-dropdown-menu" Version= "gte 1.0.0" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-hover-card" Version= "gte 1.1.4" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-label" Version= "gte 1.0.0" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-menubar" Version= "gte 1.1.4" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-navigation-menu" Version= "gte 1.2.3" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-popover" Version= "gte 1.1.4" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-progress" Version= "gte 1.1.1" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-radio-group" Version= "gte 1.2.2" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-scroll-area" Version= "gte 1.2.2" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-select" Version= "gte 1.2.2" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-separator" Version= "gte 1.1.1" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-slider" Version= "gte 1.2.2" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-switch" Version= "gte 1.1.2" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-tabs" Version= "gte 1.1.2" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-toast" Version= "gte 1.2.4" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-toggle" Version= "gte 1.1.1" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-toggle-group" Version= "gte 1.1.1" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-toolbar" Version= "gte 1.1.1" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-tooltip" Version= "gte 1.1.6" ResolutionStrategy="Max" />
-            <NpmPackage Name="@radix-ui/react-portal" Version="gte 1.1.1" ResolutionStrategy="Max"/>
-            <NpmPackage Name="@radix-ui/react-slot" Version="gte 1.1.0" ResolutionStrategy="Max"/>
-            <NpmPackage Name="@radix-ui/react-form" Version="gte 0.1.0" ResolutionStrategy="Max"/>
-            <NpmPackage Name="class-variance-authority" Version="gte 0.7.1" ResolutionStrategy="Max"/>
-            <NpmPackage Name="tailwind-merge" Version="gte 2.5.5" ResolutionStrategy="Max"/>
-            <NpmPackage Name="tailwindcss-animate" Version="gte 1.0.7" ResolutionStrategy="Max"/>
-            <NpmPackage Name="date-fns" Version="gte 4.1.0" ResolutionStrategy="Max"/>
-            <NpmPackage Name="react-date-picker" Version="gte 11.0.0" ResolutionStrategy="Max"/>
-            <NpmPackage Name="embla-carousel-react" Version="gte 8.5.2" ResolutionStrategy="Max"/>
-            <NpmPackage Name="recharts" Version="gte 2.15.0" ResolutionStrategy="Max"/>
-            <NpmPackage Name="cmdk" Version="gte 1.0.4" ResolutionStrategy="Max"/>
-<!--            <NpmPackage Name="@tanstack/react-table" Version="gte 8.20.6" ResolutionStrategy="Max"/>-->
-            <NpmPackage Name="vaul" Version="gte 1.1.2" ResolutionStrategy="Max"/>
-<!--            <NpmPackage Name="react-hook-form" Version="gte 7.54.2" ResolutionStrategy="Max"/>-->
-<!--            <NpmPackage Name="@hookform/resolvers" Version="gte 3.10.0" ResolutionStrategy="Max"/>-->
-<!--            <NpmPackage Name="zod" Version="gte 3.24.1" ResolutionStrategy="Max"/>-->
-            <NpmPackage Name="input-otp" Version="gte 1.4.2" ResolutionStrategy="Max"/>
-            <NpmPackage Name="react-resizable-panels" Version="gte 2.1.7" ResolutionStrategy="Max"/>
-            <NpmPackage Name="sonner" Version="gte 1.7.2" ResolutionStrategy="Max"/>
-        </NpmDependencies>
-    </PropertyGroup>
-    
-    
-    <ItemGroup>
-        <Compile Include="FelizProps.fs"/>
-        <Compile Include="JsxInterop.fs" />
-        <Content Include="README.md" />
-        <Compile Include="Hooks.fs" />
-        <Content Include="Feliz.Shadcn.Interop.fsproj.paket.template" />
-    </ItemGroup>
-    <Import Project="..\.paket\Paket.Restore.targets"/>
-
-    <PropertyGroup>
-        <PackageTags>fable-javascript</PackageTags>
-        <FablePackageType>library</FablePackageType>
-    </PropertyGroup>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>Feliz.Shadcn.Interop</RootNamespace>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <!--  NPM and other external dependencies for Shadcn components  -->
+  <PropertyGroup>
+    <NpmDependencies>
+      <NpmPackage Name="lucide-react" Version="gte 0.469.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@lucide/lab" Version="gte 0.1.2" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-accordion" Version="gte 1.2.2" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-alert-dialog" Version="gte 1.1.4" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-aspect-ratio" Version="gte 1.1.1" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-avatar" Version="gte 1.1.2" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-checkbox" Version="gte 1.1.3" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-collapsible" Version="gte 1.1.2" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-context-menu" Version="gte 1.0.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-dialog" Version="gte 1.1.4" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-dropdown-menu" Version="gte 1.0.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-hover-card" Version="gte 1.1.4" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-label" Version="gte 1.0.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-menubar" Version="gte 1.1.4" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-navigation-menu" Version="gte 1.2.3" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-popover" Version="gte 1.1.4" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-progress" Version="gte 1.1.1" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-radio-group" Version="gte 1.2.2" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-scroll-area" Version="gte 1.2.2" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-select" Version="gte 1.2.2" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-separator" Version="gte 1.1.1" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-slider" Version="gte 1.2.2" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-switch" Version="gte 1.1.2" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-tabs" Version="gte 1.1.2" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-toast" Version="gte 1.2.4" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-toggle" Version="gte 1.1.1" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-toggle-group" Version="gte 1.1.1" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-toolbar" Version="gte 1.1.1" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-tooltip" Version="gte 1.1.6" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-portal" Version="gte 1.1.1" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-slot" Version="gte 1.1.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@radix-ui/react-form" Version="gte 0.1.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="class-variance-authority" Version="gte 0.7.1" ResolutionStrategy="Max" />
+      <NpmPackage Name="tailwind-merge" Version="gte 2.5.5" ResolutionStrategy="Max" />
+      <NpmPackage Name="tailwindcss-animate" Version="gte 1.0.7" ResolutionStrategy="Max" />
+      <NpmPackage Name="date-fns" Version="gte 4.1.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="react-date-picker" Version="gte 11.0.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="embla-carousel-react" Version="gte 8.5.2" ResolutionStrategy="Max" />
+      <NpmPackage Name="recharts" Version="gte 2.15.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="cmdk" Version="gte 1.0.4" ResolutionStrategy="Max" />
+      <!--            <NpmPackage Name="@tanstack/react-table" Version="gte 8.20.6" ResolutionStrategy="Max"/>-->
+      <NpmPackage Name="vaul" Version="gte 1.1.2" ResolutionStrategy="Max" />
+      <!--            <NpmPackage Name="react-hook-form" Version="gte 7.54.2" ResolutionStrategy="Max"/>-->
+      <!--            <NpmPackage Name="@hookform/resolvers" Version="gte 3.10.0" ResolutionStrategy="Max"/>-->
+      <!--            <NpmPackage Name="zod" Version="gte 3.24.1" ResolutionStrategy="Max"/>-->
+      <NpmPackage Name="input-otp" Version="gte 1.4.2" ResolutionStrategy="Max" />
+      <NpmPackage Name="react-resizable-panels" Version="gte 2.1.7" ResolutionStrategy="Max" />
+      <NpmPackage Name="sonner" Version="gte 1.7.2" ResolutionStrategy="Max" />
+    </NpmDependencies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Feliz.Shadcn.Bridge\Feliz.Props.fs" />
+    <Compile Include="Feliz.Shadcn.Bridge\Feliz.Restyle.fs" />
+    <Compile Include="JsxInterop.fs" />
+    <Content Include="README.md" />
+    <Compile Include="Hooks.fs" />
+    <Content Include="Feliz.Shadcn.Interop.fsproj.paket.template" />
+  </ItemGroup>
+  <PropertyGroup>
+    <PackageTags>fable-javascript</PackageTags>
+    <FablePackageType>library</FablePackageType>
+  </PropertyGroup>
+  <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

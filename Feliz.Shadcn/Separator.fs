@@ -5,15 +5,13 @@ open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 JSX.injectShadcnLib
 emitJsStatement () "import * as SeparatorPrimitive from \"@radix-ui/react-separator\""
 
 // --------------- Separator -------------- //
-type [<Erase>] ISeparatorProp = interface end
-type [<Erase>] separator =
-    inherit Separator.root<ISeparatorProp>
-    static member inline noop : unit = ()
+type [<Erase>] ISeparatorProp = interface static member propsInterface : unit = () end
+type [<Erase>] separator = Separator.root<ISeparatorProp>
 
 module [<Erase>] separator =
     type [<Erase>] orientation =

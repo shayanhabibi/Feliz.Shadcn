@@ -5,7 +5,7 @@ open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
@@ -13,67 +13,55 @@ import { Check, ChevronRight, Circle } from "lucide-react";
 """
 
 // --------------- DropdownMenu -------------- //
-type [<Erase>] IDropdownMenuProp = interface end
-type [<Erase>] dropdownMenu =
-    inherit DropdownMenu.root<IDropdownMenuProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IDropdownMenuProp = interface static member propsInterface : unit = () end
+type [<Erase>] dropdownMenu = DropdownMenu.root<IDropdownMenuProp>
 
 let DropdownMenu : JSX.ElementType = JSX.jsx """
 DropdownMenuPrimitive.Root
 """
 
 // --------------- DropdownMenuTrigger -------------- //
-type [<Erase>] IDropdownMenuTriggerProp = interface end
-type [<Erase>] dropdownMenuTrigger =
-    inherit DropdownMenu.trigger<IDropdownMenuTriggerProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IDropdownMenuTriggerProp = interface static member propsInterface : unit = () end
+type [<Erase>] dropdownMenuTrigger = DropdownMenu.trigger<IDropdownMenuTriggerProp>
 
 let DropdownMenuTrigger : JSX.ElementType = JSX.jsx """
 DropdownMenuPrimitive.Trigger
 """
 
 // --------------- DropdownMenuGroup -------------- //
-type [<Erase>] IDropdownMenuGroupProp = interface end
-type [<Erase>] dropdownMenuGroup =
-    inherit DropdownMenu.group<IDropdownMenuGroupProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IDropdownMenuGroupProp = interface static member propsInterface : unit = () end
+type [<Erase>] dropdownMenuGroup = DropdownMenu.group<IDropdownMenuGroupProp>
 
 let DropdownMenuGroup : JSX.ElementType = JSX.jsx """
 DropdownMenuPrimitive.Group
 """
 
 // --------------- DropdownMenuPortal -------------- //
-type [<Erase>] IDropdownMenuPortalProp = interface end
-type [<Erase>] dropdownMenuPortal =
-    inherit DropdownMenu.portal<IDropdownMenuPortalProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IDropdownMenuPortalProp = interface static member propsInterface : unit = () end
+type [<Erase>] dropdownMenuPortal = DropdownMenu.portal<IDropdownMenuPortalProp>
 
 let DropdownMenuPortal : JSX.ElementType = JSX.jsx """
 DropdownMenuPrimitive.Portal
 """
 
 // --------------- DropdownMenuSub -------------- //
-type [<Erase>] IDropdownMenuSubProp = interface end
-type [<Erase>] dropdownMenuSub =
-    inherit DropdownMenu.sub<IDropdownMenuSubProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IDropdownMenuSubProp = interface static member propsInterface : unit = () end
+type [<Erase>] dropdownMenuSub = DropdownMenu.sub<IDropdownMenuSubProp>
 
 let DropdownMenuSub : JSX.ElementType = JSX.jsx """
 DropdownMenuPrimitive.Sub
 """
 
 // --------------- DropdownMenuRadioGroup -------------- //
-type [<Erase>] IDropdownMenuRadioGroupProp = interface end
-type [<Erase>] dropdownMenuRadioGroup =
-    inherit DropdownMenu.radioGroup<IDropdownMenuRadioGroupProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IDropdownMenuRadioGroupProp = interface static member propsInterface : unit = () end
+type [<Erase>] dropdownMenuRadioGroup = DropdownMenu.radioGroup<IDropdownMenuRadioGroupProp>
 
 let DropdownMenuRadioGroup : JSX.ElementType = JSX.jsx """
 DropdownMenuPrimitive.RadioGroup
 """
 
 // --------------- DropdownMenuSubTrigger -------------- //
-type [<Erase>] IDropdownMenuSubTriggerProp = interface end
+type [<Erase>] IDropdownMenuSubTriggerProp = interface static member propsInterface : unit = () end
 type [<Erase>] dropdownMenuSubTrigger =
     inherit DropdownMenu.subTrigger<IDropdownMenuSubTriggerProp>
     static member inline inset ( value : bool ) : IDropdownMenuSubTriggerProp = Interop.mkProperty "inset" value
@@ -97,10 +85,8 @@ DropdownMenuSubTrigger.displayName =
 """
 
 // --------------- DropdownMenuSubContent -------------- //
-type [<Erase>] IDropdownMenuSubContentProp = interface end
-type [<Erase>] dropdownMenuSubContent =
-    inherit DropdownMenu.subContent<IDropdownMenuSubContentProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IDropdownMenuSubContentProp = interface static member propsInterface : unit = () end
+type [<Erase>] dropdownMenuSubContent = DropdownMenu.subContent<IDropdownMenuSubContentProp>
 
 let DropdownMenuSubContent : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -117,10 +103,8 @@ DropdownMenuSubContent.displayName =
 """
 
 // --------------- DropdownMenuContent -------------- //
-type [<Erase>] IDropdownMenuContentProp = interface end
-type [<Erase>] dropdownMenuContent =
-    inherit DropdownMenu.content<IDropdownMenuContentProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IDropdownMenuContentProp = interface static member propsInterface : unit = () end
+type [<Erase>] dropdownMenuContent = DropdownMenu.content<IDropdownMenuContentProp>
 
 let DropdownMenuContent : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, sideOffset = 4, ...props }, ref) => (
@@ -140,7 +124,7 @@ DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName
 """
 
 // --------------- DropdownMenuItem -------------- //
-type [<Erase>] IDropdownMenuItemProp = interface end
+type [<Erase>] IDropdownMenuItemProp = interface static member propsInterface : unit = () end
 type [<Erase>] dropdownMenuItem =
     inherit DropdownMenu.item<IDropdownMenuItemProp>
     static member inline inset ( value : bool ) : IDropdownMenuItemProp = Interop.mkProperty "inset" value
@@ -160,10 +144,8 @@ DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName
 """
 
 // --------------- DropdownMenuCheckboxItem -------------- //
-type [<Erase>] IDropdownMenuCheckboxItemProp = interface end
-type [<Erase>] dropdownMenuCheckboxItem =
-    inherit DropdownMenu.checkboxItem<IDropdownMenuCheckboxItemProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IDropdownMenuCheckboxItemProp = interface static member propsInterface : unit = () end
+type [<Erase>] dropdownMenuCheckboxItem = DropdownMenu.checkboxItem<IDropdownMenuCheckboxItemProp>
 
 let DropdownMenuCheckboxItem : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, children, checked, ...props }, ref) => (
@@ -188,10 +170,8 @@ DropdownMenuCheckboxItem.displayName =
 """
 
 // --------------- DropdownMenuRadioItem -------------- //
-type [<Erase>] IDropdownMenuRadioItemProp = interface end
-type [<Erase>] dropdownMenuRadioItem =
-    inherit DropdownMenu.radioItem<IDropdownMenuRadioItemProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IDropdownMenuRadioItemProp = interface static member propsInterface : unit = () end
+type [<Erase>] dropdownMenuRadioItem = DropdownMenu.radioItem<IDropdownMenuRadioItemProp>
 
 let DropdownMenuRadioItem : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, children, ...props }, ref) => (
@@ -214,7 +194,7 @@ DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName
 """
 
 // --------------- DropdownMenuLabel -------------- //
-type [<Erase>] IDropdownMenuLabelProp = interface end
+type [<Erase>] IDropdownMenuLabelProp = interface static member propsInterface : unit = () end
 type [<Erase>] dropdownMenuLabel =
     inherit DropdownMenu.label<IDropdownMenuLabelProp>
     static member inline inset ( value : bool ) : IDropdownMenuLabelProp = Interop.mkProperty "inset" value
@@ -230,10 +210,8 @@ DropdownMenuLabel.displayName = DropdownMenuPrimitive.Label.displayName
 """
 
 // --------------- DropdownMenuSeparator -------------- //
-type [<Erase>] IDropdownMenuSeparatorProp = interface end
-type [<Erase>] dropdownMenuSeparator =
-    inherit DropdownMenu.separator<IDropdownMenuSeparatorProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IDropdownMenuSeparatorProp = interface static member propsInterface : unit = () end
+type [<Erase>] dropdownMenuSeparator = DropdownMenu.separator<IDropdownMenuSeparatorProp>
 
 let DropdownMenuSeparator : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -246,10 +224,7 @@ DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName
 """
 
 // --------------- DropdownMenuShortcut -------------- //
-type [<Erase>] IDropdownMenuShortcutProp = interface end
-type [<Erase>] dropdownMenuShortcut =
-    inherit prop<IDropdownMenuShortcutProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IDropdownMenuShortcutProp = interface static member propsInterface : unit = () end
 
 let DropdownMenuShortcut : JSX.ElementType = JSX.jsx """
 ({

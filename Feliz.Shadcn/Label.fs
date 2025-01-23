@@ -5,7 +5,7 @@ open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 emitJsStatement () "import * as LabelPrimitive from \"@radix-ui/react-label\""
 JSX.injectShadcnLib
@@ -17,10 +17,8 @@ cva(
 """
 
 // --------------- Label -------------- //
-type [<Erase>] ILabelProp = interface end
-type [<Erase>] label =
-    inherit Label.root<ILabelProp>
-    static member inline noop : unit = ()
+type [<Erase>] ILabelProp = interface static member propsInterface : unit = () end
+type [<Erase>] label = Label.root<ILabelProp>
 
 let Label : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (

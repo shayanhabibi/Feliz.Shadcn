@@ -17,9 +17,8 @@ JSX.injectShadcnLib
 let buttonVariants = buttonVariants
 
 // --------------- Calendar -------------- //
-type [<Erase>] ICalendarProp = interface end
+type [<Erase>] ICalendarProp = interface static member propsInterface : unit = () end
 type [<Erase>] calendar =
-    inherit prop<ICalendarProp>
     static member inline selected ( value : obj ) : ICalendarProp = Interop.mkProperty "selected" value
     static member inline onSelected ( handler : Browser.Types.Event -> unit ) : ICalendarProp = Interop.mkProperty "onSelected" handler
     static member inline min ( value : int ) : ICalendarProp = Interop.mkProperty "min" value

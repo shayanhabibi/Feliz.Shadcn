@@ -30,10 +30,7 @@ let private useChart () = ignore <| JSX.jsx """
 """
 
 // --------------- ChartStyle -------------- //
-type [<Erase>] IChartStyleProp = interface end
-type [<Erase>] chartStyle =
-    inherit prop<IChartStyleProp>
-    static member inline noop : unit = ()
+type [<Erase>] IChartStyleProp = interface static member propsInterface : unit = () end
 
 let ChartStyle : JSX.ElementType = JSX.jsx """
 ({
@@ -69,10 +66,7 @@ return color ? `  --color-${key}: ${color};` : null
 """
 
 // --------------- ChartContainer -------------- //
-type [<Erase>] IChartContainerProp = interface end
-type [<Erase>] chartContainer =
-    inherit prop<IChartContainerProp>
-    static member inline noop : unit = ()
+type [<Erase>] IChartContainerProp = interface static member propsInterface : unit = () end
 
 let ChartContainer : JSX.ElementType = JSX.jsx """
 import * as RechartsPrimitive from "recharts";
@@ -103,20 +97,14 @@ ChartContainer.displayName = "Chart"
 """
 
 // --------------- ChartTooltip -------------- //
-type [<Erase>] IChartTooltipProp = interface end
-type [<Erase>] chartTooltip =
-    inherit prop<IChartTooltipProp>
-    static member inline noop : unit = ()
+type [<Erase>] IChartTooltipProp = interface static member propsInterface : unit = () end
 
 let ChartTooltip : JSX.ElementType = JSX.jsx """
 RechartsPrimitive.Tooltip
 """
 
 // --------------- ChartTooltipContent -------------- //
-type [<Erase>] IChartTooltipContentProp = interface end
-type [<Erase>] chartTooltipContent =
-    inherit prop<IChartTooltipContentProp>
-    static member inline noop : unit = ()
+type [<Erase>] IChartTooltipContentProp = interface static member propsInterface : unit = () end
 
 let ChartTooltipContent : JSX.ElementType = JSX.jsx """
 React.forwardRef((
@@ -256,20 +244,14 @@ ChartTooltipContent.displayName = "ChartTooltip"
 """
 
 // --------------- ChartLegend -------------- //
-type [<Erase>] IChartLegendProp = interface end
-type [<Erase>] chartLegend =
-    inherit prop<IChartLegendProp>
-    static member inline noop : unit = ()
+type [<Erase>] IChartLegendProp = interface static member propsInterface : unit = () end
 
 let ChartLegend : JSX.ElementType = JSX.jsx """
 RechartsPrimitive.Legend
 """
 
 // --------------- ChartLegendContent -------------- //
-type [<Erase>] IChartLegendContentProp = interface end
-type [<Erase>] chartLegendContent =
-    inherit prop<IChartLegendContentProp>
-    static member inline noop : unit = ()
+type [<Erase>] IChartLegendContentProp = interface static member propsInterface : unit = () end
 
 let ChartLegendContent : JSX.ElementType = JSX.jsx """
 React.forwardRef((

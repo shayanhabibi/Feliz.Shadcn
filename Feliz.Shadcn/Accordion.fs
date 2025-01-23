@@ -1,7 +1,7 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Accordion
 
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
@@ -20,7 +20,7 @@ JSX.injectShadcnLib
 
 // ---------------- Accordion ------------------ //
 /// Properties for Shadcn.Accordion (root)
-type [<Erase>] IAccordionProp = interface end
+type [<Erase>] IAccordionProp = interface static member propsInterface : unit = () end
 // Define props specific for components
 /// Shadcn Accordion root properties
 type [<Erase>] accordion =
@@ -53,11 +53,9 @@ module [<Erase>] accordion =
 let Accordion : JSX.ElementType = JSX.jsx "AccordionPrimitive.Root"
 
 // ---------------- AccordionItem ------------------ //
-type [<Erase>] IAccordionItemProp = interface end
+type [<Erase>] IAccordionItemProp = interface static member propsInterface : unit = () end
 /// Accessor for <c>IAccordionItemProp</c> -erties
-type [<Erase>] accordionItem =
-    inherit Accordion.item<IAccordionItemProp>
-    static member inline private noop = ignore
+type [<Erase>] accordionItem = Accordion.item<IAccordionItemProp>
 
 /// The Accordion Item Component
 let AccordionItem : JSX.ElementType = JSX.jsx """
@@ -68,11 +66,9 @@ AccordionItem.displayName = "AccordionItem"
 """
 
 // ---------------- AccordionTrigger ------------------ //
-type [<Erase>] IAccordionTriggerProp = interface end
+type [<Erase>] IAccordionTriggerProp = interface static member propsInterface : unit = () end
 /// Accessor for <c>IAccordionTriggerProp</c>-erties
-type [<Erase>] accordionTrigger =
-    inherit Accordion.trigger<IAccordionTriggerProp>
-    static member inline private noop = ignore
+type [<Erase>] accordionTrigger = Accordion.trigger<IAccordionTriggerProp>
 
 /// The Accordion Trigger Component
 let AccordionTrigger : JSX.ElementType = JSX.jsx """
@@ -94,11 +90,9 @@ React.forwardRef(({ className, children, ...props }, ref) => (
 AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName"""
 
 // ---------------- AccordionContent ------------------ //
-type [<Erase>] IAccordionContentProp = interface end
+type [<Erase>] IAccordionContentProp = interface static member propsInterface : unit = () end
 /// Accessor for <c>IAccordionContentProp</c>-erties
-type [<Erase>] accordionContent =
-    inherit Accordion.content<IAccordionContentProp>
-    static member inline private noop = ignore
+type [<Erase>] accordionContent = Accordion.content<IAccordionContentProp>
 
 /// The Accordion Content Component
 let AccordionContent : JSX.ElementType = JSX.jsx """

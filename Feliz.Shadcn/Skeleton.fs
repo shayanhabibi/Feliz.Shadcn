@@ -9,10 +9,7 @@ open Feliz
 JSX.injectShadcnLib
 
 // --------------- Skeleton -------------- //
-type [<Erase>] ISkeletonProp = interface end
-type [<Erase>] skeleton =
-    inherit prop<ISkeletonProp>
-    static member inline noop : unit = ()
+type [<Erase>] ISkeletonProp = interface static member propsInterface : unit = () end
 
 let Skeleton : JSX.ElementType = JSX.jsx """
 ({

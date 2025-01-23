@@ -30,23 +30,19 @@ cva(
 )
 """
 
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 // --------------- ToastProvider -------------- //
-type [<Erase>] IToastProviderProp = interface end
-type [<Erase>] toastProvider =
-    inherit Toast.provider<IToastProviderProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IToastProviderProp = interface static member propsInterface : unit = () end
+type [<Erase>] toastProvider = Toast.provider<IToastProviderProp>
 
 let ToastProvider : JSX.ElementType = JSX.jsx """
 ToastPrimitives.Provider
 """
 
 // --------------- ToastViewport -------------- //
-type [<Erase>] IToastViewportProp = interface end
-type [<Erase>] toastViewport =
-    inherit Toast.viewport<IToastViewportProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IToastViewportProp = interface static member propsInterface : unit = () end
+type [<Erase>] toastViewport = Toast.viewport<IToastViewportProp>
 
 let ToastViewport : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -62,10 +58,8 @@ ToastViewport.displayName = ToastPrimitives.Viewport.displayName
 """
 
 // --------------- Toast -------------- //
-type [<Erase>] IToastProp = interface end
-type [<Erase>] toast =
-    inherit Toast.root<IToastProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IToastProp = interface static member propsInterface : unit = () end
+type [<Erase>] toast = Toast.root<IToastProp>
 
 let Toast : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, variant, ...props }, ref) => {
@@ -80,10 +74,7 @@ Toast.displayName = ToastPrimitives.Root.displayName
 """
 
 // --------------- ToastAction -------------- //
-type [<Erase>] IToastActionProp = interface end
-type [<Erase>] toastAction =
-    inherit prop<IToastActionProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IToastActionProp = interface static member propsInterface : unit = () end
 
 let ToastAction : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -99,10 +90,8 @@ ToastAction.displayName = ToastPrimitives.Action.displayName
 """
 
 // --------------- ToastClose -------------- //
-type [<Erase>] IToastCloseProp = interface end
-type [<Erase>] toastClose =
-    inherit Toast.close<IToastCloseProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IToastCloseProp = interface static member propsInterface : unit = () end
+type [<Erase>] toastClose = Toast.close<IToastCloseProp>
 
 let ToastClose : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -121,10 +110,8 @@ ToastClose.displayName = ToastPrimitives.Close.displayName
 """
 
 // --------------- ToastTitle -------------- //
-type [<Erase>] IToastTitleProp = interface end
-type [<Erase>] toastTitle =
-    inherit Toast.title<IToastTitleProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IToastTitleProp = interface static member propsInterface : unit = () end
+type [<Erase>] toastTitle = Toast.title<IToastTitleProp>
 
 let ToastTitle : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -137,11 +124,8 @@ ToastTitle.displayName = ToastPrimitives.Title.displayName
 """
 
 // --------------- ToastDescription -------------- //
-type [<Erase>] IToastDescriptionProp = interface end
-type [<Erase>] toastDescription =
-    inherit Toast.description<IToastDescriptionProp>
-    static member inline private noop : unit = ()
-
+type [<Erase>] IToastDescriptionProp = interface static member propsInterface : unit = () end
+type [<Erase>] toastDescription = Toast.description<IToastDescriptionProp>
 let ToastDescription : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
   <ToastPrimitives.Description ref={ref} className={cn("text-sm opacity-90", className)} {...props} />

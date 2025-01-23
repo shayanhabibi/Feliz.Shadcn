@@ -5,64 +5,50 @@ open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 emitJsStatement () "import * as ContextMenuPrimitive from \"@radix-ui/react-context-menu\""
 JSX.injectShadcnLib
 
 // --------------- ContextMenu -------------- //
-type [<Erase>] IContextMenuProp = interface end
-type [<Erase>] contextMenu =
-    inherit ContextMenu.root<IContextMenuProp>
-    static member inline noop : unit = ()
+type [<Erase>] IContextMenuProp = interface static member propsInterface : unit = () end
+type [<Erase>] contextMenu = ContextMenu.root<IContextMenuProp>
 
 let ContextMenu : JSX.ElementType = JSX.jsx "ContextMenuPrimitive.Root"
 
 // --------------- ContextMenuTrigger -------------- //
-type [<Erase>] IContextMenuTriggerProp = interface end
-type [<Erase>] contextMenuTrigger =
-    inherit ContextMenu.trigger<IContextMenuTriggerProp>
-    static member inline noop : unit = ()
+type [<Erase>] IContextMenuTriggerProp = interface static member propsInterface : unit = () end
+type [<Erase>] contextMenuTrigger = ContextMenu.trigger<IContextMenuTriggerProp>
 
 let ContextMenuTrigger : JSX.ElementType = JSX.jsx "ContextMenuPrimitive.Trigger"
     
 // --------------- ContextMenuGroup -------------- //
-type [<Erase>] IContextMenuGroupProp = interface end
-type [<Erase>] contextMenuGroup =
-    inherit ContextMenu.group<IContextMenuGroupProp>
-    static member inline noop : unit = ()
+type [<Erase>] IContextMenuGroupProp = interface static member propsInterface : unit = () end
+type [<Erase>] contextMenuGroup = ContextMenu.group<IContextMenuGroupProp>
 
 let ContextMenuGroup : JSX.ElementType = JSX.jsx "ContextMenuPrimitive.Group"
 
 // --------------- ContextMenuPortal -------------- //
-type [<Erase>] IContextMenuPortalProp = interface end
-type [<Erase>] contextMenuPortal =
-    inherit ContextMenu.portal<IContextMenuPortalProp>
-    static member inline noop : unit = ()
+type [<Erase>] IContextMenuPortalProp = interface static member propsInterface : unit = () end
+type [<Erase>] contextMenuPortal = ContextMenu.portal<IContextMenuPortalProp>
 
 let ContextMenuPortal : JSX.ElementType = JSX.jsx "ContextMenuPrimitive.Portal"
 
 // --------------- ContextMenuSub -------------- //
-type [<Erase>] IContextMenuSubProp = interface end
-type [<Erase>] contextMenuSub =
-    inherit ContextMenu.sub<IContextMenuSubProp>
-    static member inline noop : unit = ()
+type [<Erase>] IContextMenuSubProp = interface static member propsInterface : unit = () end
+type [<Erase>] contextMenuSub = ContextMenu.sub<IContextMenuSubProp>
 
 let ContextMenuSub : JSX.ElementType = JSX.jsx "ContextMenuPrimitive.Sub"
 
 // --------------- ContextMenuRadioGroup -------------- //
-type [<Erase>] IContextMenuRadioGroupProp = interface end
-type [<Erase>] contextMenuRadioGroup =
-    inherit ContextMenu.radioGroup<IContextMenuRadioGroupProp>
-    static member inline noop : unit = ()
+type [<Erase>] IContextMenuRadioGroupProp = interface static member propsInterface : unit = () end
+type [<Erase>] contextMenuRadioGroup = ContextMenu.radioGroup<IContextMenuRadioGroupProp>
 
 let ContextMenuRadioGroup : JSX.ElementType = JSX.jsx "ContextMenuPrimitive.RadioGroup"
 
 // --------------- ContextMenuSubTrigger -------------- //
-type [<Erase>] IContextMenuSubTriggerProp = interface end
-type [<Erase>] contextMenuSubTrigger =
-    inherit ContextMenu.subTrigger<IContextMenuSubTriggerProp>
-    static member inline noop : unit = ()
+type [<Erase>] IContextMenuSubTriggerProp = interface static member propsInterface : unit = () end
+type [<Erase>] contextMenuSubTrigger = ContextMenu.subTrigger<IContextMenuSubTriggerProp>
 
 open Feliz.Lucide
 
@@ -85,10 +71,8 @@ ContextMenuSubTrigger.displayName = ContextMenuPrimitive.SubTrigger.displayName
 """
 
 // --------------- ContextMenuSubContent -------------- //
-type [<Erase>] IContextMenuSubContentProp = interface end
-type [<Erase>] contextMenuSubContent =
-    inherit ContextMenu.subContent<IContextMenuSubContentProp>
-    static member inline noop : unit = ()
+type [<Erase>] IContextMenuSubContentProp = interface static member propsInterface : unit = () end
+type [<Erase>] contextMenuSubContent = ContextMenu.subContent<IContextMenuSubContentProp>
 
 let ContextMenuSubContent : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -104,10 +88,8 @@ ContextMenuSubContent.displayName = ContextMenuPrimitive.SubContent.displayName
 """
 
 // --------------- ContextMenuContent -------------- //
-type [<Erase>] IContextMenuContentProp = interface end
-type [<Erase>] contextMenuContent =
-    inherit ContextMenu.content<IContextMenuContentProp>
-    static member inline noop : unit = ()
+type [<Erase>] IContextMenuContentProp = interface static member propsInterface : unit = () end
+type [<Erase>] contextMenuContent = ContextMenu.content<IContextMenuContentProp>
 
 [<JSX.Component>]
 let ContextMenuContent : JSX.ElementType = JSX.jsx """
@@ -126,7 +108,7 @@ ContextMenuContent.displayName = ContextMenuPrimitive.Content.displayName
 """
     
 // --------------- ContextMenuItem -------------- //
-type [<Erase>] IContextMenuItemProp = interface end
+type [<Erase>] IContextMenuItemProp = interface static member propsInterface : unit = () end
 type [<Erase>] contextMenuItem =
     inherit ContextMenu.item<IContextMenuItemProp>
     static member inline inset ( value : bool ) : IContextMenuItemProp = Interop.mkProperty "inset" value
@@ -147,10 +129,8 @@ ContextMenuItem.displayName = ContextMenuPrimitive.Item.displayName
 """
     
 // --------------- ContextMenuCheckboxItem -------------- //
-type [<Erase>] IContextMenuCheckboxItemProp = interface end
-type [<Erase>] contextMenuCheckboxItem =
-    inherit ContextMenu.checkboxItem<IContextMenuCheckboxItemProp>
-    static member inline noop : unit = ()
+type [<Erase>] IContextMenuCheckboxItemProp = interface static member propsInterface : unit = () end
+type [<Erase>] contextMenuCheckboxItem = ContextMenu.checkboxItem<IContextMenuCheckboxItemProp>
 
 [<JSX.Component>]
 let ContextMenuCheckboxItem : JSX.ElementType = JSX.jsx """
@@ -177,10 +157,8 @@ ContextMenuCheckboxItem.displayName =
 """
 
 // --------------- ContextMenuRadioItem -------------- //
-type [<Erase>] IContextMenuRadioItemProp = interface end
-type [<Erase>] contextMenuRadioItem =
-    inherit ContextMenu.radioItem<IContextMenuRadioItemProp>
-    static member inline noop : unit = ()
+type [<Erase>] IContextMenuRadioItemProp = interface static member propsInterface : unit = () end
+type [<Erase>] contextMenuRadioItem = ContextMenu.radioItem<IContextMenuRadioItemProp>
 
 [<JSX.Component>]
 let ContextMenuRadioItem : JSX.ElementType = JSX.jsx """
@@ -205,7 +183,7 @@ ContextMenuRadioItem.displayName = ContextMenuPrimitive.RadioItem.displayName
 """
 
 // --------------- ContextMenuLabel -------------- //
-type [<Erase>] IContextMenuLabelProp = interface end
+type [<Erase>] IContextMenuLabelProp = interface static member propsInterface : unit = () end
 type [<Erase>] contextMenuLabel =
     inherit ContextMenu.label<IContextMenuLabelProp>
     static member inline inset ( value : bool ) : IContextMenuLabelProp = Interop.mkProperty "inset" value
@@ -226,10 +204,8 @@ ContextMenuLabel.displayName = ContextMenuPrimitive.Label.displayName
 """
 
 // --------------- ContextMenuSeparator -------------- //
-type [<Erase>] IContextMenuSeparatorProp = interface end
-type [<Erase>] contextMenuSeparator =
-    inherit ContextMenu.separator<IContextMenuSeparatorProp>
-    static member inline noop : unit = ()
+type [<Erase>] IContextMenuSeparatorProp = interface static member propsInterface : unit = () end
+type [<Erase>] contextMenuSeparator = ContextMenu.separator<IContextMenuSeparatorProp>
 
 [<JSX.Component>]
 let ContextMenuSeparator : JSX.ElementType = JSX.jsx """
@@ -243,10 +219,7 @@ ContextMenuSeparator.displayName = ContextMenuPrimitive.Separator.displayName
 """
 
 // --------------- ContextMenuShortcut -------------- //
-type [<Erase>] IContextMenuShortcutProp = interface end
-type [<Erase>] contextMenuShortcut =
-    inherit prop<IContextMenuShortcutProp>
-    static member inline noop : unit = ()
+type [<Erase>] IContextMenuShortcutProp = interface static member propsInterface : unit = () end
 
 [<JSX.Component>]
 let ContextMenuShortcut : JSX.ElementType = JSX.jsx """

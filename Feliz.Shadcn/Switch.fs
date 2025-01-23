@@ -10,13 +10,11 @@ ignore <| JSX.jsx """
 import * as SwitchPrimitives from "@radix-ui/react-switch"
 """
 
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 // --------------- Switch -------------- //
-type [<Erase>] ISwitchProp = interface end
-type [<Erase>] switch =
-    inherit Switch.root<ISwitchProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISwitchProp = interface static member propsInterface : unit = () end
+type [<Erase>] switch = Switch.root<ISwitchProp>
 
 let Switch : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (

@@ -12,15 +12,13 @@ JSX.injectShadcnLib
 emitJsStatement () "import * as CollapsiblePrimitive from \"@radix-ui/react-collapsible\""
 
 // --------------- Collapsible -------------- //
-type [<Erase>] ICollapsibleProp = interface end
-type [<Erase>] collapsible =
-    inherit Collapsible.root<ICollapsibleProp>
-    static member private noop = ()
+type [<Erase>] ICollapsibleProp = interface static member propsInterface : unit = () end
+type [<Erase>] collapsible = Collapsible.root<ICollapsibleProp>
 
 let Collapsible : JSX.ElementType = JSX.jsx "CollapsiblePrimitive.Root"
 
 // --------------- CollapsibleTrigger -------------- //
-type [<Erase>] ICollapsibleTriggerProp = interface end
+type [<Erase>] ICollapsibleTriggerProp = interface static member propsInterface : unit = () end
 type [<Erase>] collapsibleTrigger =
     inherit Collapsible.trigger<ICollapsibleTriggerProp>
     static member inline forceMount ( value : bool ) : ICollapsibleTriggerProp = Interop.mkProperty "forceMount" value

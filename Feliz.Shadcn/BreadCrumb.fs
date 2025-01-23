@@ -8,10 +8,7 @@ open Feliz
 JSX.injectShadcnLib
 
 // --------------- Breadcrumb -------------- //
-type [<Erase>] IBreadcrumbProp = interface end
-type [<Erase>] breadCrumb =
-    inherit prop<IBreadcrumbProp>
-    static member inline noop : unit = ()
+type [<Erase>] IBreadcrumbProp = interface static member propsInterface : unit = () end
 
 let Breadcrumb : JSX.ElementType = JSX.jsx """
 React.forwardRef(
@@ -21,10 +18,7 @@ Breadcrumb.displayName = "Breadcrumb"
 """
 
 // --------------- BreadcrumbList -------------- //
-type [<Erase>] IBreadcrumbListProp = interface end
-type [<Erase>] breadcrumbList =
-    inherit prop<IBreadcrumbListProp>
-    static member inline noop : unit = ()
+type [<Erase>] IBreadcrumbListProp = interface static member propsInterface : unit = () end
 
 let BreadcrumbList : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -41,10 +35,7 @@ BreadcrumbList.displayName = "BreadcrumbList"
     
 
 // --------------- BreadcrumbItem -------------- //
-type [<Erase>] IBreadcrumbItemProp = interface end
-type [<Erase>] breadcrumbItem =
-    inherit prop<IBreadcrumbItemProp>
-    static member inline noop : unit = ()
+type [<Erase>] IBreadcrumbItemProp = interface static member propsInterface : unit = () end
 
 let BreadcrumbItem : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -57,10 +48,7 @@ BreadcrumbItem.displayName = "BreadcrumbItem"
 """
 
 // --------------- BreadcrumbLink -------------- //
-type [<Erase>] IBreadcrumbLinkProp = interface end
-type [<Erase>] breadcrumbLink =
-    inherit prop<IBreadcrumbLinkProp>
-    static member inline noop : unit = ()
+type [<Erase>] IBreadcrumbLinkProp = interface static member propsInterface : unit = () end
 
 [<JSX.Component>]
 let BreadcrumbLink : JSX.ElementType = JSX.jsx """
@@ -80,10 +68,7 @@ BreadcrumbLink.displayName = "BreadcrumbLink"
 """
     
 // --------------- BreadcrumbPage -------------- //
-type [<Erase>] IBreadcrumbPageProp = interface end
-type [<Erase>] breadcrumbPage =
-    inherit prop<IBreadcrumbPageProp>
-    static member inline noop : unit = ()
+type [<Erase>] IBreadcrumbPageProp = interface static member propsInterface : unit = () end
 
 let BreadcrumbPage : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -99,10 +84,7 @@ BreadcrumbPage.displayName = "BreadcrumbPage"
 """
 
 // --------------- BreadcrumbSeparator -------------- //
-type [<Erase>] IBreadcrumbSeparatorProp = interface end
-type [<Erase>] breadcrumbSeparator =
-    inherit prop<IBreadcrumbSeparatorProp>
-    static member inline noop : unit = ()
+type [<Erase>] IBreadcrumbSeparatorProp = interface static member propsInterface : unit = () end
 
 let BreadcrumbSeparator : JSX.ElementType = JSX.jsx """
 import { ChevronRight } from "lucide-react";
@@ -123,10 +105,7 @@ BreadcrumbSeparator.displayName = "BreadcrumbSeparator"
 """
     
 // --------------- BreadcrumbEllipsis -------------- //
-type [<Erase>] IBreadcrumbEllipsisProp = interface end
-type [<Erase>] breadcrumbEllipsis =
-    inherit prop<IBreadcrumbEllipsisProp>
-    static member inline noop : unit = ()
+type [<Erase>] IBreadcrumbEllipsisProp = interface static member propsInterface : unit = () end
 
 let BreadcrumbEllipsis : JSX.ElementType = JSX.jsx """
 import { MoreHorizontal } from "lucide-react";

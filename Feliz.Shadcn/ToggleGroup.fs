@@ -11,7 +11,7 @@ import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group"
 """
 let _ = toggleVariants
 
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 let private ToggleGroupContext = JSX.jsx """
 React.createContext({
@@ -21,10 +21,8 @@ React.createContext({
 """
 
 // --------------- ToggleGroup -------------- //
-type [<Erase>] IToggleGroupProp = interface end
-type [<Erase>] toggleGroup =
-    inherit ToggleGroup.root<IToggleGroupProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IToggleGroupProp = interface static member propsInterface : unit = () end
+type [<Erase>] toggleGroup = ToggleGroup.root<IToggleGroupProp>
 
 let ToggleGroup : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, variant, size, children, ...props }, ref) => (
@@ -41,10 +39,8 @@ ToggleGroup.displayName = ToggleGroupPrimitive.Root.displayName
 """
 
 // --------------- ToggleGroupItem -------------- //
-type [<Erase>] IToggleGroupItemProp = interface end
-type [<Erase>] toggleGroupItem =
-    inherit ToggleGroup.item<IToggleGroupItemProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IToggleGroupItemProp = interface static member propsInterface : unit = () end
+type [<Erase>] toggleGroupItem = ToggleGroup.item<IToggleGroupItemProp>
 
 let ToggleGroupItem : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, children, variant, size, ...props }, ref) => {

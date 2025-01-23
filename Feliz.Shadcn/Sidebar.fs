@@ -85,9 +85,8 @@ cva(
 """
 
 // --------------- SidebarProvider -------------- //
-type [<Erase>] ISidebarProviderProp = interface end
+type [<Erase>] ISidebarProviderProp = interface static member propsInterface : unit = () end
 type [<Erase>] sidebarProvider =
-    inherit prop<ISidebarProviderProp>
     static member inline defaultOpen ( value : bool ) : ISidebarProviderProp = Interop.mkProperty "defaultOpen" value
     static member inline open' ( value : bool ) : ISidebarProviderProp = Interop.mkProperty "open" value
     static member inline onOpenChange ( handler : bool -> unit ) : ISidebarProviderProp = Interop.mkProperty "onOpenChange" handler
@@ -189,10 +188,7 @@ SidebarProvider.displayName = "SidebarProvider"
 """
 
 // --------------- Sidebar -------------- //
-type [<Erase>] ISidebarProp = interface end
-type [<Erase>] sidebar =
-    inherit prop<ISidebarProp>
-    static member inline private noop = ()
+type [<Erase>] ISidebarProp = interface static member propsInterface : unit = () end
 
 module [<Erase>] sidebar =
     type [<Erase>] side =
@@ -301,10 +297,7 @@ Sidebar.displayName = "Sidebar"
 """
 
 // --------------- SidebarTrigger -------------- //
-type [<Erase>] ISidebarTriggerProp = interface end
-type [<Erase>] sidebarTrigger =
-    inherit prop<ISidebarTriggerProp>
-    static member inline noop : unit = ()
+type [<Erase>] ISidebarTriggerProp = interface static member propsInterface : unit = () end
 
 [<JSX.Component>]
 let SidebarTrigger : JSX.ElementType = JSX.jsx """
@@ -332,10 +325,7 @@ SidebarTrigger.displayName = "SidebarTrigger"
 """
 
 // --------------- SidebarRail -------------- //
-type [<Erase>] ISidebarRailProp = interface end
-type [<Erase>] sidebarRail =
-    inherit prop<ISidebarRailProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISidebarRailProp = interface static member propsInterface : unit = () end
 
 let SidebarRail : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => {
@@ -365,10 +355,7 @@ SidebarRail.displayName = "SidebarRail"
 """
 
 // --------------- SidebarInset -------------- //
-type [<Erase>] ISidebarInsetProp = interface end
-type [<Erase>] sidebarInset =
-    inherit prop<ISidebarInsetProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISidebarInsetProp = interface static member propsInterface : unit = () end
 
 let SidebarInset : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => {
@@ -387,10 +374,7 @@ SidebarInset.displayName = "SidebarInset"
 """
 
 // --------------- SidebarInput -------------- //
-type [<Erase>] ISidebarInputProp = interface end
-type [<Erase>] sidebarInput =
-    inherit prop<ISidebarInputProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISidebarInputProp = interface static member propsInterface : unit = () end
 
 let SidebarInput : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => {
@@ -409,10 +393,7 @@ SidebarInput.displayName = "SidebarInput"
 """
 
 // --------------- SidebarHeader -------------- //
-type [<Erase>] ISidebarHeaderProp = interface end
-type [<Erase>] sidebarHeader =
-    inherit prop<ISidebarHeaderProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISidebarHeaderProp = interface static member propsInterface : unit = () end
 
 let SidebarHeader : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => {
@@ -428,10 +409,7 @@ SidebarHeader.displayName = "SidebarHeader"
 """
 
 // --------------- SidebarFooter -------------- //
-type [<Erase>] ISidebarFooterProp = interface end
-type [<Erase>] sidebarFooter =
-    inherit prop<ISidebarFooterProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISidebarFooterProp = interface static member propsInterface : unit = () end
 
 let SidebarFooter : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => {
@@ -447,10 +425,7 @@ SidebarFooter.displayName = "SidebarFooter"
 """
 
 // --------------- SidebarSeparator -------------- //
-type [<Erase>] ISidebarSeparatorProp = interface end
-type [<Erase>] sidebarSeparator =
-    inherit prop<ISidebarSeparatorProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISidebarSeparatorProp = interface static member propsInterface : unit = () end
 
 let SidebarSeparator : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => {
@@ -466,10 +441,7 @@ SidebarSeparator.displayName = "SidebarSeparator"
 """
 
 // --------------- SidebarContent -------------- //
-type [<Erase>] ISidebarContentProp = interface end
-type [<Erase>] sidebarContent =
-    inherit prop<ISidebarContentProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISidebarContentProp = interface static member propsInterface : unit = () end
 
 let SidebarContent : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => {
@@ -488,10 +460,7 @@ SidebarContent.displayName = "SidebarContent"
 """
 
 // --------------- SidebarGroup -------------- //
-type [<Erase>] ISidebarGroupProp = interface end
-type [<Erase>] sidebarGroup =
-    inherit prop<ISidebarGroupProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISidebarGroupProp = interface static member propsInterface : unit = () end
 
 let SidebarGroup : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => {
@@ -507,9 +476,8 @@ SidebarGroup.displayName = "SidebarGroup"
 """
 
 // --------------- SidebarGroupLabel -------------- //
-type [<Erase>] ISidebarGroupLabelProp = interface end
+type [<Erase>] ISidebarGroupLabelProp = interface static member propsInterface : unit = () end
 type [<Erase>] sidebarGroupLabel =
-    inherit prop<ISidebarGroupLabelProp>
     static member inline asChild ( value : bool ) : ISidebarGroupLabelProp = Interop.mkProperty "asChild" value
 
 let SidebarGroupLabel : JSX.ElementType = JSX.jsx """
@@ -532,9 +500,8 @@ SidebarGroupLabel.displayName = "SidebarGroupLabel"
 """
 
 // --------------- SidebarGroupAction -------------- //
-type [<Erase>] ISidebarGroupActionProp = interface end
+type [<Erase>] ISidebarGroupActionProp = interface static member propsInterface : unit = () end
 type [<Erase>] sidebarGroupAction =
-    inherit prop<ISidebarGroupActionProp>
     static member inline asChild ( value : bool ) : ISidebarGroupActionProp = Interop.mkProperty "asChild" value
     
 let SidebarGroupAction : JSX.ElementType = JSX.jsx """
@@ -559,10 +526,7 @@ SidebarGroupAction.displayName = "SidebarGroupAction"
 """
 
 // --------------- SidebarGroupContent -------------- //
-type [<Erase>] ISidebarGroupContentProp = interface end
-type [<Erase>] sidebarGroupContent =
-    inherit prop<ISidebarGroupContentProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISidebarGroupContentProp = interface static member propsInterface : unit = () end
 
 let SidebarGroupContent : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -576,10 +540,7 @@ SidebarGroupContent.displayName = "SidebarGroupContent"
 """
 
 // --------------- SidebarMenu -------------- //
-type [<Erase>] ISidebarMenuProp = interface end
-type [<Erase>] sidebarMenu =
-    inherit prop<ISidebarMenuProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISidebarMenuProp = interface static member propsInterface : unit = () end
 
 let SidebarMenu : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -593,10 +554,7 @@ SidebarMenu.displayName = "SidebarMenu"
 """
 
 // --------------- SidebarMenuItem -------------- //
-type [<Erase>] ISidebarMenuItemProp = interface end
-type [<Erase>] sidebarMenuItem =
-    inherit prop<ISidebarMenuItemProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISidebarMenuItemProp = interface static member propsInterface : unit = () end
 
 let SidebarMenuItem : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -610,9 +568,8 @@ SidebarMenuItem.displayName = "SidebarMenuItem"
 """
 
 // --------------- SidebarMenuButton -------------- //
-type [<Erase>] ISidebarMenuButtonProp = interface end
+type [<Erase>] ISidebarMenuButtonProp = interface static member propsInterface : unit = () end
 type [<Erase>] sidebarMenuButton =
-    inherit prop<ISidebarMenuButtonProp>
     static member inline asChild ( value : bool ) : ISidebarMenuButtonProp = Interop.mkProperty "asChild" value
     static member inline isActive ( value : bool ) : ISidebarMenuButtonProp = Interop.mkProperty "isActive" value
     static member inline tooltip ( value : string ) : ISidebarMenuButtonProp = Interop.mkProperty "tooltip" value
@@ -676,9 +633,8 @@ SidebarMenuButton.displayName = "SidebarMenuButton"
 """
 
 // --------------- SidebarMenuAction -------------- //
-type [<Erase>] ISidebarMenuActionProp = interface end
+type [<Erase>] ISidebarMenuActionProp = interface static member propsInterface : unit = () end
 type [<Erase>] sidebarMenuAction =
-    inherit prop<ISidebarMenuActionProp>
     static member inline asChild ( value : bool ) : ISidebarMenuActionProp = Interop.mkProperty "asChild" value
     static member inline showOnHover ( value : bool ) : ISidebarMenuActionProp = Interop.mkProperty "showOnHover" value
 
@@ -709,10 +665,7 @@ SidebarMenuAction.displayName = "SidebarMenuAction"
 """
 
 // --------------- SidebarMenuBadge -------------- //
-type [<Erase>] ISidebarMenuBadgeProp = interface end
-type [<Erase>] sidebarMenuBadge =
-    inherit prop<ISidebarMenuBadgeProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISidebarMenuBadgeProp = interface static member propsInterface : unit = () end
 
 let SidebarMenuBadge : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -734,9 +687,8 @@ SidebarMenuBadge.displayName = "SidebarMenuBadge"
 """
 
 // --------------- SidebarMenuSkeleton -------------- //
-type [<Erase>] ISidebarMenuSkeletonProp = interface end
+type [<Erase>] ISidebarMenuSkeletonProp = interface static member propsInterface : unit = () end
 type [<Erase>] sidebarMenuSkeleton =
-    inherit prop<ISidebarMenuSkeletonProp>
     static member inline showIcon ( value : bool ) : ISidebarMenuSkeletonProp = Interop.mkProperty "showIcon" value
 
 let SidebarMenuSkeleton : JSX.ElementType = JSX.jsx """
@@ -770,10 +722,7 @@ SidebarMenuSkeleton.displayName = "SidebarMenuSkeleton"
 """
 
 // --------------- SidebarMenuSub -------------- //
-type [<Erase>] ISidebarMenuSubProp = interface end
-type [<Erase>] sidebarMenuSub =
-    inherit prop<ISidebarMenuSubProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISidebarMenuSubProp = interface static member propsInterface : unit = () end
 
 let SidebarMenuSub : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -791,10 +740,7 @@ SidebarMenuSub.displayName = "SidebarMenuSub"
 """
 
 // --------------- SidebarMenuSubItem -------------- //
-type [<Erase>] ISidebarMenuSubItemProp = interface end
-type [<Erase>] sidebarMenuSubItem =
-    inherit prop<ISidebarMenuSubItemProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISidebarMenuSubItemProp = interface static member propsInterface : unit = () end
 
 let SidebarMenuSubItem : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ ...props }, ref) => <li ref={ref} {...props} />)
@@ -802,9 +748,8 @@ SidebarMenuSubItem.displayName = "SidebarMenuSubItem"
 """
 
 // --------------- SidebarMenuSubButton -------------- //
-type [<Erase>] ISidebarMenuSubButtonProp = interface end
+type [<Erase>] ISidebarMenuSubButtonProp = interface static member propsInterface : unit = () end
 type [<Erase>] sidebarMenuSubButton =
-    inherit prop<ISidebarMenuSubButtonProp>
     static member inline asChild ( value : bool ) : ISidebarMenuSubButtonProp = Interop.mkProperty "asChild" value
     static member inline isActive ( value : bool ) : ISidebarMenuSubButtonProp = Interop.mkProperty "isActive" value
 module [<Erase>] sidebarMenuSubButton =

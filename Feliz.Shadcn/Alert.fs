@@ -28,10 +28,8 @@ cva(
 
 // ------------- Alert -------------- //
 
-type [<Erase>] IAlertProp = interface end
-type [<Erase>] alert =
-    inherit prop<IAlertProp>
-    static member inline private noop = ignore
+type [<Erase>] IAlertProp = interface static member propsInterface : unit = () end
+type [<Erase>] alert = static member inline private noop = ignore
 
 [<RequireQualifiedAccess>]
 module [<Erase>] alert =
@@ -52,10 +50,8 @@ Alert.displayName = "Alert"
 """
 
 // ------------ AlertTitle ----------- //
-type [<Erase>] IAlertTitleProp = interface end
-type [<Erase>] alertTitle =
-    inherit prop<IAlertTitleProp>
-    static member inline private noop = ignore
+type [<Erase>] IAlertTitleProp = interface static member propsInterface : unit = () end
+type [<Erase>] alertTitle = static member inline private noop = ignore
 
 /// The Alert Title Component
 let AlertTitle : JSX.ElementType = JSX.jsx """
@@ -69,10 +65,8 @@ AlertTitle.displayName = "AlertTitle"
 """
 
 // ------------- AlertDescription ------------- //
-type [<Erase>] IAlertDescriptionProp = interface end
-type [<Erase>] alertDescription =
-    inherit prop<IAlertDescriptionProp>
-    static member inline private noop = ignore
+type [<Erase>] IAlertDescriptionProp = interface static member propsInterface : unit = () end
+type [<Erase>] alertDescription = static member inline private noop = ignore
 
 /// The Alert Description Component
 let AlertDescription : JSX.ElementType = JSX.jsx """

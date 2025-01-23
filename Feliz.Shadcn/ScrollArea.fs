@@ -10,13 +10,11 @@ ignore <| JSX.jsx """
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area"
 """
 
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 // --------------- ScrollArea -------------- //
-type [<Erase>] IScrollAreaProp = interface end
-type [<Erase>] scrollArea =
-    inherit ScrollArea.root<IScrollAreaProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IScrollAreaProp = interface static member propsInterface : unit = () end
+type [<Erase>] scrollArea = ScrollArea.root<IScrollAreaProp>
 
 let ScrollArea : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, children, ...props }, ref) => (
@@ -35,10 +33,8 @@ ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName
 """
 
 // --------------- ScrollBar -------------- //
-type [<Erase>] IScrollBarProp = interface end
-type [<Erase>] scrollBar =
-    inherit ScrollArea.scrollbar<IScrollBarProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IScrollBarProp = interface static member propsInterface : unit = () end
+type [<Erase>] scrollBar = ScrollArea.scrollbar<IScrollBarProp>
 
 let ScrollBar : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, orientation = "vertical", ...props }, ref) => (

@@ -12,10 +12,9 @@ import { Minus } from "lucide-react";
 """
 
 // --------------- InputOTP -------------- //
-type [<Erase>] IInputOTPProp = interface end
+type [<Erase>] IInputOTPProp = interface static member propsInterface : unit = () end
 type [<Erase>] inputOtp =
-    inherit prop<IInputOTPProp>
-    static member inline private noop : unit = ()
+    static member inline private containerClassName ( value : string ) : IInputOTPProp = Interop.mkProperty "containerClassName" value
 
 let InputOTP : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, containerClassName, ...props }, ref) => (
@@ -29,10 +28,7 @@ InputOTP.displayName = "InputOTP"
 """
 
 // --------------- InputOTPGroup -------------- //
-type [<Erase>] IInputOTPGroupProp = interface end
-type [<Erase>] inputOtpGroup =
-    inherit prop<IInputOTPGroupProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IInputOTPGroupProp = interface static member propsInterface : unit = () end
 
 let InputOTPGroup : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -44,8 +40,7 @@ InputOTPGroup.displayName = "InputOTPGroup"
 // --------------- InputOTPSlot -------------- //
 type [<Erase>] IInputOTPSlotProp = interface end
 type [<Erase>] inputOtpSlot =
-    inherit prop<IInputOTPSlotProp>
-    static member inline private noop : unit = ()
+    static member inline index ( value : int ) : IInputOTPSlotProp = Interop.mkProperty "index" value
 
 let InputOTPSlot : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ index, className, ...props }, ref) => {
@@ -75,10 +70,7 @@ InputOTPSlot.displayName = "InputOTPSlot"
 """
 
 // --------------- InputOTPSeparator -------------- //
-type [<Erase>] IInputOTPSeparatorProp = interface end
-type [<Erase>] inputOtpSeparator =
-    inherit prop<IInputOTPSeparatorProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IInputOTPSeparatorProp = interface static member propsInterface : unit = () end
 
 let InputOTPSeparator : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ ...props }, ref) => (

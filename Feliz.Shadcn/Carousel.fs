@@ -1,7 +1,6 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Carousel
 
-open Fable.Core.PyInterop
 open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
@@ -12,10 +11,7 @@ JSX.injectShadcnLib
 let private imports = Shadcn.Button.Button
 
 // --------------- Carousel -------------- //
-type [<Erase>] ICarouselProp = interface end
-type [<Erase>] carousel =
-    inherit prop<ICarouselProp>
-    static member inline noop : unit = ()
+type [<Erase>] ICarouselProp = interface static member propsInterface : unit = () end
 
 let internal CarouselContext = JSX.jsx"React.createContext(null)"
 let internal useCarousel () = ignore <| JSX.jsx """
@@ -130,10 +126,7 @@ Carousel.displayName = "Carousel"
 """
 
 // --------------- CarouselContent -------------- //
-type [<Erase>] ICarouselContentProp = interface end
-type [<Erase>] carouselContent =
-    inherit prop<ICarouselContentProp>
-    static member inline noop : unit = ()
+type [<Erase>] ICarouselContentProp = interface static member propsInterface : unit = () end
 
 let CarouselContent : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => {
@@ -156,10 +149,7 @@ CarouselContent.displayName = "CarouselContent"
 """
 
 // --------------- CarouselItem -------------- //
-type [<Erase>] ICarouselItemProp = interface end
-type [<Erase>] carouselItem =
-    inherit prop<ICarouselItemProp>
-    static member inline noop : unit = ()
+type [<Erase>] ICarouselItemProp = interface static member propsInterface : unit = () end
 
 let CarouselItem : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => {
@@ -182,10 +172,7 @@ CarouselItem.displayName = "CarouselItem"
 """
 
 // --------------- CarouselPrevious -------------- //
-type [<Erase>] ICarouselPreviousProp = interface end
-type [<Erase>] carouselPrevious =
-    inherit prop<ICarouselPreviousProp>
-    static member inline noop : unit = ()
+type [<Erase>] ICarouselPreviousProp = interface static member propsInterface : unit = () end
 
 let CarouselPrevious : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, variant = "outline", size = "icon", ...props }, ref) => {
@@ -211,10 +198,7 @@ CarouselPrevious.displayName = "CarouselPrevious"
 """
 
 // --------------- CarouselNext -------------- //
-type [<Erase>] ICarouselNextProp = interface end
-type [<Erase>] carouselNext =
-    inherit prop<ICarouselNextProp>
-    static member inline noop : unit = ()
+type [<Erase>] ICarouselNextProp = interface static member propsInterface : unit = () end
 
 let CarouselNext : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, variant = "outline", size = "icon", ...props }, ref) => {

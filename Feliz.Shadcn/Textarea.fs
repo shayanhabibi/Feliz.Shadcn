@@ -8,10 +8,7 @@ open Feliz
 JSX.injectShadcnLib
 
 // --------------- Textarea -------------- //
-type [<Erase>] ITextareaProp = interface end
-type [<Erase>] textarea =
-    inherit prop<ITextareaProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ITextareaProp = interface static member propsInterface : unit = () end
 
 let Textarea : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => {

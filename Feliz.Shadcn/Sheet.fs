@@ -1,7 +1,7 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Sheet
 
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 open Feliz.Lucide
 open Feliz.Shadcn.Interop
 open Fable.Core
@@ -38,50 +38,40 @@ cva(
        
 
 // --------------- Sheet -------------- //
-type [<Erase>] ISheetProp = interface end
-type [<Erase>] sheet =
-    inherit Dialog.root<ISheetProp>
-    static member inline noop : unit = ()
+type [<Erase>] ISheetProp = interface static member propsInterface : unit = () end
+type [<Erase>] sheet = Dialog.root<ISheetProp>
 
 let Sheet : JSX.ElementType = JSX.jsx """
 SheetPrimitive.Root
 """
 
 // --------------- SheetTrigger -------------- //
-type [<Erase>] ISheetTriggerProp = interface end
-type [<Erase>] sheetTrigger =
-    inherit Dialog.trigger<ISheetTriggerProp>
-    static member inline noop : unit = ()
+type [<Erase>] ISheetTriggerProp = interface static member propsInterface : unit = () end
+type [<Erase>] sheetTrigger = Dialog.trigger<ISheetTriggerProp>
 
 let SheetTrigger : JSX.ElementType = JSX.jsx """
 SheetPrimitive.Trigger
 """
 
 // --------------- SheetClose -------------- //
-type [<Erase>] ISheetCloseProp = interface end
-type [<Erase>] sheetClose =
-    inherit Dialog.close<ISheetCloseProp>
-    static member inline noop : unit = ()
+type [<Erase>] ISheetCloseProp = interface static member propsInterface : unit = () end
+type [<Erase>] sheetClose = Dialog.close<ISheetCloseProp>
 
 let SheetClose : JSX.ElementType = JSX.jsx """
 SheetPrimitive.Close
 """
 
 // --------------- SheetPortal -------------- //
-type [<Erase>] ISheetPortalProp = interface end
-type [<Erase>] sheetPortal =
-    inherit Dialog.portal<ISheetPortalProp>
-    static member inline noop : unit = ()
+type [<Erase>] ISheetPortalProp = interface static member propsInterface : unit = () end
+type [<Erase>] sheetPortal = Dialog.portal<ISheetPortalProp>
 
 let SheetPortal : JSX.ElementType = JSX.jsx """
 SheetPrimitive.Portal
 """
 
 // --------------- SheetOverlay -------------- //
-type [<Erase>] ISheetOverlayProp = interface end
-type [<Erase>] sheetOverlay =
-    inherit Dialog.overlay<ISheetOverlayProp>
-    static member inline noop : unit = ()
+type [<Erase>] ISheetOverlayProp = interface static member propsInterface : unit = () end
+type [<Erase>] sheetOverlay = Dialog.overlay<ISheetOverlayProp>
 
 let SheetOverlay : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -97,10 +87,8 @@ SheetOverlay.displayName = SheetPrimitive.Overlay.displayName
 """
 
 // --------------- SheetContent -------------- //
-type [<Erase>] ISheetContentProp = interface end
-type [<Erase>] sheetContent =
-    inherit Dialog.content<ISheetContentProp>
-    static member inline noop : unit = ()
+type [<Erase>] ISheetContentProp = interface static member propsInterface : unit = () end
+type [<Erase>] sheetContent = Dialog.content<ISheetContentProp>
 
 module [<Erase>] sheetContent =
     type [<Erase>] side =
@@ -127,10 +115,7 @@ SheetContent.displayName = SheetPrimitive.Content.displayName
 """
 
 // --------------- SheetHeader -------------- //
-type [<Erase>] ISheetHeaderProp = interface end
-type [<Erase>] sheetHeader =
-    inherit prop<ISheetHeaderProp>
-    static member inline noop : unit = ()
+type [<Erase>] ISheetHeaderProp = interface static member propsInterface : unit = () end
 
 let SheetHeader : JSX.ElementType = JSX.jsx """
 ({
@@ -145,10 +130,7 @@ SheetHeader.displayName = "SheetHeader"
 """
 
 // --------------- SheetFooter -------------- //
-type [<Erase>] ISheetFooterProp = interface end
-type [<Erase>] sheetFooter =
-    inherit prop<ISheetFooterProp>
-    static member inline noop : unit = ()
+type [<Erase>] ISheetFooterProp = interface static member propsInterface : unit = () end
 
 let SheetFooter : JSX.ElementType = JSX.jsx """
 ({
@@ -163,10 +145,7 @@ SheetFooter.displayName = "SheetFooter"
 """
 
 // --------------- SheetTitle -------------- //
-type [<Erase>] ISheetTitleProp = interface end
-type [<Erase>] sheetTitle =
-    inherit prop<ISheetTitleProp>
-    static member inline noop : unit = ()
+type [<Erase>] ISheetTitleProp = interface static member propsInterface : unit = () end
 
 let SheetTitle : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -179,10 +158,7 @@ SheetTitle.displayName = SheetPrimitive.Title.displayName
 """
 
 // --------------- SheetDescription -------------- //
-type [<Erase>] ISheetDescriptionProp = interface end
-type [<Erase>] sheetDescription =
-    inherit prop<ISheetDescriptionProp>
-    static member inline noop : unit = ()
+type [<Erase>] ISheetDescriptionProp = interface static member propsInterface : unit = () end
 
 let SheetDescription : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (

@@ -5,16 +5,14 @@ open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 emitJsStatement () "import * as AvatarPrimitive from \"@radix-ui/react-avatar\""
 JSX.injectShadcnLib
 
 // --------------- Avatar -------------- //
-type [<Erase>] IAvatarProp = interface end
-type [<Erase>] avatar =
-    inherit Avatar.root<IAvatarProp>
-    static member private noop : unit = ()
+type [<Erase>] IAvatarProp = interface static member propsInterface : unit = () end
+type [<Erase>] avatar = Avatar.root<IAvatarProp>
 
 let Avatar : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -27,7 +25,7 @@ Avatar.displayName = AvatarPrimitive.Root.displayName
 """
 
 // --------------- AvatarImage -------------- //
-type [<Erase>] IAvatarImageProp = interface end
+type [<Erase>] IAvatarImageProp = interface static member propsInterface : unit = () end
 
 [<StringEnum>]
 type [<Erase>] ImageLoadingStatus =
@@ -51,11 +49,8 @@ AvatarImage.displayName = AvatarPrimitive.Image.displayName
 """
 
 // --------------- AvatarFallBack -------------- //
-type [<Erase>] IAvatarFallbackProp = interface end
-type [<Erase>] avatarFallback =
-    inherit Avatar.fallback<IAvatarFallbackProp>
-    static member private noop = ()
-    // static member inline delayMs ( value : int ) : IAvatarFallBackProp = Interop.mkProperty "delayMs" value
+type [<Erase>] IAvatarFallbackProp = interface static member propsInterface : unit = () end
+type [<Erase>] avatarFallback = Avatar.fallback<IAvatarFallbackProp>
 
 let AvatarFallback : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (

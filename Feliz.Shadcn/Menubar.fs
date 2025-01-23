@@ -11,63 +11,51 @@ import * as MenubarPrimitive from "@radix-ui/react-menubar"
 import { Check, ChevronRight, Circle } from "lucide-react"
 """
 
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 // --------------- MenubarMenu -------------- //
-type [<Erase>] IMenubarMenuProp = interface end
-type [<Erase>] menubarMenu =
-    inherit MenuBar.menu<IMenubarMenuProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IMenubarMenuProp = interface static member propsInterface : unit = () end
+type [<Erase>] menubarMenu = MenuBar.menu<IMenubarMenuProp>
 
 let MenubarMenu : JSX.ElementType = JSX.jsx """
 MenubarPrimitive.Menu
 """
 
 // --------------- MenubarGroup -------------- //
-type [<Erase>] IMenubarGroupProp = interface end
-type [<Erase>] menubarGroup =
-    inherit MenuBar.group<IMenubarGroupProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IMenubarGroupProp = interface static member propsInterface : unit = () end
+type [<Erase>] menubarGroup = MenuBar.group<IMenubarGroupProp>
 
 let MenubarGroup : JSX.ElementType = JSX.jsx """
 MenubarPrimitive.Group
 """
 
 // --------------- MenubarPortal -------------- //
-type [<Erase>] IMenubarPortalProp = interface end
-type [<Erase>] menubarPortal =
-    inherit MenuBar.portal<IMenubarPortalProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IMenubarPortalProp = interface static member propsInterface : unit = () end
+type [<Erase>] menubarPortal = MenuBar.portal<IMenubarPortalProp>
 
 let MenubarPortal : JSX.ElementType = JSX.jsx """
 MenubarPrimitive.Portal
 """
 
 // --------------- MenubarSub -------------- //
-type [<Erase>] IMenubarSubProp = interface end
-type [<Erase>] menubarSub =
-    inherit MenuBar.sub<IMenubarSubProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IMenubarSubProp = interface static member propsInterface : unit = () end
+type [<Erase>] menubarSub = MenuBar.sub<IMenubarSubProp>
 
 let MenubarSub : JSX.ElementType = JSX.jsx """
 MenubarPrimitive.Sub
 """
 
 // --------------- MenubarRadioGroup -------------- //
-type [<Erase>] IMenubarRadioGroupProp = interface end
-type [<Erase>] menubarRadioGroup =
-    inherit MenuBar.radioGroup<IMenubarRadioGroupProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IMenubarRadioGroupProp = interface static member propsInterface : unit = () end
+type [<Erase>] menubarRadioGroup = MenuBar.radioGroup<IMenubarRadioGroupProp>
 
 let MenubarRadioGroup : JSX.ElementType = JSX.jsx """
 MenubarPrimitive.RadioGroup
 """
 
 // --------------- Menubar -------------- //
-type [<Erase>] IMenubarProp = interface end
-type [<Erase>] menubar =
-    inherit MenuBar.root<IMenubarProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IMenubarProp = interface static member propsInterface : unit = () end
+type [<Erase>] menubar = MenuBar.root<IMenubarProp>
 
 let Menubar : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -83,10 +71,8 @@ Menubar.displayName = MenubarPrimitive.Root.displayName
 """
 
 // --------------- MenubarTrigger -------------- //
-type [<Erase>] IMenubarTriggerProp = interface end
-type [<Erase>] menubarTrigger =
-    inherit MenuBar.trigger<IMenubarTriggerProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IMenubarTriggerProp = interface static member propsInterface : unit = () end
+type [<Erase>] menubarTrigger = MenuBar.trigger<IMenubarTriggerProp>
 
 let MenubarTrigger : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -102,7 +88,7 @@ MenubarTrigger.displayName = MenubarPrimitive.Trigger.displayName
 """
 
 // --------------- MenubarSubTrigger -------------- //
-type [<Erase>] IMenubarSubTriggerProp = interface end
+type [<Erase>] IMenubarSubTriggerProp = interface static member propsInterface : unit = () end
 type [<Erase>] menubarSubTrigger =
     inherit MenuBar.subTrigger<IMenubarSubTriggerProp>
     static member inline inset ( value : bool ) : IMenubarSubTriggerProp = Interop.mkProperty "inset" value
@@ -125,10 +111,8 @@ MenubarSubTrigger.displayName = MenubarPrimitive.SubTrigger.displayName
 """
 
 // --------------- MenubarSubContent -------------- //
-type [<Erase>] IMenubarSubContentProp = interface end
-type [<Erase>] menubarSubContent =
-    inherit MenuBar.subContent<IMenubarSubContentProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IMenubarSubContentProp = interface static member propsInterface : unit = () end
+type [<Erase>] menubarSubContent = MenuBar.subContent<IMenubarSubContentProp>
 
 let MenubarSubContent : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -144,10 +128,8 @@ MenubarSubContent.displayName = MenubarPrimitive.SubContent.displayName
 """
 
 // --------------- MenubarContent -------------- //
-type [<Erase>] IMenubarContentProp = interface end
-type [<Erase>] menubarContent =
-    inherit MenuBar.content<IMenubarContentProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IMenubarContentProp = interface static member propsInterface : unit = () end
+type [<Erase>] menubarContent = MenuBar.content<IMenubarContentProp>
 
 let MenubarContent : JSX.ElementType = JSX.jsx """
 React.forwardRef((
@@ -171,7 +153,7 @@ MenubarContent.displayName = MenubarPrimitive.Content.displayName
 """
 
 // --------------- MenubarItem -------------- //
-type [<Erase>] IMenubarItemProp = interface end
+type [<Erase>] IMenubarItemProp = interface static member propsInterface : unit = () end
 type [<Erase>] menubarItem =
     inherit MenuBar.item<IMenubarItemProp>
     static member inline inset ( value : bool ) : IMenubarItemProp = Interop.mkProperty "inset" value
@@ -191,10 +173,8 @@ MenubarItem.displayName = MenubarPrimitive.Item.displayName
 """
 
 // --------------- MenubarCheckboxItem -------------- //
-type [<Erase>] IMenubarCheckboxItemProp = interface end
-type [<Erase>] menubarCheckboxItem =
-    inherit MenuBar.checkboxItem<IMenubarCheckboxItemProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IMenubarCheckboxItemProp = interface static member propsInterface : unit = () end
+type [<Erase>] menubarCheckboxItem = MenuBar.checkboxItem<IMenubarCheckboxItemProp>
 
 let MenubarCheckboxItem : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, children, checked, ...props }, ref) => (
@@ -218,10 +198,8 @@ MenubarCheckboxItem.displayName = MenubarPrimitive.CheckboxItem.displayName
 """
 
 // --------------- MenubarRadioItem -------------- //
-type [<Erase>] IMenubarRadioItemProp = interface end
-type [<Erase>] menubarRadioItem =
-    inherit MenuBar.radioItem<IMenubarRadioItemProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IMenubarRadioItemProp = interface static member propsInterface : unit = () end
+type [<Erase>] menubarRadioItem = MenuBar.radioItem<IMenubarRadioItemProp>
 
 let MenubarRadioItem : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, children, ...props }, ref) => (
@@ -244,7 +222,7 @@ MenubarRadioItem.displayName = MenubarPrimitive.RadioItem.displayName
 """
 
 // --------------- MenubarLabel -------------- //
-type [<Erase>] IMenubarLabelProp = interface end
+type [<Erase>] IMenubarLabelProp = interface static member propsInterface : unit = () end
 type [<Erase>] menubarLabel =
     inherit MenuBar.label<IMenubarLabelProp>
     static member inline inset ( value : bool ) : IMenubarLabelProp = Interop.mkProperty "inset" value
@@ -260,10 +238,8 @@ MenubarLabel.displayName = MenubarPrimitive.Label.displayName
 """
 
 // --------------- MenubarSeparator -------------- //
-type [<Erase>] IMenubarSeparatorProp = interface end
-type [<Erase>] menubarSeparator =
-    inherit MenuBar.separator<IMenubarSeparatorProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IMenubarSeparatorProp = interface static member propsInterface : unit = () end
+type [<Erase>] menubarSeparator = MenuBar.separator<IMenubarSeparatorProp>
 
 let MenubarSeparator : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -276,10 +252,7 @@ MenubarSeparator.displayName = MenubarPrimitive.Separator.displayName
 """
 
 // --------------- MenubarShortcut -------------- //
-type [<Erase>] IMenubarShortcutProp = interface end
-type [<Erase>] menubarShortcut =
-    inherit prop<IMenubarShortcutProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IMenubarShortcutProp = interface static member propsInterface : unit = () end
 
 let MenubarShortcut : JSX.ElementType = JSX.jsx """
 ({

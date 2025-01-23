@@ -5,7 +5,7 @@ open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 emitJsStatement () "import * as AlertDialogPrimitive from \"@radix-ui/react-alert-dialog\""
 
@@ -13,31 +13,23 @@ JSX.injectShadcnLib
 let buttonVariants = Feliz.Shadcn.Button.buttonVariants
 
 // --------------- AlertDialog -------------- //
-type [<Erase>] IAlertDialogProp = interface end
-type [<Erase>] alertDialog =
-    inherit Dialog.root<IAlertDialogProp>
-    static member private noop = ()
+type [<Erase>] IAlertDialogProp = interface static member propsInterface : unit = () end
+type [<Erase>] alertDialog = Dialog.root<IAlertDialogProp>
 
 let AlertDialog : JSX.ElementType = JSX.jsx """AlertDialogPrimitive.Root"""
 
 // --------------- AlertDialogTrigger -------------- //
-type [<Erase>] IAlertDialogTriggerProp = interface end
-type [<Erase>] alertDialogTrigger =
-    inherit Dialog.trigger<IAlertDialogTriggerProp>
-    static member inline private noop = ignore
+type [<Erase>] IAlertDialogTriggerProp = interface static member propsInterface : unit = () end
+type [<Erase>] alertDialogTrigger = Dialog.trigger<IAlertDialogTriggerProp>
 
 let AlertDialogTrigger : JSX.ElementType = JSX.jsx """AlertDialogPrimitive.Trigger"""
 // --------------- AlertDialogPortal -------------- //
-type [<Erase>] IAlertDialogPortalProp = interface end
-type [<Erase>] alertDialogPortal =
-    inherit Dialog.portal<IAlertDialogPortalProp>
-    static member private noop = ()
+type [<Erase>] IAlertDialogPortalProp = interface static member propsInterface : unit = () end
+type [<Erase>] alertDialogPortal = Dialog.portal<IAlertDialogPortalProp>
     
 let AlertDialogPortal : JSX.ElementType = JSX.jsx """AlertDialogPrimitive.Portal"""
-type [<Erase>] IAlertDialogOverlayProp = interface end
-type [<Erase>] alertDialogOverlay =
-    inherit Dialog.overlay<IAlertDialogOverlayProp>
-    static member private noop = ()
+type [<Erase>] IAlertDialogOverlayProp = interface static member propsInterface : unit = () end
+type [<Erase>] alertDialogOverlay = Dialog.overlay<IAlertDialogOverlayProp>
 
 let AlertDialogOverlay : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -53,10 +45,8 @@ AlertDialogOverlay.displayName = AlertDialogPrimitive.Overlay.displayName
 """
 
 // --------------- AlertDialogContent -------------- //
-type [<Erase>] IAlertDialogContentProp = interface end
-type [<Erase>] alertDialogContent =
-    inherit Dialog.content<IAlertDialogContentProp>
-    static member private noop = ()
+type [<Erase>] IAlertDialogContentProp = interface static member propsInterface : unit = () end
+type [<Erase>] alertDialogContent = Dialog.content<IAlertDialogContentProp>
 
 let AlertDialogContent : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -74,10 +64,8 @@ React.forwardRef(({ className, ...props }, ref) => (
 AlertDialogContent.displayName = AlertDialogPrimitive.Content.displayName
 """
 // --------------- AlertDialogHeader -------------- //
-type [<Erase>] IAlertDialogHeaderProp = interface end
-type [<Erase>] alertDialogHeader =
-    inherit prop<IAlertDialogHeaderProp>
-    static member inline private noop = ignore
+type [<Erase>] IAlertDialogHeaderProp = interface static member propsInterface : unit = () end
+type [<Erase>] alertDialogHeader = static member inline private noop = ignore
 
 [<JSX.Component>]
 let AlertDialogHeader : JSX.ElementType = JSX.jsx """
@@ -93,10 +81,8 @@ AlertDialogHeader.displayName = "AlertDialogHeader"
 """
 
 // --------------- AlertDialogFooter -------------- //
-type [<Erase>] IAlertDialogFooterProp = interface end
-type [<Erase>] alertDialogFooter =
-    inherit prop<IAlertDialogFooterProp>
-    static member inline private noop = ignore
+type [<Erase>] IAlertDialogFooterProp = interface static member propsInterface : unit = () end
+type [<Erase>] alertDialogFooter = static member inline private noop = ignore
 
 let AlertDialogFooter : JSX.ElementType = JSX.jsx """
 ({
@@ -110,10 +96,8 @@ let AlertDialogFooter : JSX.ElementType = JSX.jsx """
 AlertDialogFooter.displayName = "AlertDialogFooter"
 """
 // --------------- AlertDialogTitle -------------- //
-type [<Erase>] IAlertDialogTitleProp = interface end
-type [<Erase>] alertDialogTitle =
-    inherit AlertDialog.title<IAlertDialogTitleProp>
-    static member inline private noop = ignore
+type [<Erase>] IAlertDialogTitleProp = interface static member propsInterface : unit = () end
+type [<Erase>] alertDialogTitle = AlertDialog.title<IAlertDialogTitleProp>
 
 let AlertDialogTitle : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -123,10 +107,8 @@ AlertDialogTitle.displayName = AlertDialogPrimitive.Title.displayName
 """
 
 // --------------- AlertDialogDescription -------------- //
-type [<Erase>] IAlertDialogDescriptionProp = interface end
-type [<Erase>] alertDialogDescription =
-    inherit AlertDialog.description<IAlertDialogDescriptionProp>
-    static member inline private noop = ignore
+type [<Erase>] IAlertDialogDescriptionProp = interface static member propsInterface : unit = () end
+type [<Erase>] alertDialogDescription = AlertDialog.description<IAlertDialogDescriptionProp>
 
 let AlertDialogDescription : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -140,10 +122,8 @@ AlertDialogDescription.displayName =
 """
 
 // --------------- AlertDialogAction -------------- //
-type [<Erase>] IAlertDialogActionProp = interface end
-type [<Erase>] alertDialogAction =
-    inherit AlertDialog.action<IAlertDialogActionProp>
-    static member inline private noop = ignore
+type [<Erase>] IAlertDialogActionProp = interface static member propsInterface : unit = () end
+type [<Erase>] alertDialogAction = AlertDialog.action<IAlertDialogActionProp>
 
 let AlertDialogAction : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -153,10 +133,8 @@ AlertDialogAction.displayName = AlertDialogPrimitive.Action.displayName
 """
 
 // --------------- AlertDialogCancel -------------- //
-type [<Erase>] IAlertDialogCancelProp = interface end
-type [<Erase>] alertDialogCancel =
-    inherit AlertDialog.cancel<IAlertDialogCancelProp>
-    static member inline private noop = ignore
+type [<Erase>] IAlertDialogCancelProp = interface static member propsInterface : unit = () end
+type [<Erase>] alertDialogCancel = AlertDialog.cancel<IAlertDialogCancelProp>
 
 let AlertDialogCancel : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (

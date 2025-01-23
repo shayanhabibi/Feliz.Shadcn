@@ -5,16 +5,13 @@ open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 emitJsStatement () "import * as AspectRatioPrimitive from \"@radix-ui/react-aspect-ratio\""
 
 // --------------- AspectRatio -------------- //
-type [<Erase>] IAspectRatioProp = interface end
-type [<Erase>] aspectRatio =
-    inherit AspectRatio.root<IAspectRatioProp>
-    static member private noop = ()
-    // static member inline ratio ( value : float ) : IAspectRatioProp = Interop.mkProperty "ratio" value
+type [<Erase>] IAspectRatioProp = interface static member propsInterface : unit = () end
+type [<Erase>] aspectRatio = AspectRatio.root<IAspectRatioProp>
 
 let AspectRatio : JSX.ElementType = JSX.jsx "AspectRatioPrimitive.Root"
 
