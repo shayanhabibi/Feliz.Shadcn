@@ -36,9 +36,8 @@ type [<Erase>] Feature =
     }
 
 // --------------- KanbanBoard -------------- //
-type [<Erase>] IKanbanBoardProp = interface end
+type [<Erase>] IKanbanBoardProp = interface static member propsInterface : unit = () end
 type [<Erase>] kanbanBoard =
-    inherit prop<IKanbanBoardProp>
     static member inline id ( value : string ) : IKanbanBoardProp = Interop.mkProperty "id" value
 
 let KanbanBoard : JSX.ElementType = JSX.jsx """
@@ -64,9 +63,8 @@ let KanbanBoard : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- KanbanCard -------------- //
-type [<Erase>] IKanbanCardProp = interface end
+type [<Erase>] IKanbanCardProp = interface static member propsInterface : unit = () end
 type [<Erase>] kanbanCard =
-    inherit prop<IKanbanCardProp>
     static member inline id ( value : string ) : IKanbanCardProp = Interop.mkProperty "id" value
     static member inline index ( value : int ) : IKanbanCardProp = Interop.mkProperty "index" value
     static member inline name ( value : string ) : IKanbanCardProp = Interop.mkProperty "name" value
@@ -105,10 +103,7 @@ let KanbanCard : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- KanbanCards -------------- //
-type [<Erase>] IKanbanCardsProp = interface end
-type [<Erase>] kanbanCards =
-    inherit prop<IKanbanCardsProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IKanbanCardsProp = interface static member propsInterface : unit = () end
 
 let KanbanCards : JSX.ElementType = JSX.jsx """
 ({
@@ -120,9 +115,8 @@ let KanbanCards : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- KanbanHeader -------------- //
-type [<Erase>] IKanbanHeaderProp = interface end
+type [<Erase>] IKanbanHeaderProp = interface static member propsInterface : unit = () end
 type [<Erase>] kanbanHeader =
-    inherit prop<IKanbanHeaderProp>
     static member inline color ( value : string ) : IKanbanHeaderProp = Interop.mkProperty "color" value
     static member inline name ( value : string ) : IKanbanHeaderProp = Interop.mkProperty "name" value
     static member inline status ( value : Status ) : IKanbanHeaderProp = Interop.mkProperty "status" value
@@ -152,9 +146,8 @@ type DragEndEvent
         
 
 // --------------- KanbanProvider -------------- //
-type [<Erase>] IKanbanProviderProp = interface end
+type [<Erase>] IKanbanProviderProp = interface static member propsInterface : unit = () end
 type [<Erase>] kanbanProvider =
-    inherit prop<IKanbanProviderProp>
     static member inline onDragEnd ( handler : DragEndEvent -> unit ) : IKanbanProviderProp = Interop.mkProperty "onDragEnd" handler
 
 let KanbanProvider : JSX.ElementType = JSX.jsx """

@@ -58,12 +58,74 @@
     </NpmDependencies>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="JSX.Interop.fs" />
     <Compile Include="Feliz.Shadcn.Bridge\Feliz.Props.fs" />
+    <Compile Include="Feliz.Shadcn.Bridge\Feliz.Props.Svg.fs" />
     <Compile Include="Feliz.Shadcn.Bridge\Feliz.Restyle.fs" />
-    <Compile Include="JsxInterop.fs" />
     <Content Include="README.md" />
-    <Compile Include="Hooks.fs" />
+    <Compile Include="Shadcn.Hooks.fs" />
     <Content Include="Feliz.Shadcn.Interop.fsproj.paket.template" />
+    <Compile Include="Feliz.RadixUI.Interface\Avatar.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\Accordion.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\AlertDialog.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\AspectRatio.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\Form.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\Label.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\Dialog.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\MenuBar.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\Popover.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\Checkbox.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\HoverCard.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\Collapsible.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\ContextMenu.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\DropdownMenu.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NavigationMenu.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\Tabs.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\Toast.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\Select.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\Slider.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\Switch.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\Toggle.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\Toolbar.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\Tooltip.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\Progress.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\Separator.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\RadioGroup.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\ScrollArea.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\ToggleGroup.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\Form.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\Tabs.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\Label.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\Toast.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\Avatar.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\Dialog.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\Select.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\Slider.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\Switch.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\Toggle.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\MenuBar.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\Popover.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\Toolbar.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\Tooltip.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\Announce.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\Checkbox.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\Progress.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\Accordion.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\HoverCard.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\Separator.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\RadioGroup.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\ScrollArea.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\AlertDialog.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\AspectRatio.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\Collapsible.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\ContextMenu.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\ToggleGroup.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\DropdownMenu.fs" />
+    <Compile Include="Feliz.RadixUI.Interface\NonInherit\NavigationMenu.fs" />
+    <Compile Include="Feliz.Lucide\Spec.fs" />
+    <Compile Include="Feliz.Lucide\LucideProps.fs" />
+    <Compile Include="Feliz.Lucide\Lucide.fs" />
+    <Compile Include="Feliz.Lucide\LucideLab.fs" />
   </ItemGroup>
   <PropertyGroup>
     <PackageTags>fable-javascript</PackageTags>

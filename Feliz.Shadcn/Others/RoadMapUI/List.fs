@@ -29,10 +29,7 @@ type [<Erase>] Feature =
     }
 
 // --------------- ListItems -------------- //
-type [<Erase>] IListItemsProp = interface end
-type [<Erase>] listItems =
-    inherit prop<IListItemsProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IListItemsProp = interface static member propsInterface : unit = () end
 
 let ListItems : JSX.ElementType = JSX.jsx """
 ({
@@ -46,9 +43,8 @@ let ListItems : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- ListHeader -------------- //
-type [<Erase>] IListHeaderProp = interface end
+type [<Erase>] IListHeaderProp = interface static member propsInterface : unit = () end
 type [<Erase>] listHeader =
-    inherit prop<IListHeaderProp>
     static member inline name ( value : string ) : IListHeaderProp = Interop.mkProperty "name" value
     static member inline color ( value : string ) : IListHeaderProp = Interop.mkProperty "color" value
 
@@ -66,9 +62,8 @@ let ListHeader : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- ListGroup -------------- //
-type [<Erase>] IListGroupProp = interface end
+type [<Erase>] IListGroupProp = interface static member propsInterface : unit = () end
 type [<Erase>] listGroup =
-    inherit prop<IListGroupProp>
     static member inline id ( value : string ) : IListGroupProp = Interop.mkProperty "id" value
     
 let ListGroup : JSX.ElementType = JSX.jsx """
@@ -90,9 +85,8 @@ let ListGroup : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- ListItem -------------- //
-type [<Erase>] IListItemProp = interface end
+type [<Erase>] IListItemProp = interface static member propsInterface : unit = () end
 type [<Erase>] listItem =
-    inherit prop<IListItemProp>
     static member inline id ( value : string ) : IListItemProp = Interop.mkProperty "id" value
     static member inline name ( value : string ) : IListItemProp = Interop.mkProperty "name" value
 
@@ -143,9 +137,8 @@ type DragEndEvent
     member val over : string option = jsNative with get,set
     
 // --------------- ListProvider -------------- //
-type [<Erase>] IListProviderProp = interface end
+type [<Erase>] IListProviderProp = interface static member propsInterface : unit = () end
 type [<Erase>] listProvider =
-    inherit prop<IListProviderProp>
     static member inline onDragEnd ( handler : DragEndEvent -> unit ) : IListProviderProp = Interop.mkProperty "onDragEnd" handler
 
 let ListProvider : JSX.ElementType = JSX.jsx """

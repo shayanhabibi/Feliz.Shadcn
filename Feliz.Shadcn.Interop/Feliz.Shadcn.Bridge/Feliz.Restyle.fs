@@ -9,3 +9,4 @@ open Fable.Core
 /// By preventing the name collision with Feliz <c>prop</c>, the compiler can infer the generic
 /// type and produce the correct result.
 type [<Erase>] props<'T when 'T : (static member propsInterface : unit)> = prop<'T>
+type [<Erase>] svgs<'T when 'T : (static member svgsInterface : unit)> = svg<'T>
