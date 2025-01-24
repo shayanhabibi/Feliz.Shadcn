@@ -65,8 +65,8 @@ ToggleGroupItem.displayName = ToggleGroupPrimitive.Item.displayName
 type [<Erase>] Shadcn =
     static member inline ToggleGroup ( props : IToggleGroupProp list ) = JSX.createElement ToggleGroup props
     static member inline ToggleGroup ( children : ReactElement list ) = JSX.createElementWithChildren ToggleGroup children
-    static member inline ToggleGroup ( el : ReactElement ) = JSX.createElement ToggleGroup [ toggleGroup.asChild true ; toggleGroup.children el ]
+    static member inline ToggleGroup ( el : ReactElement ) = JSX.createElement ToggleGroup [ toggleGroup.asChild true ; props.children el ]
     static member inline ToggleGroupItem ( props : IToggleGroupItemProp list ) = JSX.createElement ToggleGroupItem props
     static member inline ToggleGroupItem ( children : ReactElement list ) = JSX.createElementWithChildren ToggleGroupItem children
-    static member inline ToggleGroupItem ( el : ReactElement ) = JSX.createElement ToggleGroupItem [ toggleGroupItem.asChild true ; toggleGroupItem.children el ]
+    static member inline ToggleGroupItem ( el : ReactElement ) = JSX.createElement ToggleGroupItem [ toggleGroupItem.asChild true ; props.children el ]
     

@@ -37,4 +37,4 @@ type [<Erase>] Shadcn =
     static member inline Progress ( props : IProgressProp list ) = JSX.createElement Progress props
     static member inline Progress ( children : ReactElement list ) = JSX.createElementWithChildren Progress children
     static member inline Progress ( value : int ) = JSX.createElement Progress [ prop.value value ]
-    static member inline Progress ( el : ReactElement ) = JSX.createElement Progress [ progress.asChild true ; progress.children el ]
+    static member inline Progress ( el : ReactElement ) = JSX.createElement Progress [ progress.asChild true ; props.children el ]

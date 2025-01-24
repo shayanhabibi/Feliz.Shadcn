@@ -54,5 +54,5 @@ type [<Erase>] Shadcn =
     static member inline Badge ( props : IBadgeProp list ) = JSX.createElement Badge props
     static member inline Badge ( children : ReactElement list ) = JSX.createElementWithChildren Badge children
     static member inline Badge ( value : string ) = JSX.createElement Badge [ prop.text value ]
-    static member inline Badge ( variant : IBadgeProp , value : string ) = JSX.createElement Badge [ variant ; badge.text value ]
+    static member inline Badge ( variant : IBadgeProp , value : string ) = JSX.createElement Badge [ variant ; props.text value ]
     

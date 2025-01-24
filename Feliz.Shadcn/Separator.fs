@@ -41,4 +41,4 @@ type [<Erase>] Shadcn =
     static member inline Separator ( props : ISeparatorProp list ) = JSX.createElement Separator props
     static member inline Separator ( children : ReactElement list ) = JSX.createElementWithChildren Separator children
     static member inline Separator () = JSX.createElement Separator []
-    static member inline Separator ( el : ReactElement ) = JSX.createElement Separator [ separator.asChild true ; separator.children el ]
+    static member inline Separator ( el : ReactElement ) = JSX.createElement Separator [ separator.asChild true ; props.children el ]

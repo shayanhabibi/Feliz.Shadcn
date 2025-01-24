@@ -1,6 +1,7 @@
 ﻿namespace Feliz.Lucide
 
 open Fable.Core
+open Feliz.Shadcn.Interop
 
 type [<Erase>] ILucideIconProp = interface static member svgsInterface : unit = () end
     

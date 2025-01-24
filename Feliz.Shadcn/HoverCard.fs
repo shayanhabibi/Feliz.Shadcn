@@ -52,9 +52,9 @@ type [<Erase>] Shadcn =
     static member inline HoverCardTrigger ( props : IHoverCardTriggerProp list ) = JSX.createElement HoverCardTrigger props
     static member inline HoverCardTrigger ( children : ReactElement list ) = JSX.createElementWithChildren HoverCardTrigger children
     static member inline HoverCardTrigger ( value : string ) = JSX.createElement HoverCardTrigger [ prop.text value ]
-    static member inline HoverCardTrigger ( el : ReactElement ) = JSX.createElement HoverCardTrigger [ hoverCardTrigger.asChild true ; hoverCardTrigger.children el ]
+    static member inline HoverCardTrigger ( el : ReactElement ) = JSX.createElement HoverCardTrigger [ hoverCardTrigger.asChild true ; props.children el ]
     static member inline HoverCardContent ( props : IHoverCardContentProp list ) = JSX.createElement HoverCardContent props
     static member inline HoverCardContent ( children : ReactElement list ) = JSX.createElementWithChildren HoverCardContent children
     static member inline HoverCardContent ( value : string ) = JSX.createElement HoverCardContent [ prop.text value ]
-    static member inline HoverCardContent ( el : ReactElement ) = JSX.createElement HoverCardContent [ hoverCardContent.asChild true ; hoverCardContent.children el ]
+    static member inline HoverCardContent ( el : ReactElement ) = JSX.createElement HoverCardContent [ hoverCardContent.asChild true ; props.children el ]
         

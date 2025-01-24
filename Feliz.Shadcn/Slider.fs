@@ -35,4 +35,4 @@ Slider.displayName = SliderPrimitive.Root.displayName
 type [<Erase>] Shadcn =
     static member inline Slider ( props : ISliderProp list ) = JSX.createElement Slider props
     static member inline Slider ( children : ReactElement list ) = JSX.createElementWithChildren Slider children
-    static member inline Slider ( el : ReactElement ) = JSX.createElement Slider [ slider.asChild true ; slider.children el ]
+    static member inline Slider ( el : ReactElement ) = JSX.createElement Slider [ slider.asChild true ; props.children el ]

@@ -58,10 +58,10 @@ type [<Erase>] Shadcn =
     static member inline Tooltip ( children : ReactElement list ) = JSX.createElementWithChildren Tooltip children
     static member inline TooltipTrigger ( props : ITooltipTriggerProp list ) = JSX.createElement TooltipTrigger props
     static member inline TooltipTrigger ( children : ReactElement list ) = JSX.createElementWithChildren TooltipTrigger children
-    static member inline TooltipTrigger ( el : ReactElement ) = JSX.createElement TooltipTrigger [ tooltipTrigger.asChild true ; tooltipTrigger.children el ]
+    static member inline TooltipTrigger ( el : ReactElement ) = JSX.createElement TooltipTrigger [ tooltipTrigger.asChild true ; props.children el ]
     static member inline TooltipContent ( props : ITooltipContentProp list ) = JSX.createElement TooltipContent props
     static member inline TooltipContent ( children : ReactElement list ) = JSX.createElementWithChildren TooltipContent children
-    static member inline TooltipContent ( el : ReactElement ) = JSX.createElement TooltipContent [ tooltipContent.asChild true ; tooltipContent.children el ]
+    static member inline TooltipContent ( el : ReactElement ) = JSX.createElement TooltipContent [ tooltipContent.asChild true ; props.children el ]
     static member inline TooltipProvider ( props : ITooltipProviderProp list ) = JSX.createElement TooltipProvider props
     static member inline TooltipProvider ( children : ReactElement list ) = JSX.createElementWithChildren TooltipProvider children
         

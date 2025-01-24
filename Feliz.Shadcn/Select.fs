@@ -22,30 +22,24 @@ SelectPrimitive.Root
 """
 
 // --------------- SelectGroup -------------- //
-type [<Erase>] ISelectGroupProp = interface end
-type [<Erase>] selectGroup =
-    inherit Select.group<ISelectGroupProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISelectGroupProp = interface static member propsInterface : unit = () end
+type [<Erase>] selectGroup = Select.group<ISelectGroupProp>
 
 let SelectGroup : JSX.ElementType = JSX.jsx """
 SelectPrimitive.Group
 """
 
 // --------------- SelectValue -------------- //
-type [<Erase>] ISelectValueProp = interface end
-type [<Erase>] selectValue =
-    inherit Select.value<ISelectValueProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISelectValueProp = interface static member propsInterface : unit = () end
+type [<Erase>] selectValue = Select.value<ISelectValueProp>
 
 let SelectValue : JSX.ElementType = JSX.jsx """
 SelectPrimitive.Value
 """
 
 // --------------- SelectTrigger -------------- //
-type [<Erase>] ISelectTriggerProp = interface end
-type [<Erase>] selectTrigger =
-    inherit Select.trigger<ISelectTriggerProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISelectTriggerProp = interface static member propsInterface : unit = () end
+type [<Erase>] selectTrigger = Select.trigger<ISelectTriggerProp>
 
 let SelectTrigger : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, children, ...props }, ref) => (
@@ -66,10 +60,8 @@ SelectTrigger.displayName = SelectPrimitive.Trigger.displayName
 """
 
 // --------------- SelectScrollUpButton -------------- //
-type [<Erase>] ISelectScrollUpButtonProp = interface end
-type [<Erase>] selectScrollUpButton =
-    inherit Select.scrollUpButton<ISelectScrollUpButtonProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISelectScrollUpButtonProp = interface static member propsInterface : unit = () end
+type [<Erase>] selectScrollUpButton = Select.scrollUpButton<ISelectScrollUpButtonProp>
 
 let SelectScrollUpButton : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -84,10 +76,8 @@ SelectScrollUpButton.displayName = SelectPrimitive.ScrollUpButton.displayName
 """
 
 // --------------- SelectScrollDownButton -------------- //
-type [<Erase>] ISelectScrollDownButtonProp = interface end
-type [<Erase>] selectScrollDownButton =
-    inherit Select.scrollDownButton<ISelectScrollDownButtonProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISelectScrollDownButtonProp = interface static member propsInterface : unit = () end
+type [<Erase>] selectScrollDownButton = Select.scrollDownButton<ISelectScrollDownButtonProp>
 
 let SelectScrollDownButton : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -103,10 +93,8 @@ SelectScrollDownButton.displayName =
 """
 
 // --------------- SelectContent -------------- //
-type [<Erase>] ISelectContentProp = interface end
-type [<Erase>] selectContent =
-    inherit Select.content<ISelectContentProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISelectContentProp = interface static member propsInterface : unit = () end
+type [<Erase>] selectContent = Select.content<ISelectContentProp>
 
 let SelectContent : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, children, position = "popper", ...props }, ref) => (
@@ -135,10 +123,8 @@ SelectContent.displayName = SelectPrimitive.Content.displayName
 """
 
 // --------------- SelectLabel -------------- //
-type [<Erase>] ISelectLabelProp = interface end
-type [<Erase>] selectLabel =
-    inherit Select.label<ISelectLabelProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISelectLabelProp = interface static member propsInterface : unit = () end
+type [<Erase>] selectLabel = Select.label<ISelectLabelProp>
 
 let SelectLabel : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -151,10 +137,8 @@ SelectLabel.displayName = SelectPrimitive.Label.displayName
 """
 
 // --------------- SelectItem -------------- //
-type [<Erase>] ISelectItemProp = interface end
-type [<Erase>] selectItem =
-    inherit Select.item<ISelectItemProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISelectItemProp = interface static member propsInterface : unit = () end
+type [<Erase>] selectItem = Select.item<ISelectItemProp>
 
 let SelectItem : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, children, ...props }, ref) => (
@@ -177,10 +161,8 @@ SelectItem.displayName = SelectPrimitive.Item.displayName
 """
 
 // --------------- SelectSeparator -------------- //
-type [<Erase>] ISelectSeparatorProp = interface end
-type [<Erase>] selectSeparator =
-    inherit Select.separator<ISelectSeparatorProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISelectSeparatorProp = interface static member propsInterface : unit = () end
+type [<Erase>] selectSeparator = Select.separator<ISelectSeparatorProp>
 
 let SelectSeparator : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -197,27 +179,27 @@ type [<Erase>] Shadcn =
     static member inline Select ( children : ReactElement list ) = JSX.createElementWithChildren Select children
     static member inline SelectGroup ( props : ISelectGroupProp list ) = JSX.createElement SelectGroup props
     static member inline SelectGroup ( children : ReactElement list ) = JSX.createElementWithChildren SelectGroup children
-    static member inline SelectGroup ( el : ReactElement ) = JSX.createElement SelectGroup [ selectGroup.asChild true ; selectGroup.children el ]
+    static member inline SelectGroup ( el : ReactElement ) = JSX.createElement SelectGroup [ selectGroup.asChild true ; props.children el ]
     static member inline SelectValue ( props : ISelectValueProp list ) = JSX.createElement SelectValue props
     static member inline SelectValue ( children : ReactElement list ) = JSX.createElementWithChildren SelectValue children
     static member inline SelectValue ( value : string ) = JSX.createElement SelectValue [ prop.text value ]
-    static member inline SelectValue ( el : ReactElement ) = JSX.createElement SelectValue [ selectValue.asChild true ; selectValue.children el ]
+    static member inline SelectValue ( el : ReactElement ) = JSX.createElement SelectValue [ selectValue.asChild true ; props.children el ]
     static member inline SelectTrigger ( props : ISelectTriggerProp list ) = JSX.createElement SelectTrigger props
     static member inline SelectTrigger ( children : ReactElement list ) = JSX.createElementWithChildren SelectTrigger children
     static member inline SelectTrigger ( value : string ) = JSX.createElement SelectTrigger [ prop.text value ]
-    static member inline SelectTrigger ( el : ReactElement ) = JSX.createElement SelectTrigger [ selectTrigger.asChild true ; selectTrigger.children el ]
+    static member inline SelectTrigger ( el : ReactElement ) = JSX.createElement SelectTrigger [ selectTrigger.asChild true ; props.children el ]
     static member inline SelectContent ( props : ISelectContentProp list ) = JSX.createElement SelectContent props
     static member inline SelectContent ( children : ReactElement list ) = JSX.createElementWithChildren SelectContent children
-    static member inline SelectContent ( el : ReactElement ) = JSX.createElement SelectContent [ selectContent.asChild true ; selectContent.children el ]
+    static member inline SelectContent ( el : ReactElement ) = JSX.createElement SelectContent [ selectContent.asChild true ; props.children el ]
     static member inline SelectLabel ( props : ISelectLabelProp list ) = JSX.createElement SelectLabel props
     static member inline SelectLabel ( children : ReactElement list ) = JSX.createElementWithChildren SelectLabel children
     static member inline SelectLabel ( value : string ) = JSX.createElement SelectLabel [ prop.text value ]
-    static member inline SelectLabel ( el : ReactElement ) = JSX.createElement SelectLabel [ selectLabel.asChild true ; selectLabel.children el ]
+    static member inline SelectLabel ( el : ReactElement ) = JSX.createElement SelectLabel [ selectLabel.asChild true ; props.children el ]
     static member inline SelectItem ( props : ISelectItemProp list ) = JSX.createElement SelectItem props
     static member inline SelectItem ( children : ReactElement list ) = JSX.createElementWithChildren SelectItem children
     static member inline SelectItem ( value : string ) = JSX.createElement SelectItem [ prop.text value ; prop.value value ]
     static member inline SelectItem ( value : string , text : string ) = JSX.createElement SelectItem [ prop.text text ; prop.value value ]
-    static member inline SelectItem ( el : ReactElement ) = JSX.createElement SelectItem [ selectItem.asChild true ; selectItem.children el ]
+    static member inline SelectItem ( el : ReactElement ) = JSX.createElement SelectItem [ selectItem.asChild true ; props.children el ]
     static member inline SelectSeparator ( props : ISelectSeparatorProp list ) = JSX.createElement SelectSeparator props
     static member inline SelectSeparator ( children : ReactElement list ) = JSX.createElementWithChildren SelectSeparator children
     static member inline SelectSeparator ( ) = JSX.createElement SelectSeparator []
@@ -225,9 +207,9 @@ type [<Erase>] Shadcn =
     static member inline SelectScrollUpButton ( children : ReactElement list ) = JSX.createElementWithChildren SelectScrollUpButton children
     static member inline SelectScrollUpButton () = JSX.createElement SelectScrollUpButton []
     static member inline SelectScrollUpButton ( value : string ) = JSX.createElement SelectScrollUpButton [ prop.text value ]
-    static member inline SelectScrollUpButton ( el : ReactElement ) = JSX.createElement SelectScrollUpButton [ selectScrollUpButton.asChild true ; selectScrollUpButton.children el ]
+    static member inline SelectScrollUpButton ( el : ReactElement ) = JSX.createElement SelectScrollUpButton [ selectScrollUpButton.asChild true ; props.children el ]
     static member inline SelectScrollDownButton ( props : ISelectScrollDownButtonProp list ) = JSX.createElement SelectScrollDownButton props
     static member inline SelectScrollDownButton ( children : ReactElement list ) = JSX.createElementWithChildren SelectScrollDownButton children
     static member inline SelectScrollDownButton () = JSX.createElement SelectScrollDownButton []
     static member inline SelectScrollDownButton ( value : string ) = JSX.createElement SelectScrollDownButton [ prop.text value ]
-    static member inline SelectScrollDownButton ( el : ReactElement ) = JSX.createElement SelectScrollDownButton [ selectScrollDownButton.asChild true ; selectScrollDownButton.children el ]
+    static member inline SelectScrollDownButton ( el : ReactElement ) = JSX.createElement SelectScrollDownButton [ selectScrollDownButton.asChild true ; props.children el ]

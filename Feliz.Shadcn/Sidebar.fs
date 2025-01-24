@@ -555,7 +555,8 @@ SidebarMenu.displayName = "SidebarMenu"
 
 // --------------- SidebarMenuItem -------------- //
 type [<Erase>] ISidebarMenuItemProp = interface static member propsInterface : unit = () end
-
+type [<Erase>] sidebarMenuItem =
+    static member inline key ( value : string ) : ISidebarMenuItemProp = Interop.mkProperty "key" value
 let SidebarMenuItem : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
   <li
@@ -794,13 +795,13 @@ type [<Erase>] Shadcn =
     static member inline SidebarGroup ( children : ReactElement list ) = JSX.createElementWithChildren SidebarGroup children
     static member inline SidebarGroupAction ( props : ISidebarGroupActionProp list ) = JSX.createElement SidebarGroupAction props
     static member inline SidebarGroupAction ( children : ReactElement list ) = JSX.createElementWithChildren SidebarGroupAction children
-    static member inline SidebarGroupAction ( el : ReactElement ) = JSX.createElement SidebarGroupAction [ sidebarGroupLabel.asChild true ; sidebarGroupLabel.children el ]
+    static member inline SidebarGroupAction ( el : ReactElement ) = JSX.createElement SidebarGroupAction [ sidebarGroupLabel.asChild true ; props.children el ]
     static member inline SidebarGroupContent ( props : ISidebarGroupContentProp list ) = JSX.createElement SidebarGroupContent props
     static member inline SidebarGroupContent ( children : ReactElement list ) = JSX.createElementWithChildren SidebarGroupContent children
     static member inline SidebarGroupLabel ( props : ISidebarGroupLabelProp list ) = JSX.createElement SidebarGroupLabel props
     static member inline SidebarGroupLabel ( children : ReactElement list ) = JSX.createElementWithChildren SidebarGroupLabel children
     static member inline SidebarGroupLabel ( label : string ) = JSX.createElement SidebarGroupLabel [ prop.text label ]
-    static member inline SidebarGroupLabel ( el : ReactElement ) = JSX.createElement SidebarGroupLabel [ sidebarGroupLabel.asChild true ; sidebarGroupLabel.children el ]
+    static member inline SidebarGroupLabel ( el : ReactElement ) = JSX.createElement SidebarGroupLabel [ sidebarGroupLabel.asChild true ; props.children el ]
     static member inline SidebarHeader ( props : ISidebarHeaderProp list ) = JSX.createElement SidebarHeader props
     static member inline SidebarHeader ( children : ReactElement list ) = JSX.createElementWithChildren SidebarHeader children
     static member inline SidebarInput ( props : ISidebarInputProp list ) = JSX.createElement SidebarInput props
@@ -811,12 +812,12 @@ type [<Erase>] Shadcn =
     static member inline SidebarMenu ( children : ReactElement list ) = JSX.createElementWithChildren SidebarMenu children
     static member inline SidebarMenuAction ( props : ISidebarMenuActionProp list ) = JSX.createElement SidebarMenuAction props
     static member inline SidebarMenuAction ( children : ReactElement list ) = JSX.createElementWithChildren SidebarMenuAction children
-    static member inline SidebarMenuAction ( el : ReactElement ) = JSX.createElement SidebarMenuAction [ sidebarGroupLabel.asChild true ; sidebarGroupLabel.children el ]
+    static member inline SidebarMenuAction ( el : ReactElement ) = JSX.createElement SidebarMenuAction [ sidebarGroupLabel.asChild true ; props.children el ]
     static member inline SidebarMenuBadge ( props : ISidebarMenuBadgeProp list ) = JSX.createElement SidebarMenuBadge props
     static member inline SidebarMenuBadge ( children : ReactElement list ) = JSX.createElementWithChildren SidebarMenuBadge children
     static member inline SidebarMenuButton ( props : ISidebarMenuButtonProp list ) = JSX.createElement SidebarMenuButton props
     static member inline SidebarMenuButton ( children : ReactElement list ) = JSX.createElementWithChildren SidebarMenuButton children
-    static member inline SidebarMenuButton ( el : ReactElement ) = JSX.createElement SidebarMenuButton [ sidebarGroupLabel.asChild true ; sidebarGroupLabel.children el ]
+    static member inline SidebarMenuButton ( el : ReactElement ) = JSX.createElement SidebarMenuButton [ sidebarGroupLabel.asChild true ; props.children el ]
     static member inline SidebarMenuItem ( props : ISidebarMenuItemProp list ) = JSX.createElement SidebarMenuItem props
     static member inline SidebarMenuItem ( children : ReactElement list ) = JSX.createElementWithChildren SidebarMenuItem children
     static member inline SidebarMenuSkeleton ( props : ISidebarMenuSkeletonProp list ) = JSX.createElement SidebarMenuSkeleton props
@@ -825,7 +826,7 @@ type [<Erase>] Shadcn =
     static member inline SidebarMenuSub ( children : ReactElement list ) = JSX.createElementWithChildren SidebarMenuSub children
     static member inline SidebarMenuSubButton ( props : ISidebarMenuSubButtonProp list ) = JSX.createElement SidebarMenuSubButton props
     static member inline SidebarMenuSubButton ( children : ReactElement list ) = JSX.createElementWithChildren SidebarMenuSubButton children
-    static member inline SidebarMenuSubButton ( el : ReactElement ) = JSX.createElement SidebarMenuSubButton [ sidebarGroupLabel.asChild true ; sidebarGroupLabel.children el ]
+    static member inline SidebarMenuSubButton ( el : ReactElement ) = JSX.createElement SidebarMenuSubButton [ sidebarGroupLabel.asChild true ; props.children el ]
     static member inline SidebarMenuSubItem ( props : ISidebarMenuSubItemProp list ) = JSX.createElement SidebarMenuSubItem props
     static member inline SidebarMenuSubItem ( children : ReactElement list ) = JSX.createElementWithChildren SidebarMenuSubItem children
     static member inline SidebarProvider ( props : ISidebarProviderProp list ) = JSX.createElement SidebarProvider props

@@ -52,7 +52,7 @@ let private AppSideBar () =
     
     Shadcn.Sidebar [
         sidebar.collapsible.icon
-        sidebar.children (
+        props.children (
         Shadcn.SidebarContent [
             Shadcn.SidebarGroup [
                 Shadcn.SidebarGroupLabel "Application"
@@ -61,11 +61,11 @@ let private AppSideBar () =
                         for item in items do
                             Shadcn.SidebarMenuItem [
                             sidebarMenuItem.key item.title
-                            sidebarMenuItem.children [
+                            props.children [
                                 Shadcn.SidebarMenuButton [
                                 sidebarMenuButton.asChild true
                                 sidebarMenuButton.tooltip item.title
-                                sidebarMenuButton.children
+                                props.children
                                     ( Html.a [
                                         prop.href item.url
                                         prop.children [

@@ -63,11 +63,11 @@ type [<Erase>] Shadcn =
     static member inline PopoverTrigger ( props : IPopoverTriggerProp list ) = JSX.createElement PopoverTrigger props
     static member inline PopoverTrigger ( children : ReactElement list ) = JSX.createElementWithChildren PopoverTrigger children
     static member inline PopoverTrigger ( value : string ) = JSX.createElement PopoverTrigger [ prop.text value ]
-    static member inline PopoverTrigger ( el : ReactElement ) = JSX.createElement PopoverTrigger [ popoverTrigger.asChild true ; popoverTrigger.children el ]
+    static member inline PopoverTrigger ( el : ReactElement ) = JSX.createElement PopoverTrigger [ popoverTrigger.asChild true ; props.children el ]
     static member inline PopoverContent ( props : IPopoverContentProp list ) = JSX.createElement PopoverContent props
     static member inline PopoverContent ( children : ReactElement list ) = JSX.createElementWithChildren PopoverContent children
-    static member inline PopoverContent ( el : ReactElement ) = JSX.createElement PopoverContent [ popoverContent.asChild true ; popoverContent.children el ]
+    static member inline PopoverContent ( el : ReactElement ) = JSX.createElement PopoverContent [ popoverContent.asChild true ; props.children el ]
     static member inline PopoverAnchor ( props : IPopoverAnchorProp list ) = JSX.createElement PopoverAnchor props
     static member inline PopoverAnchor ( children : ReactElement list ) = JSX.createElementWithChildren PopoverAnchor children
-    static member inline PopoverAnchor ( el : ReactElement ) = JSX.createElement PopoverAnchor [ popoverAnchor.asChild true ; popoverAnchor.children el ]
+    static member inline PopoverAnchor ( el : ReactElement ) = JSX.createElement PopoverAnchor [ popoverAnchor.asChild true ; props.children el ]
             

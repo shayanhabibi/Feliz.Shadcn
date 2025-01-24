@@ -1,6 +1,7 @@
 ﻿module Feliz.Shadcn.Tests.NavProjects
 
 open Feliz
+open Feliz.Shadcn.Interop
 open Feliz.Lucide
 open Feliz.Shadcn
 open Fable.Core
@@ -10,10 +11,10 @@ let NavProjects ( projects : {| name : string ; url : string ; icon : ILucideIco
     let ProjectItem ( item : {| name : string ; url : string ; icon : ILucideIconProp list -> ReactElement |} ) =
         Shadcn.SidebarMenuItem [
             sidebarMenuItem.key item.name
-            sidebarMenuItem.children [
+            props.children [
                 Shadcn.SidebarMenuButton [
                     sidebarMenuButton.asChild true
-                    sidebarMenuButton.children [
+                    props.children [
                         Html.a [
                             prop.href item.url
                             prop.children [
@@ -27,10 +28,10 @@ let NavProjects ( projects : {| name : string ; url : string ; icon : ILucideIco
                 Shadcn.DropdownMenu [
                     Shadcn.DropdownMenuTrigger [
                         dropdownMenuTrigger.asChild true
-                        dropdownMenuTrigger.children [
+                        props.children [
                             Shadcn.SidebarMenuAction [
                                 sidebarMenuAction.showOnHover true
-                                sidebarMenuAction.children [
+                                props.children [
                                     Icon.MoveHorizontal []
                                     Html.span [ prop.className "sr-only" ; prop.text "More" ]
                                 ]
@@ -38,14 +39,14 @@ let NavProjects ( projects : {| name : string ; url : string ; icon : ILucideIco
                         ]
                     ]
                     Shadcn.DropdownMenuContent [
-                        dropdownMenuContent.className "w-48 rounded-lg"
-                        dropdownMenuContent.children [
+                        props.className "w-48 rounded-lg"
+                        props.children [
                             for iconEl, text in [
                                 Icon.Folder, "View Project"
                                 Icon.Forward, "Share Project"
                                 Icon.Trash2, "Delete Project"
                             ] do Shadcn.DropdownMenuItem [
-                                iconEl [ icon.className "text-muted-foreground" ]
+                                iconEl [ unbox(svg.className "text-muted-foreground") ]
                                 Html.span text
                             ]
                         ]
@@ -55,17 +56,17 @@ let NavProjects ( projects : {| name : string ; url : string ; icon : ILucideIco
         ]
     
     Shadcn.SidebarGroup [
-        sidebarGroup.className "group-data-[collapsible=icon]:hidden"
-        sidebarGroup.children [
+        props.className "group-data-[collapsible=icon]:hidden"
+        props.children [
             Shadcn.SidebarGroupLabel "Projects"
             Shadcn.SidebarMenu [
                 for item in projects do
                     item |> ProjectItem
                 Shadcn.SidebarMenuItem [
                     Shadcn.SidebarMenuButton [
-                        sidebarMenuButton.className "text-sidebar-foreground/70"
-                        sidebarMenuButton.children [
-                            Icon.MoveHorizontal [ icon.className "text-sidebar-foreground/70" ]
+                        props.className "text-sidebar-foreground/70"
+                        props.children [
+                            Icon.MoveHorizontal [ unbox (svg.className "text-sidebar-foreground/70") ]
                             Html.span "More"
                         ]
                     ]

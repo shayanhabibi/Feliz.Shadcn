@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
     <NpmDependencies>
       <NpmPackage Name="@radix-ui/react-accordion" Version="gte 1.2.2" ResolutionStrategy="Max"/>
       <NpmPackage Name="@radix-ui/react-alert-dialog" Version= "gte 1.1.4" ResolutionStrategy="Max" />
@@ -35,6 +34,7 @@
       <NpmPackage Name="@radix-ui/react-form" Version="gte 0.1.0" ResolutionStrategy="Max"/>
     </NpmDependencies>
     <RootNamespace>Feliz.RadixUI.Interface</RootNamespace>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Feliz.Shadcn.Interop\Feliz.Shadcn.Interop.fsproj" />
@@ -71,6 +71,34 @@
     <Compile Include="ToggleGroup.fs" />
     <None Include="README.md" Pack="true" PackagePath="\" />
     <None Include="Feliz.RadixUI.Interface.fsproj.paket.template" />
+    <Compile Include="NoInherit\Form.fs" />
+    <Compile Include="NoInherit\Tabs.fs" />
+    <Compile Include="NoInherit\Label.fs" />
+    <Compile Include="NoInherit\Toast.fs" />
+    <Compile Include="NoInherit\Avatar.fs" />
+    <Compile Include="NoInherit\Dialog.fs" />
+    <Compile Include="NoInherit\Select.fs" />
+    <Compile Include="NoInherit\Slider.fs" />
+    <Compile Include="NoInherit\Switch.fs" />
+    <Compile Include="NoInherit\Toggle.fs" />
+    <Compile Include="NoInherit\MenuBar.fs" />
+    <Compile Include="NoInherit\Popover.fs" />
+    <Compile Include="NoInherit\Toolbar.fs" />
+    <Compile Include="NoInherit\Tooltip.fs" />
+    <Compile Include="NoInherit\Checkbox.fs" />
+    <Compile Include="NoInherit\Progress.fs" />
+    <Compile Include="NoInherit\Accordion.fs" />
+    <Compile Include="NoInherit\HoverCard.fs" />
+    <Compile Include="NoInherit\Separator.fs" />
+    <Compile Include="NoInherit\RadioGroup.fs" />
+    <Compile Include="NoInherit\ScrollArea.fs" />
+    <Compile Include="NoInherit\AlertDialog.fs" />
+    <Compile Include="NoInherit\AspectRatio.fs" />
+    <Compile Include="NoInherit\Collapsible.fs" />
+    <Compile Include="NoInherit\ContextMenu.fs" />
+    <Compile Include="NoInherit\ToggleGroup.fs" />
+    <Compile Include="NoInherit\DropdownMenu.fs" />
+    <Compile Include="NoInherit\NavigationMenu.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

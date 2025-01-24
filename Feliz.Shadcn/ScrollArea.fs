@@ -59,8 +59,8 @@ ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName
 type [<Erase>] Shadcn =
     static member inline ScrollArea ( props : IScrollAreaProp list ) = JSX.createElement ScrollArea props
     static member inline ScrollArea ( children : ReactElement list ) = JSX.createElementWithChildren ScrollArea children
-    static member inline ScrollArea ( el : ReactElement ) = JSX.createElement ScrollArea [ scrollArea.asChild true ; scrollArea.children el ]
+    static member inline ScrollArea ( el : ReactElement ) = JSX.createElement ScrollArea [ scrollArea.asChild true ; props.children el ]
     static member inline ScrollBar ( props : IScrollBarProp list ) = JSX.createElement ScrollBar props
     static member inline ScrollBar ( children : ReactElement list ) = JSX.createElementWithChildren ScrollBar children
-    static member inline ScrollBar ( el : ReactElement ) = JSX.createElement ScrollBar [ scrollBar.asChild true ; scrollBar.children el ]
+    static member inline ScrollBar ( el : ReactElement ) = JSX.createElement ScrollBar [ scrollBar.asChild true ; props.children el ]
     

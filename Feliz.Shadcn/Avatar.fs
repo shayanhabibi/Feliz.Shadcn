@@ -68,12 +68,12 @@ AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName
 type [<Erase>] Shadcn =
     static member inline Avatar ( props : IAvatarProp list ) = JSX.createElement Avatar props
     static member inline Avatar ( props : ReactElement list ) = JSX.createElementWithChildren Avatar props
-    static member inline Avatar ( el : ReactElement ) = JSX.createElement Avatar [ avatar.asChild true ; avatar.children el ]
+    static member inline Avatar ( el : ReactElement ) = JSX.createElement Avatar [ avatar.asChild true ; props.children el ]
     static member inline AvatarImage ( props : IAvatarImageProp list ) = JSX.createElement AvatarImage props
     static member inline AvatarImage ( props : ReactElement list ) = JSX.createElementWithChildren AvatarImage props
-    static member inline AvatarImage ( el : ReactElement ) = JSX.createElement AvatarImage [ avatarImage.asChild true ; avatarImage.children el ]
+    static member inline AvatarImage ( el : ReactElement ) = JSX.createElement AvatarImage [ avatarImage.asChild true ; props.children el ]
     static member inline AvatarFallback ( props : IAvatarFallbackProp list ) = JSX.createElement AvatarFallback props
     static member inline AvatarFallback ( props : ReactElement list ) = JSX.createElementWithChildren AvatarFallback props
     static member inline AvatarFallback ( value : string ) = JSX.createElement AvatarFallback [ prop.text value ]
-    static member inline AvatarFallback ( el : ReactElement ) = JSX.createElement AvatarFallback [ avatarFallback.asChild true ; avatarFallback.children el ]
+    static member inline AvatarFallback ( el : ReactElement ) = JSX.createElement AvatarFallback [ avatarFallback.asChild true ; props.children el ]
     

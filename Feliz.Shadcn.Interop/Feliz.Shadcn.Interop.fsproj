@@ -107,7 +107,6 @@
     <Compile Include="Feliz.RadixUI.Interface\NonInherit\Popover.fs" />
     <Compile Include="Feliz.RadixUI.Interface\NonInherit\Toolbar.fs" />
     <Compile Include="Feliz.RadixUI.Interface\NonInherit\Tooltip.fs" />
-    <Compile Include="Feliz.RadixUI.Interface\NonInherit\Announce.fs" />
     <Compile Include="Feliz.RadixUI.Interface\NonInherit\Checkbox.fs" />
     <Compile Include="Feliz.RadixUI.Interface\NonInherit\Progress.fs" />
     <Compile Include="Feliz.RadixUI.Interface\NonInherit\Accordion.fs" />
