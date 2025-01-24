@@ -18,13 +18,11 @@ cva(
 )
 """
 
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 // --------------- NavigationMenu -------------- //
-type [<Erase>] INavigationMenuProp = interface end
-type [<Erase>] navigationMenu =
-    inherit NavigationMenu.root<INavigationMenuProp>
-    static member inline private noop : unit = ()
+type [<Erase>] INavigationMenuProp = interface static member propsInterface : unit = () end
+type [<Erase>] navigationMenu = NavigationMenu.root<INavigationMenuProp>
 
 let NavigationMenu : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, children, ...props }, ref) => (
@@ -43,10 +41,8 @@ NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName
 """
 
 // --------------- NavigationMenuList -------------- //
-type [<Erase>] INavigationMenuListProp = interface end
-type [<Erase>] navigationMenuList =
-    inherit NavigationMenu.list'<INavigationMenuListProp>
-    static member inline private noop : unit = ()
+type [<Erase>] INavigationMenuListProp = interface static member propsInterface : unit = () end
+type [<Erase>] navigationMenuList = NavigationMenu.list'<INavigationMenuListProp>
 
 let NavigationMenuList : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -64,20 +60,16 @@ const NavigationMenuItem = NavigationMenuPrimitive.Item
 """
 
 // --------------- NavigationMenuItem -------------- //
-type [<Erase>] INavigationMenuItemProp = interface end
-type [<Erase>] navigationMenuItem =
-    inherit NavigationMenu.item<INavigationMenuItemProp>
-    static member inline private noop : unit = ()
+type [<Erase>] INavigationMenuItemProp = interface static member propsInterface : unit = () end
+type [<Erase>] navigationMenuItem = NavigationMenu.item<INavigationMenuItemProp>
 
 let NavigationMenuItem : JSX.ElementType = JSX.jsx """
 NavigationMenuPrimitive.Item
 """
 
 // --------------- NavigationMenuTrigger -------------- //
-type [<Erase>] INavigationMenuTriggerProp = interface end
-type [<Erase>] navigationMenuTrigger =
-    inherit NavigationMenu.trigger<INavigationMenuTriggerProp>
-    static member inline private noop : unit = ()
+type [<Erase>] INavigationMenuTriggerProp = interface static member propsInterface : unit = () end
+type [<Erase>] navigationMenuTrigger = NavigationMenu.trigger<INavigationMenuTriggerProp>
 
 let NavigationMenuTrigger : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, children, ...props }, ref) => (
@@ -95,10 +87,8 @@ NavigationMenuTrigger.displayName = NavigationMenuPrimitive.Trigger.displayName
 """
 
 // --------------- NavigationMenuContent -------------- //
-type [<Erase>] INavigationMenuContentProp = interface end
-type [<Erase>] navigationMenuContent =
-    inherit NavigationMenu.content<INavigationMenuContentProp>
-    static member inline private noop : unit = ()
+type [<Erase>] INavigationMenuContentProp = interface static member propsInterface : unit = () end
+type [<Erase>] navigationMenuContent = NavigationMenu.content<INavigationMenuContentProp>
 
 let NavigationMenuContent : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -114,20 +104,16 @@ NavigationMenuContent.displayName = NavigationMenuPrimitive.Content.displayName
 """
 
 // --------------- NavigationMenuLink -------------- //
-type [<Erase>] INavigationMenuLinkProp = interface end
-type [<Erase>] navigationMenuLink =
-    inherit NavigationMenu.link<INavigationMenuLinkProp>
-    static member inline private noop : unit = ()
+type [<Erase>] INavigationMenuLinkProp = interface static member propsInterface : unit = () end
+type [<Erase>] navigationMenuLink = NavigationMenu.link<INavigationMenuLinkProp>
 
 let NavigationMenuLink : JSX.ElementType = JSX.jsx """
 NavigationMenuPrimitive.Link
 """
 
 // --------------- NavigationMenuViewport -------------- //
-type [<Erase>] INavigationMenuViewportProp = interface end
-type [<Erase>] navigationMenuViewport =
-    inherit NavigationMenu.viewport<INavigationMenuViewportProp>
-    static member inline private noop : unit = ()
+type [<Erase>] INavigationMenuViewportProp = interface static member propsInterface : unit = () end
+type [<Erase>] navigationMenuViewport = NavigationMenu.viewport<INavigationMenuViewportProp>
 
 let NavigationMenuViewport : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -146,10 +132,8 @@ NavigationMenuViewport.displayName =
 """
 
 // --------------- NavigationMenuIndicator -------------- //
-type [<Erase>] INavigationMenuIndicatorProp = interface end
-type [<Erase>] navigationMenuIndicator =
-    inherit NavigationMenu.indicator<INavigationMenuIndicatorProp>
-    static member inline private noop : unit = ()
+type [<Erase>] INavigationMenuIndicatorProp = interface static member propsInterface : unit = () end
+type [<Erase>] navigationMenuIndicator = NavigationMenu.indicator<INavigationMenuIndicatorProp>
 
 let NavigationMenuIndicator : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -173,25 +157,25 @@ type [<Erase>] Shadcn =
     static member inline NavigationMenu ( children : ReactElement list ) = JSX.createElementWithChildren NavigationMenu children
     static member inline NavigationMenuList ( props : INavigationMenuListProp list ) = JSX.createElement NavigationMenuList props
     static member inline NavigationMenuList ( children : ReactElement list ) = JSX.createElementWithChildren NavigationMenuList children
-    static member inline NavigationMenuList ( el : ReactElement ) = JSX.createElement NavigationMenuList [ navigationMenuList.asChild true ; navigationMenuList.children el ]
+    static member inline NavigationMenuList ( el : ReactElement ) = JSX.createElement NavigationMenuList [ navigationMenuList.asChild true ; props.children el ]
     static member inline NavigationMenuItem ( props : INavigationMenuItemProp list ) = JSX.createElement NavigationMenuItem props
     static member inline NavigationMenuItem ( children : ReactElement list ) = JSX.createElementWithChildren NavigationMenuItem children
     static member inline NavigationMenuItem ( value : string ) = JSX.createElement NavigationMenuItem [ prop.text value ]
-    static member inline NavigationMenuItem ( el : ReactElement ) = JSX.createElement NavigationMenuItem [ navigationMenuItem.asChild true ; navigationMenuItem.children el ]
+    static member inline NavigationMenuItem ( el : ReactElement ) = JSX.createElement NavigationMenuItem [ navigationMenuItem.asChild true ; props.children el ]
     static member inline NavigationMenuContent ( props : INavigationMenuContentProp list ) = JSX.createElement NavigationMenuContent props
     static member inline NavigationMenuContent ( children : ReactElement list ) = JSX.createElementWithChildren NavigationMenuContent children
-    static member inline NavigationMenuContent ( el : ReactElement ) = JSX.createElement NavigationMenuContent [ navigationMenuContent.asChild true ; navigationMenuContent.children el ]
+    static member inline NavigationMenuContent ( el : ReactElement ) = JSX.createElement NavigationMenuContent [ navigationMenuContent.asChild true ; props.children el ]
     static member inline NavigationMenuTrigger ( props : INavigationMenuTriggerProp list ) = JSX.createElement NavigationMenuTrigger props
     static member inline NavigationMenuTrigger ( children : ReactElement list ) = JSX.createElementWithChildren NavigationMenuTrigger children
     static member inline NavigationMenuTrigger ( value : string ) = JSX.createElement NavigationMenuTrigger [ prop.text value ]
-    static member inline NavigationMenuTrigger ( el : ReactElement ) = JSX.createElement NavigationMenuTrigger [ navigationMenuTrigger.asChild true ; navigationMenuTrigger.children el ]
+    static member inline NavigationMenuTrigger ( el : ReactElement ) = JSX.createElement NavigationMenuTrigger [ navigationMenuTrigger.asChild true ; props.children el ]
     static member inline NavigationMenuLink ( props : INavigationMenuLinkProp list ) = JSX.createElement NavigationMenuLink props
     static member inline NavigationMenuLink ( children : ReactElement list ) = JSX.createElementWithChildren NavigationMenuLink children
-    static member inline NavigationMenuLink ( el : ReactElement ) = JSX.createElement NavigationMenuLink [ navigationMenuLink.asChild true ; navigationMenuLink.children el ]
+    static member inline NavigationMenuLink ( el : ReactElement ) = JSX.createElement NavigationMenuLink [ navigationMenuLink.asChild true ; props.children el ]
     static member inline NavigationMenuIndicator ( props : INavigationMenuIndicatorProp list ) = JSX.createElement NavigationMenuIndicator props
     static member inline NavigationMenuIndicator ( children : ReactElement list ) = JSX.createElementWithChildren NavigationMenuIndicator children
-    static member inline NavigationMenuIndicator ( el : ReactElement ) = JSX.createElement NavigationMenuIndicator [ navigationMenuIndicator.asChild true ; navigationMenuIndicator.children el ]
+    static member inline NavigationMenuIndicator ( el : ReactElement ) = JSX.createElement NavigationMenuIndicator [ navigationMenuIndicator.asChild true ; props.children el ]
     static member inline NavigationMenuViewport ( props : INavigationMenuViewportProp list ) = JSX.createElement NavigationMenuViewport props
     static member inline NavigationMenuViewport ( children : ReactElement list ) = JSX.createElementWithChildren NavigationMenuViewport children
-    static member inline NavigationMenuViewport ( el : ReactElement ) = JSX.createElement NavigationMenuViewport [ navigationMenuViewport.asChild true ; navigationMenuViewport.children el ]
+    static member inline NavigationMenuViewport ( el : ReactElement ) = JSX.createElement NavigationMenuViewport [ navigationMenuViewport.asChild true ; props.children el ]
                     

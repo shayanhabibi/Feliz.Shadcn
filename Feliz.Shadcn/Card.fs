@@ -9,10 +9,7 @@ open Feliz
 JSX.injectShadcnLib
 
 // --------------- Card -------------- //
-type [<Erase>] ICardProp = interface end
-type [<Erase>] card =
-    inherit prop<ICardProp>
-    static member inline noop : unit = ()
+type [<Erase>] ICardProp = interface static member propsInterface : unit = () end
 
 let Card : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -25,10 +22,7 @@ Card.displayName = "Card"
 """
 
 // --------------- CardHeader -------------- //
-type [<Erase>] ICardHeaderProp = interface end
-type [<Erase>] cardHeader =
-    inherit prop<ICardHeaderProp>
-    static member inline noop : unit = ()
+type [<Erase>] ICardHeaderProp = interface static member propsInterface : unit = () end
 
 let CardHeader : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -41,10 +35,7 @@ CardHeader.displayName = "CardHeader"
 """
 
 // --------------- CardTitle -------------- //
-type [<Erase>] ICardTitleProp = interface end
-type [<Erase>] cardTitle =
-    inherit prop<ICardTitleProp>
-    static member inline noop : unit = ()
+type [<Erase>] ICardTitleProp = interface static member propsInterface : unit = () end
 
 let CardTitle : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -57,10 +48,7 @@ CardTitle.displayName = "CardTitle"
 """
 
 // --------------- CardDescription -------------- //
-type [<Erase>] ICardDescriptionProp = interface end
-type [<Erase>] cardDescription =
-    inherit prop<ICardDescriptionProp>
-    static member inline noop : unit = ()
+type [<Erase>] ICardDescriptionProp = interface static member propsInterface : unit = () end
 
 let CardDescription : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -73,10 +61,7 @@ CardDescription.displayName = "CardDescription"
 """
 
 // --------------- CardContent -------------- //
-type [<Erase>] ICardContentProp = interface end
-type [<Erase>] cardContent =
-    inherit prop<ICardContentProp>
-    static member inline noop : unit = ()
+type [<Erase>] ICardContentProp = interface static member propsInterface : unit = () end
 
 [<JSX.Component>]
 let CardContent : JSX.ElementType = JSX.jsx """
@@ -87,10 +72,7 @@ CardContent.displayName = "CardContent"
 """
 
 // --------------- CardFooter -------------- //
-type [<Erase>] ICardFooterProp = interface end
-type [<Erase>] cardFooter =
-    inherit prop<ICardFooterProp>
-    static member inline noop : unit = ()
+type [<Erase>] ICardFooterProp = interface static member propsInterface : unit = () end
 
 [<JSX.Component>]
 let CardFooter : JSX.ElementType = JSX.jsx """

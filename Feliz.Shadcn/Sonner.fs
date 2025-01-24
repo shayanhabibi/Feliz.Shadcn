@@ -71,9 +71,8 @@ type ToastClassnames
     member val icon : string option = jsNative with get,set
 
 // --------------- Toaster -------------- //
-type [<Erase>] IToasterProp = interface end
+type [<Erase>] IToasterProp = interface static member propsInterface : unit = () end
 type [<Erase>] toaster =
-    inherit prop<IToasterProp>
     static member inline invert ( value : bool ) : IToasterProp = Interop.mkProperty "invert" value
     static member inline hotkey ( value : string[] ) : IToasterProp = Interop.mkProperty "hotkey" value
     static member inline richColors ( value : bool ) : IToasterProp = Interop.mkProperty "richColors" value

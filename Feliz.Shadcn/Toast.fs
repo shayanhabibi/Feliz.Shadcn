@@ -30,23 +30,19 @@ cva(
 )
 """
 
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 // --------------- ToastProvider -------------- //
-type [<Erase>] IToastProviderProp = interface end
-type [<Erase>] toastProvider =
-    inherit Toast.provider<IToastProviderProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IToastProviderProp = interface static member propsInterface : unit = () end
+type [<Erase>] toastProvider = Toast.provider<IToastProviderProp>
 
 let ToastProvider : JSX.ElementType = JSX.jsx """
 ToastPrimitives.Provider
 """
 
 // --------------- ToastViewport -------------- //
-type [<Erase>] IToastViewportProp = interface end
-type [<Erase>] toastViewport =
-    inherit Toast.viewport<IToastViewportProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IToastViewportProp = interface static member propsInterface : unit = () end
+type [<Erase>] toastViewport = Toast.viewport<IToastViewportProp>
 
 let ToastViewport : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -62,10 +58,8 @@ ToastViewport.displayName = ToastPrimitives.Viewport.displayName
 """
 
 // --------------- Toast -------------- //
-type [<Erase>] IToastProp = interface end
-type [<Erase>] toast =
-    inherit Toast.root<IToastProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IToastProp = interface static member propsInterface : unit = () end
+type [<Erase>] toast = Toast.root<IToastProp>
 
 let Toast : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, variant, ...props }, ref) => {
@@ -80,10 +74,7 @@ Toast.displayName = ToastPrimitives.Root.displayName
 """
 
 // --------------- ToastAction -------------- //
-type [<Erase>] IToastActionProp = interface end
-type [<Erase>] toastAction =
-    inherit prop<IToastActionProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IToastActionProp = interface static member propsInterface : unit = () end
 
 let ToastAction : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -99,10 +90,8 @@ ToastAction.displayName = ToastPrimitives.Action.displayName
 """
 
 // --------------- ToastClose -------------- //
-type [<Erase>] IToastCloseProp = interface end
-type [<Erase>] toastClose =
-    inherit Toast.close<IToastCloseProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IToastCloseProp = interface static member propsInterface : unit = () end
+type [<Erase>] toastClose = Toast.close<IToastCloseProp>
 
 let ToastClose : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -121,10 +110,8 @@ ToastClose.displayName = ToastPrimitives.Close.displayName
 """
 
 // --------------- ToastTitle -------------- //
-type [<Erase>] IToastTitleProp = interface end
-type [<Erase>] toastTitle =
-    inherit Toast.title<IToastTitleProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IToastTitleProp = interface static member propsInterface : unit = () end
+type [<Erase>] toastTitle = Toast.title<IToastTitleProp>
 
 let ToastTitle : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -137,11 +124,8 @@ ToastTitle.displayName = ToastPrimitives.Title.displayName
 """
 
 // --------------- ToastDescription -------------- //
-type [<Erase>] IToastDescriptionProp = interface end
-type [<Erase>] toastDescription =
-    inherit Toast.description<IToastDescriptionProp>
-    static member inline private noop : unit = ()
-
+type [<Erase>] IToastDescriptionProp = interface static member propsInterface : unit = () end
+type [<Erase>] toastDescription = Toast.description<IToastDescriptionProp>
 let ToastDescription : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
   <ToastPrimitives.Description ref={ref} className={cn("text-sm opacity-90", className)} {...props} />
@@ -154,19 +138,19 @@ type [<Erase>] Shadcn =
     static member inline ToastProvider ( children : ReactElement list ) = JSX.createElementWithChildren ToastProvider children
     static member inline ToastViewport ( props : IToastViewportProp list ) = JSX.createElement ToastViewport props
     static member inline ToastViewport ( children : ReactElement list ) = JSX.createElementWithChildren ToastViewport children
-    static member inline ToastViewport ( el : ReactElement ) = JSX.createElement ToastViewport [ toastViewport.asChild true ; toastViewport.children el ]
+    static member inline ToastViewport ( el : ReactElement ) = JSX.createElement ToastViewport [ toastViewport.asChild true ; props.children el ]
     static member inline Toast ( props : IToastProp list ) = JSX.createElement Toast props
     static member inline Toast ( children : ReactElement list ) = JSX.createElementWithChildren Toast children
-    static member inline Toast ( el : ReactElement ) = JSX.createElement Toast [ toast.asChild true ; toast.children el ]
+    static member inline Toast ( el : ReactElement ) = JSX.createElement Toast [ toast.asChild true ; props.children el ]
     static member inline ToastTitle ( props : IToastTitleProp list ) = JSX.createElement ToastTitle props
     static member inline ToastTitle ( children : ReactElement list ) = JSX.createElementWithChildren ToastTitle children
-    static member inline ToastTitle ( el : ReactElement ) = JSX.createElement ToastTitle [ toastTitle.asChild true ; toastTitle.children el ]
+    static member inline ToastTitle ( el : ReactElement ) = JSX.createElement ToastTitle [ toastTitle.asChild true ; props.children el ]
     static member inline ToastDescription ( props : IToastDescriptionProp list ) = JSX.createElement ToastDescription props
     static member inline ToastDescription ( children : ReactElement list ) = JSX.createElementWithChildren ToastDescription children
-    static member inline ToastDescription ( el : ReactElement ) = JSX.createElement ToastDescription [ toastDescription.asChild true ; toastDescription.children el ]
+    static member inline ToastDescription ( el : ReactElement ) = JSX.createElement ToastDescription [ toastDescription.asChild true ; props.children el ]
     static member inline ToastClose ( props : IToastCloseProp list ) = JSX.createElement ToastClose props
     static member inline ToastClose ( children : ReactElement list ) = JSX.createElementWithChildren ToastClose children
-    static member inline ToastClose ( el : ReactElement ) = JSX.createElement ToastClose [ toastClose.asChild true ; toastClose.children el ]
+    static member inline ToastClose ( el : ReactElement ) = JSX.createElement ToastClose [ toastClose.asChild true ; props.children el ]
     static member inline ToastAction ( props : IToastActionProp list ) = JSX.createElement ToastAction props
     static member inline ToastAction ( children : ReactElement list ) = JSX.createElementWithChildren ToastAction children
                         

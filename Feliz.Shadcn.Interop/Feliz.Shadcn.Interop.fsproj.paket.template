@@ -2,7 +2,7 @@
 licenseUrl https://licenses.nuget.org/MIT
 licenseExpression MIT
 
-version 0.1.0
+version 0.1.1
 
 authors Shayan Habibi
 
@@ -11,9 +11,3 @@ description
 files
     ./README.md ==> docs
 readme docs/README.md
-
-dependencies
-    FSharp.Core
-    Feliz
-    Fable.Core
-    Feliz.RadixUI.Interface

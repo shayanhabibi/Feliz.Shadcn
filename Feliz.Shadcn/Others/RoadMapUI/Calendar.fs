@@ -92,9 +92,8 @@ let daysForLocale = ignore <| JSX.jsx """
 }"""
 
 // --------------- Combobox -------------- //
-type [<Erase>] IComboboxProp = interface end
+type [<Erase>] IComboboxProp = interface static member propsInterface : unit = () end
 type [<Erase>] combobox =
-    inherit prop<IComboboxProp>
     static member inline value ( value : string ) : IComboboxProp = Interop.mkProperty "value" value
     static member inline setValue ( handler : string -> unit ) : IComboboxProp = Interop.mkProperty "setValue" handler
     static member inline data ( value : {| value : string ; label : string |}[] ) : IComboboxProp = Interop.mkProperty "data" value
@@ -183,9 +182,8 @@ type [<Erase>] Feature =
     }
 
 // --------------- CalendarBody -------------- //
-type [<Erase>] ICalendarBodyProp = interface end
+type [<Erase>] ICalendarBodyProp = interface static member propsInterface : unit = () end
 type [<Erase>] calendarBody =
-    inherit prop<ICalendarBodyProp>
     static member inline features ( value : Feature list ) : ICalendarBodyProp = Interop.mkProperty "features" value
     static member inline children ( props : Feature -> ReactElement ) : ICalendarBodyProp = Interop.mkProperty "children" props
 
@@ -267,10 +265,7 @@ let CalendarBody : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- CalendarDatePicker -------------- //
-type [<Erase>] ICalendarDatePickerProp = interface end
-type [<Erase>] calendarDatePicker =
-    inherit prop<ICalendarDatePickerProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ICalendarDatePickerProp = interface static member propsInterface : unit = () end
 
 let CalendarDatePicker : JSX.ElementType = JSX.jsx """
 ({
@@ -282,10 +277,7 @@ let CalendarDatePicker : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- CalendarMonthPicker -------------- //
-type [<Erase>] ICalendarMonthPickerProp = interface end
-type [<Erase>] calendarMonthPicker =
-    inherit prop<ICalendarMonthPickerProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ICalendarMonthPickerProp = interface static member propsInterface : unit = () end
 
 let CalendarMonthPicker : JSX.ElementType = JSX.jsx """
 ({
@@ -315,9 +307,8 @@ let CalendarMonthPicker : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- CalendarYearPicker -------------- //
-type [<Erase>] ICalendarYearPickerProp = interface end
+type [<Erase>] ICalendarYearPickerProp = interface static member propsInterface : unit = () end
 type [<Erase>] calendarYearPicker =
-    inherit prop<ICalendarYearPickerProp>
     static member inline start ( value : int ) : ICalendarYearPickerProp = Interop.mkProperty "start" value
     static member inline end' ( value : int ) : ICalendarYearPickerProp = Interop.mkProperty "end" value
 
@@ -348,10 +339,7 @@ let CalendarYearPicker : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- CalendarDatePagination -------------- //
-type [<Erase>] ICalendarDatePaginationProp = interface end
-type [<Erase>] calendarDatePagination =
-    inherit prop<ICalendarDatePaginationProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ICalendarDatePaginationProp = interface static member propsInterface : unit = () end
 
 let CalendarDatePagination : JSX.ElementType = JSX.jsx """
 ({
@@ -391,10 +379,7 @@ let CalendarDatePagination : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- CalendarDate -------------- //
-type [<Erase>] ICalendarDateProp = interface end
-type [<Erase>] calendarDate =
-    inherit prop<ICalendarDateProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ICalendarDateProp = interface static member propsInterface : unit = () end
 
 let CalendarDate : JSX.ElementType = JSX.jsx """
 ({
@@ -405,10 +390,7 @@ let CalendarDate : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- CalendarHeader -------------- //
-type [<Erase>] ICalendarHeaderProp = interface end
-type [<Erase>] calendarHeader =
-    inherit prop<ICalendarHeaderProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ICalendarHeaderProp = interface static member propsInterface : unit = () end
 
 let CalendarHeader : JSX.ElementType = JSX.jsx """
 ({
@@ -429,10 +411,7 @@ let CalendarHeader : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- CalendarItem -------------- //
-type [<Erase>] ICalendarItemProp = interface end
-type [<Erase>] calendarItem =
-    inherit prop<ICalendarItemProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ICalendarItemProp = interface static member propsInterface : unit = () end
 
 let CalendarItem : JSX.ElementType = JSX.jsx """
 ({
@@ -451,9 +430,8 @@ let CalendarItem : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- CalendarProvider -------------- //
-type [<Erase>] ICalendarProviderProp = interface end
+type [<Erase>] ICalendarProviderProp = interface static member propsInterface : unit = () end
 type [<Erase>] calendarProvider =
-    inherit prop<ICalendarProviderProp>
     static member inline locale ( value : string ) : ICalendarProviderProp = Interop.mkProperty "locale" value
     static member inline startDay ( value : int ) : ICalendarProviderProp = Interop.mkProperty "startDay" value
 

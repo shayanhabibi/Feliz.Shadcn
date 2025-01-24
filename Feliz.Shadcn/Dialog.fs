@@ -6,14 +6,14 @@ open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 emitJsStatement () "import * as DialogPrimitive from \"@radix-ui/react-dialog\""
 
 JSX.injectShadcnLib
 
 // --------------- Dialog -------------- //
-type [<Erase>] IDialogProp = interface end
+type [<Erase>] IDialogProp = interface static member propsInterface : unit = () end
 type [<Erase>] dialog =
     inherit Dialog.root<IDialogProp>
     static member inline open' ( value : bool ) : IDialogProp = Interop.mkProperty "open" value
@@ -24,35 +24,26 @@ type [<Erase>] dialog =
 let Dialog : JSX.ElementType = JSX.jsx "DialogPrimitive.Root"
 
 // --------------- DialogTrigger -------------- //
-type [<Erase>] IDialogTriggerProp = interface end
-type [<Erase>] dialogTrigger =
-    inherit Dialog.trigger<IDialogTriggerProp>
-    static member noop = ()
+type [<Erase>] IDialogTriggerProp = interface static member propsInterface : unit = () end
+type [<Erase>] dialogTrigger = Dialog.trigger<IDialogTriggerProp>
 
 let DialogTrigger : JSX.ElementType = JSX.jsx "DialogPrimitive.Trigger"
     
 // --------------- DialogPortal -------------- //
-type [<Erase>] IDialogPortalProp = interface end
-type [<Erase>] dialogPortal =
-    inherit Dialog.portal<IDialogPortalProp>
-    static member private noop = ()
+type [<Erase>] IDialogPortalProp = interface static member propsInterface : unit = () end
+type [<Erase>] dialogPortal = Dialog.portal<IDialogPortalProp>
 
 let DialogPortal : JSX.ElementType = JSX.jsx "DialogPrimitive.Portal"
     
 // --------------- DialogClose -------------- //
-type [<Erase>] IDialogCloseProp = interface end
-type [<Erase>] dialogClose =
-    inherit Dialog.close<IDialogCloseProp>
-    static member private noop : unit = ()
+type [<Erase>] IDialogCloseProp = interface static member propsInterface : unit = () end
+type [<Erase>] dialogClose = Dialog.close<IDialogCloseProp>
 
 let DialogClose : JSX.ElementType = JSX.jsx "DialogPrimitive.Close"
 
 // --------------- DialogOverlay -------------- //
-type [<Erase>] IDialogOverlayProp = interface end
-type [<Erase>] dialogOverlay =
-    inherit Dialog.overlay<IDialogOverlayProp>
-    static member private noop = ()
-    // static member inline forceMount ( value : bool ) : IDialogOverlayProp = Interop.mkProperty "forceMount" value
+type [<Erase>] IDialogOverlayProp = interface static member propsInterface : unit = () end
+type [<Erase>] dialogOverlay = Dialog.overlay<IDialogOverlayProp>
 
 let DialogOverlay : JSX.ElementType =  JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -68,13 +59,8 @@ DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 """
     
 // --------------- DialogContent -------------- //
-type [<Erase>] IDialogContentProp = interface end
-type [<Erase>] dialogContent =
-    inherit Dialog.content<IDialogContentProp>
-    static member private noop = ()
-    // static member inline forceMount ( value : bool ) : IDialogContentProp = Interop.mkProperty "forceMount" value
-
-open Feliz.Lucide
+type [<Erase>] IDialogContentProp = interface static member propsInterface : unit = () end
+type [<Erase>] dialogContent = Dialog.content<IDialogContentProp>
 
 [<JSX.Component>]
 let DialogContent : JSX.ElementType = JSX.jsx """
@@ -103,10 +89,7 @@ DialogContent.displayName = DialogPrimitive.Content.displayName
 """
 
 // --------------- DialogHeader -------------- //
-type [<Erase>] IDialogHeaderProp = interface end
-type [<Erase>] dialogHeader =
-    inherit prop<IDialogHeaderProp>
-    static member inline noop : unit = ()
+type [<Erase>] IDialogHeaderProp = interface static member propsInterface : unit = () end
 
 let DialogHeader : JSX.ElementType = JSX.jsx """
 ({
@@ -121,10 +104,7 @@ DialogHeader.displayName = "DialogHeader"
 """
 
 // --------------- DialogFooter -------------- //
-type [<Erase>] IDialogFooterProp = interface end
-type [<Erase>] dialogFooter =
-    inherit prop<IDialogFooterProp>
-    static member inline noop : unit = ()
+type [<Erase>] IDialogFooterProp = interface static member propsInterface : unit = () end
 
 let DialogFooter : JSX.ElementType = JSX.jsx """
 ({
@@ -139,10 +119,7 @@ DialogFooter.displayName = "DialogFooter"
 """
 
 // --------------- DialogTitle -------------- //
-type [<Erase>] IDialogTitleProp = interface end
-type [<Erase>] dialogTitle =
-    inherit prop<IDialogTitleProp>
-    static member inline noop : unit = ()
+type [<Erase>] IDialogTitleProp = interface static member propsInterface : unit = () end
 
 let DialogTitle : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -155,10 +132,7 @@ DialogTitle.displayName = DialogPrimitive.Title.displayName
 """
 
 // --------------- DialogDescription -------------- //
-type [<Erase>] IDialogDescriptionProp = interface end
-type [<Erase>] dialogDescription =
-    inherit prop<IDialogDescriptionProp>
-    static member inline noop : unit = ()
+type [<Erase>] IDialogDescriptionProp = interface static member propsInterface : unit = () end
 
 let DialogDescription : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -175,19 +149,19 @@ type [<Erase>] Shadcn =
     static member inline Dialog ( children : ReactElement list ) = JSX.createElementWithChildren Dialog children
     static member inline DialogTrigger ( props : IDialogTriggerProp list ) = JSX.createElement DialogTrigger props
     static member inline DialogTrigger ( children : ReactElement list ) = JSX.createElementWithChildren DialogTrigger children
-    static member inline DialogTrigger ( el : ReactElement ) = JSX.createElement DialogTrigger [ dialogTrigger.asChild true ; dialogTrigger.children el ]
+    static member inline DialogTrigger ( el : ReactElement ) = JSX.createElement DialogTrigger [ dialogTrigger.asChild true ; props.children el ]
     static member inline DialogPortal ( props : IDialogPortalProp list ) = JSX.createElement DialogPortal props
     static member inline DialogPortal ( children : ReactElement list ) = JSX.createElementWithChildren DialogPortal children
     static member inline DialogClose ( props : IDialogCloseProp list ) = JSX.createElement DialogClose props
     static member inline DialogClose ( children : ReactElement list ) = JSX.createElementWithChildren DialogClose children
     static member inline DialogClose ( value : string ) = JSX.createElement DialogClose [ prop.text value ]
-    static member inline DialogClose ( el : ReactElement ) = JSX.createElement DialogClose [ dialogClose.asChild true ; dialogClose.children el ]
+    static member inline DialogClose ( el : ReactElement ) = JSX.createElement DialogClose [ dialogClose.asChild true ; props.children el ]
     static member inline DialogOverlay ( props : IDialogOverlayProp list ) = JSX.createElement DialogOverlay props
     static member inline DialogOverlay ( children : ReactElement list ) = JSX.createElementWithChildren DialogOverlay children
-    static member inline DialogOverlay ( el : ReactElement ) = JSX.createElement DialogOverlay [ dialogOverlay.asChild true ; dialogOverlay.children el ]
+    static member inline DialogOverlay ( el : ReactElement ) = JSX.createElement DialogOverlay [ dialogOverlay.asChild true ; props.children el ]
     static member inline DialogContent ( props : IDialogContentProp list ) = JSX.createElement DialogContent props
     static member inline DialogContent ( children : ReactElement list ) = JSX.createElementWithChildren DialogContent children
-    static member inline DialogContent ( el : ReactElement ) = JSX.createElement DialogContent [ dialogContent.asChild true ; dialogContent.children el ]
+    static member inline DialogContent ( el : ReactElement ) = JSX.createElement DialogContent [ dialogContent.asChild true ; props.children el ]
     static member inline DialogHeader ( props : IDialogHeaderProp list ) = JSX.createElement DialogHeader props
     static member inline DialogHeader ( children : ReactElement list ) = JSX.createElementWithChildren DialogHeader children
     static member inline DialogFooter ( props : IDialogFooterProp list ) = JSX.createElement DialogFooter props

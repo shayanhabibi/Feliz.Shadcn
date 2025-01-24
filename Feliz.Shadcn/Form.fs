@@ -15,10 +15,7 @@ let _ = Shadcn.Label.Label
 
     
 // --------------- Form -------------- //
-type [<Erase>] IFormProp = interface end
-type [<Erase>] form =
-    inherit prop<IFormProp>
-    static member inline noop : unit = ()
+type [<Erase>] IFormProp = interface static member propsInterface : unit = () end
 
 [<JSX.Component>]
 let Form : JSX.ElementType = JSX.jsx """
@@ -26,10 +23,7 @@ FormProvider
 """
 
 // --------------- FormField -------------- //
-type [<Erase>] IFormFieldProp = interface end
-type [<Erase>] formField =
-    inherit prop<IFormFieldProp>
-    static member inline noop : unit = ()
+type [<Erase>] IFormFieldProp = interface static member propsInterface : unit = () end
 
 let private FormFieldContext = JSX.jsx "React.createContext({})"
 
@@ -76,10 +70,7 @@ let useFormField : unit -> obj = unbox <| JSX.jsx """
 let private FormItemContext = JSX.jsx "React.createContext({})"
 
 // --------------- FormItem -------------- //
-type [<Erase>] IFormItemProp = interface end
-type [<Erase>] formItem =
-    inherit prop<IFormItemProp>
-    static member inline noop : unit = ()
+type [<Erase>] IFormItemProp = interface static member propsInterface : unit = () end
 
 let FormItem : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => {
@@ -95,10 +86,7 @@ FormItem.displayName = "FormItem"
 """
 
 // --------------- FormLabel -------------- //
-type [<Erase>] IFormLabelProp = interface end
-type [<Erase>] formLabel =
-    inherit prop<IFormLabelProp>
-    static member inline noop : unit = ()
+type [<Erase>] IFormLabelProp = interface static member propsInterface : unit = () end
 
 let FormLabel : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => {
@@ -116,10 +104,7 @@ FormLabel.displayName = "FormLabel"
 """
 
 // --------------- FormControl -------------- //
-type [<Erase>] IFormControlProp = interface end
-type [<Erase>] formControl =
-    inherit prop<IFormControlProp>
-    static member inline noop : unit = ()
+type [<Erase>] IFormControlProp = interface static member propsInterface : unit = () end
 
 let FormControl : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ ...props }, ref) => {
@@ -142,10 +127,7 @@ FormControl.displayName = "FormControl"
 """
 
 // --------------- FormDescription -------------- //
-type [<Erase>] IFormDescriptionProp = interface end
-type [<Erase>] formDescription =
-    inherit prop<IFormDescriptionProp>
-    static member inline noop : unit = ()
+type [<Erase>] IFormDescriptionProp = interface static member propsInterface : unit = () end
 
 let FormDescription : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => {
@@ -163,10 +145,7 @@ FormDescription.displayName = "FormDescription"
 """
 
 // --------------- FormMessage -------------- //
-type [<Erase>] IFormMessageProp = interface end
-type [<Erase>] formMessage =
-    inherit prop<IFormMessageProp>
-    static member inline noop : unit = ()
+type [<Erase>] IFormMessageProp = interface static member propsInterface : unit = () end
 
 let FormMessage : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, children, ...props }, ref) => {

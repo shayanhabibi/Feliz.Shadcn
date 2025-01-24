@@ -11,13 +11,11 @@ import * as RadioGroupPrimitive from "@radix-ui/react-radio-group"
 import { Circle } from "lucide-react"
 """
 
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 // --------------- RadioGroup -------------- //
-type [<Erase>] IRadioGroupProp = interface end
-type [<Erase>] radioGroup =
-    inherit RadioGroup.root<IRadioGroupProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IRadioGroupProp = interface static member propsInterface : unit = () end
+type [<Erase>] radioGroup = RadioGroup.root<IRadioGroupProp>
 
 let RadioGroup : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => {
@@ -27,11 +25,8 @@ RadioGroup.displayName = RadioGroupPrimitive.Root.displayName
 """
 
 // --------------- RadioGroupItem -------------- //
-type [<Erase>] IRadioGroupItemProp = interface end
-type [<Erase>] radioGroupItem =
-    inherit RadioGroup.item<IRadioGroupItemProp>
-    static member inline private noop : unit = ()
-
+type [<Erase>] IRadioGroupItemProp = interface static member propsInterface : unit = () end
+type [<Erase>] radioGroupItem = RadioGroup.item<IRadioGroupItemProp>
 let RadioGroupItem : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => {
   return (
@@ -54,11 +49,11 @@ RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName
 type [<Erase>] Shadcn =
     static member inline RadioGroup ( props : IRadioGroupProp list ) = JSX.createElement RadioGroup props
     static member inline RadioGroup ( children : ReactElement list ) = JSX.createElementWithChildren RadioGroup children
-    static member inline RadioGroup ( el : ReactElement ) = JSX.createElement RadioGroup [ radioGroup.asChild true ; radioGroup.children el ]
+    static member inline RadioGroup ( el : ReactElement ) = JSX.createElement RadioGroup [ radioGroup.asChild true ; props.children el ]
     static member inline RadioGroupItem ( props : IRadioGroupItemProp list ) = JSX.createElement RadioGroupItem props
     static member inline RadioGroupItem ( children : ReactElement list ) = JSX.createElementWithChildren RadioGroupItem children
     static member inline RadioGroupItem ( value : string , children : ReactElement list ) = JSX.createElement RadioGroupItem [ prop.value value ; prop.children children ]
     static member inline RadioGroupItem ( value : string ) = JSX.createElement RadioGroupItem [ prop.text value ; prop.value value ]
     static member inline RadioGroupItem ( value : string, label : string ) = JSX.createElement RadioGroupItem [ prop.text label ; prop.value value ]
-    static member inline RadioGroupItem ( el : ReactElement ) = JSX.createElement RadioGroupItem [ radioGroupItem.asChild true ; radioGroupItem.children el ]
+    static member inline RadioGroupItem ( el : ReactElement ) = JSX.createElement RadioGroupItem [ radioGroupItem.asChild true ; props.children el ]
     

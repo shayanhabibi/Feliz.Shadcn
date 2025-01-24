@@ -5,13 +5,13 @@ open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 emitJsStatement () "import { Drawer as DrawerPrimitive } from \"vaul\""
 JSX.injectShadcnLib
 
 // --------------- Drawer -------------- //
-type [<Erase>] IDrawerProp = interface end
+type [<Erase>] IDrawerProp = interface static member propsInterface : unit = () end
 type [<Erase>] drawer =
     inherit Dialog.root<IDrawerProp>
     static member inline shouldScaleBackground ( value : bool ) : IDrawerProp = Interop.mkProperty "shouldScaleBackground" value
@@ -59,40 +59,32 @@ Drawer.displayName = "Drawer"
 """
 
 // --------------- DrawerTrigger -------------- //
-type [<Erase>] IDrawerTriggerProp = interface end
-type [<Erase>] drawerTrigger =
-    inherit Dialog.trigger<IDrawerTriggerProp>
-    static member inline noop : unit = ()
+type [<Erase>] IDrawerTriggerProp = interface static member propsInterface : unit = () end
+type [<Erase>] drawerTrigger = Dialog.trigger<IDrawerTriggerProp>
 
 let DrawerTrigger : JSX.ElementType = JSX.jsx """
 DrawerPrimitive.Trigger
 """
 
 // --------------- DrawerPortal -------------- //
-type [<Erase>] IDrawerPortalProp = interface end
-type [<Erase>] drawerPortal =
-    inherit Dialog.portal<IDrawerPortalProp>
-    static member inline noop : unit = ()
+type [<Erase>] IDrawerPortalProp = interface static member propsInterface : unit = () end
+type [<Erase>] drawerPortal = Dialog.portal<IDrawerPortalProp>
 
 let DrawerPortal : JSX.ElementType = JSX.jsx """
 DrawerPrimitive.Portal
 """
 
 // --------------- DrawerClose -------------- //
-type [<Erase>] IDrawerCloseProp = interface end
-type [<Erase>] drawerClose =
-    inherit Dialog.close<IDrawerCloseProp>
-    static member inline noop : unit = ()
+type [<Erase>] IDrawerCloseProp = interface static member propsInterface : unit = () end
+type [<Erase>] drawerClose = Dialog.close<IDrawerCloseProp>
 
 let DrawerClose : JSX.ElementType = JSX.jsx """
 DrawerPrimitive.Close
 """
 
 // --------------- DrawerOverlay -------------- //
-type [<Erase>] IDrawerOverlayProp = interface end
-type [<Erase>] drawerOverlay =
-    inherit Dialog.overlay<IDrawerOverlayProp>
-    static member inline noop : unit = ()
+type [<Erase>] IDrawerOverlayProp = interface static member propsInterface : unit = () end
+type [<Erase>] drawerOverlay = Dialog.overlay<IDrawerOverlayProp>
 
 let DrawerOverlay : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -105,10 +97,8 @@ DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName
 """
     
 // --------------- DrawerContent -------------- //
-type [<Erase>] IDrawerContentProp = interface end
-type [<Erase>] drawerContent =
-    inherit Dialog.content<IDrawerContentProp>
-    static member inline noop : unit = ()
+type [<Erase>] IDrawerContentProp = interface static member propsInterface : unit = () end
+type [<Erase>] drawerContent = Dialog.content<IDrawerContentProp>
 
 let DrawerContent : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, children, ...props }, ref) => (
@@ -130,10 +120,7 @@ DrawerContent.displayName = "DrawerContent"
 """
 
 // --------------- DrawerHeader -------------- //
-type [<Erase>] IDrawerHeaderProp = interface end
-type [<Erase>] drawerHeader =
-    inherit prop<IDrawerHeaderProp>
-    static member inline noop : unit = ()
+type [<Erase>] IDrawerHeaderProp = interface static member propsInterface : unit = () end
 
 let DrawerHeader : JSX.ElementType = JSX.jsx """
 ({
@@ -148,10 +135,7 @@ DrawerHeader.displayName = "DrawerHeader"
 """
 
 // --------------- DrawerFooter -------------- //
-type [<Erase>] IDrawerFooterProp = interface end
-type [<Erase>] drawerFooter =
-    inherit prop<IDrawerFooterProp>
-    static member inline noop : unit = ()
+type [<Erase>] IDrawerFooterProp = interface static member propsInterface : unit = () end
 
 let DrawerFooter : JSX.ElementType = JSX.jsx """
 ({
@@ -164,10 +148,7 @@ DrawerFooter.displayName = "DrawerFooter"
 """
 
 // --------------- DrawerTitle -------------- //
-type [<Erase>] IDrawerTitleProp = interface end
-type [<Erase>] drawerTitle =
-    inherit prop<IDrawerTitleProp>
-    static member inline noop : unit = ()
+type [<Erase>] IDrawerTitleProp = interface static member propsInterface : unit = () end
 
 let DrawerTitle : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -180,10 +161,7 @@ DrawerTitle.displayName = DrawerPrimitive.Title.displayName
 """
 
 // --------------- DrawerDescription -------------- //
-type [<Erase>] IDrawerDescriptionProp = interface end
-type [<Erase>] drawerDescription =
-    inherit prop<IDrawerDescriptionProp>
-    static member inline noop : unit = ()
+type [<Erase>] IDrawerDescriptionProp = interface static member propsInterface : unit = () end
 
 let DrawerDescription : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (

@@ -9,13 +9,11 @@ JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import * as SliderPrimitive from "@radix-ui/react-slider"
 """
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 // --------------- Slider -------------- //
-type [<Erase>] ISliderProp = interface end
-type [<Erase>] slider =
-    inherit Slider.root<ISliderProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISliderProp = interface static member propsInterface : unit = () end
+type [<Erase>] slider = Slider.root<ISliderProp>
 
 let Slider : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -37,4 +35,4 @@ Slider.displayName = SliderPrimitive.Root.displayName
 type [<Erase>] Shadcn =
     static member inline Slider ( props : ISliderProp list ) = JSX.createElement Slider props
     static member inline Slider ( children : ReactElement list ) = JSX.createElementWithChildren Slider children
-    static member inline Slider ( el : ReactElement ) = JSX.createElement Slider [ slider.asChild true ; slider.children el ]
+    static member inline Slider ( el : ReactElement ) = JSX.createElement Slider [ slider.asChild true ; props.children el ]

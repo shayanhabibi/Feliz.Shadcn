@@ -341,9 +341,8 @@ createContext({
 """
 
 // --------------- GanttContentHeader -------------- //
-type [<Erase>] IGanttContentHeaderProp = interface end
+type [<Erase>] IGanttContentHeaderProp = interface static member propsInterface : unit = () end
 type [<Erase>] ganttContentHeader =
-    inherit prop<IGanttContentHeaderProp>
     static member inline title ( value : string ) : IGanttContentHeaderProp = Interop.mkProperty "title" value
     static member inline renderHeaderItem ( handler : int -> unit ) : IGanttContentHeaderProp = Interop.mkProperty "renderHeaderItem" handler
     static member inline columns ( value : int ) : IGanttContentHeaderProp = Interop.mkProperty "columns" value
@@ -465,10 +464,7 @@ let private headers = {|
                         |}
 
 // --------------- GanttHeader -------------- //
-type [<Erase>] IGanttHeaderProp = interface end
-type [<Erase>] ganttHeader =
-    inherit prop<IGanttHeaderProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IGanttHeaderProp = interface static member propsInterface : unit = () end
 
 let GanttHeader : JSX.ElementType = JSX.jsx """
 ({ className }) => {
@@ -485,9 +481,8 @@ let GanttHeader : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- GanttSidebarItem -------------- //
-type [<Erase>] IGanttSidebarItemProp = interface end
+type [<Erase>] IGanttSidebarItemProp = interface static member propsInterface : unit = () end
 type [<Erase>] ganttSidebarItem =
-    inherit prop<IGanttSidebarItemProp>
     static member inline feature ( value : GanttFeature ) : IGanttSidebarItemProp = Interop.mkProperty "feature" value
     static member inline onSelectItem ( handler : string -> unit ) : IGanttSidebarItemProp = Interop.mkProperty "onSelectItem" handler
 
@@ -545,10 +540,7 @@ let GanttSidebarItem : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- GanttSidebarHeader -------------- //
-type [<Erase>] IGanttSidebarHeaderProp = interface end
-type [<Erase>] ganttSidebarHeader =
-    inherit prop<IGanttSidebarHeaderProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IGanttSidebarHeaderProp = interface static member propsInterface : unit = () end
 
 let GanttSidebarHeader : JSX.ElementType = JSX.jsx """
 () => (
@@ -563,9 +555,8 @@ let GanttSidebarHeader : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- GanttSidebarGroup -------------- //
-type [<Erase>] IGanttSidebarGroupProp = interface end
+type [<Erase>] IGanttSidebarGroupProp = interface static member propsInterface : unit = () end
 type [<Erase>] ganttSidebarGroup =
-    inherit prop<IGanttSidebarGroupProp>
     static member inline name ( value : string ) : IGanttSidebarGroupProp = Interop.mkProperty "name" value
 
 let GanttSidebarGroup : JSX.ElementType = JSX.jsx """
@@ -586,10 +577,7 @@ let GanttSidebarGroup : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- GanttSidebar -------------- //
-type [<Erase>] IGanttSidebarProp = interface end
-type [<Erase>] ganttSidebar =
-    inherit prop<IGanttSidebarProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IGanttSidebarProp = interface static member propsInterface : unit = () end
 
 let GanttSidebar : JSX.ElementType = JSX.jsx """
 ({
@@ -609,9 +597,8 @@ let GanttSidebar : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- GanttAddFeatureHelper -------------- //
-type [<Erase>] IGanttAddFeatureHelperProp = interface end
+type [<Erase>] IGanttAddFeatureHelperProp = interface static member propsInterface : unit = () end
 type [<Erase>] ganttAddFeatureHelper =
-    inherit prop<IGanttAddFeatureHelperProp>
     static member inline top ( value : int ) : IGanttAddFeatureHelperProp = Interop.mkProperty "top" value
 
 let GanttAddFeatureHelper : JSX.ElementType = JSX.jsx """
@@ -654,9 +641,8 @@ let GanttAddFeatureHelper : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- GanttColumn -------------- //
-type [<Erase>] IGanttColumnProp = interface end
+type [<Erase>] IGanttColumnProp = interface static member propsInterface : unit = () end
 type [<Erase>] ganttColumn =
-    inherit prop<IGanttColumnProp>
     static member inline index ( value : int ) : IGanttColumnProp = Interop.mkProperty "index" value
     static member inline isColumnSecondary ( handler : int -> bool ) : IGanttColumnProp = Interop.mkProperty "isColumnSecondary" handler
 
@@ -697,9 +683,8 @@ let GanttColumn : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- GanttColumns -------------- //
-type [<Erase>] IGanttColumnsProp = interface end
+type [<Erase>] IGanttColumnsProp = interface static member propsInterface : unit = () end
 type [<Erase>] ganttColumns =
-    inherit prop<IGanttColumnsProp>
     static member inline index ( value : int ) : IGanttColumnsProp = Interop.mkProperty "index" value
     static member inline isColumnSecondary ( handler : int -> bool ) : IGanttColumnsProp = Interop.mkProperty "isColumnSecondary" handler
 
@@ -728,9 +713,8 @@ let GanttColumns : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- GanttCreateMarkerTrigger -------------- //
-type [<Erase>] IGanttCreateMarkerTriggerProp = interface end
+type [<Erase>] IGanttCreateMarkerTriggerProp = interface static member propsInterface : unit = () end
 type [<Erase>] ganttCreateMarkerTrigger =
-    inherit prop<IGanttCreateMarkerTriggerProp>
     static member inline onCreateMarker ( handler : JS.Date -> unit ) : IGanttCreateMarkerTriggerProp = Interop.mkProperty "onCreateMarker" handler
 
 let GanttCreateMarkerTrigger : JSX.ElementType = JSX.jsx """
@@ -776,9 +760,8 @@ let GanttCreateMarkerTrigger : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- GanttFeatureDragHelper -------------- //
-type [<Erase>] IGanttFeatureDragHelperProp = interface end
+type [<Erase>] IGanttFeatureDragHelperProp = interface static member propsInterface : unit = () end
 type [<Erase>] ganttFeatureDragHelper =
-    inherit prop<IGanttFeatureDragHelperProp>
     static member inline featureId ( value : string ) : IGanttFeatureDragHelperProp = Interop.mkProperty "featureId" value
     static member inline date ( value : JS.Date ) : IGanttFeatureDragHelperProp = Interop.mkProperty "date" value
     
@@ -836,9 +819,8 @@ let GanttFeatureDragHelper : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- GanttFeatureItemCard -------------- //
-type [<Erase>] IGanttFeatureItemCardProp = interface end
+type [<Erase>] IGanttFeatureItemCardProp = interface static member propsInterface : unit = () end
 type [<Erase>] ganttFeatureItemCard =
-    inherit prop<IGanttFeatureItemCardProp>
     static member inline id ( value : string ) : IGanttFeatureItemCardProp = Interop.mkProperty "id" value
     static member inline name ( value : string ) : IGanttFeatureItemCardProp = Interop.mkProperty "name" value
     static member inline color ( value : string ) : IGanttFeatureItemCardProp = Interop.mkProperty "color" value
@@ -873,9 +855,8 @@ let GanttFeatureItemCard : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- GanttFeatureItem -------------- //
-type [<Erase>] IGanttFeatureItemProp = interface end
+type [<Erase>] IGanttFeatureItemProp = interface static member propsInterface : unit = () end
 type [<Erase>] ganttFeatureItem =
-    inherit prop<IGanttFeatureItemProp>
     static member inline onMove ( handler : string * JS.Date * JS.Date -> unit ) : IGanttFeatureItemProp = Interop.mkProperty "onMove" handler
     static member inline id ( value : string ) : IGanttFeatureItemProp = Interop.mkProperty "id" value
     static member inline name ( value : string ) : IGanttFeatureItemProp = Interop.mkProperty "name" value
@@ -997,10 +978,7 @@ let GanttFeatureItem : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- GanttFeatureListGroup -------------- //
-type [<Erase>] IGanttFeatureListGroupProp = interface end
-type [<Erase>] ganttFeatureListGroup =
-    inherit prop<IGanttFeatureListGroupProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IGanttFeatureListGroupProp = interface static member propsInterface : unit = () end
 
 let GanttFeatureListGroup : JSX.ElementType = JSX.jsx """
 ({
@@ -1014,10 +992,7 @@ let GanttFeatureListGroup : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- GanttFeatureList -------------- //
-type [<Erase>] IGanttFeatureListProp = interface end
-type [<Erase>] ganttFeatureList =
-    inherit prop<IGanttFeatureListProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IGanttFeatureListProp = interface static member propsInterface : unit = () end
 
 let GanttFeatureList : JSX.ElementType = JSX.jsx """
 ({
@@ -1033,9 +1008,8 @@ let GanttFeatureList : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- GanttMarker -------------- //
-type [<Erase>] IGanttMarkerProp = interface end
+type [<Erase>] IGanttMarkerProp = interface static member propsInterface : unit = () end
 type [<Erase>] ganttMarker =
-    inherit prop<IGanttMarkerProp>
     static member inline onRemove ( handler : string -> unit ) : IGanttMarkerProp = Interop.mkProperty "onRemove" handler
     static member inline id ( value : string ) : IGanttMarkerProp = Interop.mkProperty "id" value
     static member inline date ( value : JS.Date ) : IGanttMarkerProp = Interop.mkProperty "date" value
@@ -1089,9 +1063,8 @@ let GanttMarker : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- GanttProvider -------------- //
-type [<Erase>] IGanttProviderProp = interface end
+type [<Erase>] IGanttProviderProp = interface static member propsInterface : unit = () end
 type [<Erase>] ganttProvider =
-    inherit prop<IGanttProviderProp>
     static member inline range ( value : Range ) : IGanttProviderProp = Interop.mkProperty "range" value
     static member inline zoom ( value : int ) : IGanttProviderProp = Interop.mkProperty "zoom" value
     static member inline onAddItem ( handler : JS.Date -> unit ) : IGanttProviderProp = Interop.mkProperty "onAddItem" handler
@@ -1247,10 +1220,7 @@ let GanttProvider : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- GanttTimeline -------------- //
-type [<Erase>] IGanttTimelineProp = interface end
-type [<Erase>] ganttTimeline =
-    inherit prop<IGanttTimelineProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IGanttTimelineProp = interface static member propsInterface : unit = () end
 
 let GanttTimeline : JSX.ElementType = JSX.jsx """
 ({
@@ -1265,10 +1235,7 @@ let GanttTimeline : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- GanttToday -------------- //
-type [<Erase>] IGanttTodayProp = interface end
-type [<Erase>] ganttToday =
-    inherit prop<IGanttTodayProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IGanttTodayProp = interface static member propsInterface : unit = () end
 
 let GanttToday : JSX.ElementType = JSX.jsx """
 ({ className }) => {

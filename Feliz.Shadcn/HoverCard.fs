@@ -5,37 +5,31 @@ open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 JSX.injectShadcnLib
 ignore <| JSX.jsx """
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card"
 """
 
 // --------------- HoverCard -------------- //
-type [<Erase>] IHoverCardProp = interface end
-type [<Erase>] hoverCard =
-    inherit HoverCard.root<IHoverCardProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IHoverCardProp = interface static member propsInterface : unit = () end
+type [<Erase>] hoverCard = HoverCard.root<IHoverCardProp>
 
 let HoverCard : JSX.ElementType = JSX.jsx """
 HoverCardPrimitive.Root
 """
 
 // --------------- HoverCardTrigger -------------- //
-type [<Erase>] IHoverCardTriggerProp = interface end
-type [<Erase>] hoverCardTrigger =
-    inherit HoverCard.trigger<IHoverCardTriggerProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IHoverCardTriggerProp = interface static member propsInterface : unit = () end
+type [<Erase>] hoverCardTrigger = HoverCard.trigger<IHoverCardTriggerProp>
 
 let HoverCardTrigger : JSX.ElementType = JSX.jsx """
 HoverCardPrimitive.Trigger
 """
 
 // --------------- HoverCardContent -------------- //
-type [<Erase>] IHoverCardContentProp = interface end
-type [<Erase>] hoverCardContent =
-    inherit HoverCard.content<IHoverCardContentProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IHoverCardContentProp = interface static member propsInterface : unit = () end
+type [<Erase>] hoverCardContent = HoverCard.content<IHoverCardContentProp>
 
 let HoverCardContent : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, align = "center", sideOffset = 4, ...props }, ref) => (
@@ -58,9 +52,9 @@ type [<Erase>] Shadcn =
     static member inline HoverCardTrigger ( props : IHoverCardTriggerProp list ) = JSX.createElement HoverCardTrigger props
     static member inline HoverCardTrigger ( children : ReactElement list ) = JSX.createElementWithChildren HoverCardTrigger children
     static member inline HoverCardTrigger ( value : string ) = JSX.createElement HoverCardTrigger [ prop.text value ]
-    static member inline HoverCardTrigger ( el : ReactElement ) = JSX.createElement HoverCardTrigger [ hoverCardTrigger.asChild true ; hoverCardTrigger.children el ]
+    static member inline HoverCardTrigger ( el : ReactElement ) = JSX.createElement HoverCardTrigger [ hoverCardTrigger.asChild true ; props.children el ]
     static member inline HoverCardContent ( props : IHoverCardContentProp list ) = JSX.createElement HoverCardContent props
     static member inline HoverCardContent ( children : ReactElement list ) = JSX.createElementWithChildren HoverCardContent children
     static member inline HoverCardContent ( value : string ) = JSX.createElement HoverCardContent [ prop.text value ]
-    static member inline HoverCardContent ( el : ReactElement ) = JSX.createElement HoverCardContent [ hoverCardContent.asChild true ; hoverCardContent.children el ]
+    static member inline HoverCardContent ( el : ReactElement ) = JSX.createElement HoverCardContent [ hoverCardContent.asChild true ; props.children el ]
         

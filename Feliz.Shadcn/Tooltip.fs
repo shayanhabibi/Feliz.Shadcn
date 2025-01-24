@@ -5,45 +5,37 @@ open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 JSX.injectShadcnLib
 emitJsStatement () "import * as TooltipPrimitive from \"@radix-ui/react-tooltip\""
 
 // --------------- TooltipProvider -------------- //
-type [<Erase>] ITooltipProviderProp = interface end
-type [<Erase>] tooltipProvider =
-    inherit Tooltip.provider<ITooltipProviderProp>
-    static member inline noop : unit = ()
+type [<Erase>] ITooltipProviderProp = interface static member propsInterface : unit = () end
+type [<Erase>] tooltipProvider = Tooltip.provider<ITooltipProviderProp>
 
 let TooltipProvider : JSX.ElementType = JSX.jsx """
 TooltipPrimitive.Provider
 """
 
 // --------------- Tooltip -------------- //
-type [<Erase>] ITooltipProp = interface end
-type [<Erase>] tooltip =
-    inherit Tooltip.root<ITooltipProp>
-    static member inline noop : unit = ()
+type [<Erase>] ITooltipProp = interface static member propsInterface : unit = () end
+type [<Erase>] tooltip = Tooltip.root<ITooltipProp>
 
 let Tooltip : JSX.ElementType = JSX.jsx """
 TooltipPrimitive.Root
 """
 
 // --------------- TooltipTrigger -------------- //
-type [<Erase>] ITooltipTriggerProp = interface end
-type [<Erase>] tooltipTrigger =
-    inherit Tooltip.trigger<ITooltipTriggerProp>
-    static member inline noop : unit = ()
+type [<Erase>] ITooltipTriggerProp = interface static member propsInterface : unit = () end
+type [<Erase>] tooltipTrigger = Tooltip.trigger<ITooltipTriggerProp>
 
 let TooltipTrigger : JSX.ElementType = JSX.jsx """
 TooltipPrimitive.Trigger
 """
 
 // --------------- TooltipContent -------------- //
-type [<Erase>] ITooltipContentProp = interface end
-type [<Erase>] tooltipContent =
-    inherit Tooltip.content<ITooltipContentProp>
-    static member inline noop : unit = ()
+type [<Erase>] ITooltipContentProp = interface static member propsInterface : unit = () end
+type [<Erase>] tooltipContent = Tooltip.content<ITooltipContentProp>
 
 let TooltipContent : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, sideOffset = 4, ...props }, ref) => (
@@ -66,10 +58,10 @@ type [<Erase>] Shadcn =
     static member inline Tooltip ( children : ReactElement list ) = JSX.createElementWithChildren Tooltip children
     static member inline TooltipTrigger ( props : ITooltipTriggerProp list ) = JSX.createElement TooltipTrigger props
     static member inline TooltipTrigger ( children : ReactElement list ) = JSX.createElementWithChildren TooltipTrigger children
-    static member inline TooltipTrigger ( el : ReactElement ) = JSX.createElement TooltipTrigger [ tooltipTrigger.asChild true ; tooltipTrigger.children el ]
+    static member inline TooltipTrigger ( el : ReactElement ) = JSX.createElement TooltipTrigger [ tooltipTrigger.asChild true ; props.children el ]
     static member inline TooltipContent ( props : ITooltipContentProp list ) = JSX.createElement TooltipContent props
     static member inline TooltipContent ( children : ReactElement list ) = JSX.createElementWithChildren TooltipContent children
-    static member inline TooltipContent ( el : ReactElement ) = JSX.createElement TooltipContent [ tooltipContent.asChild true ; tooltipContent.children el ]
+    static member inline TooltipContent ( el : ReactElement ) = JSX.createElement TooltipContent [ tooltipContent.asChild true ; props.children el ]
     static member inline TooltipProvider ( props : ITooltipProviderProp list ) = JSX.createElement TooltipProvider props
     static member inline TooltipProvider ( children : ReactElement list ) = JSX.createElementWithChildren TooltipProvider children
         

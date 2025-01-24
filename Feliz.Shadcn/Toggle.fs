@@ -11,7 +11,7 @@ import * as TogglePrimitive from "@radix-ui/react-toggle"
 import { cva } from "class-variance-authority";
 """
 
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 let toggleVariants = JSX.jsx """
 cva(
@@ -38,10 +38,8 @@ cva(
 """
 
 // --------------- Toggle -------------- //
-type [<Erase>] IToggleProp = interface end
-type [<Erase>] toggle =
-    inherit Toggle.root<IToggleProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IToggleProp = interface static member propsInterface : unit = () end
+type [<Erase>] toggle = Toggle.root<IToggleProp>
 
 let Toggle : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, variant, size, ...props }, ref) => (
@@ -57,4 +55,4 @@ Toggle.displayName = TogglePrimitive.Root.displayName
 type [<Erase>] Shadcn =
     static member inline Toggle ( props : IToggleProp list ) = JSX.createElement Toggle props
     static member inline Toggle ( children : ReactElement list ) = JSX.createElementWithChildren Toggle children
-    static member inline Toggle ( el : ReactElement ) = JSX.createElement Toggle [ toggle.asChild true ; toggle.children el ]
+    static member inline Toggle ( el : ReactElement ) = JSX.createElement Toggle [ toggle.asChild true ; props.children el ]

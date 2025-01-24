@@ -30,10 +30,8 @@ cva(
 )"""
 
 // --------------- Badge -------------- //
-type [<Erase>] IBadgeProp = interface end
-type [<Erase>] badge =
-    inherit prop<IBadgeProp>
-    static member inline noop : unit = ()
+type [<Erase>] IBadgeProp = interface static member propsInterface : unit = () end
+// type [<Erase>] badge = static member inline noop : unit = ()
 module [<Erase>] badge =
     type [<Erase>] variant =
         static member inline default' : IBadgeProp = Interop.mkProperty "variant" "default"
@@ -56,5 +54,5 @@ type [<Erase>] Shadcn =
     static member inline Badge ( props : IBadgeProp list ) = JSX.createElement Badge props
     static member inline Badge ( children : ReactElement list ) = JSX.createElementWithChildren Badge children
     static member inline Badge ( value : string ) = JSX.createElement Badge [ prop.text value ]
-    static member inline Badge ( variant : IBadgeProp , value : string ) = JSX.createElement Badge [ variant ; badge.text value ]
+    static member inline Badge ( variant : IBadgeProp , value : string ) = JSX.createElement Badge [ variant ; props.text value ]
     

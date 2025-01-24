@@ -8,10 +8,7 @@ open Feliz
 JSX.injectShadcnLib
 
 // --------------- Table -------------- //
-type [<Erase>] ITableProp = interface end
-type [<Erase>] table =
-    inherit prop<ITableProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ITableProp = interface static member propsInterface : unit = () end
 
 let Table : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -26,10 +23,7 @@ Table.displayName = "Table"
 """
 
 // --------------- TableHeader -------------- //
-type [<Erase>] ITableHeaderProp = interface end
-type [<Erase>] tableHeader =
-    inherit prop<ITableHeaderProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ITableHeaderProp = interface static member propsInterface : unit = () end
 
 let TableHeader : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -39,10 +33,7 @@ TableHeader.displayName = "TableHeader"
 """
 
 // --------------- TableBody -------------- //
-type [<Erase>] ITableBodyProp = interface end
-type [<Erase>] tableBody =
-    inherit prop<ITableBodyProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ITableBodyProp = interface static member propsInterface : unit = () end
 
 let TableBody : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -55,10 +46,7 @@ TableBody.displayName = "TableBody"
 """
 
 // --------------- TableFooter -------------- //
-type [<Erase>] ITableFooterProp = interface end
-type [<Erase>] tableFooter =
-    inherit prop<ITableFooterProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ITableFooterProp = interface static member propsInterface : unit = () end
 
 let TableFooter : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -71,10 +59,7 @@ TableFooter.displayName = "TableFooter"
 """
 
 // --------------- TableRow -------------- //
-type [<Erase>] ITableRowProp = interface end
-type [<Erase>] tableRow =
-    inherit prop<ITableRowProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ITableRowProp = interface static member propsInterface : unit = () end
 
 let TableRow : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -90,10 +75,7 @@ TableRow.displayName = "TableRow"
 """
 
 // --------------- TableHead -------------- //
-type [<Erase>] ITableHeadProp = interface end
-type [<Erase>] tableHead =
-    inherit prop<ITableHeadProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ITableHeadProp = interface static member propsInterface : unit = () end
 
 let TableHead : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -109,10 +91,7 @@ TableHead.displayName = "TableHead"
 """
 
 // --------------- TableCell -------------- //
-type [<Erase>] ITableCellProp = interface end
-type [<Erase>] tableCell =
-    inherit prop<ITableCellProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ITableCellProp = interface static member propsInterface : unit = () end
 
 let TableCell : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -128,10 +107,7 @@ TableCell.displayName = "TableCell"
 """
 
 // --------------- TableCaption -------------- //
-type [<Erase>] ITableCaptionProp = interface end
-type [<Erase>] tableCaption =
-    inherit prop<ITableCaptionProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ITableCaptionProp = interface static member propsInterface : unit = () end
 
 let TableCaption : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (

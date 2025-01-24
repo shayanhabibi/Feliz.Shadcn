@@ -285,8 +285,6 @@ let PopoverFormCutOutTopIcon : JSX.ElementType = JSX.jsx """
 
 // --------------- PopoverFormCutOutLeftIcon -------------- //
 type [<Erase>] IPopoverFormCutOutLeftIconProp = interface end
-type [<Erase>] popoverFormCutOutLeftIcon =
-    static member inline private noop : unit = ()
 
 let PopoverFormCutOutLeftIcon : JSX.ElementType = JSX.jsx """
 () => {
@@ -319,8 +317,6 @@ let PopoverFormCutOutLeftIcon : JSX.ElementType = JSX.jsx """
 
 // --------------- PopoverFormCutOutRightIcon -------------- //
 type [<Erase>] IPopoverFormCutOutRightIconProp = interface end
-type [<Erase>] popoverFormCutOutRightIcon =
-    static member inline private noop : unit = ()
 
 let PopoverFormCutOutRightIcon : JSX.ElementType = JSX.jsx """
 () => {
@@ -356,8 +352,9 @@ type [<Erase>] Shadcn =
     static member inline PopoverFormButton ( props : IPopoverFormButtonProp list ) = JSX.createElement PopoverFormButton props
     static member inline PopoverFormSuccess ( props : IPopoverFormSuccessProp list ) = JSX.createElement PopoverFormSuccess props
     static member inline PopoverFormSeparator ( props : IPopoverFormSeparatorProp list ) = JSX.createElement PopoverFormSeparator props
-    static member inline PopoverFormCutOutTopIcon ( props : IPopoverFormCutOutTopIconProp list ) = JSX.createElement PopoverFormCutOutTopIcon props
-    static member inline PopoverFormCutOutLeftIcon ( props : IPopoverFormCutOutLeftIconProp list ) = JSX.createElement PopoverFormCutOutLeftIcon props
-    static member inline PopoverFormCutOutRightIcon ( props : IPopoverFormCutOutRightIconProp list ) = JSX.createElement PopoverFormCutOutRightIcon props
+    static member inline PopoverFormSeparator ( ) = JSX.createElement PopoverFormSeparator []
+    static member inline PopoverFormCutOutTopIcon ( ) = JSX.createElement PopoverFormCutOutTopIcon []
+    static member inline PopoverFormCutOutLeftIcon (  ) = JSX.createElement PopoverFormCutOutLeftIcon []
+    static member inline PopoverFormCutOutRightIcon (  ) = JSX.createElement PopoverFormCutOutRightIcon []
     
     

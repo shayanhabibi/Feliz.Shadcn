@@ -12,10 +12,7 @@ import * as ResizablePrimitive from "react-resizable-panels"
 """
 
 // --------------- ResizeablePanelGroup -------------- //
-type [<Erase>] IResizeablePanelGroupProp = interface end
-type [<Erase>] resizeablePanelGroup =
-    inherit prop<IResizeablePanelGroupProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IResizeablePanelGroupProp = interface static member propsInterface : unit = () end
 
 let ResizeablePanelGroup : JSX.ElementType = JSX.jsx """
 ({
@@ -32,19 +29,15 @@ let ResizeablePanelGroup : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- ResizeablePanel -------------- //
-type [<Erase>] IResizeablePanelProp = interface end
-type [<Erase>] resizeablePanel =
-    inherit prop<IResizeablePanelProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IResizeablePanelProp = interface static member propsInterface : unit = () end
 
 let ResizeablePanel : JSX.ElementType = JSX.jsx """
 ResizablePrimitive.Panel
 """
 
 // --------------- ResizeableHandle -------------- //
-type [<Erase>] IResizeableHandleProp = interface end
+type [<Erase>] IResizeableHandleProp = interface static member propsInterface : unit = () end
 type [<Erase>] resizeableHandle =
-    inherit prop<IResizeableHandleProp>
     static member inline withHandle ( value : bool ) : IResizeableHandleProp = Interop.mkProperty "withHandle" value
 
 let ResizeableHandle : JSX.ElementType = JSX.jsx """

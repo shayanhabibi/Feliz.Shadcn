@@ -13,10 +13,7 @@ import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react"
 let _ = buttonVariants
 
 // --------------- Pagination -------------- //
-type [<Erase>] IPaginationProp = interface end
-type [<Erase>] pagination =
-    inherit prop<IPaginationProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IPaginationProp = interface static member propsInterface : unit = () end
 
 let Pagination : JSX.ElementType = JSX.jsx """
 ({
@@ -33,10 +30,7 @@ Pagination.displayName = "Pagination"
 """
 
 // --------------- PaginationContent -------------- //
-type [<Erase>] IPaginationContentProp = interface end
-type [<Erase>] paginationContent =
-    inherit prop<IPaginationContentProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IPaginationContentProp = interface static member propsInterface : unit = () end
 
 let PaginationContent : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -49,10 +43,7 @@ PaginationContent.displayName = "PaginationContent"
 """
 
 // --------------- PaginationItem -------------- //
-type [<Erase>] IPaginationItemProp = interface end
-type [<Erase>] paginationItem =
-    inherit prop<IPaginationItemProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IPaginationItemProp = interface static member propsInterface : unit = () end
 
 let PaginationItem : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -62,9 +53,8 @@ PaginationItem.displayName = "PaginationItem"
 """
         
 // --------------- PaginationLink -------------- //
-type [<Erase>] IPaginationLinkProp = interface end
+type [<Erase>] IPaginationLinkProp = interface static member propsInterface : unit = () end
 type [<Erase>] paginationLink =
-    inherit prop<IPaginationLinkProp>
     static member inline isActive ( value : bool ) : IPaginationLinkProp = Interop.mkProperty "isActive" value
 
 [<RequireQualifiedAccess>]
@@ -101,10 +91,7 @@ PaginationLink.displayName = "PaginationLink"
 """
 
 // --------------- PaginationPrevious -------------- //
-type [<Erase>] IPaginationPreviousProp = interface end
-type [<Erase>] paginationPrevious =
-    inherit prop<IPaginationPreviousProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IPaginationPreviousProp = interface static member propsInterface : unit = () end
 
 let PaginationPrevious : JSX.ElementType = JSX.jsx """
 ({
@@ -124,10 +111,7 @@ PaginationPrevious.displayName = "PaginationPrevious"
 """
 
 // --------------- PaginationNext -------------- //
-type [<Erase>] IPaginationNextProp = interface end
-type [<Erase>] paginationNext =
-    inherit prop<IPaginationNextProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IPaginationNextProp = interface static member propsInterface : unit = () end
 
 let PaginationNext : JSX.ElementType = JSX.jsx """
 ({
@@ -147,10 +131,7 @@ PaginationNext.displayName = "PaginationNext"
 """
 
 // --------------- PaginationEllipsis -------------- //
-type [<Erase>] IPaginationEllipsisProp = interface end
-type [<Erase>] paginationEllipsis =
-    inherit prop<IPaginationEllipsisProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IPaginationEllipsisProp = interface static member propsInterface : unit = () end
 
 let PaginationEllipsis : JSX.ElementType = JSX.jsx """
 ({

@@ -10,13 +10,11 @@ ignore <| JSX.jsx """
 import * as ProgressPrimitive from "@radix-ui/react-progress"
 """
 
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 // --------------- Progress -------------- //
-type [<Erase>] IProgressProp = interface end
-type [<Erase>] progress =
-    inherit Progress.root<IProgressProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IProgressProp = interface static member propsInterface : unit = () end
+type [<Erase>] progress = Progress.root<IProgressProp>
 
 let Progress : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, value, ...props }, ref) => (
@@ -39,4 +37,4 @@ type [<Erase>] Shadcn =
     static member inline Progress ( props : IProgressProp list ) = JSX.createElement Progress props
     static member inline Progress ( children : ReactElement list ) = JSX.createElementWithChildren Progress children
     static member inline Progress ( value : int ) = JSX.createElement Progress [ prop.value value ]
-    static member inline Progress ( el : ReactElement ) = JSX.createElement Progress [ progress.asChild true ; progress.children el ]
+    static member inline Progress ( el : ReactElement ) = JSX.createElement Progress [ progress.asChild true ; props.children el ]

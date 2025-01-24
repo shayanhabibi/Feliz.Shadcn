@@ -10,24 +10,19 @@ ignore <| JSX.jsx """
 import * as TabsPrimitive from "@radix-ui/react-tabs"
 """
 
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 // --------------- Tabs -------------- //
-type [<Erase>] ITabsProp = interface end
-type [<Erase>] tabs =
-    inherit Tabs.root<ITabsProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ITabsProp = interface static member propsInterface : unit = () end
+type [<Erase>] tabs = Tabs.root<ITabsProp>
 
 let Tabs : JSX.ElementType = JSX.jsx """
 TabsPrimitive.Root
 """
 
 // --------------- TabsList -------------- //
-type [<Erase>] ITabsListProp = interface end
-type [<Erase>] tabsList =
-    inherit Tabs.list'<ITabsListProp>
-    static member inline private noop : unit = ()
-
+type [<Erase>] ITabsListProp = interface static member propsInterface : unit = () end
+type [<Erase>] tabsList = Tabs.list'<ITabsListProp>
 let TabsList : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
   <TabsPrimitive.List
@@ -42,10 +37,8 @@ TabsList.displayName = TabsPrimitive.List.displayName
 """
 
 // --------------- TabsTrigger -------------- //
-type [<Erase>] ITabsTriggerProp = interface end
-type [<Erase>] tabsTrigger =
-    inherit Tabs.trigger<ITabsTriggerProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ITabsTriggerProp = interface static member propsInterface : unit = () end
+type [<Erase>] tabsTrigger = Tabs.trigger<ITabsTriggerProp>
 
 let TabsTrigger : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -61,10 +54,8 @@ TabsTrigger.displayName = TabsPrimitive.Trigger.displayName
 """
 
 // --------------- TabsContent -------------- //
-type [<Erase>] ITabsContentProp = interface end
-type [<Erase>] tabsContent =
-    inherit Tabs.content<ITabsContentProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ITabsContentProp = interface static member propsInterface : unit = () end
+type [<Erase>] tabsContent = Tabs.content<ITabsContentProp>
 
 let TabsContent : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -82,14 +73,14 @@ TabsContent.displayName = TabsPrimitive.Content.displayName
 type [<Erase>] Shadcn =
     static member inline Tabs ( props : ITabsProp list ) = JSX.createElement Tabs props
     static member inline Tabs ( children : ReactElement list ) = JSX.createElementWithChildren Tabs children
-    static member inline Tabs ( el : ReactElement ) = JSX.createElement Tabs [ tabs.asChild true ; tabs.children el ]
+    static member inline Tabs ( el : ReactElement ) = JSX.createElement Tabs [ tabs.asChild true ; props.children el ]
     static member inline TabsList ( props : ITabsListProp list ) = JSX.createElement TabsList props
     static member inline TabsList ( children : ReactElement list ) = JSX.createElementWithChildren TabsList children
-    static member inline TabsList ( el : ReactElement ) = JSX.createElement TabsList [ tabsList.asChild true ; tabsList.children el ]
+    static member inline TabsList ( el : ReactElement ) = JSX.createElement TabsList [ tabsList.asChild true ; props.children el ]
     static member inline TabsTrigger ( props : ITabsTriggerProp list ) = JSX.createElement TabsTrigger props
     static member inline TabsTrigger ( children : ReactElement list ) = JSX.createElementWithChildren TabsTrigger children
-    static member inline TabsTrigger ( el : ReactElement ) = JSX.createElement TabsTrigger [ tabsTrigger.asChild true ; tabsTrigger.children el ]
+    static member inline TabsTrigger ( el : ReactElement ) = JSX.createElement TabsTrigger [ tabsTrigger.asChild true ; props.children el ]
     static member inline TabsContent ( props : ITabsContentProp list ) = JSX.createElement TabsContent props
     static member inline TabsContent ( children : ReactElement list ) = JSX.createElementWithChildren TabsContent children
-    static member inline TabsContent ( el : ReactElement ) = JSX.createElement TabsContent [ tabsContent.asChild true ; tabsContent.children el ]
+    static member inline TabsContent ( el : ReactElement ) = JSX.createElement TabsContent [ tabsContent.asChild true ; props.children el ]
             

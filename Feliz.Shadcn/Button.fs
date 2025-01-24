@@ -9,12 +9,11 @@ JSX.injectShadcnLib
 
 // --------------- Button -------------- //
 /// Shadcn Button prop interface type
-type [<Erase>] IButtonProp = interface end
+type [<Erase>] IButtonProp = interface static member propsInterface : unit = () end
 /// Accessor for button properties
 type [<Erase>] button =
-    // Inherit Feliz base properties
-    inherit prop<IButtonProp>
     // Definitions for library defined properties
+    // static member inline className (value : string) : IButtonProp = props.className value // <- valid indirection
     static member inline asChild ( value : bool ) : IButtonProp = Interop.mkProperty "asChild" value
 
 /// Button variants as a `Class-Variance-Authority` object.
@@ -99,5 +98,5 @@ Button.displayName = "Button"
 type [<Erase>] Shadcn =
   static member inline Button ( props : IButtonProp list ) = JSX.createElement Button props
   static member inline Button ( children : ReactElement list ) = JSX.createElementWithChildren Button children
-  static member inline Button ( value : string ) = JSX.createElement Button [ button.text value ]
-  static member inline Button ( el : ReactElement ) = JSX.createElement Button [ button.asChild true ; button.children el ]
+  static member inline Button ( value : string ) = JSX.createElement Button [ prop.text value ]
+  static member inline Button ( el : ReactElement ) = JSX.createElement Button [ button.asChild true ; props.children el ]

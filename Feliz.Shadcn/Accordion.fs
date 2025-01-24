@@ -1,7 +1,7 @@
 ﻿[<AutoOpen>]
 module Feliz.Shadcn.Accordion
 
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 open Feliz.Shadcn.Interop
 open Fable.Core
 open Fable.Core.JsInterop
@@ -20,7 +20,7 @@ JSX.injectShadcnLib
 
 // ---------------- Accordion ------------------ //
 /// Properties for Shadcn.Accordion (root)
-type [<Erase>] IAccordionProp = interface end
+type [<Erase>] IAccordionProp = interface static member propsInterface : unit = () end
 // Define props specific for components
 /// Shadcn Accordion root properties
 type [<Erase>] accordion =
@@ -53,11 +53,9 @@ module [<Erase>] accordion =
 let Accordion : JSX.ElementType = JSX.jsx "AccordionPrimitive.Root"
 
 // ---------------- AccordionItem ------------------ //
-type [<Erase>] IAccordionItemProp = interface end
+type [<Erase>] IAccordionItemProp = interface static member propsInterface : unit = () end
 /// Accessor for <c>IAccordionItemProp</c> -erties
-type [<Erase>] accordionItem =
-    inherit Accordion.item<IAccordionItemProp>
-    static member inline private noop = ignore
+type [<Erase>] accordionItem = Accordion.item<IAccordionItemProp>
 
 /// The Accordion Item Component
 let AccordionItem : JSX.ElementType = JSX.jsx """
@@ -68,11 +66,9 @@ AccordionItem.displayName = "AccordionItem"
 """
 
 // ---------------- AccordionTrigger ------------------ //
-type [<Erase>] IAccordionTriggerProp = interface end
+type [<Erase>] IAccordionTriggerProp = interface static member propsInterface : unit = () end
 /// Accessor for <c>IAccordionTriggerProp</c>-erties
-type [<Erase>] accordionTrigger =
-    inherit Accordion.trigger<IAccordionTriggerProp>
-    static member inline private noop = ignore
+type [<Erase>] accordionTrigger = Accordion.trigger<IAccordionTriggerProp>
 
 /// The Accordion Trigger Component
 let AccordionTrigger : JSX.ElementType = JSX.jsx """
@@ -94,11 +90,9 @@ React.forwardRef(({ className, children, ...props }, ref) => (
 AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName"""
 
 // ---------------- AccordionContent ------------------ //
-type [<Erase>] IAccordionContentProp = interface end
+type [<Erase>] IAccordionContentProp = interface static member propsInterface : unit = () end
 /// Accessor for <c>IAccordionContentProp</c>-erties
-type [<Erase>] accordionContent =
-    inherit Accordion.content<IAccordionContentProp>
-    static member inline private noop = ignore
+type [<Erase>] accordionContent = Accordion.content<IAccordionContentProp>
 
 /// The Accordion Content Component
 let AccordionContent : JSX.ElementType = JSX.jsx """
@@ -116,15 +110,15 @@ AccordionContent.displayName = AccordionPrimitive.Content.displayName
 type [<Erase>] Shadcn =
     static member inline Accordion ( props : IAccordionProp list ) = JSX.createElement Accordion props
     static member inline Accordion ( children : ReactElement list ) = JSX.createElementWithChildren Accordion children
-    static member inline Accordion ( el : ReactElement ) = JSX.createElement Accordion [ accordion.asChild true ; accordion.children el ]
+    static member inline Accordion ( el : ReactElement ) = JSX.createElement Accordion [ accordion.asChild true ; props.children el ]
     static member inline AccordionItem ( props : IAccordionItemProp list ) = JSX.createElement AccordionItem props
     static member inline AccordionItem ( children : ReactElement list ) = JSX.createElementWithChildren AccordionItem children
-    static member inline AccordionItem ( el : ReactElement ) = JSX.createElement AccordionItem [ accordionItem.asChild true ; accordionItem.children el ]
+    static member inline AccordionItem ( el : ReactElement ) = JSX.createElement AccordionItem [ accordionItem.asChild true ; props.children el ]
     static member inline AccordionTrigger ( props : IAccordionTriggerProp list ) = JSX.createElement AccordionTrigger props
     static member inline AccordionTrigger ( children : ReactElement list ) = JSX.createElementWithChildren AccordionTrigger children
-    static member inline AccordionTrigger ( el : ReactElement ) = JSX.createElement AccordionTrigger [ accordionTrigger.asChild true ; accordionTrigger.children el ]
+    static member inline AccordionTrigger ( el : ReactElement ) = JSX.createElement AccordionTrigger [ accordionTrigger.asChild true ; props.children el ]
     static member inline AccordionTrigger ( value : string ) = JSX.createElement AccordionTrigger [ prop.text value ]
     static member inline AccordionContent ( props : IAccordionContentProp list ) = JSX.createElement AccordionContent props
     static member inline AccordionContent ( value : string ) = JSX.createElement AccordionContent [ prop.text value ]
     static member inline AccordionContent ( children : ReactElement list ) = JSX.createElementWithChildren AccordionContent children
-    static member inline AccordionContent ( el : ReactElement ) = JSX.createElement AccordionContent [ accordionContent.asChild true ; accordionContent.children el ]
+    static member inline AccordionContent ( el : ReactElement ) = JSX.createElement AccordionContent [ accordionContent.asChild true ; props.children el ]

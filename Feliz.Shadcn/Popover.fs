@@ -10,43 +10,35 @@ ignore <| JSX.jsx """
 import * as PopoverPrimitive from "@radix-ui/react-popover"
 """
 
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 // --------------- Popover -------------- //
-type [<Erase>] IPopoverProp = interface end
-type [<Erase>] popover =
-    inherit Popover.root<IPopoverProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IPopoverProp = interface static member propsInterface : unit = () end
+type [<Erase>] popover = Popover.root<IPopoverProp>
 
 let Popover : JSX.ElementType = JSX.jsx """
 PopoverPrimitive.Root
 """
 
 // --------------- PopoverTrigger -------------- //
-type [<Erase>] IPopoverTriggerProp = interface end
-type [<Erase>] popoverTrigger =
-    inherit Popover.trigger<IPopoverTriggerProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IPopoverTriggerProp = interface static member propsInterface : unit = () end
+type [<Erase>] popoverTrigger = Popover.trigger<IPopoverTriggerProp>
 
 let PopoverTrigger : JSX.ElementType = JSX.jsx """
 PopoverPrimitive.Trigger
 """
 
 // --------------- PopoverAnchor -------------- //
-type [<Erase>] IPopoverAnchorProp = interface end
-type [<Erase>] popoverAnchor =
-    inherit Popover.anchor<IPopoverAnchorProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IPopoverAnchorProp = interface static member propsInterface : unit = () end
+type [<Erase>] popoverAnchor = Popover.anchor<IPopoverAnchorProp>
 
 let PopoverAnchor : JSX.ElementType = JSX.jsx """
 PopoverPrimitive.Anchor
 """
 
 // --------------- PopoverContent -------------- //
-type [<Erase>] IPopoverContentProp = interface end
-type [<Erase>] popoverContent =
-    inherit Popover.content<IPopoverContentProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IPopoverContentProp = interface static member propsInterface : unit = () end
+type [<Erase>] popoverContent = Popover.content<IPopoverContentProp>
 
 let PopoverContent : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, align = "center", sideOffset = 4, ...props }, ref) => (
@@ -71,11 +63,11 @@ type [<Erase>] Shadcn =
     static member inline PopoverTrigger ( props : IPopoverTriggerProp list ) = JSX.createElement PopoverTrigger props
     static member inline PopoverTrigger ( children : ReactElement list ) = JSX.createElementWithChildren PopoverTrigger children
     static member inline PopoverTrigger ( value : string ) = JSX.createElement PopoverTrigger [ prop.text value ]
-    static member inline PopoverTrigger ( el : ReactElement ) = JSX.createElement PopoverTrigger [ popoverTrigger.asChild true ; popoverTrigger.children el ]
+    static member inline PopoverTrigger ( el : ReactElement ) = JSX.createElement PopoverTrigger [ popoverTrigger.asChild true ; props.children el ]
     static member inline PopoverContent ( props : IPopoverContentProp list ) = JSX.createElement PopoverContent props
     static member inline PopoverContent ( children : ReactElement list ) = JSX.createElementWithChildren PopoverContent children
-    static member inline PopoverContent ( el : ReactElement ) = JSX.createElement PopoverContent [ popoverContent.asChild true ; popoverContent.children el ]
+    static member inline PopoverContent ( el : ReactElement ) = JSX.createElement PopoverContent [ popoverContent.asChild true ; props.children el ]
     static member inline PopoverAnchor ( props : IPopoverAnchorProp list ) = JSX.createElement PopoverAnchor props
     static member inline PopoverAnchor ( children : ReactElement list ) = JSX.createElementWithChildren PopoverAnchor children
-    static member inline PopoverAnchor ( el : ReactElement ) = JSX.createElement PopoverAnchor [ popoverAnchor.asChild true ; popoverAnchor.children el ]
+    static member inline PopoverAnchor ( el : ReactElement ) = JSX.createElement PopoverAnchor [ popoverAnchor.asChild true ; props.children el ]
             

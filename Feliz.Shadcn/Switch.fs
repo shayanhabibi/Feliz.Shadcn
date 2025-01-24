@@ -10,13 +10,11 @@ ignore <| JSX.jsx """
 import * as SwitchPrimitives from "@radix-ui/react-switch"
 """
 
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 // --------------- Switch -------------- //
-type [<Erase>] ISwitchProp = interface end
-type [<Erase>] switch =
-    inherit Switch.root<ISwitchProp>
-    static member inline private noop : unit = ()
+type [<Erase>] ISwitchProp = interface static member propsInterface : unit = () end
+type [<Erase>] switch = Switch.root<ISwitchProp>
 
 let Switch : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -39,4 +37,4 @@ Switch.displayName = SwitchPrimitives.Root.displayName
 type [<Erase>] Shadcn =
     static member inline Switch ( props : ISwitchProp list ) = JSX.createElement Switch props
     static member inline Switch ( children : ReactElement list ) = JSX.createElementWithChildren Switch children
-    static member inline Switch ( el : ReactElement ) = JSX.createElement Switch [ switch.asChild true ; switch.children el ]
+    static member inline Switch ( el : ReactElement ) = JSX.createElement Switch [ switch.asChild true ; props.children el ]

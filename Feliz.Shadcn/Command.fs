@@ -8,6 +8,8 @@ open Feliz
 open Feliz.Shadcn.Dialog
 open Feliz.Lucide
 open Feliz.style
+open Feliz.RadixUI.Interface.NoInherit
+
 ignore <| JSX.jsx """
 import { Command as CommandPrimitive } from "cmdk";
 import { Search } from "lucide-react";
@@ -16,9 +18,8 @@ JSX.injectShadcnLib
 let (_, _) = Shadcn.Dialog.Dialog, Shadcn.Dialog.DialogContent
 
 // --------------- Command -------------- //
-type [<Erase>] ICommandProp = interface end
+type [<Erase>] ICommandProp = interface static member propsInterface : unit = () end
 type [<Erase>] command =
-    inherit prop<ICommandProp>
     static member inline value ( value : string ) : ICommandProp = Interop.mkProperty "value" value
     static member inline onValueChange ( handler : string -> unit ) : ICommandProp = Interop.mkProperty "onValueChange" handler
     /// Provide a custom <c>filter</c> function that is called to rank each item. Note that values will be trimmed.
@@ -47,10 +48,8 @@ Command.displayName = CommandPrimitive.displayName
 """
 
 // --------------- CommandDialog -------------- //
-type [<Erase>] ICommandDialogProp = interface end
-type [<Erase>] commandDialog =
-    inherit Feliz.RadixUI.Interface.Dialog.root<ICommandDialogProp>
-    static member inline noop : unit = ()
+type [<Erase>] ICommandDialogProp = interface static member propsInterface : unit = () end
+type [<Erase>] commandDialog = Dialog.root<ICommandDialogProp>
 
 let CommandDialog : JSX.ElementType = JSX.jsx """
 ({
@@ -71,9 +70,8 @@ let CommandDialog : JSX.ElementType = JSX.jsx """
 """
 
 // --------------- CommandInput -------------- //
-type [<Erase>] ICommandInputProp = interface end
+type [<Erase>] ICommandInputProp = interface static member propsInterface : unit = () end
 type [<Erase>] commandInput =
-    inherit prop<ICommandInputProp>
     static member inline value ( value : string ) : ICommandInputProp = Interop.mkProperty "value" value
     static member inline onValueChange ( handler : string -> unit ) : ICommandInputProp = Interop.mkProperty "onValueChange" handler
 
@@ -95,10 +93,7 @@ CommandInput.displayName = CommandPrimitive.Input.displayName
 """
 
 // --------------- CommandList -------------- //
-type [<Erase>] ICommandListProp = interface end
-type [<Erase>] commandList =
-    inherit prop<ICommandListProp>
-    static member inline noop : unit = ()
+type [<Erase>] ICommandListProp = interface static member propsInterface : unit = () end
 
 let CommandList : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, ...props }, ref) => (
@@ -112,10 +107,7 @@ CommandList.displayName = CommandPrimitive.List.displayName
 """
 
 // --------------- CommandEmpty -------------- //
-type [<Erase>] ICommandEmptyProp = interface end
-type [<Erase>] commandEmpty =
-    inherit prop<ICommandEmptyProp>
-    static member inline noop : unit = ()
+type [<Erase>] ICommandEmptyProp = interface static member propsInterface : unit = () end
 
 let CommandEmpty : JSX.ElementType = JSX.jsx """
 React.forwardRef((props, ref) => (
@@ -126,9 +118,8 @@ CommandEmpty.displayName = CommandPrimitive.Empty.displayName
 """
 
 // --------------- CommandGroup -------------- //
-type [<Erase>] ICommandGroupProp = interface end
+type [<Erase>] ICommandGroupProp = interface static member propsInterface : unit = () end
 type [<Erase>] commandGroup =
-    inherit prop<ICommandGroupProp>
     /// Groups will not unmount from the DOM, rather the <c>hidden</c> attribute is applied to hide it from view. This may be relevant for styling.
     static member inline hidden ( value : bool ) : ICommandGroupProp = Interop.mkProperty "hidden" value
     /// Group items together with the given heading
@@ -151,9 +142,8 @@ CommandGroup.displayName = CommandPrimitive.Group.displayName
 """
 
 // --------------- CommandSeparator -------------- //
-type [<Erase>] ICommandSeparatorProp = interface end
+type [<Erase>] ICommandSeparatorProp = interface static member propsInterface : unit = () end
 type [<Erase>] commandSeparator =
-    inherit prop<ICommandSeparatorProp>
     static member inline alwaysRender ( value : bool ) : ICommandSeparatorProp = Interop.mkProperty "alwaysRender" value
 
 let CommandSeparator : JSX.ElementType = JSX.jsx """
@@ -165,9 +155,8 @@ CommandSeparator.displayName = CommandPrimitive.Separator.displayName
 
 
 // --------------- CommandItem -------------- //
-type [<Erase>] ICommandItemProp = interface end
+type [<Erase>] ICommandItemProp = interface static member propsInterface : unit = () end
 type [<Erase>] commandItem =
-    inherit prop<ICommandItemProp>
     static member inline disabled ( value : bool ) : ICommandItemProp = Interop.mkProperty "disabled" value
     static member inline selected ( value : bool ) : ICommandItemProp = Interop.mkProperty "selected" value
     static member inline onSelect ( handler : string -> unit ) : ICommandItemProp = Interop.mkProperty "onSelect" handler
@@ -193,10 +182,7 @@ CommandItem.displayName = CommandPrimitive.Item.displayName
 """
 
 // --------------- CommandShortcut -------------- //
-type [<Erase>] ICommandShortcutProp = interface end
-type [<Erase>] commandShortcut =
-    inherit prop<ICommandShortcutProp>
-    static member inline noop : unit = ()
+type [<Erase>] ICommandShortcutProp = interface static member propsInterface : unit = () end
 
 let CommandShortcut : JSX.ElementType = JSX.jsx """
 ({
@@ -227,7 +213,7 @@ type [<Erase>] Shadcn =
     static member inline CommandEmpty ( value : string ) = JSX.createElement CommandEmpty [ prop.text value ]
     static member inline CommandGroup ( props : ICommandGroupProp list ) = JSX.createElement CommandGroup props
     static member inline CommandGroup ( children : ReactElement list ) = JSX.createElementWithChildren CommandGroup children
-    static member inline CommandGroup ( heading : string , children : ReactElement list) = JSX.createElement CommandGroup [ commandGroup.heading heading ; commandGroup.children children ]
+    static member inline CommandGroup ( heading : string , children : ReactElement list) = JSX.createElement CommandGroup [ commandGroup.heading heading ; props.children children ]
     static member inline CommandGroup ( value : string ) = JSX.createElement CommandGroup [ commandGroup.heading value ]
     static member inline CommandItem ( props : ICommandItemProp list ) = JSX.createElement CommandItem props
     static member inline CommandItem ( children : ReactElement list ) = JSX.createElementWithChildren CommandItem children

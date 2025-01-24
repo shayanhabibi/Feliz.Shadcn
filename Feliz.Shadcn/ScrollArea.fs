@@ -10,13 +10,11 @@ ignore <| JSX.jsx """
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area"
 """
 
-open Feliz.RadixUI.Interface
+open Feliz.RadixUI.Interface.NoInherit
 
 // --------------- ScrollArea -------------- //
-type [<Erase>] IScrollAreaProp = interface end
-type [<Erase>] scrollArea =
-    inherit ScrollArea.root<IScrollAreaProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IScrollAreaProp = interface static member propsInterface : unit = () end
+type [<Erase>] scrollArea = ScrollArea.root<IScrollAreaProp>
 
 let ScrollArea : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, children, ...props }, ref) => (
@@ -35,10 +33,8 @@ ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName
 """
 
 // --------------- ScrollBar -------------- //
-type [<Erase>] IScrollBarProp = interface end
-type [<Erase>] scrollBar =
-    inherit ScrollArea.scrollbar<IScrollBarProp>
-    static member inline private noop : unit = ()
+type [<Erase>] IScrollBarProp = interface static member propsInterface : unit = () end
+type [<Erase>] scrollBar = ScrollArea.scrollbar<IScrollBarProp>
 
 let ScrollBar : JSX.ElementType = JSX.jsx """
 React.forwardRef(({ className, orientation = "vertical", ...props }, ref) => (
@@ -63,8 +59,8 @@ ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName
 type [<Erase>] Shadcn =
     static member inline ScrollArea ( props : IScrollAreaProp list ) = JSX.createElement ScrollArea props
     static member inline ScrollArea ( children : ReactElement list ) = JSX.createElementWithChildren ScrollArea children
-    static member inline ScrollArea ( el : ReactElement ) = JSX.createElement ScrollArea [ scrollArea.asChild true ; scrollArea.children el ]
+    static member inline ScrollArea ( el : ReactElement ) = JSX.createElement ScrollArea [ scrollArea.asChild true ; props.children el ]
     static member inline ScrollBar ( props : IScrollBarProp list ) = JSX.createElement ScrollBar props
     static member inline ScrollBar ( children : ReactElement list ) = JSX.createElementWithChildren ScrollBar children
-    static member inline ScrollBar ( el : ReactElement ) = JSX.createElement ScrollBar [ scrollBar.asChild true ; scrollBar.children el ]
+    static member inline ScrollBar ( el : ReactElement ) = JSX.createElement ScrollBar [ scrollBar.asChild true ; props.children el ]
     
