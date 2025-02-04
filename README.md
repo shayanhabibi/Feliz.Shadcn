@@ -19,6 +19,13 @@ In development personal bindings to Shadcn components in Feliz style.
 
 > The library is not necessarily intended to be package managed, but rather follows a similar logic as shadcn by providing the elements premade with nice defaults for you to change as needed. There are some dependencies which will be managed by a package, you are then free to download and use the components in whatever manner you wish.
 
+## Attributions
+
+> Internal Libraries and Code has been directly pulled from work by [Francisco Montanez](https://github.com/Francisco-Montanez) in generating [RadixUI interfaces](https://github.com/Francisco-Montanez/Feliz.RadixUI); [Zaid Ajaj](https://github.com/Zaid-Ajaj)
+> in defining properties for svgs and props, and [Andrew Sutton](https://github.com/sydsutton) in multiple patterns of implementation derivative of [FS.FluentUI](https://github.com/sydsutton/FS.FluentUI).
+>
+> Please let me know if I have missed anything or anyone.
+
 ## Setup
 
 ### Fable Config
