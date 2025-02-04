@@ -19,6 +19,12 @@ In development personal bindings to Shadcn components in Feliz style.
 
 > The library is not necessarily intended to be package managed, but rather follows a similar logic as shadcn by providing the elements premade with nice defaults for you to change as needed. There are some dependencies which will be managed by a package, you are then free to download and use the components in whatever manner you wish.
 
+## Something Wrong?
+
+While I continue to develop and iterate over components in a private repo, there is not much motivation to spend any time porting those changes to this repo since there's no consumers at the moment.
+
+If you are interested in using any components, let me know and I'll adjust priorities accordingly.
+
 ## Attributions
 
 > Internal Libraries and Code has been directly pulled from work by [Francisco Montanez](https://github.com/Francisco-Montanez) in generating [RadixUI interfaces](https://github.com/Francisco-Montanez/Feliz.RadixUI); [Zaid Ajaj](https://github.com/Zaid-Ajaj)
